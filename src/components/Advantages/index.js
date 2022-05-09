@@ -6,7 +6,7 @@ import { advantagesData } from './advantagesData'
 
 const Advantages = () => {
 	return (
-		<div className='advantages'>
+		<Stack py={4} direction='row' className='advantages' alignItems='center'>
 			<div className="container">
 				<Title>Bizning afzalliklarimiz</Title>
 				<Grid container spacing={2}>
@@ -25,7 +25,7 @@ const Advantages = () => {
 			<div className="advantages__img">
 				<img src="./assets/img/malibu.png" alt="advantages-img" />
 			</div>
-		</div>
+		</Stack>
 	)
 }
 

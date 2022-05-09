@@ -7,7 +7,7 @@ import './style.css'
 
 const About = () => {
     return (
-        <section className="about">
+        <Stack py={4} className="about">
             <div className="container">
                 <Stack mt={1} mb={2}>
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
@@ -92,7 +92,7 @@ const About = () => {
                     </Grid>
                 </Stack>
             </div>
-        </section>
+        </Stack>
     )
 }
 

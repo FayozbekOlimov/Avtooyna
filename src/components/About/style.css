@@ -2,7 +2,6 @@
     background-image: url('../../../public/assets/img/about-bg.png');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: .5rem 0;
 }
 
 .about__picture img {
