@@ -4,6 +4,7 @@ import Advantages from '../../components/Advantages'
 import Banner from '../../components/Banner'
 import Gallery from '../../components/Gallery'
 import News from '../../components/News'
+import Footer from '../../layout/Footer'
 import Header from '../../layout/Header'
 
 const Main = () => {
@@ -15,6 +16,7 @@ const Main = () => {
             <About />
             <News />
             <Gallery />
+            <Footer/>
         </>
     )
 }
