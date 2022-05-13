@@ -1,6 +1,5 @@
 import Main from './pages/Main';
-import Index from "./pages/About/Certificates/index";
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@mui/material';
 import { theme } from './static/theme';
 // Import Swiper styles
 import "swiper/css";
@@ -12,8 +11,7 @@ import './static/base.css';
 const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
-			{/* <Main /> */}
-			<Index/>
+			<Main />
 		</ThemeProvider>
 	);
 }
