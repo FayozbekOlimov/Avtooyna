@@ -5,6 +5,7 @@ import Banner from './Banner'
 import Gallery from './Gallery'
 import News from './News'
 import Header from '../../layout/Header'
+import Sertificates from './Sertificates'
 
 const Main = () => {
     return (
@@ -15,6 +16,7 @@ const Main = () => {
             <About />
             <News />
             <Gallery />
+            <Sertificates />
         </>
     )
 }

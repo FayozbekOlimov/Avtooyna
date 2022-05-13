@@ -1,28 +1,11 @@
-
 import { lazy } from "react";
+const Main = lazy(() => import("../pages/Main"));
 
-// const About  = lazy(() => import("../pages/About"));
 
-import React from 'react'
-
-const Routes = () => {
-  return (
-    <div>Routes</div>
-  )
-}
-
-export default Routes;
-
-// const routes = [
-//     {
-//         path: "about",
-//         element: <About />,
-
-//         children: [
-//             {
-//                 path:":submenu_id",
-//                 element:
-//             }
-//         ]
-//     }
-// ]
+export const routes = [
+	{
+		index: true,
+		path: "",
+		element: <Main />
+	}
+];

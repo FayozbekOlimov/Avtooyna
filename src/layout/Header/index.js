@@ -1,8 +1,9 @@
 import React from 'react'
-import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
-import { Box, Button, FormControl, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Select, SwipeableDrawer } from '@mui/material';
+import { ChevronRight, ExpandMore, FmdGood, HighlightOff, HighlightOffOutlined, InputOutlined, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
+import { Box, Button, FormControl, Grid, IconButton, Input, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Modal, Select, SwipeableDrawer } from '@mui/material';
 import { BsMailbox as MailIcon, BsInbox as InboxIcon } from 'react-icons/bs'
 // import Button from '../../components/Button'
+import Title from '../../components/Title'
 import './style.css'
 import { theme } from '../../static/theme';
 
@@ -13,70 +14,23 @@ const Header = () => {
         setLang(event.target.value);
     };
 
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    });
+    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (
-            event &&
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-            return;
-        }
-
-        setState({ ...state, [anchor]: open });
-    };
-
-    const list = (anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            {/* <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List> */}
-        </Box>
-    );
     return (
         <header className='header'>
             <div className="container">
                 <Grid container spacing={2}>
-                    <Grid item sm={2} display='flex' alignItems='center'>
-                        <Menu className='header__menu-icon' fontSize='large' />
+                    <Grid item xs={12} md={3} lg={2} display='flex' alignItems='center'>
+                        <Menu
+                            className='header__menu-icon'
+                            fontSize='large'
+                            onClick={() => setIsDrawerOpen(true)}
+                        />
                         <div className='header__logo'>
                             <img src='./assets/img/logo.svg' alt='logo' />
                         </div>
                     </Grid>
-                    <Grid item sm={6} display='flex' justifyContent='space-evenly'>
+                    <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
                         <div className='header__tel'>
                             <div className='header__tel-icon'>
                                 <PhoneEnabled />
@@ -96,10 +50,15 @@ const Header = () => {
                             </div>
                         </div>
                     </Grid>
-                    <Grid item sm={4} display='flex' alignItems='center' justifyContent='space-between'>
+                    <Grid item xs={12} md={12} lg={4} display='flex' alignItems='center' justifyContent='space-between'>
                         <Button
                             variant='outlined'
-                            sx={{ textTransform: 'none', color: 'var(--title-color)' }}>Konsultatsiya olish
+                            sx={{
+                                textTransform: 'none',
+                                color: 'var(--title-color)',
+                                padding: '8px'
+                            }}>
+                            Konsultatsiya olish
                         </Button>
                         <FormControl >
                             <Select
@@ -111,6 +70,7 @@ const Header = () => {
                                 defaultValue='uz'
                                 inputProps={{ 'aria-label': 'Without label' }}
                                 sx={{
+                                    padding: 0,
                                     width: '80px',
                                     borderColor: 'var(--primary-color)',
                                     color: 'var(--title-color)'
@@ -129,19 +89,35 @@ const Header = () => {
                         </Button>
                     </Grid>
                 </Grid>
-                {/* {['left', 'right', 'top', 'bottom'].map((anchor) => (
-                    <React.Fragment key={anchor}>
-                        <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                        <SwipeableDrawer
-                            anchor={anchor}
-                            open={state[anchor]}
-                            onClose={toggleDrawer(anchor, false)}
-                            onOpen={toggleDrawer(anchor, true)}
-                        >
-                            {list(anchor)}
-                        </SwipeableDrawer>
-                    </React.Fragment>
-                ))} */}
+                <SwipeableDrawer
+                    anchor='left'
+                    open={isDrawerOpen}
+                    onClose={() => setIsDrawerOpen(false)}
+                    onOpen={() => setIsDrawerOpen(true)}
+                >
+                    <Box width={220} height={320} role="presentation">
+                        <List>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemText>MENU</ListItemText>
+                                    <HighlightOff onClick={() => setIsDrawerOpen(false)} />
+                                </ListItemButton>
+                            </ListItem>
+                            {['Biz haqimizda', 'Tanlov va e\'lonlar', 'Marketing', 'Matbuot xizmati'].map((text) => (
+                                <ListItem key={text} disablePadding sx={{
+                                    '&:hover': {
+                                        backgroundColor: '#EBF4FD'
+                                    }
+                                }}>
+                                    <ListItemButton>
+                                        <ListItemText primary={text} />
+                                        <ChevronRight />
+                                    </ListItemButton>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Box>
+                </SwipeableDrawer>
             </div>
         </header>
     )
