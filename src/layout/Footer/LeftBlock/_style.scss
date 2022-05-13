@@ -1,13 +1,25 @@
-.footer_contact_item{
+.footer_contact_item {
+  display: flex;
+  margin-bottom: 30px;
+  span {
+    margin-left: 24px;
+  }
+  .footer_left_block_flex {
     display: flex;
-    margin-bottom: 30px;
-    span{
-        margin-left: 24px;
-    }
-    .footer_left_block_flex{
-        display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    a {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      .footer_contact_subtitle {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 130%;
         align-items: center;
-        justify-content: center;
-        flex-direction: column;
+        color: #9fa8b3;
+      }
     }
+  }
 }
