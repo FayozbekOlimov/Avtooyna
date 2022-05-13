@@ -1,8 +1,8 @@
 import React from 'react'
-import { Grid, ImageList, ImageListItem, Stack } from '@mui/material'
-import Title from '../../customComponents/Title'
-import Text from '../../customComponents/Text'
-import Button from '../../customComponents/Button'
+import { Grid, Stack } from '@mui/material'
+import Title from '../../../components/Title'
+import Text from '../../../components/Text'
+import Button from '../../../components/Button'
 import './style.css'
 
 const About = () => {

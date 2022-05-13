@@ -2,7 +2,7 @@ import { styled, Typography } from "@mui/material";
 
 const Title = styled(Typography)(({ theme }) => ({
     fontWeight: 700,
-    color: theme.palette.titleColor.main,
+    color: 'var(--title-color)',
     fontSize: '26px',
     [theme.breakpoints.up('sm')]: {
         fontSize: '30px',

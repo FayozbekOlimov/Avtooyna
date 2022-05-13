@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from '../../customComponents/Button'
-import Title from '../../customComponents/Title'
-import Text from '../../customComponents/Text'
+import Button from '../../../components/Button'
+import Title from '../../../components/Title'
+import Text from '../../../components/Text'
 import './style.css'
 
 const Banner = () => {

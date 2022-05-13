@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack, Button, Grid } from '@mui/material'
-import Title from '../../customComponents/Title'
+import Title from '../../../components/Title'
 import { RiArrowRightSLine } from 'react-icons/ri'
 import './style.css'
 

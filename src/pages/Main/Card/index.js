@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button } from '@mui/material'
 import { RiArrowRightSLine } from 'react-icons/ri'
-import Text from '../../customComponents/Text'
+import Text from '../../../components/Text'
 import './style.css'
 
-const Card = ({ id, src, date, title, text }) => {
+const Card = ({ id, src, date, title, text, content=true }) => {
     return (
         <div className='card'>
             <div className="card__img">
@@ -15,7 +15,9 @@ const Card = ({ id, src, date, title, text }) => {
                     <img src="./assets/icon/calendar.png" alt="calendar-icon" />{date}
                 </p>
                 <h5 className='card__title'>{title}</h5>
-                <Text>{text}</Text>
+                {
+                    content && <Text>{text}</Text>
+                }
                 <Button variant='text' sx={{ textTransform: 'capitalize' }} endIcon={<RiArrowRightSLine />}>Batafsil</Button>
             </div>
         </div>
