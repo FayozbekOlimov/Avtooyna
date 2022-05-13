@@ -9,7 +9,7 @@ const Button = styled(Btn)(({ theme }) => ({
     [theme.breakpoints.up('sm')]: {
         padding: '8px 22px',
     },
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: 'var(--primary-color)',
 }))
 
 export default function StyledCustomization({children}) {

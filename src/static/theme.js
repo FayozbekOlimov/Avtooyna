@@ -12,6 +12,7 @@ export const theme = createTheme({
     },
     palette: {
         primary: {
+            light: '#3179C2',
             main: "#00468D",
         },
         titleColor: {
