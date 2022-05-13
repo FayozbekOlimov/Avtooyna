@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import About from '../../components/About'
 import Advantages from '../../components/Advantages'
 import Banner from '../../components/Banner'

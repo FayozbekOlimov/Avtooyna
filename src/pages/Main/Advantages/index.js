@@ -1,8 +1,8 @@
 import React from 'react'
 import { Grid, Stack } from '@mui/material'
-import Title from '../../customComponents/Title'
-import './style.css'
+import Title from '../../../components/Title'
 import { advantagesData } from './advantagesData'
+import './style.css'
 
 const Advantages = () => {
 	return (

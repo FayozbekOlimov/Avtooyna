@@ -1,10 +1,75 @@
 .header {
-    /* height: 50px; */
-    /* line-height: 50px; */
-    border: 1px solid;
+    height: 70px;
+    display: flex;
+    align-items: center;
 }
 
-.header__icon-button {
+.header__tel {
+    display: flex;
+    align-items: center;
+}
+
+.header__tel-icon {
     width: 40px;
     height: 40px;
+    background-color: var(--header-icon-bgcolor);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__tel-icon .MuiSvgIcon-root {
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+.header__tel-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: .5rem;
+}
+
+.header__menu-icon {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.header__logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header__tel-content a,
+.header__tel-content p {
+    color: var(--title-color);
+}
+
+.header__tel-content a:first-child,
+.header__tel-content p {
+    margin-bottom: 4px;
+}
+
+.header__tel-content small {
+    color: #9fa8b2;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.MuiInputBase-root .MuiSvgIcon-root {
+    left: 7px !important;
+    color: var(--title-color);
+}
+
+.MuiSelect-select {
+    padding-right: 16px !important;
+    text-align: right;
+}
+
+.header__mode {
+    background-color: var(--primary-light-color) !important;
+    padding: 8px !important;
 }
