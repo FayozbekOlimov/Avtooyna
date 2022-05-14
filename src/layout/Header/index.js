@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
 import { Box, Button, FormControl, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Select, SwipeableDrawer } from '@mui/material';
 import { BsMailbox as MailIcon, BsInbox as InboxIcon } from 'react-icons/bs'
@@ -7,7 +7,6 @@ import './style.css'
 import { theme } from '../../static/theme';
 import { useT } from "../../custom/hooks/useT";
 import { changeLang, setLang } from '../../helper';
-
 
 const Header = () => {
 
@@ -18,10 +17,10 @@ const Header = () => {
     const handleChange = (event) => {
         setLang(event.target.value);
         changeLang(event.target.value);
-        window.location.reload();
+        // window.location.reload();
     };
 
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         top: false,
         left: false,
         bottom: false,
@@ -74,6 +73,7 @@ const Header = () => {
             </List> */}
         </Box>
     );
+
     return (
         <header className='header'>
             <div className="container">

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
 
 const Sertificates = () => {
     return (

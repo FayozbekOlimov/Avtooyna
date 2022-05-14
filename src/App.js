@@ -15,7 +15,6 @@ import { fallbackLng, languages } from './constants';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 
-
 const App = () => {
 
 	let { pathname } = useLocation();
