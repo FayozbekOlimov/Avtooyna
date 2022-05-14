@@ -1,7 +1,11 @@
-.footer_map_iframe {
-  border       : none;
-  border-radius: 10px;
-  max-width    : 930px;
-  width        : 1200px;
-  height       : 558px;
+.map_wrapper {
+  overflow-x: hidden;
+
+  .footer_map_iframe {
+    border       : none;
+    border-radius: 10px;
+    max-width    : 930px;
+    width        : 1200px;
+    height       : 558px;
+  }
 }
