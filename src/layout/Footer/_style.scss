@@ -1,0 +1,23 @@
+.footer{
+  background-color: #3179C2;
+  padding: 17px 0;
+}
+.footer_flex_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+.copyright{
+  color: #fff;
+}
+.socila_link{
+  a{
+    img{
+      margin-right: 24px;
+      // &:last-child{
+      //   margin-right: 0;
+      // } 
+    }
+  }
+}
