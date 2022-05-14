@@ -1,24 +1,20 @@
-import React from "react";
-import About from "../About";
-import Advantages from "../";
-import Banner from "../../pages/Banner";
-import Gallery from "../../pages/Gallery";
-import News from "../../pages/News";
-import Footer from "../../layout/Footer";
-import Header from "../../layout/Header";
+import React from 'react';
+import About from './About'
+import Advantages from './Advantages'
+import Banner from './Banner'
+import Gallery from './Gallery'
+import News from './News'
 
 const Main = () => {
-  return (
-    <>
-      <Header />
-      <Banner />
-      <Advantages />
-      <About />
-      <News />
-      <Gallery />
-      <Footer />
-    </>
-  );
-};
+    return (
+        <>
+            <Banner />
+            <Advantages />
+            <About />
+            <News />
+            <Gallery />
+        </>
+    )
+}
 
 export default Main;

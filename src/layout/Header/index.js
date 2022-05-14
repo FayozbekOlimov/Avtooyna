@@ -5,12 +5,20 @@ import { BsMailbox as MailIcon, BsInbox as InboxIcon } from 'react-icons/bs'
 // import Button from '../../components/Button'
 import './style.css'
 import { theme } from '../../static/theme';
+import { useT } from "../../custom/hooks/useT";
+import { changeLang, setLang } from '../../helper';
+
 
 const Header = () => {
-    const [lang, setLang] = React.useState('uz');
+
+    const { t, lang } = useT();
+    let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
+
 
     const handleChange = (event) => {
         setLang(event.target.value);
+        changeLang(event.target.value);
+        window.location.reload();
     };
 
     const [state, setState] = React.useState({
@@ -92,7 +100,7 @@ const Header = () => {
                             </div>
                             <div className='header__tel-content'>
                                 <p>Farg’ona sh, Istiqlol 1A uy</p>
-                                <small>Bizning manzil</small>
+                                <small>{t(`ourAddress.${lang}`)}</small>
                             </div>
                         </div>
                     </Grid>
@@ -116,8 +124,11 @@ const Header = () => {
                                     color: 'var(--title-color)'
                                 }}
                             >
-                                <MenuItem value='uz'>UZ</MenuItem>
-                                <MenuItem value='ru'>РУ</MenuItem>
+                                {
+                                    langs.map((language, idx) => (
+                                        <MenuItem key={idx} value={language[2]}>{language[1]}</MenuItem>
+                                    ))
+                                }
                             </Select>
                         </FormControl>
                         <Button
