@@ -15,7 +15,6 @@ import { fallbackLng, languages } from './constants';
 
 const App = () => {
 
-
 	let { pathname } = useLocation();
 
 	useEffect(() => {
