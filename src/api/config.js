@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL } from "../constants";
-import { getLang } from "../helper";
+import { getLang } from "../helpers";
 
 
 export const request = axios.create({

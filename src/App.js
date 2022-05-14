@@ -5,6 +5,7 @@ import "./i18next/config";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+// import 'antd/dist/antd.css';
 
 import './static/variables.css';
 import './static/base.css';

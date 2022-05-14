@@ -6,7 +6,7 @@ import { BsMailbox as MailIcon, BsInbox as InboxIcon } from 'react-icons/bs'
 import './style.css'
 import { theme } from '../../static/theme';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, setLang } from '../../helper';
+import { changeLang, setLang } from '../../helpers';
 
 const Header = () => {
 

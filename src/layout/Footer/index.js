@@ -12,19 +12,21 @@ export default function Footer() {
   return (
     <>
       <div className="footer_wrapper">
-        <div className="container">
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 1, md: 2 }}
-          >
-            <Grid item xs={6}>
-              <FooterLeftBlock />
+        <div className="footer_top">
+          <div className="container">
+            <Grid
+              container
+              rowSpacing={0}
+              columnSpacing={{ xs: "10px", sm: "20px", md: "30px" }}
+            >
+              <Grid item xs={6}>
+                <FooterLeftBlock />
+              </Grid>
+              <Grid item xs={6}>
+                <RightBlock />
+              </Grid>
             </Grid>
-            <Grid item xs={6}>
-              <RightBlock />
-            </Grid>
-          </Grid>
+          </div>
         </div>
         <div className="footer">
           <div className="container">

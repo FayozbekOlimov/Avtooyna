@@ -1,4 +1,4 @@
-export const categoryUrl = "/category";
+export const homeBannerUrl = "/home-banner";
 export const languageUrl = "/language";
 export const authorUrl = "/author";
 export const bookUrl = "/book";
