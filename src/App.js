@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import './static/variables.css';
 import './static/base.css';
 
+
 const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
