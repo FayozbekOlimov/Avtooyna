@@ -1,22 +1,18 @@
 import React from 'react';
-import About from '../../components/About'
-import Advantages from '../../components/Advantages'
-import Banner from '../../components/Banner'
-import Gallery from '../../components/Gallery'
-import News from '../../components/News'
-import Footer from '../../layout/Footer'
-import Header from '../../layout/Header'
+import About from './About'
+import Advantages from './Advantages'
+import Banner from './Banner'
+import Gallery from './Gallery'
+import News from './News'
 
 const Main = () => {
     return (
         <>
-            <Header />
             <Banner />
             <Advantages />
             <About />
             <News />
             <Gallery />
-            <Footer/>
         </>
     )
 }
