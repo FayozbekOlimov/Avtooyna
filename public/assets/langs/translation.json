@@ -1,1 +1,7 @@
-{}
+{
+  "ourAddress": {
+    "uz": "Bizning manzil",
+    "ru": "lorem",
+    "en": "Our address"
+  }
+}

@@ -12,6 +12,8 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
 
 const App = () => {
 
@@ -34,7 +36,9 @@ const App = () => {
 
 	return (
 		<ThemeProvider theme={theme}>
+			<Header />
 			<Main />
+			<Footer />
 		</ThemeProvider>
 	);
 }
