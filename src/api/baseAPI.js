@@ -1,4 +1,3 @@
-import { AxiosPromise } from "axios";
 // import { PER_PAGE } from "../constants";
 import { request } from "./config";
 

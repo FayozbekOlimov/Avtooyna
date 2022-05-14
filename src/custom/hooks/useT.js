@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { getLang } from '../../helper';
+import { getLang } from '../../helpers';
 
 
 export const useT = () => {

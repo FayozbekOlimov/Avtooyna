@@ -5,6 +5,7 @@ import "./i18next/config";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+// import 'antd/dist/antd.css';
 
 import './static/variables.css';
 import './static/base.css';
@@ -14,7 +15,6 @@ import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-
 
 const App = () => {
 

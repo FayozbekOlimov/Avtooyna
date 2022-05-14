@@ -13,6 +13,7 @@ html,
 body {
     font-size      : var(--font);
     scroll-behavior: smooth;
+    overflow-x     : hidden;
 }
 
 ul,
