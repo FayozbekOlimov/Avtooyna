@@ -4,14 +4,26 @@ import { Button, FormControl, Grid, MenuItem, Select } from '@mui/material';
 import { Drawer, Menu as Menus } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { NavLink } from 'react-router-dom';
+import { useT } from "../../custom/hooks/useT";
 import './style.scss'
+import { changeLang, setLang } from '../../helpers';
 
 const Header = () => {
-    const [lang, setLang] = useState('uz');
+    // const [lang, setLang] = useState('uz');
+    const { t, lang } = useT();
+    let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
 
     const handleChange = (event) => {
         setLang(event.target.value);
+        changeLang(event.target.value);
+        window.location.reload();
     };
+
+    // const handleChange = (event) => {
+    //     setLang(event.target.value);
+    // };
+
+
 
     function getItem(label, key, children, type) {
         return {
@@ -103,7 +115,7 @@ const Header = () => {
                             </div>
                             <div className='header__tel-content'>
                                 <p>Farg’ona sh, Istiqlol 1A uy</p>
-                                <small>Bizning manzil</small>
+                                <small>{t(`ourAddress.${ lang }`)}</small>
                             </div>
                         </div>
                     </Grid>
@@ -133,8 +145,11 @@ const Header = () => {
                                     color: 'var(--title-color)'
                                 }}
                             >
-                                <MenuItem value='uz'>UZ</MenuItem>
-                                <MenuItem value='ru'>РУ</MenuItem>
+                                {
+                                    langs.map((language, idx) => (
+                                        <MenuItem key={idx} value={language[2]}>{language[1]}</MenuItem>
+                                    ))
+                                }
                             </Select>
                         </FormControl>
                         <Button
