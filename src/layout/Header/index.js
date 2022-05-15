@@ -1,20 +1,77 @@
-import React from 'react'
-import { ChevronRight, ExpandMore, FmdGood, HighlightOff, HighlightOffOutlined, InputOutlined, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
-import { Box, Button, FormControl, Grid, IconButton, Input, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Modal, Select, SwipeableDrawer } from '@mui/material';
-import { BsMailbox as MailIcon, BsInbox as InboxIcon } from 'react-icons/bs'
-// import Button from '../../components/Button'
-import Title from '../../components/Title'
-import './style.css'
-import { theme } from '../../static/theme';
+import React, { useState } from 'react'
+import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
+import { Button, FormControl, Grid, MenuItem, Select } from '@mui/material';
+import { Drawer, Menu as Menus } from 'antd';
+import { CgCloseO } from 'react-icons/cg'
+import { NavLink } from 'react-router-dom';
+import './style.scss'
 
 const Header = () => {
-    const [lang, setLang] = React.useState('uz');
+    const [lang, setLang] = useState('uz');
 
     const handleChange = (event) => {
         setLang(event.target.value);
     };
 
-    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+    function getItem(label, key, children, type) {
+        return {
+            key,
+            children,
+            label,
+            type,
+        };
+    }
+
+    // const submenus = ["leaderShip", "laboratory"];
+
+    // submenus.map((menu, idx) => (
+    //     <NavLink to={`${submenus[idx]}/:${menu[url_values]}`} ></NavLink>
+    // ))
+
+    const items = [
+        getItem('Biz haqimizda', 'sub1', [
+            getItem(<NavLink to='about' className='header__link'>Tashkilot haqida</NavLink>, '1'),
+            getItem(<NavLink to='subsidiary/:' className='header__link'>Sho’xa korxonamiz</NavLink>, '2'),
+            getItem(<NavLink to='leadership' className='header__link'>Rahbariyat</NavLink>, '3'),
+            getItem(<NavLink to='laboratory' className='header__link'>Laboratoriya</NavLink>, '4'),
+            getItem(<NavLink to='localization' className='header__link'>Mahalliylashtirish</NavLink>, '5'),
+            getItem(<NavLink to='certificates' className='header__link'>Sertifikatlar</NavLink>, '6'),
+            getItem(<NavLink to='normative' className='header__link'>Normativ huquq hujjatlari</NavLink>, '7'),
+            getItem(<NavLink to='career' className='header__link'>Martabani oshirish</NavLink>, '8'),
+            getItem(<NavLink to='vacancies' className='header__link'>Bo’sh ish o’rinlari</NavLink>, '9'),
+            getItem(<NavLink to='compliance' className='header__link'>Muvofiqlik</NavLink>, '10'),
+            getItem(<NavLink to='youthUnion' className='header__link'>Yoshlar ittifoqi</NavLink>, '11'),
+        ]),
+        getItem('Tanlov va e’lonlar', 'sub2', [
+            getItem(<NavLink to='contestRules' className='header__link'>Tanlov o’tkazish nizomi</NavLink>, '12'),
+            getItem(<NavLink to='contests' className='header__link'>Tanlovlar</NavLink>, '13'),
+        ]),
+        getItem('Marketing', 'sub3', [
+            getItem(<NavLink to='quality' className='header__link'>Sifat</NavLink>, '14'),
+            getItem(<NavLink to='nomenclature' className='header__link'>Nomenklatura</NavLink>, '15'),
+            getItem(<NavLink to='brands' className='header__link'>Avtomobil markalari</NavLink>, '16'),
+            getItem(<NavLink to='sale' className='header__link'>Sotish va jo’natish</NavLink>, '17'),
+            getItem(<NavLink to='goods' className='header__link'>Xalq iste’mol mollari</NavLink>, '18'),
+        ]),
+        getItem('Matbuot xizmati', 'sub4', [
+            getItem(<NavLink to='news' className='header__link'>Yangiliklar</NavLink>, '19'),
+            getItem(<NavLink to='publicOffer' className='header__link'>Biz haqimizda ommaviy oferta</NavLink>, '20'),
+            getItem(<NavLink to='photogallery' className='header__link'>Fotogalereya</NavLink>, '21'),
+            getItem(<NavLink to='videogallery' className='header__link'>Videogalereya</NavLink>, '22'),
+        ]),
+    ];
+
+    const onClick = (e) => {
+        console.log('click', e);
+    };
+
+    const [visible, setVisible] = useState(false);
+    const onClose = () => {
+        setVisible(false);
+    };
+    const showDrawer = () => {
+        setVisible(true);
+    };
 
     return (
         <header className='header'>
@@ -24,7 +81,7 @@ const Header = () => {
                         <Menu
                             className='header__menu-icon'
                             fontSize='large'
-                            onClick={() => setIsDrawerOpen(true)}
+                            onClick={showDrawer}
                         />
                         <div className='header__logo'>
                             <img src='./assets/img/logo.svg' alt='logo' />
@@ -89,35 +146,22 @@ const Header = () => {
                         </Button>
                     </Grid>
                 </Grid>
-                <SwipeableDrawer
-                    anchor='left'
-                    open={isDrawerOpen}
-                    onClose={() => setIsDrawerOpen(false)}
-                    onOpen={() => setIsDrawerOpen(true)}
+
+                <Drawer
+                    title="MENU"
+                    placement='left'
+                    width={256}
+                    onClose={onClose}
+                    visible={visible}
+                    closeIcon={<CgCloseO />}
                 >
-                    <Box width={220} height={320} role="presentation">
-                        <List>
-                            <ListItem disablePadding>
-                                <ListItemButton>
-                                    <ListItemText>MENU</ListItemText>
-                                    <HighlightOff onClick={() => setIsDrawerOpen(false)} />
-                                </ListItemButton>
-                            </ListItem>
-                            {['Biz haqimizda', 'Tanlov va e\'lonlar', 'Marketing', 'Matbuot xizmati'].map((text) => (
-                                <ListItem key={text} disablePadding sx={{
-                                    '&:hover': {
-                                        backgroundColor: '#EBF4FD'
-                                    }
-                                }}>
-                                    <ListItemButton>
-                                        <ListItemText primary={text} />
-                                        <ChevronRight />
-                                    </ListItemButton>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Box>
-                </SwipeableDrawer>
+                    <Menus
+                        onClick={onClick}
+                        style={{ width: '100%' }}
+                        mode="vertical"
+                        items={items}
+                    />
+                </Drawer>
             </div>
         </header>
     )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Stack } from '@mui/material'
 
-const Sertificates = () => {
+const Certificates = () => {
     return (
         <Stack className='sertificates'>
             <div className="container">
@@ -22,4 +22,4 @@ const Sertificates = () => {
     )
 }
 
-export default Sertificates
+export default Certificates
