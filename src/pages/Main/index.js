@@ -4,7 +4,7 @@ import Advantages from './Advantages'
 import Banner from './Banner'
 import Gallery from './Gallery'
 import News from './News'
-import Sertificates from './Certificates'
+import Certificates from './Certificates'
 
 const Main = () => {
     return (
@@ -14,9 +14,9 @@ const Main = () => {
             <About />
             <News />
             <Gallery />
-            <Sertificates />
+            <Certificates />
         </>
     )
 }
 
-export default Main
+export default Main;
