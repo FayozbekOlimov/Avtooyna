@@ -1,12 +1,12 @@
-.map_block {
-  width: 1155px;
-  cursor: pointer;
+.map_wrapper {
+  overflow-x: hidden;
 
   .footer_map_iframe {
-    border: none;
+    border       : none;
     border-radius: 10px;
-    max-width: 1155px;
-    width: 100%;
-    height: 558px;
+    max-width    : 930px;
+    width        : 1200px;
+    height       : 558px;
   }
 }
+

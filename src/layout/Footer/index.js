@@ -12,6 +12,7 @@ export default function Footer() {
   return (
     <>
       <div className="footer_wrapper">
+        <div className="footer_top">
         <div className="container">
           <Grid
             container
@@ -26,7 +27,7 @@ export default function Footer() {
             <Grid item xs={8}>
               <RightBlock />
             </Grid>
-          </Grid>
+          </div>
         </div>
       </div>
       <div className="footer">

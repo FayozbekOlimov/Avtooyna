@@ -32,13 +32,15 @@
 
 @media screen and (max-width: 767px) {
   .footer_flex_box {
-    flex-wrap: wrap;
+    flex-wrap      : wrap;
     justify-content: center !important;
-    align-items: center;
+    align-items    : center;
   }
+
   .copyright {
     margin: 10px 0;
   }
+
   .socila_link {
     a {
       #footer_lastchild {
@@ -46,6 +48,7 @@
       }
     }
   }
+
 }
 
 @media screen and (max-width: 560px) {
@@ -55,3 +58,5 @@
     justify-content: center;
   }
 }
+
+
