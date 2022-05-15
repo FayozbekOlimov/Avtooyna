@@ -16,7 +16,7 @@ export default function Footer() {
             <Grid
               container
               rowSpacing={1}
-              // columnSpacing={{ xs: 1, sm: 1, md: 4 }}
+              columnSpacing={{ xs: 1, sm: 1, md: 4 }}
               columns={{ xs: 1, sm: 8, md: 12 }}
               className="footer_grid_block"
             >
