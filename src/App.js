@@ -1,4 +1,3 @@
-import Main from './pages/Main';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { ThemeProvider } from '@mui/material';
@@ -7,7 +6,6 @@ import "./i18next/config";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-// import 'antd/dist/antd.css';
 
 import './static/variables.css';
 import './static/base.css';
@@ -17,11 +15,6 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
-
-// const App = () => {
-
-// import Header from "./layout/Header";
-// import Footer from "./layout/Footer";
 
 const App = () => {
 	let element = useRoutes(routes);

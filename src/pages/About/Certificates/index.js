@@ -1,22 +1,17 @@
 import React from 'react'
-import { Grid } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
 import CertificateCarusel from './CertificateCarusel';
+import Title from '../../../components/Title'
 import "./style.scss"
 
 const Certificates = () => {
-  return (
-    <Grid container spacing={2}>
-      <Grid item xs={10}>
-        <div className="certificate_wrap">
-          <h1>Sertifikatlar</h1>
-          <CertificateCarusel />
-
-          <h1>Sertifikatlar</h1>
-          <CertificateCarusel />
-        </div>
-      </Grid>
-    </Grid >
-  )
+	return (
+		<Stack direction='column' width="100%" p={2} pt={0}>
+			<Title>Sertifikatlar</Title>
+			<CertificateCarusel />
+			<CertificateCarusel />
+		</Stack>
+	)
 }
 
 export default Certificates;

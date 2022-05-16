@@ -8,7 +8,7 @@ const Certificates = () => {
                 <Grid container spacing={2}>
                     <Grid item md={6}>
                         <div className="sertificates__imgBx">
-                            <img src="./assets/img/sertifikat1.png" alt="sertifikat1" />
+                            <img src="/assets/img/sertifikat1.png" alt="sertifikat1" />
                         </div>
                     </Grid>
                     <Grid item md={6}>

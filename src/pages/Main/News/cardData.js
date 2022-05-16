@@ -1,7 +1,7 @@
 export const cardData = [
     {
         id: 1,
-        src: './assets/img/news1.png',
+        src: '/assets/img/news1.png',
         date: '04 may 2022',
         content:true,
         title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
@@ -9,7 +9,7 @@ export const cardData = [
     },
     {
         id: 2,
-        src: './assets/img/news1.png',
+        src: '/assets/img/news1.png',
         date: '05 may 2022',
         content:true,
         title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
@@ -17,7 +17,7 @@ export const cardData = [
     },
     {
         id: 3,
-        src: './assets/img/news1.png',
+        src: '/assets/img/news1.png',
         date: '06 may 2022',
         content:true,
         title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
@@ -25,7 +25,7 @@ export const cardData = [
     },
     {
         id: 4,
-        src: './assets/img/news1.png',
+        src: '/assets/img/news1.png',
         date: '07 may 2022',
         content:true,
         title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',

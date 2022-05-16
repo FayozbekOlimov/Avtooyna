@@ -45,8 +45,9 @@ const News = () => {
                     </div>
                 </Stack>
 
-                <div className='news__swipper'>
+                <div className='news__swipper__wrapper'>
                     <Swiper
+                    className='news_swiper'
                         spaceBetween={30}
                         slidesPerView={1}
                         modules={[Navigation]}

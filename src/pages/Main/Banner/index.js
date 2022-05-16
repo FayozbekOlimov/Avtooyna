@@ -7,7 +7,6 @@ import baseAPI from "../../../api/baseAPI";
 import './style.css'
 
 const Banner = () => {
-
     const [banner, setBanner] = useState();
 
     const getBanner = useCallback(async () => {
@@ -21,11 +20,12 @@ const Banner = () => {
     useEffect(() => {
         getBanner();
     }, [getBanner])
-    console.log("ban", banner);
+
+    // console.log("ban", banner);
     return (
         <div className='banner'>
             <div className="banner__bg">
-                <img src="./assets/img/banner.png" alt="banner" />
+                <img src="/assets/img/banner.png" alt="banner" />
             </div>
             <div className="container">
                 <div className="banner__content">

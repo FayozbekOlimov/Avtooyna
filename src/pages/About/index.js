@@ -1,17 +1,17 @@
 import React from 'react'
-import { Grid, Stack } from '@mui/material'
-import Navbar from '../../components/Navbar'
 import { Outlet } from 'react-router-dom'
+import Sidebar from '../../components/Sidebar'
+import { Grid, Stack } from '@mui/material'
 
 const About = () => {
     return (
-        <Stack direction='row' spacing={2}>
+        <Stack direction='row' spacing={2} py={2}>
             <div className='container'>
                 <Grid container>
-                    <Grid item md={3}>
-                        <Navbar />
+                    <Grid item xs={12} md={3}>
+                        <Sidebar />
                     </Grid>
-                    <Grid item md={9}>
+                    <Grid item xs={12} md={9}>
                         <Outlet />
                     </Grid>
                 </Grid>

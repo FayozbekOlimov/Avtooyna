@@ -3,12 +3,11 @@ import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icon
 import { Button, FormControl, Grid, MenuItem, Select } from '@mui/material';
 import { Drawer, Menu as Menus } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
 import './style.scss'
 import { changeLang, setLang } from '../../helpers';
 import headerMenu from './headerMenu.json';
-import Sidebar from '../../components/Sidebar';
 
 const Header = () => {
     const { t, lang } = useT();
@@ -30,7 +29,7 @@ const Header = () => {
 
     const items = headerMenu.map((menu) => (
         getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
-            getItem(<NavLink to={sub.to} className='header__link' onClick={onClose}>{sub.text}</NavLink>, sub.key)
+            getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={onClose}>{sub.text}</NavLink>, sub.key)
         )))
     ))
 
@@ -44,9 +43,9 @@ const Header = () => {
                             fontSize='large'
                             onClick={showDrawer}
                         />
-                        <div className='header__logo'>
-                            <img src='./assets/img/logo.svg' alt='logo' />
-                        </div>
+                        <Link to='/' className='header__logo'>
+                            <img src='/assets/img/logo.svg' alt='logo' />
+                        </Link>
                     </Grid>
                     <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
                         <div className='header__tel'>
@@ -124,7 +123,6 @@ const Header = () => {
                         items={items}
                     />
                 </Drawer>
-                <Sidebar />
             </div>
         </header>
     )

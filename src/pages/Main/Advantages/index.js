@@ -23,7 +23,7 @@ const Advantages = () => {
 				</Grid>
 			</div>
 			<div className="advantages__img">
-				<img src="./assets/img/malibu.png" alt="advantages-img" />
+				<img src="/assets/img/malibu.png" alt="advantages-img" />
 			</div>
 		</Stack>
 	)

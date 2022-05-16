@@ -13,7 +13,7 @@ const Card = ({ id, src, date, title, text, content = true }) => {
             </div>
             <div className='card__content'>
                 <p className="card__date">
-                    <img src="./assets/icon/calendar.png" alt="calendar-icon" />{date}
+                    <img src="/assets/icon/calendar.png" alt="calendar-icon" />{date}
                 </p>
                 <h5 className='card__title'>{title}</h5>
                 {

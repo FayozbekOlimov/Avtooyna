@@ -1,7 +1,10 @@
 .news {
 
-    .news__swipper {
+    .news__swipper__wrapper {
         margin-top: 30px;
+        .news_swiper {
+            padding-bottom: 30px;
+        }
     }
 
     .news_carusel_top {

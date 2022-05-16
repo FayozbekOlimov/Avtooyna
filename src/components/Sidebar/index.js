@@ -1,47 +1,43 @@
+import React from 'react';
 import { Stack } from '@mui/material';
-import { Menu } from 'antd';
-import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { theme } from '../../static/theme'
 import './style.scss';
+import headerMenu from '../../layout/Header/headerMenu.json'
 
 const Sidebar = () => {
-    // const sidebarLinksStyle = {
-    //     width: '100%',
-    //     backgroundColor: theme.palette.primary.navBg,
-    // }
+    const activeStyle = {
+        color: theme.palette.primary.main,
+        fontWeight: 600,
+    }
 
-    // const activeStyle = ({ isActive }) => {
-    //     return {
-    //         fontWeight: isActive ? 'bold' : 'normal',
-    //         textDecoration: isActive ? 'none' : 'underline',
-    //     }
-    // };
+    const navStyle = {
+        padding: theme.spacing(0.5),
+        fontWeight: 400,
+        fontSize: '16px',
+        color: '#6E7E8B',
+    }
 
-    // const items = [
-    //     {
-    //         to: "/",
-    //         link: "about",
-    //     },
-    //     {
-    //         to: "/",
-    //         link: "about",
-    //     },
-    //     {
-    //         to: "/",
-    //         link: "about",
-    //     },
-    // ]
+    const ulStyle = {
+        width: "100%",
+        backgroundColor: "#F2F9FF",
+        borderRadius: "8px",
+        padding: theme.spacing(2),
+    }
+
+    const items = headerMenu[0];
 
     return (
-        <Stack direction='column' component='ul' style={sidebarLinksStyle}>
-            {/* {items.map((item, ind) => (
+        <Stack direction='column' component='ul' style={ulStyle}>
+            {items.submenu.map((item, ind) => (
                 <Stack key={ind} component='li'>
-                    <NavLink to={item.to} style={activeStyle}>
-                        {item.link}
+                    <NavLink
+                        to={`${items.to}${item.to}`}
+                        style={({ isActive }) => ({ ...navStyle, ...(isActive ? activeStyle : undefined) })}
+                    > {item.text}
                     </NavLink>
                 </Stack>
-            ))} */}
+            ))}
         </Stack>
     )
 }
