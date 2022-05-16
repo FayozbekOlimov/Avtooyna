@@ -7,83 +7,32 @@ import { NavLink } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
 import './style.scss'
 import { changeLang, setLang } from '../../helpers';
+import headerMenu from './headerMenu.json';
+import Sidebar from '../../components/Sidebar';
 
 const Header = () => {
-    // const [lang, setLang] = useState('uz');
     const { t, lang } = useT();
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
 
     const handleChange = (event) => {
         setLang(event.target.value);
         changeLang(event.target.value);
-        window.location.reload();
+        // window.location.reload();
     };
 
-    // const handleChange = (event) => {
-    //     setLang(event.target.value);
-    // };
-
-
-
-    function getItem(label, key, children, type) {
-        return {
-            key,
-            children,
-            label,
-            type,
-        };
+    function getItem(label, key, children) {
+        return { key, children, label };
     }
 
-    // const submenus = ["leaderShip", "laboratory"];
-
-    // submenus.map((menu, idx) => (
-    //     <NavLink to={`${submenus[idx]}/:${menu[url_values]}`} ></NavLink>
-    // ))
-
-    const items = [
-        getItem('Biz haqimizda', 'sub1', [
-            getItem(<NavLink to='about' className='header__link'>Tashkilot haqida</NavLink>, '1'),
-            getItem(<NavLink to='subsidiary/:' className='header__link'>Sho’xa korxonamiz</NavLink>, '2'),
-            getItem(<NavLink to='leadership' className='header__link'>Rahbariyat</NavLink>, '3'),
-            getItem(<NavLink to='laboratory' className='header__link'>Laboratoriya</NavLink>, '4'),
-            getItem(<NavLink to='localization' className='header__link'>Mahalliylashtirish</NavLink>, '5'),
-            getItem(<NavLink to='certificates' className='header__link'>Sertifikatlar</NavLink>, '6'),
-            getItem(<NavLink to='normative' className='header__link'>Normativ huquq hujjatlari</NavLink>, '7'),
-            getItem(<NavLink to='career' className='header__link'>Martabani oshirish</NavLink>, '8'),
-            getItem(<NavLink to='vacancies' className='header__link'>Bo’sh ish o’rinlari</NavLink>, '9'),
-            getItem(<NavLink to='compliance' className='header__link'>Muvofiqlik</NavLink>, '10'),
-            getItem(<NavLink to='youthUnion' className='header__link'>Yoshlar ittifoqi</NavLink>, '11'),
-        ]),
-        getItem('Tanlov va e’lonlar', 'sub2', [
-            getItem(<NavLink to='contestRules' className='header__link'>Tanlov o’tkazish nizomi</NavLink>, '12'),
-            getItem(<NavLink to='contests' className='header__link'>Tanlovlar</NavLink>, '13'),
-        ]),
-        getItem('Marketing', 'sub3', [
-            getItem(<NavLink to='quality' className='header__link'>Sifat</NavLink>, '14'),
-            getItem(<NavLink to='nomenclature' className='header__link'>Nomenklatura</NavLink>, '15'),
-            getItem(<NavLink to='brands' className='header__link'>Avtomobil markalari</NavLink>, '16'),
-            getItem(<NavLink to='sale' className='header__link'>Sotish va jo’natish</NavLink>, '17'),
-            getItem(<NavLink to='goods' className='header__link'>Xalq iste’mol mollari</NavLink>, '18'),
-        ]),
-        getItem('Matbuot xizmati', 'sub4', [
-            getItem(<NavLink to='news' className='header__link'>Yangiliklar</NavLink>, '19'),
-            getItem(<NavLink to='publicOffer' className='header__link'>Biz haqimizda ommaviy oferta</NavLink>, '20'),
-            getItem(<NavLink to='photogallery' className='header__link'>Fotogalereya</NavLink>, '21'),
-            getItem(<NavLink to='videogallery' className='header__link'>Videogalereya</NavLink>, '22'),
-        ]),
-    ];
-
-    const onClick = (e) => {
-        console.log('click', e);
-    };
-
     const [visible, setVisible] = useState(false);
-    const onClose = () => {
-        setVisible(false);
-    };
-    const showDrawer = () => {
-        setVisible(true);
-    };
+    const onClose = () => { setVisible(false); };
+    const showDrawer = () => { setVisible(true); };
+
+    const items = headerMenu.map((menu) => (
+        getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
+            getItem(<NavLink to={sub.to} className='header__link' onClick={onClose}>{sub.text}</NavLink>, sub.key)
+        )))
+    ))
 
     return (
         <header className='header'>
@@ -115,7 +64,7 @@ const Header = () => {
                             </div>
                             <div className='header__tel-content'>
                                 <p>Farg’ona sh, Istiqlol 1A uy</p>
-                                <small>{t(`ourAddress.${ lang }`)}</small>
+                                <small>{t(`ourAddress.${lang}`)}</small>
                             </div>
                         </div>
                     </Grid>
@@ -161,7 +110,6 @@ const Header = () => {
                         </Button>
                     </Grid>
                 </Grid>
-
                 <Drawer
                     title="MENU"
                     placement='left'
@@ -171,12 +119,12 @@ const Header = () => {
                     closeIcon={<CgCloseO />}
                 >
                     <Menus
-                        onClick={onClick}
                         style={{ width: '100%' }}
                         mode="vertical"
                         items={items}
                     />
                 </Drawer>
+                <Sidebar />
             </div>
         </header>
     )
