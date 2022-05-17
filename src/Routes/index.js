@@ -1,28 +1,72 @@
-
 import { lazy } from "react";
 
-// const About  = lazy(() => import("../pages/About"));
+// About sections
+import AboutOrg from "../pages/About/AboutOrg";
+import Compliance from "../pages/About/Compliance";
+import Laboratory from "../pages/About/Laboratory";
+import Leadership from "../pages/About/Leadership";
+import Localization from "../pages/About/Localization";
+import Subsidiary from "../pages/About/Subsidiary";
+import Vacancies from "../pages/About/Vacancies";
+import YouthUnion from "../pages/About/YouthUnion";
+import Certificates from "../pages/About/Certificates";
 
-import React from 'react'
+const Main = lazy(() => import("../pages/Main"));
+const About = lazy(() => import("../pages/About"));
 
-const Routes = () => {
-  return (
-    <div>Routes</div>
-  )
-}
 
-export default Routes;
 
-// const routes = [
-//     {
-//         path: "about",
-//         element: <About />,
-
-//         children: [
-//             {
-//                 path:":submenu_id",
-//                 element:
-//             }
-//         ]
-//     }
-// ]
+export const routes = [
+	{
+		index: true,
+		path: "",
+		element: <Main />
+	},
+	{
+		path: "about-us",
+		element: <About />,
+		children: [
+			{
+				index: true,
+				path: "",
+				element: <AboutOrg />
+			},
+			{
+				path: "subsidiary",
+				element: <Subsidiary />
+			},
+			{
+				path: "leadership",
+				element: <Leadership />
+			},
+			{
+				path: "laboratory",
+				element: <Laboratory />
+			},
+			{
+				path: "localization",
+				element: <Localization />
+			},
+			{
+				path: "certificates",
+				element: <Certificates />
+			},
+			{
+				path: "vacancies",
+				element: <Vacancies />
+			},
+			{
+				path: "compliance",
+				element: <Compliance />
+			},
+			{
+				path: "youth-union",
+				element: <YouthUnion />
+			}
+		]
+	},
+	{
+		path: "*",
+		element: (<div>Page not found</div>)
+	}
+];

@@ -12,6 +12,7 @@ export const theme = createTheme({
     },
     palette: {
         primary: {
+            navBg: '#F2F9FF',
             light: '#3179C2',
             main: "#00468D",
         },
@@ -20,6 +21,6 @@ export const theme = createTheme({
         },
         textColor: {
             main: "#252C34",
-        }
-    }
+        },
+    },
 });

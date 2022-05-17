@@ -6,7 +6,7 @@ import "./styled.scss"
 const jobsTitle = `
 <h1>Bosh ish o’rinlari</h1>
 `
-const Jobs = () => {
+const Vacancies = () => {
 	return (
 		<Grid item xs={10}>
 			<div className="jobs_wrapper">
@@ -19,7 +19,7 @@ const Jobs = () => {
 					<div className="jobs_img">
 						<div className="resume_image">
 							<Grid  item xs={5}md={6} >
-								<img className='resume_img' src="./assets/img/resume_img.png" alt="resume_img" />
+								<img className='resume_img' src="/assets/img/resume_img.png" alt="resume_img" />
 							</Grid>
 						</div>
 					</div>
@@ -30,4 +30,4 @@ const Jobs = () => {
 	);
 }
 
-export default Jobs;
+export default Vacancies;

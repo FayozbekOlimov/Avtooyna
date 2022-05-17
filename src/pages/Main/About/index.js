@@ -13,7 +13,7 @@ const About = () => {
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
                         <Grid item md={6}>
                             <div className="about__picture">
-                                <img src="./assets/img/company.png" alt="about-company" />
+                                <img src="/assets/img/company.png" alt="about-company" />
                             </div>
                         </Grid>
                         <Grid item md={6}>
@@ -44,13 +44,13 @@ const About = () => {
                         <Grid item md={6}>
                             <Grid container spacing={2}>
                                 <Grid item sm={6}>
-                                    <img className='about__img' src="./assets/img/oyna1.png" alt="oyna1" />
+                                    <img className='about__img' src="/assets/img/oyna1.png" alt="oyna1" />
                                 </Grid>
                                 <Grid item sm={6}>
-                                    <img className='about__img' src="./assets/img/oyna2.png" alt="oyna2" />
+                                    <img className='about__img' src="/assets/img/oyna2.png" alt="oyna2" />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <img className='about__img' src="./assets/img/oyna3.png" alt="oyna3" />
+                                    <img className='about__img' src="/assets/img/oyna3.png" alt="oyna3" />
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -68,13 +68,13 @@ const About = () => {
                         <Grid item md={6}>
                             <Grid container spacing={2}>
                                 <Grid item sm={6}>
-                                    <img className='about__img' src="./assets/img/ehtqism1.png" alt="ehtqism1" />
+                                    <img className='about__img' src="/assets/img/ehtqism1.png" alt="ehtqism1" />
                                 </Grid>
                                 <Grid item sm={6}>
-                                    <img className='about__img' src="./assets/img/ehtqism2.png" alt="ehtqism2" />
+                                    <img className='about__img' src="/assets/img/ehtqism2.png" alt="ehtqism2" />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <img className='about__img' src="./assets/img/ehtqism3.png" alt="ehtqism3" />
+                                    <img className='about__img' src="/assets/img/ehtqism3.png" alt="ehtqism3" />
                                 </Grid>
                             </Grid>
                         </Grid>

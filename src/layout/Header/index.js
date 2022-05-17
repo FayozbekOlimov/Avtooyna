@@ -1,82 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
-import { Box, Button, FormControl, Grid, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Select, SwipeableDrawer } from '@mui/material';
-import { BsMailbox as MailIcon, BsInbox as InboxIcon } from 'react-icons/bs'
-// import Button from '../../components/Button'
-import './style.css'
-import { theme } from '../../static/theme';
+import { Button, FormControl, Grid, MenuItem, Select } from '@mui/material';
+import { Drawer, Menu as Menus } from 'antd';
+import { CgCloseO } from 'react-icons/cg'
+import { Link, NavLink } from 'react-router-dom';
+import { useT } from "../../custom/hooks/useT";
+import './style.scss'
+import { changeLang, setLang } from '../../helpers';
+import headerMenu from './headerMenu.json';
 
 const Header = () => {
-    const [lang, setLang] = React.useState('uz');
+    const { t, lang } = useT();
+    let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
 
     const handleChange = (event) => {
         setLang(event.target.value);
+        changeLang(event.target.value);
+        // window.location.reload();
     };
 
-    const [state, setState] = React.useState({
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-    });
+    function getItem(label, key, children) {
+        return { key, children, label };
+    }
 
-    const toggleDrawer = (anchor, open) => (event) => {
-        if (
-            event &&
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-            return;
-        }
+    const [visible, setVisible] = useState(false);
+    const onClose = () => { setVisible(false); };
+    const showDrawer = () => { setVisible(true); };
 
-        setState({ ...state, [anchor]: open });
-    };
+    const items = headerMenu.map((menu) => (
+        getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
+            getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={onClose}>{sub.text}</NavLink>, sub.key)
+        )))
+    ))
 
-    const list = (anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            {/* <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List> */}
-        </Box>
-    );
     return (
         <header className='header'>
             <div className="container">
                 <Grid container spacing={2}>
-                    <Grid item sm={2} display='flex' alignItems='center'>
-                        <Menu className='header__menu-icon' fontSize='large' />
-                        <div className='header__logo'>
-                            <img src='./assets/img/logo.svg' alt='logo' />
-                        </div>
+                    <Grid item xs={12} md={3} lg={2} display='flex' alignItems='center'>
+                        <Menu
+                            className='header__menu-icon'
+                            fontSize='large'
+                            onClick={showDrawer}
+                        />
+                        <Link to='/' className='header__logo'>
+                            <img src='/assets/img/logo.svg' alt='logo' />
+                        </Link>
                     </Grid>
-                    <Grid item sm={6} display='flex' justifyContent='space-evenly'>
+                    <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
                         <div className='header__tel'>
                             <div className='header__tel-icon'>
                                 <PhoneEnabled />
@@ -92,14 +63,19 @@ const Header = () => {
                             </div>
                             <div className='header__tel-content'>
                                 <p>Farg’ona sh, Istiqlol 1A uy</p>
-                                <small>Bizning manzil</small>
+                                <small>{t(`ourAddress.${lang}`)}</small>
                             </div>
                         </div>
                     </Grid>
-                    <Grid item sm={4} display='flex' alignItems='center' justifyContent='space-between'>
+                    <Grid item xs={12} md={12} lg={4} display='flex' alignItems='center' justifyContent='space-between'>
                         <Button
                             variant='outlined'
-                            sx={{ textTransform: 'none', color: 'var(--title-color)' }}>Konsultatsiya olish
+                            sx={{
+                                textTransform: 'none',
+                                color: 'var(--title-color)',
+                                padding: '8px'
+                            }}>
+                            Konsultatsiya olish
                         </Button>
                         <FormControl >
                             <Select
@@ -111,13 +87,17 @@ const Header = () => {
                                 defaultValue='uz'
                                 inputProps={{ 'aria-label': 'Without label' }}
                                 sx={{
+                                    padding: 0,
                                     width: '80px',
                                     borderColor: 'var(--primary-color)',
                                     color: 'var(--title-color)'
                                 }}
                             >
-                                <MenuItem value='uz'>UZ</MenuItem>
-                                <MenuItem value='ru'>РУ</MenuItem>
+                                {
+                                    langs.map((language, idx) => (
+                                        <MenuItem key={idx} value={language[2]}>{language[1]}</MenuItem>
+                                    ))
+                                }
                             </Select>
                         </FormControl>
                         <Button
@@ -129,19 +109,20 @@ const Header = () => {
                         </Button>
                     </Grid>
                 </Grid>
-                {/* {['left', 'right', 'top', 'bottom'].map((anchor) => (
-                    <React.Fragment key={anchor}>
-                        <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-                        <SwipeableDrawer
-                            anchor={anchor}
-                            open={state[anchor]}
-                            onClose={toggleDrawer(anchor, false)}
-                            onOpen={toggleDrawer(anchor, true)}
-                        >
-                            {list(anchor)}
-                        </SwipeableDrawer>
-                    </React.Fragment>
-                ))} */}
+                <Drawer
+                    title="MENU"
+                    placement='left'
+                    width={256}
+                    onClose={onClose}
+                    visible={visible}
+                    closeIcon={<CgCloseO />}
+                >
+                    <Menus
+                        style={{ width: '100%' }}
+                        mode="vertical"
+                        items={items}
+                    />
+                </Drawer>
             </div>
         </header>
     )

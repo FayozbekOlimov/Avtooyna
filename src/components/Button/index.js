@@ -1,4 +1,5 @@
 import { styled, Button as Btn } from "@mui/material";
+import { theme } from '../../static/theme';
 
 const Button = styled(Btn)(({ theme }) => ({
     fontWeight: 600,
@@ -9,9 +10,9 @@ const Button = styled(Btn)(({ theme }) => ({
     [theme.breakpoints.up('sm')]: {
         padding: '8px 22px',
     },
-    backgroundColor: 'var(--primary-color)',
+    backgroundColor: theme.palette.primary.main,
 }))
 
-export default function StyledCustomization({children}) {
+export default function StyledCustomization({ children }) {
     return <Button variant='contained'>{children}</Button>
 }

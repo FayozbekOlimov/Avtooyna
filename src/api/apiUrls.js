@@ -1,0 +1,11 @@
+export const homeBannerUrl = "/home-banner";
+export const languageUrl = "/language";
+export const authorUrl = "/author";
+export const bookUrl = "/book";
+export const audioBookUrl = "/audio-book";
+export const photoUrl = "/photo";
+export const wiseWordUrl = "/proverb";
+export const mediaUrl = "/media";
+export const articleAuthorUrl = "/article-author";
+export const articleUrl = "/article";
+export const allBookUrl = "/all-book";

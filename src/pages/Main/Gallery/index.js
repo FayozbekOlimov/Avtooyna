@@ -14,22 +14,22 @@ const Gallery = () => {
                 </Stack>
                 <Grid container spacing={2} my={2} >
                     <Grid item sm={5}>
-                        <img className='gallery__img' src="./assets/img/gallery1.png" alt="gallery1" />
+                        <img className='gallery__img' src="/assets/img/gallery1.png" alt="gallery1" />
                     </Grid>
                     <Grid item sm={7}>
-                        <img className='gallery__img' src="./assets/img/gallery2.png" alt="gallery2" />
+                        <img className='gallery__img' src="/assets/img/gallery2.png" alt="gallery2" />
                     </Grid>
                     <Grid item sm={7}>
-                        <img className='gallery__img' src="./assets/img/gallery3.png" alt="gallery3" />
+                        <img className='gallery__img' src="/assets/img/gallery3.png" alt="gallery3" />
                     </Grid>
                     <Grid item sm={5}>
-                        <img className='gallery__img' src="./assets/img/gallery4.png" alt="gallery4" />
+                        <img className='gallery__img' src="/assets/img/gallery4.png" alt="gallery4" />
                     </Grid>
                     <Grid item sm={6}>
-                        <img className='gallery__img' src="./assets/img/gallery5.png" alt="gallery5" />
+                        <img className='gallery__img' src="/assets/img/gallery5.png" alt="gallery5" />
                     </Grid>
                     <Grid item sm={6}>
-                        <img className='gallery__img' src="./assets/img/gallery6.png" alt="gallery6" />
+                        <img className='gallery__img' src="/assets/img/gallery6.png" alt="gallery6" />
                     </Grid>
                 </Grid>
             </div>

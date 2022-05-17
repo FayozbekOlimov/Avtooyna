@@ -1,67 +1,10 @@
 .certif_carusel {
-    .certif_header {
-		display: flex;
-        align-items: center;
-		h2 {
-			font-style: normal;
-			font-weight: 700;
-			font-size: 24px;
-			line-height: 130%;
-			margin-top: 14px;
-			color: #011223;
-		}
+	.swiper {
+		margin: 20px 0;
 	}
-	.arrow {
-		position: absolute;
-		right: 284px;
-	}
-    .swiper {
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
+
 	.certif__img {
 		width: 100%;
+		object-fit: cover;
 	}
-    @media (max-width: 600px) {
-        .swiper {
-            width: 100%;
-        }
-    }
-	@media(max-width: 1563px){
-		.arrow {
-			position: absolute;
-			right: 258px;
-		}
-	}
-	@media(max-width: 1300px){
-		.arrow {
-			position: absolute;
-			right: 212px;
-		}
-	}
-	@media(max-width: 1200px){
-		.arrow {
-			position: absolute;
-			right: 198px;
-		}
-	}
-	@media(max-width: 950px){
-		.arrow {
-			position: absolute;
-			right: 150px;
-		}
-	}
-    @media(max-width: 700px){
-		.arrow {
-			position: absolute;
-			right: 135px;
-		}
-	}
-    @media(max-width: 560px){
-		.arrow {
-			position: absolute;
-			right: 96px;
-		}
-	}
-    
 }
