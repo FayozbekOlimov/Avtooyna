@@ -25,7 +25,7 @@ const Sidebar = () => {
         padding: theme.spacing(2),
     }
 
-    const items = headerMenu[0];
+    const items = headerMenu[2];
 
     return (
         <Stack direction='column' component='ul' style={ulStyle}>
@@ -42,4 +42,4 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+export default Sidebar;

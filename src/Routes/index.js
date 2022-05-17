@@ -10,9 +10,12 @@ import Subsidiary from "../pages/About/Subsidiary";
 import Vacancies from "../pages/About/Vacancies";
 import YouthUnion from "../pages/About/YouthUnion";
 import Certificates from "../pages/About/Certificates";
+// import Sifat from '../pages/Marketing/Sifat';
+import Sifat from "../pages/Marketing/Quality";
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
+const Marketing = lazy(() => import("../pages/Marketing"));
 
 
 
@@ -66,7 +69,19 @@ export const routes = [
 		]
 	},
 	{
-		path: "*",
-		element: (<div>Page not found</div>)
-	}
+		path: "Marketing",
+		element: <Marketing />,	
+		children: [
+			{
+				index: true,
+				path: "",
+				element: <Sifat />
+			},
+			// {
+			// 	path: "subsidiary",
+			// 	element: <Subsidiary />
+			// },
+		
+		]
+	},
 ];
