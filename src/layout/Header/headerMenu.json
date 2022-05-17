@@ -1,130 +1,130 @@
 [
-    {
-        "menuName": "Biz haqimizda",
-        "key": "sub1",
-        "to": "/about-us",
-        "submenu": [
-            {
-                "to": "",
-                "text": "Tashkilot haqida",
-                "key": "sub11"
-            },
-            {
-                "to": "/subsidiary",
-                "text": "Sho’xa korxonamiz",
-                "key": "sub12"
-            },
-            {
-                "to": "/leadership",
-                "text": "Rahbariyat",
-                "key": "sub13"
-            },
-            {
-                "to": "/laboratory",
-                "text": "Laboratoriya",
-                "key": "sub14"
-            },
-            {
-                "to": "/localization",
-                "text": "Mahalliylashtirish",
-                "key": "sub15"
-            },
-            {
-                "to": "/certificates",
-                "text": "Sertifikatlar",
-                "key": "sub16"
-            },
-            {
-                "to": "/vacancies",
-                "text": "Bo’sh ish o’rinlari",
-                "key": "sub19"
-            },
-            {
-                "to": "/compliance",
-                "text": "Muvofiqlik",
-                "key": "sub110"
-            },
-            {
-                "to": "/youth-union",
-                "text": "Yoshlar ittifoqi",
-                "key": "sub111"
-            }
-        ]
-    },
-    {
-        "menuName": "Tanlov va e’lonlar",
-        "key": "sub2",
-        "to": "/contest-announcement",
-        "submenu": [
-            {
-                "to": "",
-                "text": "Tanlov o’tkazish nizomi",
-                "key": "sub21"
-            },
-            {
-                "to": "/contests",
-                "text": "Tanlovlar",
-                "key": "sub22"
-            }
-        ]
-    },
-    {
-        "menuName": "Marketing",
-        "key": "sub3",
-        "to": "/marketing",
-        "submenu": [
-            {
-                "to": "",
-                "text": "Sifat",
-                "key": "sub31"
-            },
-            {
-                "to": "/nomenclature",
-                "text": "Nomenklatura",
-                "key": "sub32"
-            },
-            {
-                "to": "/brands",
-                "text": "Avtomobil markalari",
-                "key": "sub33"
-            },
-            {
-                "to": "/sale",
-                "text": "Sotish va jo’natish",
-                "key": "sub34"
-            },
-            {
-                "to": "/goods",
-                "text": "Xalq iste’mol mollari",
-                "key": "sub35"
-            }
-        ]
-    },
-    {
-        "menuName": "Matbuot xizmati",
-        "key": "sub4",
-        "to": "/press-service",
-        "submenu": [
-            {
-                "to": "",
-                "text": "Yangiliklar",
-                "key": "sub41"
-            },
-            {
-                "to": "/public-offer",
-                "text": "Biz haqimizda ommaviy oferta",
-                "key": "sub42"
-            },
-            {
-                "to": "/photogallery",
-                "text": "Fotogalereya",
-                "key": "sub43"
-            },
-            {
-                "to": "/videogallery",
-                "text": "Videogalereya",
-                "key": "sub44"
-            }
-        ]
-    }
+  {
+    "menuName": "Biz haqimizda",
+    "key": "sub1",
+    "to": "/about-us",
+    "submenu": [
+      {
+        "to": "",
+        "text": "Tashkilot haqida",
+        "key": "sub11"
+      },
+      {
+        "to": "/subsidiary",
+        "text": "Sho’xa korxonamiz",
+        "key": "sub12"
+      },
+      {
+        "to": "/leadership",
+        "text": "Rahbariyat",
+        "key": "sub13"
+      },
+      {
+        "to": "/laboratory",
+        "text": "Laboratoriya",
+        "key": "sub14"
+      },
+      {
+        "to": "/localization",
+        "text": "Mahalliylashtirish",
+        "key": "sub15"
+      },
+      {
+        "to": "/certificates",
+        "text": "Sertifikatlar",
+        "key": "sub16"
+      },
+      {
+        "to": "/vacancies",
+        "text": "Bo’sh ish o’rinlari",
+        "key": "sub19"
+      },
+      {
+        "to": "/compliance",
+        "text": "Muvofiqlik",
+        "key": "sub110"
+      },
+      {
+        "to": "/youth-union",
+        "text": "Yoshlar ittifoqi",
+        "key": "sub111"
+      }
+    ]
+  },
+  {
+    "menuName": "Tanlov va e’lonlar",
+    "key": "sub2",
+    "to": "/contest-announcement",
+    "submenu": [
+      {
+        "to": "/contest-rules",
+        "text": "Tanlov o’tkazish nizomi",
+        "key": "sub21"
+      },
+      {
+        "to": "/contests",
+        "text": "Tanlovlar",
+        "key": "sub22"
+      }
+    ]
+  },
+  {
+    "menuName": "Marketing",
+    "key": "sub3",
+    "to": "/marketing",
+    "submenu": [
+      {
+        "to": "",
+        "text": "Sifat",
+        "key": "sub31"
+      },
+      {
+        "to": "/nomenclature",
+        "text": "Nomenklatura",
+        "key": "sub32"
+      },
+      {
+        "to": "/brands",
+        "text": "Avtomobil markalari",
+        "key": "sub33"
+      },
+      {
+        "to": "/sale",
+        "text": "Sotish va jo’natish",
+        "key": "sub34"
+      },
+      {
+        "to": "/goods",
+        "text": "Xalq iste’mol mollari",
+        "key": "sub35"
+      }
+    ]
+  },
+  {
+    "menuName": "Matbuot xizmati",
+    "key": "sub4",
+    "to": "/press-service",
+    "submenu": [
+      {
+        "to": "",
+        "text": "Yangiliklar",
+        "key": "sub41"
+      },
+      {
+        "to": "/public-offer",
+        "text": "Biz haqimizda ommaviy oferta",
+        "key": "sub42"
+      },
+      {
+        "to": "/photogallery",
+        "text": "Fotogalereya",
+        "key": "sub43"
+      },
+      {
+        "to": "/videogallery",
+        "text": "Videogalereya",
+        "key": "sub44"
+      }
+    ]
+  }
 ]
