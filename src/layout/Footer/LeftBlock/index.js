@@ -4,7 +4,7 @@ import "./_style.scss";
 export default function FooterLeftBlock() {
   return (
     <div className="footer_contact_block">
-      <h1 className="">Biz bilan aloqa</h1>
+      <h1 className="footer_contact_title">Biz bilan aloqa</h1>
       <div className="footer_main_contacts">
         <div className="footer_contact_item">
           <img src="/assets/icon/call.png" alt="" />
