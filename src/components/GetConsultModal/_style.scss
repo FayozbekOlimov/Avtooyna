@@ -1,0 +1,21 @@
+.get_consult_modal {
+  .ant-modal-content {
+    border-radius: 20px;
+
+    .ant-modal-body {
+      padding: 0;
+      display: flex;
+
+      .modal_left {
+        width: 50%;
+      }
+
+      .consult_form {
+        padding: 50px;
+        width  : 50%;
+
+
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
 import { Button, FormControl, Grid, MenuItem, Select } from '@mui/material';
 import { Drawer, Menu as Menus } from 'antd';
@@ -8,6 +8,7 @@ import { useT } from "../../custom/hooks/useT";
 import './style.scss'
 import { changeLang, setLang } from '../../helpers';
 import headerMenu from './headerMenu.json';
+import { ConsultContext } from "../../App";
 
 const Header = () => {
     const { t, lang } = useT();
@@ -32,6 +33,8 @@ const Header = () => {
             getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={onClose}>{sub.text}</NavLink>, sub.key)
         )))
     ))
+
+    const { onOpenConsultModal } = useContext(ConsultContext);
 
     return (
         <header className='header'>
@@ -74,7 +77,9 @@ const Header = () => {
                                 textTransform: 'none',
                                 color: 'var(--title-color)',
                                 padding: '8px'
-                            }}>
+                            }}
+                            onClick={onOpenConsultModal}
+                        >
                             Konsultatsiya olish
                         </Button>
                         <FormControl >
