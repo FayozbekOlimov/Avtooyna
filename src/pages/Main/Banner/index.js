@@ -7,23 +7,26 @@ import baseAPI from "../../../api/baseAPI";
 import './style.css'
 
 const Banner = () => {
-    // const [banner, setBanner] = useState();
+    const [banner, setBanner] = useState();
 
-    // const getBanner = useCallback(async () => {
-    //     baseAPI.fetchAll(homeBannerUrl)
-    //         .then(res => {
-    //             setBanner(res.data)
-    //         })
-    //         .catch((e) => console.log("error", e))
-    // }, [])
+    const getBanner = useCallback(async () => {
+        baseAPI.fetchAll(homeBannerUrl)
+            .then(res => {
+                if (res.data.status === 200) {
+                    setBanner(res.data)
+                    console.log("ban", banner);
+                }
+            })
+            .catch((e) => console.log("error", e))
+    }, [banner])
 
-    // useEffect(() => {
-    //     getBanner();
-    // }, [getBanner])
+    useEffect(() => {
+        getBanner();
+    }, [getBanner])
 
-    // console.log("ban", banner);
 
-    // const { id, img, title, text } = banner[0];
+
+    // const { id, img } = banner;
 
     return (
         <div className='banner'>
@@ -38,8 +41,7 @@ const Banner = () => {
                     <Text>
                         {/* <div dangerouslySetInnerHTML={{ __html: text }}></div> */}
                     </Text>
-                    {/* <Title>{title}</Title>
-                    <Text>{text}</Text> */}
+
                     <Button>Batafsil</Button>
                 </div>
             </div>

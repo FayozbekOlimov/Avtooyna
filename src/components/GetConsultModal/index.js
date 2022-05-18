@@ -18,7 +18,7 @@ const InputTel = (props) => (
 );
 
 const GetConsultModal = (props) => {
-
+  const [formData, setFormData] = useState();
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -48,8 +48,7 @@ const GetConsultModal = (props) => {
   }
 
   const onHandleConsultForm = (values) => {
-    console.log('Success:', values);
-    createConsult(JSON.stringify(values));
+    setFormData(JSON.stringify(values));
     form.resetFields();
     onCloseConsultModal();
   };
@@ -103,7 +102,7 @@ const GetConsultModal = (props) => {
               rules={[
                 {
                   required: true,
-                  message: 'Please input your E-mail!',
+                  message: 'This is a required field',
                 },
               ]}
             >
