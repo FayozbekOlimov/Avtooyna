@@ -1,5 +1,5 @@
 export const homeBannerUrl = "home-banner/";
-export const homePreferlUrl = "afzal";
+export const homePreferlUrl = "afzal/";
 export const homeCompanyUrl = "company";
 export const homeGlassUrl = "";
 export const homeEquipmentUrl = "equipment";
