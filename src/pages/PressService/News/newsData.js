@@ -31,7 +31,7 @@ export const newsData = [
 		src: "/assets/img/news1.png",
 		date: "07 may 2022",
 		content: true,
-		title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
+		title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz ...',
 		text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
 		toUrl: "/news-announcement-detail/:1223123",
 	},
