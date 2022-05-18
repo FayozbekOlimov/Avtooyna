@@ -10,7 +10,7 @@ import Subsidiary from "../pages/About/Subsidiary";
 import Vacancies from "../pages/About/Vacancies";
 import YouthUnion from "../pages/About/YouthUnion";
 import Certificates from "../pages/About/Certificates";
-import Contest from "../pages/Contest";
+
 // Contest sections
 import ContestRules from "../pages/Contest/ContestRules";
 import Contests from "../pages/Contest/Contests";
@@ -18,6 +18,7 @@ import InsideContest from "../pages/Contest/InsideContest";
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
+const Contest = lazy(() => import("../pages/Contest"));
 
 export const routes = [
   {
