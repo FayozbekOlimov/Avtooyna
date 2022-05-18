@@ -6,7 +6,7 @@ export const contestData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
-    toUrl: "/contest-announcement-detail",
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const contestData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
-    toUrl: "/contest-announcement-detail",
+    toUrl: "/contest-announcement-detail/:1657567123",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const contestData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
-    toUrl: "/contest-announcement-detail",
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const contestData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
-    toUrl: "/contest-announcement-detail",
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const contestData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
-    toUrl: "/contest-announcement-detail",
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 6,
@@ -51,6 +51,6 @@ export const contestData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
-    toUrl: "/contest-announcement-detail",
+    toUrl: "/contest-announcement-detail/:1223123",
   },
 ];

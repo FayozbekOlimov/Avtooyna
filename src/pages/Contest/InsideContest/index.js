@@ -12,7 +12,7 @@ import Text from "../../../components/Text";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { Button } from "@mui/material";
 import "./_style.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#ECF2F9",
@@ -47,6 +47,8 @@ const rows = [
 ];
 
 export default function InsideContest() {
+  let { contest_id } = useParams();
+
   return (
     <>
       <div className="container">

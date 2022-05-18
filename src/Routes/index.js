@@ -83,7 +83,7 @@ export const routes = [
     ],
   },
   {
-    path: "contest-announcement-detail",
+    path: "contest-announcement-detail/:contest_id",
     element: <InsideContest />,
   },
   {
