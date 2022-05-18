@@ -65,6 +65,11 @@
         "to": "/contests",
         "text": "Tanlovlar",
         "key": "sub22"
+      },
+      {
+        "to": "/inside-contest",
+        "text": "inside",
+        "key": "sub22"
       }
     ]
   },
