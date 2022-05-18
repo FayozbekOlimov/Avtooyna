@@ -6,6 +6,7 @@ export const audioBookUrl = "/audio-book";
 export const photoUrl = "/photo";
 export const wiseWordUrl = "/proverb";
 export const mediaUrl = "/media";
+export const ximUrl = "/menu/mxalq";
 export const articleAuthorUrl = "/article-author";
 export const articleUrl = "/article";
 export const allBookUrl = "/all-book";

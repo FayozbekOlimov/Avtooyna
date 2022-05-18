@@ -10,78 +10,108 @@ import Subsidiary from "../pages/About/Subsidiary";
 import Vacancies from "../pages/About/Vacancies";
 import YouthUnion from "../pages/About/YouthUnion";
 import Certificates from "../pages/About/Certificates";
-// import Sifat from '../pages/Marketing/Sifat';
-import Sifat from "../pages/Marketing/Quality";
+import ContestRules from "../pages/Contest/ContestRules";
+import Contests from "../pages/Contest/Contests";
+import Quality from "../pages/Marketing/Quality";
+import Nomenclature from '../pages/Marketing/Nomenclature';
+import Brands from '../pages/Marketing/Brands';
+import Sale from '../pages/Marketing/Sale';
+import Goods from '../pages/Marketing/Goods';
+
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
+const Contest = lazy(() => import("../pages/Contest"));
 const Marketing = lazy(() => import("../pages/Marketing"));
 
-
-
 export const routes = [
-	{
-		index: true,
-		path: "",
-		element: <Main />
-	},
-	{
-		path: "about-us",
-		element: <About />,
-		children: [
-			{
-				index: true,
-				path: "",
-				element: <AboutOrg />
-			},
-			{
-				path: "subsidiary",
-				element: <Subsidiary />
-			},
-			{
-				path: "leadership",
-				element: <Leadership />
-			},
-			{
-				path: "laboratory",
-				element: <Laboratory />
-			},
-			{
-				path: "localization",
-				element: <Localization />
-			},
-			{
-				path: "certificates",
-				element: <Certificates />
-			},
-			{
-				path: "vacancies",
-				element: <Vacancies />
-			},
-			{
-				path: "compliance",
-				element: <Compliance />
-			},
-			{
-				path: "youth-union",
-				element: <YouthUnion />
-			}
-		]
-	},
-	{
-		path: "Marketing",
-		element: <Marketing />,	
-		children: [
-			{
-				index: true,
-				path: "",
-				element: <Sifat />
-			},
-			// {
-			// 	path: "subsidiary",
-			// 	element: <Subsidiary />
-			// },
-		
-		]
-	},
+  {
+    index: true,
+    path: "",
+    element: <Main />,
+  },
+  {
+    path: "about-us",
+    element: <About />,
+    children: [
+      {
+        index: true,
+        path: "",
+        element: <AboutOrg />,
+      },
+      {
+        path: "subsidiary",
+        element: <Subsidiary />,
+      },
+      {
+        path: "leadership",
+        element: <Leadership />,
+      },
+      {
+        path: "laboratory",
+        element: <Laboratory />,
+      },
+      {
+        path: "localization",
+        element: <Localization />,
+      },
+      {
+        path: "certificates",
+        element: <Certificates />,
+      },
+      {
+        path: "vacancies",
+        element: <Vacancies />,
+      },
+      {
+        path: "compliance",
+        element: <Compliance />,
+      },
+      {
+        path: "youth-union",
+        element: <YouthUnion />,
+      },
+    ],
+  },
+  {
+    path: "contest-announcement",
+    element: <Contest />,
+    children: [
+      {
+        path: "contest-rules",
+        element: <ContestRules />,
+      },
+      {
+        path: "contests",
+        element: <Contests />,
+      },
+    ],
+  },
+  {
+    
+	  path: "marketing",
+	  element: <Marketing/>,
+	  children: [
+		  {
+			  path: "",
+			  element: <Quality/>
+		  },
+		  {
+        path: "nomenclature",
+        element: <Nomenclature/>
+		  },
+      {
+        path: "brands",
+        element: <Brands/>
+      },
+      {
+        path: "sale",
+        element: <Sale/>
+      },
+      {
+        path: "goods",
+        element: <Goods/>
+      },
+	  ]
+  },
 ];

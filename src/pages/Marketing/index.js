@@ -1,22 +1,17 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from '../../components/Sidebar'
-import headerMenu from '../../layout/Header/headerMenu.json';
 import { Grid, Stack } from '@mui/material'
-
-
 
 const Marketing = () => {
     return (
         <Stack direction='row' spacing={2} py={2}>
             <div className='container'>
-                <Grid container>
+                <Grid container spacing="30px">
                     <Grid item xs={12} md={3}>
-                        <Sidebar />
-                    </Grid>
-                    <Grid item xs={12} md={9}>
+                        <Sidebar sidebarMenuIndex={2} />
+                    </Grid >
                         <Outlet />
-                    </Grid>
                 </Grid>
             </div>
         </Stack>
