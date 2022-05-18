@@ -24,6 +24,16 @@ const baseAPI = {
       params: { ...params, page },
     });
     return res;
+  },
+  async create(url, data) {
+    let res = await request.post(url, data);
+    return res;
+  },
+  update: (id, url, data) => request({ method: "put", url: `${url}/${id}`, data }),
+
+  remove: async (id, url) => {
+    let res = await request.delete(`${url}/${id}`);
+    return res.data.status;
   }
 }
 

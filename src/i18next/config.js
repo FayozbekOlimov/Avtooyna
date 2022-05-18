@@ -11,7 +11,7 @@ i18n
   .init({
     supportedLngs: languages,
     // lng: "uz",
-    fallbackLng: "ru",
+    fallbackLng: "uz",
     detection: {
       order: ['htmlTag', 'cookie', 'localStorage', 'path', 'subdomain'],
       caches: ['cookie']
@@ -19,5 +19,5 @@ i18n
     backend: {
       loadPath: "/assets/langs/translation.json"
     },
-    // react: { useSuspense: false }
+    react: { useSuspense: false }
   });
