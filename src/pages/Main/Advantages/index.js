@@ -6,7 +6,7 @@ import './style.css'
 
 const Advantages = () => {
 	return (
-		<Stack py={4} direction='row' className='advantages' alignItems='center'>
+		<Stack py={{xs: 2, md: 4}} direction='row' className='advantages' alignItems='center'>
 			<div className="container">
 				<Title>Bizning afzalliklarimiz</Title>
 				<Grid container spacing={2}>

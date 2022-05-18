@@ -6,7 +6,7 @@ import './style.css'
 
 const Gallery = () => {
     return (
-        <Stack className='gallery' py={4}>
+        <Stack className='gallery' py={{xs: 2, md: 4}}>
             <div className="container">
                 <Stack direction='row' spacing={0.5} justifyContent='space-between' alignItems='center'>
                     <Title>Fotosuratlar</Title>

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { IconButton, Stack, styled } from '@mui/material'
+import { blue } from '@mui/material/colors'
 import Card from '../Card'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
@@ -9,28 +10,24 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./style.scss";
-import { blue } from '@mui/material/colors'
-
-
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
-    color: theme.palette.getContrastText(blue[600]),
+    color: theme.palette.getContrastText(blue[500]),
     backgroundColor: theme.palette.primary.main,
     '&:hover': {
-        backgroundColor: blue[700],
+        backgroundColor: '#00468D',
     },
     width: '32px',
-    height: '32px'
+    height: '32px',
 }));
 
 
 const News = () => {
-
     const newCaruselPrevRef = useRef(null);
     const newCaruselNextRef = useRef(null);
 
     return (
-        <Stack py={4} className="news">
+        <Stack py={{ xs: 2, md: 4 }} className="news">
             <div className="container">
                 <Title>Yangiliklar</Title>
                 <Stack direction='row' justifyContent={"space-between"} alignItems={"center"} className="news_carusel_top" >
@@ -47,7 +44,7 @@ const News = () => {
 
                 <div className='news__swipper__wrapper'>
                     <Swiper
-                    className='news_swiper'
+                        className='news_swiper'
                         spaceBetween={30}
                         slidesPerView={1}
                         modules={[Navigation]}
