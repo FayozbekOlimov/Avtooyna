@@ -14,20 +14,28 @@ import Certificates from "../pages/About/Certificates";
 // Contest sections
 import ContestRules from "../pages/Contest/ContestRules";
 import Contests from "../pages/Contest/Contests";
+
+// Marketing sections
 import Quality from "../pages/Marketing/Quality";
 import Nomenclature from '../pages/Marketing/Nomenclature';
 import Brands from '../pages/Marketing/Brands';
 import Sale from '../pages/Marketing/Sale';
 import Goods from '../pages/Marketing/Goods';
-import PressService from '../pages/PressService';
-import News from '../pages/Main/News';
 
+//PressService sections
+import News from '../pages/PressService/News';
+import PublicOffer from '../pages/PressService/PublicOffer';
+import PhotoGallery from '../pages/PressService/PhotoGallery';
+import VideoGallery from '../pages/PressService/VideoGallery';
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
 const Contest = lazy(() => import("../pages/Contest"));
 const Marketing = lazy(() => import("../pages/Marketing"));
 const InsideContest = lazy(() => import("../pages/Contest/InsideContest"));
+const PressService = lazy(() => import("../pages/PressService"));
+const InsideNews = lazy(() => import("../pages/PressService/InsideNews"));
+
 
 export const routes = [
   {
@@ -93,7 +101,6 @@ export const routes = [
     ],
   },
   {
-
     path: "marketing",
     element: <Marketing />,
     children: [
@@ -124,8 +131,7 @@ export const routes = [
     element: <InsideContest />
   },
   {
-
-    path: "pressService",
+    path: "press-service",
     element: <PressService />,
     children: [
       {
@@ -133,11 +139,22 @@ export const routes = [
         element: <News />
       },
       {
-        path: "nomenclature",
-        element: <Nomenclature />
+        path: "public-offer",
+        element: <PublicOffer />
+      },
+      {
+        path: "photogallery",
+        element: <PhotoGallery />
+      },
+      {
+        path: "videogallery",
+        element: <VideoGallery />
       },
 
     ]
   },
-
+  {
+    path: "news-announcement-detail/:news_id",
+    element: <InsideNews />
+  },
 ];

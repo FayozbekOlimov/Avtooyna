@@ -4,7 +4,7 @@ import React from 'react';
 import Title from '../../../components/Title'
 import "./style.scss"
 
-const PublicOffer = () => {
+const VideoGallery = () => {
 	return (
 		<div>
 			<Title>Biz haqimizda ommaviy oferta</Title>
@@ -12,4 +12,4 @@ const PublicOffer = () => {
 	);
 }
 
-export default PublicOffer;
+export default VideoGallery;
