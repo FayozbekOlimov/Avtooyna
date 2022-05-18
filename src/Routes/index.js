@@ -18,72 +18,77 @@ import Contests from "../pages/Contest/Contests";
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
 const Contest = lazy(() => import("../pages/Contest"));
+const InsideContest = lazy(() => import("../pages/Contest/InsideContest"));
 
 export const routes = [
-	{
-		index: true,
-		path: "",
-		element: <Main />,
-	},
-	{
-		path: "about-us",
-		element: <About />,
-		children: [
-			{
-				index: true,
-				path: "",
-				element: <AboutOrg />,
-			},
-			{
-				path: "subsidiary",
-				element: <Subsidiary />,
-			},
-			{
-				path: "leadership",
-				element: <Leadership />,
-			},
-			{
-				path: "laboratory",
-				element: <Laboratory />,
-			},
-			{
-				path: "localization",
-				element: <Localization />,
-			},
-			{
-				path: "certificates",
-				element: <Certificates />,
-			},
-			{
-				path: "vacancies",
-				element: <Vacancies />,
-			},
-			{
-				path: "compliance",
-				element: <Compliance />,
-			},
-			{
-				path: "youth-union",
-				element: <YouthUnion />,
-			},
-		],
-	},
-	{
-		path: "contest-announcement",
-		element: <Contest />,
-		children: [
-			{
-				path: "contest-rules",
-				element: <ContestRules />,
-			},
-			{
-				path: "contests",
-				element: <Contests />,
-			},
-		],
-	},
-	{
-		path: "*",
-		element: <div>Page not found</div>,
-	},
+  {
+    index: true,
+    path: "",
+    element: <Main />,
+  },
+  {
+    path: "about-us",
+    element: <About />,
+    children: [
+      {
+        index: true,
+        path: "",
+        element: <AboutOrg />,
+      },
+      {
+        path: "subsidiary",
+        element: <Subsidiary />,
+      },
+      {
+        path: "leadership",
+        element: <Leadership />,
+      },
+      {
+        path: "laboratory",
+        element: <Laboratory />,
+      },
+      {
+        path: "localization",
+        element: <Localization />,
+      },
+      {
+        path: "certificates",
+        element: <Certificates />,
+      },
+      {
+        path: "vacancies",
+        element: <Vacancies />,
+      },
+      {
+        path: "compliance",
+        element: <Compliance />,
+      },
+      {
+        path: "youth-union",
+        element: <YouthUnion />,
+      },
+    ],
+  },
+  {
+    path: "contest-announcement",
+    element: <Contest />,
+    children: [
+      {
+        path: "contest-rules",
+        element: <ContestRules />,
+      },
+      {
+        path: "contests",
+        element: <Contests />,
+      },
+    ],
+  },
+  {
+    path: "contest-announcement-detail/:contest_id",
+    element: <InsideContest />,
+  },
+  {
+    path: "*",
+    element: <div>Page not found</div>,
+  },
 ];
