@@ -1,0 +1,19 @@
+.news_card {
+	.news_img {
+		padding: 18px 0 18px 18px;
+		img {
+
+			width: 300px;
+			height: 232px;
+		}
+	}
+	.news_title{ 
+		padding: 21px 24px;
+	}
+	display: flex;
+	width: 892px;
+	height: 268px;
+	background: #FFFFFF;
+	box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+	border-radius: 12px;
+}
