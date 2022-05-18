@@ -9,5 +9,6 @@ export const homeCertificate = "";
 export const homePartnerUrl = "hamkorlar";
 export const homeChoiceUrl = "tanlov";
 export const homeOavUrl = "";
+export const ximUrl = "menu/mxalq";
 export const allBookUrl = "all-book";
 export const createConsultUrl = "contact/"; 

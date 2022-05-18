@@ -2,32 +2,15 @@
 	display: flex;
 	.resume_blank{
 		display: flex;
-		margin-right: 70px;
+		width: 343px;;
 		.resume_number{
-			display: flex;
-			align-items:center;
-			justify-content: center;
 			width: 107px;
 			height: 107px;
-			
-
-			background: #3179C2;
 			border-radius: 100%;
-			@media(max-width: 600px) {
-				width: 90px;
-				height: 90px;
-				border-radius: 50%;
-			}
-			@media(max-width: 578px) {
-				width: 80px;
-				height: 80px;
-				border-radius: 100%;
-			}
-			@media(max-width: 400px) {
-				width: 40px;
-				height: 40px;
-				border-radius: 50%;
-			}
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #3179C2;
 			h1 {
 				font-style: normal;
 				font-weight: 400;
@@ -60,20 +43,10 @@
 			}
 		}
 	}
-}
-
-.resume_btn {
-	.btn-compliance {
-		margin-left: 157px;
-		margin-top: 8px;
-		@media(max-width: 430px) {
-			margin-left: 100px;
-		}
-		@media(max-width: 370px) {
-			margin-left: 50px;
-		}
-		@media(max-width: 320px) {
-			margin-left: 30px;
+	.resume_btn {
+		.btn-compliance {
+			margin-left: 157px;
+			margin-top: 8px;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
-import { IconButton, Stack, styled, Typography } from '@mui/material'
+import { IconButton, Stack, styled, Typography } from '@mui/material'	
 import { blue } from '@mui/material/colors'
 import { Navigation } from 'swiper'
 import "./style.scss"

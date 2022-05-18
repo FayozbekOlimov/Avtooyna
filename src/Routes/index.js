@@ -14,10 +14,17 @@ import Certificates from "../pages/About/Certificates";
 // Contest sections
 import ContestRules from "../pages/Contest/ContestRules";
 import Contests from "../pages/Contest/Contests";
+import Quality from "../pages/Marketing/Quality";
+import Nomenclature from '../pages/Marketing/Nomenclature';
+import Brands from '../pages/Marketing/Brands';
+import Sale from '../pages/Marketing/Sale';
+import Goods from '../pages/Marketing/Goods';
+
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
 const Contest = lazy(() => import("../pages/Contest"));
+const Marketing = lazy(() => import("../pages/Marketing"));
 const InsideContest = lazy(() => import("../pages/Contest/InsideContest"));
 
 export const routes = [
@@ -84,8 +91,35 @@ export const routes = [
     ],
   },
   {
+
+    path: "marketing",
+    element: <Marketing />,
+    children: [
+      {
+        path: "",
+        element: <Quality />
+      },
+      {
+        path: "nomenclature",
+        element: <Nomenclature />
+      },
+      {
+        path: "brands",
+        element: <Brands />
+      },
+      {
+        path: "sale",
+        element: <Sale />
+      },
+      {
+        path: "goods",
+        element: <Goods />
+      },
+    ]
+  },
+  {
     path: "contest-announcement-detail/:contest_id",
-    element: <InsideContest />,
+    element: <InsideContest />
   },
   {
     path: "*",
