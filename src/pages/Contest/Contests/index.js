@@ -7,7 +7,7 @@ import { Grid, Stack } from "@mui/material";
 import Text from "../../../components/Text";
 import Title from "../../../components/Title";
 import Card from "../../Main/Card";
-import { cardData } from "./contestsData";
+import { contestData } from "./contestsData";
 
 export default function Contests() {
   return (
@@ -15,7 +15,7 @@ export default function Contests() {
       <Stack direction="column">
         <Title>Tanlovlar</Title>
         <Grid container spacing={2}>
-          {cardData.map((data, id) => (
+          {contestData.map((data, id) => (
             <Grid item key={data + id} xs={12} sm={6} lg={4}>
               <Card {...data} />
             </Grid>

@@ -50,7 +50,7 @@ export default function InsideContest() {
   return (
     <>
       <div className="container">
-        <Link to="#">
+        <Link to="/contest-announcement/contests">
           <Button
             variant="text"
             sx={{ textTransform: "capitalize" }}

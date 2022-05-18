@@ -79,10 +79,6 @@ export const routes = [
         path: "contests",
         element: <Contests />,
       },
-      // {
-      //   path: "inside-contest",
-      //   element: <InsideContest />,
-      // },
     ],
   },
   {

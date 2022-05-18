@@ -3,8 +3,9 @@ import { Button } from "@mui/material";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Text from "../../../components/Text";
 import "./style.css";
+import { Link } from "react-router-dom";
 
-const Card = ({ id, src, date, title, text, content = true }) => {
+const Card = ({ id, src, date, title, text, toUrl, content = true }) => {
   return (
     <div className="card">
       <div className="card__img">
@@ -17,13 +18,15 @@ const Card = ({ id, src, date, title, text, content = true }) => {
         </p>
         <h5 className="card__title">{title}</h5>
         {content && <Text>{text}</Text>}
-        <Button
-          variant="text"
-          sx={{ textTransform: "capitalize" }}
-          endIcon={<RiArrowRightSLine />}
-        >
-          Batafsil
-        </Button>
+        <Link to={toUrl}>
+          <Button
+            variant="text"
+            sx={{ textTransform: "capitalize" }}
+            endIcon={<RiArrowRightSLine />}
+          >
+            Batafsil
+          </Button>
+        </Link>
       </div>
     </div>
   );
