@@ -14,11 +14,11 @@ import Certificates from "../pages/About/Certificates";
 // Contest sections
 import ContestRules from "../pages/Contest/ContestRules";
 import Contests from "../pages/Contest/Contests";
-import InsideContest from "../pages/Contest/InsideContest";
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
 const Contest = lazy(() => import("../pages/Contest"));
+const InsideContest = lazy(() => import("../pages/Contest/InsideContest"));
 
 export const routes = [
   {
