@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import './static/variables.css';
-import './static/base.css';
+import './static/base.scss';
 import { useRoutes } from 'react-router-dom';
 import { routes } from './Routes';
 import { useLocation } from 'react-router-dom';

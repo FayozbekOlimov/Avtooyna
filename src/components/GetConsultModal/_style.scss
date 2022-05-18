@@ -19,3 +19,26 @@
     }
   }
 }
+
+@media screen and (max-width:992px) {
+  .get_consult_modal {
+    .ant-modal-content {
+      .ant-modal-body {
+        padding: 0;
+        display: block;
+
+        .modal_left {
+          display: none;
+
+        }
+
+        .consult_form {
+          padding: 30px;
+          width  : 100%;
+
+
+        }
+      }
+    }
+  }
+}
