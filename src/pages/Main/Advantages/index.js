@@ -5,8 +5,11 @@ import { advantagesData } from './advantagesData'
 import './style.css'
 
 const Advantages = () => {
+
+
+
 	return (
-		<Stack py={4} direction='row' className='advantages' alignItems='center'>
+		<Stack py={{xs: 2, md: 4}} direction='row' className='advantages' alignItems='center'>
 			<div className="container">
 				<Title>Bizning afzalliklarimiz</Title>
 				<Grid container spacing={2}>
@@ -14,7 +17,7 @@ const Advantages = () => {
 						<Grid item xs={12} sm={6} key={ind}>
 							<Stack direction='row' spacing={2} alignItems='center'>
 								<div className="advantages__icon">
-									<img src={icon} alt={`icon${ind+1}`} />
+									<img src={icon} alt={`icon${ind + 1}`} />
 								</div>
 								<h2 className="advantages__title">{title}</h2>
 							</Stack>

@@ -7,7 +7,7 @@ import './style.css'
 
 const About = () => {
     return (
-        <Stack py={4} className="about">
+        <Stack py={{xs: 2, md: 4}} className="about">
             <div className="container">
                 <Stack mt={1} mb={2}>
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>

@@ -1,24 +1,26 @@
+import { createContext, useEffect, useState } from 'react';
+import { useRoutes, useLocation } from 'react-router-dom';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { ThemeProvider } from '@mui/material';
 import { theme } from './static/theme';
-import "./i18next/config";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
 import './static/variables.css';
-import './static/base.css';
-import { useRoutes } from 'react-router-dom';
+import './static/base.scss';
 import { routes } from './Routes';
-import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
+import GetConsultModal from "./components/GetConsultModal";
+
+export const ConsultContext = createContext(null);
 
 const App = () => {
-	let element = useRoutes(routes);
+	const [isOpenConsultModal, setIsConsultModal] = useState(false);
 
+	let element = useRoutes(routes);
 	let { pathname } = useLocation();
 
 	useEffect(() => {
@@ -36,11 +38,23 @@ const App = () => {
 
 	}, []);
 
+	const onOpenConsultModal = () => setIsConsultModal(true);
+	const onCloseConsultModal = () => setIsConsultModal(false);
+
+	const consultContextValue = {
+		isOpenConsultModal,
+		onOpenConsultModal,
+		onCloseConsultModal
+	}
+
 	return (
 		<ThemeProvider theme={theme}>
-			<Header />
-			{element}
-			<Footer />
+			<ConsultContext.Provider value={consultContextValue}>
+				<Header />
+				{element}
+				<Footer />
+				<GetConsultModal {...consultContextValue} />
+			</ConsultContext.Provider>
 		</ThemeProvider>
 	);
 }

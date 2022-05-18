@@ -10,6 +10,8 @@ import Subsidiary from "../pages/About/Subsidiary";
 import Vacancies from "../pages/About/Vacancies";
 import YouthUnion from "../pages/About/YouthUnion";
 import Certificates from "../pages/About/Certificates";
+
+// Contest sections
 import ContestRules from "../pages/Contest/ContestRules";
 import Contests from "../pages/Contest/Contests";
 import Quality from "../pages/Marketing/Quality";
@@ -23,6 +25,7 @@ const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
 const Contest = lazy(() => import("../pages/Contest"));
 const Marketing = lazy(() => import("../pages/Marketing"));
+const InsideContest = lazy(() => import("../pages/Contest/InsideContest"));
 
 export const routes = [
   {
@@ -88,30 +91,38 @@ export const routes = [
     ],
   },
   {
-    
-	  path: "marketing",
-	  element: <Marketing/>,
-	  children: [
-		  {
-			  path: "",
-			  element: <Quality/>
-		  },
-		  {
+
+    path: "marketing",
+    element: <Marketing />,
+    children: [
+      {
+        path: "",
+        element: <Quality />
+      },
+      {
         path: "nomenclature",
-        element: <Nomenclature/>
-		  },
+        element: <Nomenclature />
+      },
       {
         path: "brands",
-        element: <Brands/>
+        element: <Brands />
       },
       {
         path: "sale",
-        element: <Sale/>
+        element: <Sale />
       },
       {
         path: "goods",
-        element: <Goods/>
+        element: <Goods />
       },
-	  ]
+    ]
+  },
+  {
+    path: "contest-announcement-detail/:contest_id",
+    element: <InsideContest />
+  },
+  {
+    path: "*",
+    element: <div>Page not found</div>,
   },
 ];

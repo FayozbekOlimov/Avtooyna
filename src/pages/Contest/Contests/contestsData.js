@@ -1,4 +1,4 @@
-export const cardData = [
+export const contestData = [
   {
     id: 1,
     src: "/assets/img/news1.png",
@@ -6,6 +6,7 @@ export const cardData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const cardData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
+    toUrl: "/contest-announcement-detail/:1657567123",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const cardData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ export const cardData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ export const cardData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
+    toUrl: "/contest-announcement-detail/:1223123",
   },
   {
     id: 6,
@@ -46,5 +51,6 @@ export const cardData = [
     content: true,
     title: 'Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram...',
     text: '"Avtooyna" MCHJ korxonasi sizni eng ulug` va aziz bayram – O`zbekiston Respublikasi Mustaqilligining 30 yilligi munosabati bilan...',
+    toUrl: "/contest-announcement-detail/:1223123",
   },
 ];
