@@ -7,31 +7,6 @@ export const ColorModeContext = createContext({
 })
 
 const themeObj = {
-    dark: {
-        typography: {
-            fontSize:
-        },
-        background: {
-            default: '#021B34',
-            paper: '#02111F'
-        },
-        primary: {
-            navBg: '#F2F9FF',
-            light: '#3179C2',
-            main: "#00468D",
-        },
-        secondary: {
-            main: '#fff',
-            iconBg: '#12283D',
-        },
-        info: {
-            main: "#fff",
-            light: "#fff"
-        },
-        // textColor: {
-        //     main: "",
-        // },
-    },
     light: {
         background: {
             default: '#fff',
@@ -45,14 +20,38 @@ const themeObj = {
         secondary: {
             main: "#00468D",
             iconBg: "#ECF2F9",
+            dark: '#052D56'
         },
         info: {
             main: "#011223",
             light: "#252C34"
         },
-        // textColor: {
-        //     main: "",
-        // },
+        border: {
+            main: "#00468D",
+        }
+    },
+    dark: {
+        background: {
+            default: '#021B34',
+            paper: '#02111F'
+        },
+        primary: {
+            navBg: '#F2F9FF',
+            light: '#3179C2',
+            main: "#00468D",
+        },
+        secondary: {
+            main: '#fff',
+            iconBg: '#12283D',
+            dark: '#fff',
+        },
+        info: {
+            main: "#fff",
+            light: "#fff"
+        },
+        border: {
+            main: '#fff',
+        }
     }
 }
 
@@ -67,7 +66,7 @@ export const ColorContextProvider = ({ children }) => {
     const theme = useMemo(() => createTheme({
         palette: {
             mode: mode,
-            ...themeObj[mode]
+            ...themeObj[mode],
         }
     }), [mode])
     return (

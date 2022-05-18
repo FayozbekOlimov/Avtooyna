@@ -6,11 +6,27 @@ import './style.css'
 
 const Gallery = () => {
     return (
-        <Stack className='gallery' py={{xs: 2, md: 4}}>
+        <Stack
+            className='gallery'
+            py={{ xs: 2, md: 4 }}
+            bgcolor='background.default'
+        // sx={{
+        //     backgroundImage: 'url("/assets/img/about-bg.png")'
+        // }}
+        >
             <div className="container">
                 <Stack direction='row' spacing={0.5} justifyContent='space-between' alignItems='center'>
                     <Title>Fotosuratlar</Title>
-                    <Button variant='outlined' sx={{ textTransform: 'none' }} endIcon={<RiArrowRightSLine />}>Barchasini ko'rish</Button>
+                    <Button
+                        variant='outlined'
+                        sx={{
+                            textTransform: 'none',
+                            color: 'info.main',
+                            borderColor: 'border.main'
+                        }}
+                        endIcon={<RiArrowRightSLine />}>
+                        Barchasini ko'rish
+                    </Button>
                 </Stack>
                 <Grid container spacing={2} my={2} >
                     <Grid item sm={5}>

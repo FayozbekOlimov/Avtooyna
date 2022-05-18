@@ -1,11 +1,11 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
-import { IconButton, Stack, styled, Typography } from '@mui/material'
+import { IconButton, Stack, styled, Typography } from '@mui/material'	
 import { blue } from '@mui/material/colors'
 import { Navigation } from 'swiper'
 import "./style.scss"
-import { theme } from '../../../../static/theme'
+// import { theme } from '../../../../static/theme'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
 	color: theme.palette.getContrastText(blue[500]),
@@ -20,7 +20,7 @@ const ArrowButton = styled(IconButton)(({ theme }) => ({
 const titleStyle = {
 	fontWeight: 700,
 	fontSize: '20px',
-	color: theme.palette.info.main,
+	color: 'info.main',
 }
 
 const certificateCaruselImgs = [

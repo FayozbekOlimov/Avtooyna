@@ -1,28 +1,43 @@
-import React from 'react'
-import { Button } from '@mui/material'
-import { RiArrowRightSLine } from 'react-icons/ri'
-import Text from '../../../components/Text'
-import './style.css';
+import React from "react";
+import { Button, Stack, Typography } from "@mui/material";
+import { RiArrowRightSLine } from "react-icons/ri";
+import Text from "../../../components/Text";
+import "./style.css";
+import { Link } from "react-router-dom";
 
-const Card = ({ id, src, date, title, text, content = true }) => {
-    return (
+const Card = ({ id, src, date, title, text, toUrl, content = true }) => {
+	return (
+		<Stack className="card" bgcolor='background.default'>
+			<Stack className="card__img">
+				<img src={src} alt={`card-${id}`} />
+			</Stack>
+			<Stack className="card__content" direction='column'>
+				<p className="card__date">
+					<img src="/assets/icon/calendar.png" alt="calendar-icon" />
+					{date}
+				</p>
+				<Typography
+					sx={{
+						color: 'info.main',
+						fontSize: '20px',
+						fontWeight: 700,
+						marginBottom: '16px'
+					}}
+					className="card__title"
+				>{title}</Typography>
+				{content && <Text>{text}</Text>}
+				<Link to={toUrl}>
+					<Button
+						variant="text"
+						sx={{ textTransform: "capitalize", color: "primary.light" }}
+						endIcon={<RiArrowRightSLine />}
+					>
+						Batafsil
+					</Button>
+				</Link>
+			</Stack>
+		</Stack>
+	);
+};
 
-        <div className='card'>
-            <div className="card__img">
-                <img src={src} alt={`card-${id}`} />
-            </div>
-            <div className='card__content'>
-                <p className="card__date">
-                    <img src="/assets/icon/calendar.png" alt="calendar-icon" />{date}
-                </p>
-                <h5 className='card__title'>{title}</h5>
-                {
-                    content && <Text>{text}</Text>
-                }
-                <Button variant='text' sx={{ textTransform: 'capitalize' }} endIcon={<RiArrowRightSLine />}>Batafsil</Button>
-            </div>
-        </div>
-    )
-}
-
-export default Card
+export default Card;

@@ -13,8 +13,8 @@ import { blue } from '@mui/material/colors'
 const titleStyle = {
     fontWeight: 500,
     fontSize: '20px',
-    color: theme.palette.info.main,
-    marginBottom: theme.spacing(1.5),
+    color: 'info.main',
+    marginBottom: '12px',
 }
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
@@ -33,7 +33,13 @@ const Certificates = () => {
     const newCaruselNextRef = useRef(null);
 
     return (
-        <Stack py={{ xs: 2, md: 4 }} className='sertificates' direction='row' width='100%'>
+        <Stack
+            py={{ xs: 2, md: 4 }}
+            className='sertificates'
+            direction='row'
+            width='100%'
+            bgcolor='background.paper'
+        >
             <div className="container">
                 <Swiper
                     spaceBetween={30}
@@ -57,7 +63,7 @@ const Certificates = () => {
                     <SwiperSlide>
                         <Grid container width='100%'>
                             <Grid item xs={12} md={6}
-                                bgcolor={theme.palette.primary.navBg}
+                                bgcolor='#F1F2F8'
                                 p={2}
                                 display="flex"
                                 justifyContent="center"
@@ -85,7 +91,18 @@ const Certificates = () => {
                                         mb={2}
                                     >
                                         <Title>Sertifikatlar</Title>
-                                        <Button variant='outlined' sx={{ textTransform: 'none', marginBottom: 2 }} endIcon={<RiArrowRightSLine />}>Barchasini ko'rish</Button>
+                                        <Button
+                                            variant='outlined'
+                                            sx={{
+                                                textTransform: 'none',
+                                                marginBottom: 2,
+                                                color: 'info.main',
+                                                borderColor: 'border.main'
+                                            }}
+                                            endIcon={<RiArrowRightSLine />}
+                                        >
+                                            Barchasini ko'rish
+                                        </Button>
                                     </Stack>
                                     <Typography sx={titleStyle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </Typography>
                                     <Text>

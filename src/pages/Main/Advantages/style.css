@@ -11,15 +11,6 @@
     object-fit: cover;
 }
 
-.advantages__icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--primary-light-color);
-    display: grid;
-    place-items: center;
-}
-
 .advantages__icon img {
     width: 50%;
     height: 50%;
@@ -29,12 +20,10 @@
 .advantages__title {
     flex: 1;
     font-size: 16px;
+    font-weight: 600 !important;
 }
 
 @media (max-width: 768px) {
-    .advantages {
-        flex-direction: column !important;
-    }
     .advantages__img, .advantages .container {
         width: 100%;
     }

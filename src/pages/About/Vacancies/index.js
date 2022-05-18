@@ -8,7 +8,7 @@ const jobsTitle = `
 `
 const Vacancies = () => {
 	return (
-		<Grid item xs={10}>
+		<Grid item xs={9}>
 			<div className="jobs_wrapper">
 				<div dangerouslySetInnerHTML={{__html:jobsTitle}}></div>
 

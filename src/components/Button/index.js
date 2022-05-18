@@ -1,4 +1,5 @@
 import { styled, Button as Btn } from "@mui/material";
+import { blue } from "@mui/material/colors";
 import { theme } from '../../static/theme';
 
 const Button = styled(Btn)(({ theme }) => ({
@@ -11,6 +12,9 @@ const Button = styled(Btn)(({ theme }) => ({
         padding: '8px 22px',
     },
     backgroundColor: theme.palette.primary.main,
+    '&:hover': {
+        backgroundColor: blue[800],
+    }
 }))
 
 export default function StyledCustomization({ children }) {

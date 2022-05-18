@@ -1,6 +1,4 @@
-import './static/variables.css';
-import './static/base.css';
-import { useContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useRoutes, useLocation } from 'react-router-dom';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
@@ -10,15 +8,19 @@ import { Box, Button, ThemeProvider } from '@mui/material';
 import "swiper/css";
 import "swiper/css/navigation";
 
-import "./i18next/config";
+import './static/variables.css';
+import './static/base.scss';
+import { routes } from './Routes';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
-import { routes } from './Routes';
-import { ColorModeContext } from './static';
-import { useTheme } from '@emotion/react';
-// import { ColorContextProvider, ColorModeContext } from './static';
+import { useTheme } from '@mui/material';
+import GetConsultModal from "./components/GetConsultModal";
+
+export const ConsultContext = createContext(null);
 
 const App = () => {
+	const [isOpenConsultModal, setIsConsultModal] = useState(false);
+
 	let element = useRoutes(routes);
 	let { pathname } = useLocation();
 
@@ -37,34 +39,26 @@ const App = () => {
 
 	}, []);
 
-	const { mode, toggleMode } = useContext(ColorModeContext);
-	// console.log(mode)
 	const theme = useTheme();
 
+	const onOpenConsultModal = () => setIsConsultModal(true);
+	const onCloseConsultModal = () => setIsConsultModal(false);
+
+	const consultContextValue = {
+		isOpenConsultModal,
+		onOpenConsultModal,
+		onCloseConsultModal
+	}
+
 	return (
-		<>
-			{/* <Box
-				sx={{
-					display: 'flex',
-					width: '100%',
-					alignItems: 'center',
-					justifyContent: 'center',
-					bgcolor: theme.palette.primary.navBg,
-					color: 'text.primary',
-					borderRadius: 1,
-					p: 3,
-				}}
-			>
-				<Button variant="outlined" onClick={toggleMode}>
-					change Mode
-				</Button>
-			</Box> */}
-			{/* <ThemeProvider theme={theme}> */}
+		<ThemeProvider theme={theme}>
+			<ConsultContext.Provider value={consultContextValue}>
 				<Header />
 				{element}
 				<Footer />
-			{/* </ThemeProvider> */}
-		</>
+				<GetConsultModal {...consultContextValue} />
+			</ConsultContext.Provider>
+		</ThemeProvider>
 	);
 }
 

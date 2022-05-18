@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Stack } from '@mui/material'
+import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
@@ -7,7 +7,14 @@ import './style.css'
 
 const About = () => {
     return (
-        <Stack py={{xs: 2, md: 4}} className="about">
+        <Stack 
+            py={{ xs: 2, md: 4 }} 
+            className="about" 
+            bgcolor='background.default'
+            sx={{
+                backgroundImage: 'url("/assets/img/about-bg.png")'
+            }}
+        >
             <div className="container">
                 <Stack mt={1} mb={2}>
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
@@ -23,18 +30,18 @@ const About = () => {
                                 <Button>Batafsil</Button>
                             </div>
                             <div className="about__numbers">
-                                <div className="about__numbers-item">
-                                    <h2>10000</h2>
-                                    <p>dan ortiq mutaxassislar</p>
-                                </div>
-                                <div className="about__numbers-item">
-                                    <h2>10000</h2>
-                                    <p>dan ortiq mutaxassislar</p>
-                                </div>
-                                <div className="about__numbers-item">
-                                    <h2>237</h2>
-                                    <p>turdagi mahsulotlar</p>
-                                </div>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                    <Typography component='h2' color='secondary.dark' gutterBottom>10000</Typography>
+                                    <Typography component='p' color='secondary.dark'>dan ortiq mutaxassislar</Typography>
+                                </Stack>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                    <Typography component='h2' color='secondary.dark' gutterBottom>10000</Typography>
+                                    <Typography component='p' color='secondary.dark'>dan ortiq mutaxassislar</Typography>
+                                </Stack>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                    <Typography component='h2' color='secondary.dark' gutterBottom>237</Typography>
+                                    <Typography component='p' color='secondary.dark'>turdagi mahsulotlar</Typography>
+                                </Stack>
                             </div>
                         </Grid>
                     </Grid>

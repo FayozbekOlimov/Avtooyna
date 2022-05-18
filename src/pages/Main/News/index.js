@@ -27,7 +27,7 @@ const News = () => {
     const newCaruselNextRef = useRef(null);
 
     return (
-        <Stack py={{ xs: 2, md: 4 }} className="news">
+        <Stack py={{ xs: 2, md: 4 }} className="news" bgcolor='background.paper'>
             <div className="container">
                 <Title>Yangiliklar</Title>
                 <Stack direction='row' justifyContent={"space-between"} alignItems={"center"} className="news_carusel_top" >
