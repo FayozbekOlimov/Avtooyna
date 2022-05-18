@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
-import { ExpandMore, FmdGood, Menu, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
-import { Button, FormControl, Grid, MenuItem, Select } from '@mui/material';
+import React, { useState, useContext } from 'react'
+import { ExpandMore, FmdGood, Logout, Menu, PersonAdd, PhoneEnabled, RemoveRedEye, Settings } from '@mui/icons-material';
+import { Avatar, Button, Divider, FormControl, Grid, IconButton, ListItemIcon, MenuItem, Select, Tooltip } from '@mui/material';
 import { Drawer, Menu as Menus } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom';
@@ -9,6 +9,7 @@ import './style.scss'
 import { changeLang, setLang } from '../../helpers';
 import headerMenu from './headerMenu.json';
 import { ConsultContext } from "../../App";
+import { theme } from '../../static/theme';
 
 const Header = () => {
     const { t, lang } = useT();
@@ -25,12 +26,12 @@ const Header = () => {
     }
 
     const [visible, setVisible] = useState(false);
-    const onClose = () => { setVisible(false); };
-    const showDrawer = () => { setVisible(true); };
+    // const onClose = () => { setVisible(false); };
+    // const showDrawer = () => { setVisible(true); };
 
     const items = headerMenu.map((menu) => (
         getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
-            getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={onClose}>{sub.text}</NavLink>, sub.key)
+            getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={() => setVisible(false)}>{sub.text}</NavLink>, sub.key)
         )))
     ))
 
@@ -44,7 +45,7 @@ const Header = () => {
                         <Menu
                             className='header__menu-icon'
                             fontSize='large'
-                            onClick={showDrawer}
+                            onClick={() => setVisible(true)}
                         />
                         <Link to='/' className='header__logo'>
                             <img src='/assets/img/logo.svg' alt='logo' />
@@ -75,7 +76,7 @@ const Header = () => {
                             variant='outlined'
                             sx={{
                                 textTransform: 'none',
-                                color: 'var(--title-color)',
+                                color: theme.palette.titleColor.main,
                                 padding: '8px'
                             }}
                             onClick={onOpenConsultModal}
@@ -94,8 +95,8 @@ const Header = () => {
                                 sx={{
                                     padding: 0,
                                     width: '80px',
-                                    borderColor: 'var(--primary-color)',
-                                    color: 'var(--title-color)'
+                                    borderColor: theme.palette.primary.main,
+                                    color: theme.palette.titleColor.main
                                 }}
                             >
                                 {
@@ -118,7 +119,7 @@ const Header = () => {
                     title="MENU"
                     placement='left'
                     width={256}
-                    onClose={onClose}
+                    onClose={() => setVisible(false)}
                     visible={visible}
                     closeIcon={<CgCloseO />}
                 >

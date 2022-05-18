@@ -1,18 +1,16 @@
+import { createContext, useEffect, useState } from 'react';
+import { useRoutes, useLocation } from 'react-router-dom';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import { ThemeProvider } from '@mui/material';
 import { theme } from './static/theme';
-import "./i18next/config";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
 import './static/variables.css';
 import './static/base.scss';
-import { useRoutes } from 'react-router-dom';
 import { routes } from './Routes';
-import { useLocation } from 'react-router-dom';
-import { createContext, useEffect, useState } from 'react';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import GetConsultModal from "./components/GetConsultModal";
@@ -23,7 +21,6 @@ const App = () => {
 	const [isOpenConsultModal, setIsConsultModal] = useState(false);
 
 	let element = useRoutes(routes);
-
 	let { pathname } = useLocation();
 
 	useEffect(() => {

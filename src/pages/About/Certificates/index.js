@@ -6,7 +6,7 @@ import "./style.scss"
 
 const Certificates = () => {
 	return (
-		<Stack direction='column' width="100%" p={2} pt={0}>
+		<Stack direction='column' width="100%">
 			<Title>Sertifikatlar</Title>
 			<CertificateCarusel />
 			<CertificateCarusel />

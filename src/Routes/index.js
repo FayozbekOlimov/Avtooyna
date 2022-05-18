@@ -10,6 +10,8 @@ import Subsidiary from "../pages/About/Subsidiary";
 import Vacancies from "../pages/About/Vacancies";
 import YouthUnion from "../pages/About/YouthUnion";
 import Certificates from "../pages/About/Certificates";
+
+// Contest sections
 import ContestRules from "../pages/Contest/ContestRules";
 import Contests from "../pages/Contest/Contests";
 
@@ -18,70 +20,70 @@ const About = lazy(() => import("../pages/About"));
 const Contest = lazy(() => import("../pages/Contest"));
 
 export const routes = [
-  {
-    index: true,
-    path: "",
-    element: <Main />,
-  },
-  {
-    path: "about-us",
-    element: <About />,
-    children: [
-      {
-        index: true,
-        path: "",
-        element: <AboutOrg />,
-      },
-      {
-        path: "subsidiary",
-        element: <Subsidiary />,
-      },
-      {
-        path: "leadership",
-        element: <Leadership />,
-      },
-      {
-        path: "laboratory",
-        element: <Laboratory />,
-      },
-      {
-        path: "localization",
-        element: <Localization />,
-      },
-      {
-        path: "certificates",
-        element: <Certificates />,
-      },
-      {
-        path: "vacancies",
-        element: <Vacancies />,
-      },
-      {
-        path: "compliance",
-        element: <Compliance />,
-      },
-      {
-        path: "youth-union",
-        element: <YouthUnion />,
-      },
-    ],
-  },
-  {
-    path: "contest-announcement",
-    element: <Contest />,
-    children: [
-      {
-        path: "contest-rules",
-        element: <ContestRules />,
-      },
-      {
-        path: "contests",
-        element: <Contests />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <div>Page not found</div>,
-  },
+	{
+		index: true,
+		path: "",
+		element: <Main />,
+	},
+	{
+		path: "about-us",
+		element: <About />,
+		children: [
+			{
+				index: true,
+				path: "",
+				element: <AboutOrg />,
+			},
+			{
+				path: "subsidiary",
+				element: <Subsidiary />,
+			},
+			{
+				path: "leadership",
+				element: <Leadership />,
+			},
+			{
+				path: "laboratory",
+				element: <Laboratory />,
+			},
+			{
+				path: "localization",
+				element: <Localization />,
+			},
+			{
+				path: "certificates",
+				element: <Certificates />,
+			},
+			{
+				path: "vacancies",
+				element: <Vacancies />,
+			},
+			{
+				path: "compliance",
+				element: <Compliance />,
+			},
+			{
+				path: "youth-union",
+				element: <YouthUnion />,
+			},
+		],
+	},
+	{
+		path: "contest-announcement",
+		element: <Contest />,
+		children: [
+			{
+				path: "contest-rules",
+				element: <ContestRules />,
+			},
+			{
+				path: "contests",
+				element: <Contests />,
+			},
+		],
+	},
+	{
+		path: "*",
+		element: <div>Page not found</div>,
+	},
 ];

@@ -7,21 +7,21 @@ import baseAPI from "../../../api/baseAPI";
 import './style.css'
 
 const Banner = () => {
-    const [banner, setBanner] = useState();
+    // const [banner, setBanner] = useState();
 
-    const getBanner = useCallback(async () => {
-        baseAPI.fetchAll(homeBannerUrl)
-            .then(res => {
-                setBanner(res.data)
-            })
-            .catch((e) => console.log("error", e))
-    }, [])
+    // const getBanner = useCallback(async () => {
+    //     baseAPI.fetchAll(homeBannerUrl)
+    //         .then(res => {
+    //             setBanner(res.data)
+    //         })
+    //         .catch((e) => console.log("error", e))
+    // }, [])
 
-    useEffect(() => {
-        getBanner();
-    }, [getBanner])
+    // useEffect(() => {
+    //     getBanner();
+    // }, [getBanner])
 
-    console.log("ban", banner);
+    // console.log("ban", banner);
 
     // const { id, img, title, text } = banner[0];
 
