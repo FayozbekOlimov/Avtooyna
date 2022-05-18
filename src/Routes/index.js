@@ -19,6 +19,8 @@ import Nomenclature from '../pages/Marketing/Nomenclature';
 import Brands from '../pages/Marketing/Brands';
 import Sale from '../pages/Marketing/Sale';
 import Goods from '../pages/Marketing/Goods';
+import PressService from '../pages/PressService';
+import News from '../pages/Main/News';
 
 
 const Main = lazy(() => import("../pages/Main"));
@@ -122,7 +124,20 @@ export const routes = [
     element: <InsideContest />
   },
   {
-    path: "*",
-    element: <div>Page not found</div>,
+
+    path: "pressService",
+    element: <PressService />,
+    children: [
+      {
+        path: "",
+        element: <News />
+      },
+      {
+        path: "nomenclature",
+        element: <Nomenclature />
+      },
+
+    ]
   },
+
 ];
