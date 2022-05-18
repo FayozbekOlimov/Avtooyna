@@ -8,9 +8,12 @@ const Resume = (props) => {
 			<div className='resume'>
 				<div>
 					<div className="resume_blank">
-						<div className='resume_number'>
-							<h1>{props.number}</h1>
+						<div>
+							<div className='resume_number'>
+								<h1>{props.number}</h1>
+							</div>
 						</div>
+
 						<div className='resume_title'>
 							<h2>{props.title}</h2>
 							<p>
