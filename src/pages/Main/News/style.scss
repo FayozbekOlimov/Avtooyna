@@ -6,21 +6,4 @@
             padding-bottom: 30px;
         }
     }
-
-    .news_carusel_top {
-        p {
-            margin-bottom: 0;
-        }
-
-        .new_carusel_arrows {
-            button {
-                margin-right: 16px;
-
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-
-    }
 }

@@ -13,15 +13,15 @@ import { blue } from '@mui/material/colors'
 const titleStyle = {
     fontWeight: 500,
     fontSize: '20px',
-    color: theme.palette.titleColor.main,
+    color: theme.palette.info.main,
     marginBottom: theme.spacing(1.5),
 }
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText(blue[500]),
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#00468D',
     '&:hover': {
-        backgroundColor: '#00468D',
+        backgroundColor: blue[800],
     },
     width: '32px',
     height: '32px',
@@ -91,7 +91,7 @@ const Certificates = () => {
                                     <Text>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </Text>
-                                    <Stack direction='row'>
+                                    <Stack direction='row' spacing={2}>
                                         <ArrowButton ref={newCaruselPrevRef}>
                                             <RiArrowLeftSLine />
                                         </ArrowButton>

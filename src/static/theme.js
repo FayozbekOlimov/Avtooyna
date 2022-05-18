@@ -16,7 +16,7 @@ export const theme = createTheme({
             light: '#3179C2',
             main: "#00468D",
         },
-        titleColor: {
+        info: {
             main: "#011223",
         },
         textColor: {

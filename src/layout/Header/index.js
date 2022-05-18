@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { ExpandMore, FmdGood, Logout, Menu, PersonAdd, PhoneEnabled, RemoveRedEye, Settings } from '@mui/icons-material';
-import { Avatar, Button, Divider, FormControl, Grid, IconButton, ListItemIcon, MenuItem, Select, Tooltip } from '@mui/material';
-import { Drawer, Menu as Menus } from 'antd';
+import React, { useContext, useState } from 'react'
+import { ExpandMore, FmdGood, Logout, Menu as MenuIcon, PersonAdd, PhoneEnabled, RemoveRedEye, Settings } from '@mui/icons-material';
+import { Avatar, Button, Divider, FormControl, Grid, IconButton, ListItemIcon, MenuItem, Select, Stack, Tooltip, Link as TelLink, Typography } from '@mui/material';
+import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
@@ -9,6 +9,7 @@ import './style.scss'
 import { changeLang, setLang } from '../../helpers';
 import headerMenu from './headerMenu.json';
 import { theme } from '../../static/theme';
+import { ColorModeContext } from '../../static';
 
 const Header = () => {
     const { t, lang } = useT();
@@ -34,12 +35,17 @@ const Header = () => {
         )))
     ))
 
+    const { mode, toggleMode } = useContext(ColorModeContext);
+    // console.log(mode)
+    // const theme = useTheme();
+
     return (
-        <header className='header'>
+        <Stack className='header' bgcolor='background.default'>
             <div className="container">
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={3} lg={2} display='flex' alignItems='center'>
-                        <Menu
+                        <MenuIcon
+                            sx={{color: 'secondary.main', mr: 1, cursor: 'pointer'}}
                             className='header__menu-icon'
                             fontSize='large'
                             onClick={() => setVisible(true)}
@@ -50,20 +56,20 @@ const Header = () => {
                     </Grid>
                     <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
                         <div className='header__tel'>
-                            <div className='header__tel-icon'>
-                                <PhoneEnabled />
-                            </div>
-                            <div className='header__tel-content'>
-                                <a href='tel:+998732497575'>+998 73 249-75-75</a>
-                                <a href='tel:+998732430835'>+998 73 243-08-35</a>
-                            </div>
+                            <Stack className='header__tel-icon' sx={{bgcolor: 'secondary.iconBg'}}>
+                                <PhoneEnabled sx={{color: 'primary.main'}} />
+                            </Stack>
+                            <Stack className='header__tel-content'>
+                                <TelLink href='tel:+998732497575' sx={{color: 'info.light', textDecoration: 'none'}}>+998 73 249-75-75</TelLink>
+                                <TelLink href='tel:+998732430835' sx={{color: 'info.light', textDecoration: 'none'}}>+998 73 243-08-35</TelLink>
+                            </Stack>
                         </div>
                         <div className='header__tel'>
-                            <div className='header__tel-icon'>
-                                <FmdGood />
-                            </div>
+                            <Stack className='header__tel-icon' sx={{bgcolor: 'secondary.iconBg'}}>
+                                <FmdGood sx={{color: 'primary.main'}} />
+                            </Stack>
                             <div className='header__tel-content'>
-                                <p>Farg’ona sh, Istiqlol 1A uy</p>
+                                <Typography component='p' sx={{color: 'info.light'}}>Farg’ona sh, Istiqlol 1A uy</Typography>
                                 <small>{t(`ourAddress.${lang}`)}</small>
                             </div>
                         </div>
@@ -73,7 +79,7 @@ const Header = () => {
                             variant='outlined'
                             sx={{
                                 textTransform: 'none',
-                                color: theme.palette.titleColor.main,
+                                color: 'info.main',
                                 padding: '8px'
                             }}>
                             Konsultatsiya olish
@@ -91,7 +97,7 @@ const Header = () => {
                                     padding: 0,
                                     width: '80px',
                                     borderColor: theme.palette.primary.main,
-                                    color: theme.palette.titleColor.main
+                                    color: theme.palette.info.main
                                 }}
                             >
                                 {
@@ -105,6 +111,7 @@ const Header = () => {
                             variant='contained'
                             className='header__mode'
                             size='medium'
+                            onClick={toggleMode}
                         >
                             <RemoveRedEye />
                         </Button>
@@ -118,14 +125,14 @@ const Header = () => {
                     visible={visible}
                     closeIcon={<CgCloseO />}
                 >
-                    <Menus
+                    <Menu
                         style={{ width: '100%' }}
                         mode="vertical"
                         items={items}
                     />
                 </Drawer>
             </div>
-        </header>
+        </Stack>
     )
 }
 

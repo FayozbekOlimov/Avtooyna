@@ -2,7 +2,7 @@ import { styled, Typography } from "@mui/material";
 
 const Text = styled(Typography)(({ theme }) => ({
     fontWeight: 400,
-    color: theme.palette.textColor.main,
+    color: theme.palette.info.light,
     fontSize: '16px',
 }))
 
