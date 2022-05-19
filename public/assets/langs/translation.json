@@ -3,5 +3,10 @@
     "uz": "Bizning manzil",
     "ru": "lorem",
     "en": "Our address"
+  },
+  "contact": {
+    "uz":"Biz bilan aloqa",
+    "ru":"lorem",
+    "en":""
   }
 }

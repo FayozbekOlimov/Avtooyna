@@ -22,7 +22,7 @@ const InsideNews = () => {
 				</Button>
 			</Link>
 			<Grid container spacing={4}>
-				<Grid item xs={6} my={3}>
+				<Grid item xs={12} md={6} my={3}>
 					{InsideNewsData.map(({ date, title, text }, ind) => (
 						<Grid item mb={"30px"} >
 							<p className="card__date">
@@ -34,9 +34,9 @@ const InsideNews = () => {
 						</Grid>
 					))}
 				</Grid>
-				<Grid item xs={4} my={3}>
+				<Grid item xs={12} md={6} my={3}>
 					<div news_images>
-						<img src="/assets/img/newsImg.png" alt="" />
+						<img src="/assets/img/newsImg.png" alt="" width="100%"/>
 					</div>
 				</Grid>
 			</Grid>
