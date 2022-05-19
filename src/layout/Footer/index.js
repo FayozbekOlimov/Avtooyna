@@ -9,7 +9,7 @@ import RightBlock from "./RightBlock";
 
 export default function Footer() {
   return (
-    <>
+    <footer>
       <div className="footer_wrapper">
         <div className="footer_top">
           <div className="container">
@@ -58,6 +58,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 }
