@@ -3,7 +3,7 @@ import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
-import './style.css'
+import './style.scss'
 
 const About = () => {
     return (

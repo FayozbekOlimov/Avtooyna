@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import { advantagesData } from './advantagesData'
-import './style.css'
+import './style.scss'
 
 const Advantages = () => {
 	const iconBoxStyle = {

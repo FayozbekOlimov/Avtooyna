@@ -1,6 +1,5 @@
 import { styled, Button as Btn } from "@mui/material";
 import { blue } from "@mui/material/colors";
-import { theme } from '../../static/theme';
 
 const Button = styled(Btn)(({ theme }) => ({
     fontWeight: 600,

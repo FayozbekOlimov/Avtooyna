@@ -3,7 +3,6 @@ import { Button, Grid, IconButton, Stack, styled, Typography } from '@mui/materi
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
-import { theme } from '../../../static/theme'
 // swiper
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";

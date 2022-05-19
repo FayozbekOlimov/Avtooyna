@@ -49,7 +49,7 @@ export const routes = [
     children: [
       {
         index: true,
-        path: "",
+        path: "about-org",
         element: <AboutOrg />,
       },
       {
@@ -105,7 +105,7 @@ export const routes = [
     element: <Marketing />,
     children: [
       {
-        path: "",
+        path: "quality",
         element: <Quality />
       },
       {
@@ -135,7 +135,7 @@ export const routes = [
     element: <PressService />,
     children: [
       {
-        path: "",
+        path: "news",
         element: <News />
       },
       {
