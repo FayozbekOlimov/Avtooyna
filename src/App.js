@@ -8,8 +8,6 @@ import { theme } from './static/theme';
 import "swiper/css";
 import "swiper/css/navigation";
 
-import './static/variables.css';
-import './static/base.scss';
 import { routes } from './Routes';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
@@ -48,14 +46,16 @@ const App = () => {
 	}
 
 	return (
-		<ThemeProvider theme={theme}>
-			<ConsultContext.Provider value={consultContextValue}>
-				<Header />
-				{element}
-				<Footer />
-				<GetConsultModal {...consultContextValue} />
-			</ConsultContext.Provider>
-		</ThemeProvider>
+		<div className="avtooyna__wrapper">
+			<ThemeProvider theme={theme}>
+				<ConsultContext.Provider value={consultContextValue}>
+					<Header />
+					{element}
+					<Footer />
+					<GetConsultModal {...consultContextValue} />
+				</ConsultContext.Provider>
+			</ThemeProvider>
+		</div>
 	);
 }
 

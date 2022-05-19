@@ -1,1 +1,33 @@
-@media screen and (max-width:992px) {}
+@media screen and (max-width:992px) {
+  .avtooyna__wrapper {
+
+    .news {
+
+      .news_carusel_top {
+        p {
+          width: 50%;
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width:768px) {
+  .avtooyna__wrapper {}
+}
+
+@media screen and (max-width:576px) {
+  .avtooyna__wrapper {
+
+    .news {
+
+      .news_carusel_top {
+        p {
+          width: 75%;
+        }
+      }
+    }
+
+  }
+}

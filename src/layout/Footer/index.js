@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Grid from "@mui/material/Grid";
-
 import "./_style.scss";
 import FooterLeftBlock from "./LeftBlock";
 import RightBlock from "./RightBlock";
 
 export default function Footer() {
+
   return (
     <>
       <div className="footer_wrapper">
