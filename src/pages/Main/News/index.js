@@ -45,7 +45,7 @@ const News = () => {
                 <div className='news__swipper__wrapper'>
                     <Swiper
                         className='news_swiper'
-                        spaceBetween={30}
+                        spaceBetween={10}
                         slidesPerView={1}
                         modules={[Navigation]}
                         navigation={{

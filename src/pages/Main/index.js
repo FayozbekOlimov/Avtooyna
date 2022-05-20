@@ -6,6 +6,7 @@ import Banner from './Banner'
 import Gallery from './Gallery'
 import News from './News'
 import Certificates from './Certificates'
+import Partners from './Partners';
 
 const Main = () => {
     return (
@@ -16,6 +17,7 @@ const Main = () => {
             <News />
             <Gallery />
             <Certificates />
+            <Partners />
         </>
     )
 }

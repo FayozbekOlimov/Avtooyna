@@ -1,15 +1,14 @@
 import React from "react";
 import { Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
-// import { theme } from "../../static/theme";
-import "./style.scss";
 import headerMenu from "../../layout/Header/headerMenu.json";
+import "./style.scss";
 
 const Sidebar = (props) => {
 	const { sidebarMenuIndex } = props;
 
 	const activeStyle = {
-		color: 'primary.main',
+		color: '#00468D',
 		fontWeight: 600,
 	};
 
@@ -37,7 +36,7 @@ const Sidebar = (props) => {
 						to={`${items.to}${item.to}`}
 						style={({ isActive }) => ({
 							...navStyle,
-							...(isActive ? activeStyle : undefined),
+							...(isActive ? activeStyle : null),
 						})}
 					>
 						{item.text}

@@ -1,11 +1,9 @@
 .container {
-	.inside_news_back_btn {
-		background: #F2F9FF;
-		border-radius: 12px;
-	}
 	.news_images {
 		img {
 			width: 100%;
+			object-fit: cover;
+			border-radius: 12px;
 		}
 
 	}
