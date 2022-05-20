@@ -1,0 +1,36 @@
+.home_certificates {
+  .home_certificate_swiper {
+    .swiper-button-prev {
+      top             : unset;
+      left            : unset;
+      right           : 52px;
+      bottom          : 0;
+      width           : 32px;
+      height          : 32px;
+      background-color: var(--primary-color);
+      border-radius   : 50%;
+
+      &:after {
+        font-size  : 9px;
+        color      : #fff;
+        font-weight: 600;
+      }
+    }
+
+    .swiper-button-next {
+      top             : unset;
+      right           : 0px;
+      bottom          : 0;
+      width           : 32px;
+      height          : 32px;
+      background-color: var(--primary-color);
+      border-radius   : 50%;
+
+      &:after {
+        font-size  : 9px;
+        color      : #fff;
+        font-weight: 600;
+      }
+    }
+  }
+}
