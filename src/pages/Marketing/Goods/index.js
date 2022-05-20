@@ -4,7 +4,7 @@ import Text from "../../../components/Text";
 import { Grid } from '@mui/material';
 import GoodsDetail from './GoodsCard/GoodsDetail';
 import "./style.scss"
-import { ximUrl } from '../../../api/apiUrls';
+import { goodsUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 
 const Goods = () => {
@@ -12,7 +12,7 @@ const Goods = () => {
 	const [xim, setXim] = useState();
 
 	const getXim = useCallback(async () => {
-		baseAPI.fetchAll(ximUrl)
+		baseAPI.fetchAll(goodsUrl)
 			.then(res => {
 				setXim(res.data)
 			})

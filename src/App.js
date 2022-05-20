@@ -8,12 +8,12 @@ import { ThemeProvider } from '@mui/material';
 import "swiper/css";
 import "swiper/css/navigation";
 
-import './static/base.scss';
 import { routes } from './Routes';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
+import InsideAbout from './pages/Main/InsideAbout';
 
 export const ConsultContext = createContext(null);
 
@@ -48,16 +48,18 @@ const App = () => {
 		onOpenConsultModal,
 		onCloseConsultModal
 	}
-
-	return (
-		<ThemeProvider theme={theme}>
-			<ConsultContext.Provider value={consultContextValue}>
-				<Header />
-				{element}
-				<Footer />
-				<GetConsultModal {...consultContextValue} />
-			</ConsultContext.Provider>
-		</ThemeProvider>
+Loading
+	return (>>>>>>> main
+		<div className="avtooyna__wrapper">
+			<ThemeProvider theme={theme}>
+				<ConsultContext.Provider value={consultContextValue}>
+					<Header />
+					{element}
+					<Footer />
+					<GetConsultModal {...consultContextValue} />
+				</ConsultContext.Provider>
+			</ThemeProvider>
+		</div>
 	);
 }
 

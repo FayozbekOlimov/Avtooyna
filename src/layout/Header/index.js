@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { ExpandMore, FmdGood, Menu as MenuIcon, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
 import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme } from '@mui/material';
 import { Drawer, Menu } from 'antd';
@@ -10,9 +10,10 @@ import headerMenu from './headerMenu.json';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
-import './style.scss'
+import './style.scss';
 
 const Header = () => {
+    const [visible, setVisible] = useState(false);
     const { t, lang } = useT();
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
 
@@ -26,11 +27,17 @@ const Header = () => {
         return { key, children, label };
     }
 
-    const [visible, setVisible] = useState(false);
 
     const items = headerMenu.map((menu) => (
         getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
-            getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={() => setVisible(false)}>{sub.text}</NavLink>, sub.key)
+            getItem(<NavLink
+                to={`${menu.to}${sub.to}`}
+                className='header__link'
+                onClick={() => setVisible(false)}
+            >
+                {sub.text}
+            </NavLink>,
+                sub.key)
         )))
     ))
 
@@ -92,7 +99,6 @@ const Header = () => {
                                 onChange={handleChange}
                                 size='small'
                                 displayEmpty
-                                defaultValue='uz'
                                 inputProps={{ 'aria-label': 'Without label' }}
                                 sx={{
                                     padding: 0,
@@ -115,7 +121,7 @@ const Header = () => {
                             className='header__mode'
                             size='medium'
                             onClick={toggleMode}
-                            sx={{ 
+                            sx={{
                                 bgcolor: 'primary.light',
                                 '&:hover': {
                                     bgcolor: blue[800]
