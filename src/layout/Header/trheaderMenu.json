@@ -1,0 +1,226 @@
+[
+  {
+    "menuName": {
+      "uz":"Biz haqimizda",
+      "ru":"О нас",
+      "en":"About Us"
+    } ,
+    "key": "sub1",
+    "to": "/about-us",
+    "submenu": [
+      {
+        "to": "/about-org",
+        "text": {
+          "uz":"Tashkilot haqida",
+          "ru":"Об организации",
+          "en":"About the organization"
+        },
+        "key": "sub11"
+      },
+      {
+        "to": "/subsidiary",
+        "text": {
+          "uz":"Sho'xa korxonamiz",
+          "ru":"Наше доче рнее предприятие",
+          "en":"Our branch enterprise"
+        },
+        "key": "sub12"
+      },
+      {
+        "to": "/leadership",
+        "text": {
+          "uz":"Rahbariyat",
+          "ru":"Управление ",
+          "en":"Management"
+        },
+        "key": "sub13"
+      },
+      {
+        "to": "/laboratory",
+        "text": {
+          "uz":"Laboratoriya",
+          "ru":"Лаборатория",
+          "en":"Laboratory"
+        },
+        "key": "sub14"
+      },
+      {
+        "to": "/localization",
+        "text":  {
+          "uz":"Mahalliylashtirish",
+          "ru":"Локализация",
+          "en":"Localization"
+        },
+        "key": "sub15"
+      },
+      {
+        "to": "/certificates",
+        "text":{
+          "uz":"Sertifikatlar",
+          "ru":"Сертификаты",
+          "en":"Certificates"
+        },
+        "key": "sub16"
+      },
+      {
+        "to": "/vacancies",
+        "text": {
+          "uz":"Bo’sh ish o’rinlari",
+          "ru":"Свободные места",
+          "en":"Vacancies"
+        },
+        "key": "sub17"
+      },
+      {
+        "to": "/compliance",
+        "text": {
+          "uz":"Muvofiqlik",
+          "ru":"Согласие",
+          "en":"Compliance"
+        },
+        "key": "sub18"
+      },
+      {
+        "to": "/youth-union",
+        "text": {
+          "uz":"Yoshlar ittifoqi",
+          "ru":"Союз молодежи",
+          "en":"Youth Union"
+        },
+        "key": "sub19"
+      }
+    ]
+  },
+  {
+    "menuName":  {
+      "uz":"Tanlov va e'lonlar",
+      "ru":"Конкурсы и реклама",
+      "en":"Press service"
+    } ,
+    "key": "sub2",
+    "to": "/contest-announcement",
+    "submenu": [
+      {
+        "to": "/contest-rules",
+        "text":   {
+          "uz":"Tanlov o'tkazish nizomi",
+          "ru":"Правила конкурса",
+          "en":"Contest rules"
+        } ,
+        "key": "sub21"
+      },
+      {
+        "to": "/contests",
+        "text": {
+          "uz":"Tanlovlar",
+          "ru":"Опции",
+          "en":"Options"
+        } ,
+        "key": "sub22"
+      }
+    ]
+  },
+  {
+    "menuName":  {
+      "uz":"Marketing",
+      "ru":"Маркетинг",
+      "en":"Marketing"
+    } ,
+    "key": "sub3",
+    "to": "/marketing",
+    "submenu": [
+      {
+        "to": "",
+        "text": {
+          "uz":"Sifat",
+          "ru":"Характеристики",
+          "en":"Quality"
+        } ,
+        "key": "sub31"
+      },
+      {
+        "to": "/nomenclature",
+        "text":  {
+          "uz":"Nomenklatura",
+          "ru":"Номенклатура",
+          "en":"Nomenclature"
+        } ,
+        "key": "sub32"
+      },
+      {
+        "to": "/brands",
+        "text": {
+          "uz":"Avtomobil markalari",
+          "ru":"Марки автомобилей",
+          "en":"Car brands"
+        } ,
+        "key": "sub33"
+      },
+      {
+        "to": "/sale",
+        "text": {
+          "uz":"Sotish va jo’natish",
+          "ru":"Продажа и доставка",
+          "en":"Selling and shipping"
+        } ,
+        "key": "sub34"
+      },
+      {
+        "to": "/goods",
+        "text": {
+          "uz":"Xalq iste’mol mollari",
+          "ru":"Потребительские товары",
+          "en":"Consumer goods"
+        } ,
+        "key": "sub35"
+      }
+    ]
+  },
+  {
+    "menuName":  {
+      "uz":"Matbuot xizmati",
+      "ru":"Продажа и доставка",
+      "en":"Selling and shipping"
+    } ,
+    "key": "sub4",
+    "to": "/press-service",
+    "submenu": [
+      {
+        "to": "",
+        "text":{
+          "uz":"Yangiliklar",
+          "ru":"Пресс-служба",
+          "en":"Press service"
+        } ,
+        "key": "sub41"
+      },
+      {
+        "to": "/public-offer",
+        "text":{
+          "uz":"Biz haqimizda ommaviy oferta",
+          "ru":"Новости",
+          "en":"Public offer about us"
+        } ,
+        "key": "sub42"
+      },
+      {
+        "to": "/photogallery",
+        "text": {
+          "uz":"Fotogalereya",
+          "ru":"Фотогалерея",
+          "en":"Photo gallery"
+        } ,
+        "key": "sub43"
+      },
+      {
+        "to": "/videogallery",
+        "text":{
+          "uz":"Videogalereya",
+          "ru":"Фотогалерея",
+          "en":"Video gallery"
+        } ,
+          "key": "sub44"
+      }
+    ]
+  }
+]

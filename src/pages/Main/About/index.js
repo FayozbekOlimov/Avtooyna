@@ -3,6 +3,9 @@ import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
+import { Link } from 'react-router-dom';
+import InsideAbout from "../InsideAbout"
+
 import './style.css'
 
 const About = () => {
@@ -65,7 +68,7 @@ const About = () => {
                             <div className="about__content">
                                 <Title>Avtomobil oynalarini ishlab chiqarish</Title>
                                 <Text>Tashkilotimiz avtomobil oynalarini ishlab chiqarish va tayyor mahsulotlarni eksport qilish bilan shug’ullanadi. Barcha turdagi avtomashinalar uchun oynalar ishlab chiqariladi.</Text>
-                                <Button>Batafsil</Button>
+                                <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>
                             </div>
                         </Grid>
                     </Grid>
@@ -93,7 +96,7 @@ const About = () => {
                                 <Text>
                                     Ximoyalangan (kapsulali) bir qavatli (oddiy yoki qoraytirilgan) oyna, sovutish ventilyatorlari va motor svechalarini (mis o’zakli nikelli markaziy elektrodlar) ishlab chiqarish.
                                 </Text>
-                                <Button>Batafsil</Button>
+                                <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>
                             </div>
                         </Grid>
                     </Grid>

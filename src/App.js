@@ -15,6 +15,7 @@ import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
+import InsideAbout from './pages/Main/InsideAbout';
 
 export const ConsultContext = createContext(null);
 
@@ -56,6 +57,7 @@ const App = () => {
 				<Header />
 				{element}
 				<Footer />
+				{/* <InsideAbout/> */}
 				<GetConsultModal {...consultContextValue} />
 			</ConsultContext.Provider>
 		</ThemeProvider>

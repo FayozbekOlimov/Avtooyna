@@ -27,6 +27,7 @@ import News from '../pages/PressService/News';
 import PublicOffer from '../pages/PressService/PublicOffer';
 import PhotoGallery from '../pages/PressService/PhotoGallery';
 import VideoGallery from '../pages/PressService/VideoGallery';
+import InsideAbout from "../pages/Main/InsideAbout";
 
 const Main = lazy(() => import("../pages/Main"));
 const About = lazy(() => import("../pages/About"));
@@ -42,6 +43,10 @@ export const routes = [
     index: true,
     path: "",
     element: <Main />,
+  },
+  {
+    path: "insideAbout-announcement-detail",
+    element: <InsideAbout />
   },
   {
     path: "about-us",
@@ -135,6 +140,7 @@ export const routes = [
     element: <PressService />,
     children: [
       {
+        index: true,
         path: "",
         element: <News />
       },

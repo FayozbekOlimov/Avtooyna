@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack, Button, Grid } from "@mui/material";
-import {useT} from '../../../custom/hooks/useT'; 
+import { useT } from "../../../custom/hooks/useT";
 
 import "./_style.scss";
 
