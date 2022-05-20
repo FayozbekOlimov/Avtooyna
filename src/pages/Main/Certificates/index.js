@@ -3,7 +3,6 @@ import { Button, Grid, Stack, styled, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import { RiArrowRightSLine } from 'react-icons/ri'
-import { theme } from '../../../static/theme'
 // swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss';
@@ -58,7 +57,7 @@ const Certificates = () => {
                     <SwiperSlide>
                         <Grid container width="100%">
                             <Grid item xs={12} md={6}
-                                bgcolor={theme.palette.primary.navBg}
+                                bgcolor='primary.navBg'
                                 p={2}
                                 display="flex"
                                 justifyContent="center"

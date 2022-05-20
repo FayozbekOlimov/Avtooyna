@@ -136,8 +136,8 @@ const About = () => {
                         </Grid>
                         <Grid item md={6}>
                             <div className="about__content">
-                                {/* <Title>
-                                    {equipmentTitle}
+                                 <Title>
+                                    {/* {equipmentTitle} */}
                                 </Title>
                                 <Text>
                                     Ximoyalangan (kapsulali) bir qavatli (oddiy yoki qoraytirilgan) oyna, sovutish ventilyatorlari va motor svechalarini (mis o’zakli nikelli markaziy elektrodlar) ishlab chiqarish.

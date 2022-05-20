@@ -48,8 +48,7 @@ const App = () => {
 		onOpenConsultModal,
 		onCloseConsultModal
 	}
-Loading
-	return (>>>>>>> main
+	return (
 		<div className="avtooyna__wrapper">
 			<ThemeProvider theme={theme}>
 				<ConsultContext.Provider value={consultContextValue}>
