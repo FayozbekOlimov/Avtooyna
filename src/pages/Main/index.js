@@ -7,6 +7,8 @@ import Gallery from './Gallery'
 import News from './News'
 import Certificates from './Certificates'
 import Partners from './Partners';
+import Contests from './Contests';
+import MassMedia from './MassMedia';
 
 const Main = () => {
     return (
@@ -18,6 +20,8 @@ const Main = () => {
             <Gallery />
             <Certificates />
             <Partners />
+            <Contests />
+            <MassMedia />
         </>
     )
 }

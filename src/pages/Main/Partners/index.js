@@ -3,98 +3,51 @@ import { Stack } from '@mui/material'
 import Title from '../../../components/Title'
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import './style.scss'
 
 const Partners = () => {
     return (
-        <Stack className='partners' py={{ xs: 2, md: 4 }}>
+        <Stack className='partners' py={{ xs: 2, md: 4 }} bgcolor='background.paper'>
             <div className='container'>
                 <Stack direction='column'>
                     <Title>Bizning hamkorlar</Title>
-                    {/* <Swiper
-                        slidesPerView={1}
-                        spaceBetween={10}
-                        breakpoints={{
-                            640: {
-                                slidesPerView: 2,
-                                spaceBetween: 20,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                                spaceBetween: 40,
-                            },
-                            1024: {
-                                slidesPerView: 4,
-                                spaceBetween: 50,
-                            },
-                        }}
-                        modules={[Navigation]}
-                        className="mySwiper"
-                        navigation={true}
-                    >
-                         <SwiperSlide>
-                            <img src='/assets/img/partners1.png' alt='partners1' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src='/assets/img/partners2.png' alt='partners2' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src='/assets/img/partners3.png' alt='partners1' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src='/assets/img/partners4.png' alt='partners1' />
-                        </SwiperSlide>
-                    </Swiper> */}
-                    <Swiper
-                        // className='news_swiper'
-                        spaceBetween={10}
-                        slidesPerView={1}
-                        // navigation = {
-                        //     clickable: true,
-                        // }
-                        modules={[Navigation]}
-                        navigation={true}
-                        // navigation={{
-                        //     prevEl: newCaruselPrevRef.current,
-                        //     nextEl: newCaruselNextRef.current,
-                        // }}
-                        // onSwiper={(swiper) => {
-                        //     setTimeout(() => {
-                        //         // swiper.params.navigation.prevEl = newCaruselPrevRef.current
-                        //         // swiper.params.navigation.nextEl = newCaruselNextRef.current
-                        //         swiper.navigation.destroy()
-                        //         swiper.navigation.init()
-                        //         swiper.navigation.update()
-                        //     })
-                        // }}
-                        loop={true}
-                        breakpoints={{
-                            576: {
-                                slidesPerView: 2,
-                                spaceBetween: 10,
-                            },
-                            768: {
-                                slidesPerView: 3,
-                                spaceBetween: 20,
-                            },
-                            992: {
-                                slidesPerView: 4,
-                                spaceBetween: 30,
-                            }
-                        }}
-                    >
-                        <SwiperSlide>
-                            <img src='/assets/img/partners1.png' alt='partners1' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src='/assets/img/partners2.png' alt='partners2' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src='/assets/img/partners3.png' alt='partners1' />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <img src='/assets/img/partners4.png' alt='partners1' />
-                        </SwiperSlide>
-                    </Swiper>
+                    <div className='swiper__wrapper'>
+                        <Swiper
+                            className='partners__swiper'
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            modules={[Navigation]}
+                            navigation={true}
+                            loop={true}
+                            breakpoints={{
+                                576: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 10,
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 20,
+                                },
+                                992: {
+                                    slidesPerView: 4,
+                                    spaceBetween: 30,
+                                }
+                            }}
+                        >
+                            <SwiperSlide>
+                                <img className='partners__swiper-img' src='/assets/img/partners1.jpg' alt='partners1' />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img className='partners__swiper-img' src='/assets/img/partners2.jpg' alt='partners2' />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img className='partners__swiper-img' src='/assets/img/partners3.jpg' alt='partners3' />
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <img className='partners__swiper-img' src='/assets/img/partners4.jpg' alt='partners4' />
+                            </SwiperSlide>
+                        </Swiper>
+                    </div>
                 </Stack>
             </div>
         </Stack>
