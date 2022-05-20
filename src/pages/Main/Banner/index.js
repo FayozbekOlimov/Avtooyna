@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import Button from '../../../components/Button'
 import Title from '../../../components/Title'
-import Text from '../../../components/Text';
-import { homeBannerUrl } from "../../../api/apiUrls";
-import baseAPI from "../../../api/baseAPI";
-import './style.css'
+import Text from '../../../components/Text'
+import { homeBannerUrl } from "../../../api/apiUrls"
+import baseAPI from "../../../api/baseAPI"
+import './style.scss'
 
 const Banner = () => {
     const [banner, setBanner] = useState();
@@ -24,8 +24,6 @@ const Banner = () => {
         getBanner();
     }, [getBanner])
 
-
-
     // const { id, img } = banner;
 
     return (
@@ -43,7 +41,6 @@ const Banner = () => {
                         Yirik sanoat mahsulotlari bozori balki xalq istemollari bozorida ham muhim ishtirokchi
                         {/* <div dangerouslySetInnerHTML={{ __html: text }}></div> */}
                     </Text>
-
                     <Button>Batafsil</Button>
                 </div>
             </div>

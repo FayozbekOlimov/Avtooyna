@@ -7,7 +7,7 @@ import "./style.scss"
 const VideoGallery = () => {
 	return (
 		<>
-			<Grid item xs="9"  md="9">
+			<Grid item xs={12} md={9}>
 				<Title>Videogalereya</Title>
 				<img src="/assets/img/videoGallery.png" width="100%"/>
 			</Grid>

@@ -1,5 +1,4 @@
 import { styled, Typography } from "@mui/material";
-import { theme } from '../../static/theme'
 
 const Title = styled(Typography)(({ theme }) => ({
     fontWeight: 700,

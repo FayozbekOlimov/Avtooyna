@@ -4,9 +4,8 @@ import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
 import { Link } from 'react-router-dom';
-import InsideAbout from "../InsideAbout"
 
-import './style.css'
+import './style.scss'
 
 const About = () => {
     return (

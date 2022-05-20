@@ -5,7 +5,6 @@ import { IconButton, Stack, styled, Typography } from '@mui/material'
 import { blue } from '@mui/material/colors'
 import { Navigation } from 'swiper'
 import "./style.scss"
-// import { theme } from '../../../../static/theme'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
 	color: theme.palette.getContrastText(blue[500]),
@@ -58,8 +57,8 @@ const CertificateCarusel = () => {
 				</Stack>
 			</Stack>
 			<Swiper
-				spaceBetween={30}
-				slidesPerView={3}
+				spaceBetween={15}
+				slidesPerView={1}
 				modules={[Navigation]}
 				navigation={{
 					prevEl: navigationPrevRef.current,

@@ -1,46 +1,65 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-// import Title from '../../../components/Title'
+import { useNavigate } from 'react-router-dom';
 import Text from "../../../components/Text"
-import { KeyboardArrowLeft } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { ArrowBack, KeyboardArrowLeft } from '@mui/icons-material';
+import { Button, Stack, Typography } from '@mui/material';
 import { InsideNewsData } from './InsideNewsData';
 import { Grid } from '@mui/material';
 import "./style.scss"
 
 const InsideNews = () => {
+	const navigate = useNavigate();
+
+	const titleStyle = {
+		fontWeight: 700,
+		fontSize: '20px',
+		color: 'info.main',
+		marginBottom: '16px'
+	}
+
 	return (
-		<div className='container'>
-			<Link to="/press-service">
-				<Button
-					variant="text"
-					sx={{ textTransform: "capitalize" }}
-					startIcon={<KeyboardArrowLeft />}
-					className="inside_news_back_btn"
-				>
-					Orqaga qaytish
-				</Button>
-			</Link>
-			<Grid container spacing={4}>
-				<Grid item xs={12} md={6} my={3}>
-					{InsideNewsData.map(({ date, title, text }, ind) => (
-						<Grid item mb={"30px"} >
-							<p className="card__date">
-								<img src="/assets/icon/calendar.png" alt="calendar-icon" />
-								{date}
-							</p>
-							<h5 className="card__title">{title}</h5>
-							<Text>{text}</Text>
-						</Grid>
-					))}
-				</Grid>
-				<Grid item xs={12} md={6} my={3}>
-					<div news_images>
-						<img src="/assets/img/newsImg.png" alt="" width="100%"/>
-					</div>
-				</Grid>
-			</Grid>
-		</div >
+		<Stack direction='row' bgcolor='background.paper'>
+			<div className='container'>
+				<Stack direction='column' width="100%">
+					<Button
+						variant="outlined"
+						sx={{ 
+							textTransform: "none", 
+							alignSelf: 'flex-start', 
+							my: 1.5, 
+							color: 'secondary.main',
+							borderColor: 'border.main'
+						}}
+						startIcon={<ArrowBack />}
+						className="inside_news_back_btn"
+						onClick={() => navigate(-1)}
+					>
+						Orqaga qaytish
+					</Button>
+					<Grid container>
+						{InsideNewsData.map(({ date, title, text }, ind) => (
+							<Grid item xs={12} my={1} key={ind}>
+								<Grid container spacing={2}>
+									<Grid item xs={12} md={6}>
+										<p className="card__date">
+											<img src="/assets/icon/calendar.png" alt="calendar-icon" />
+											{date}
+										</p>
+										<Typography sx={titleStyle} className="card__title">{title}</Typography>
+										<Text>{text}</Text>
+									</Grid>
+									<Grid item xs={12} md={6}>
+										<div className='news_images'>
+											<img src="/assets/img/newsImg.png" alt="news-img" />
+										</div>
+									</Grid>
+								</Grid>
+							</Grid>
+						))}
+					</Grid>
+				</Stack>
+			</div >
+		</Stack>
 	);
 }
 

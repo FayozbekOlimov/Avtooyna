@@ -5,7 +5,7 @@
 		"to": "/about-us",
 		"submenu": [
 			{
-				"to": "",
+				"to": "/about-org",
 				"text": "Tashkilot haqida",
 				"key": "sub11"
 			},
@@ -74,7 +74,7 @@
 		"to": "/marketing",
 		"submenu": [
 			{
-				"to": "",
+				"to": "/quality",
 				"text": "Sifat",
 				"key": "sub31"
 			},
@@ -106,7 +106,7 @@
 		"to": "/press-service",
 		"submenu": [
 			{
-				"to": "",
+				"to": "/news",
 				"text": "Yangiliklar",
 				"key": "sub41"
 			},
