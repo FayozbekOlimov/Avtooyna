@@ -5,13 +5,13 @@ import { IconButton, Stack, styled, Typography } from '@mui/material'
 import { blue } from '@mui/material/colors'
 import { Navigation } from 'swiper'
 import "./style.scss"
-import { theme } from '../../../../static/theme'
+// import { theme } from '../../../../static/theme'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
 	color: theme.palette.getContrastText(blue[500]),
-	backgroundColor: theme.palette.primary.main,
+	backgroundColor: '#00468D',
 	'&:hover': {
-		backgroundColor: '#00468D',
+		backgroundColor: blue[800],
 	},
 	width: '32px',
 	height: '32px',
@@ -20,7 +20,7 @@ const ArrowButton = styled(IconButton)(({ theme }) => ({
 const titleStyle = {
 	fontWeight: 700,
 	fontSize: '20px',
-	color: theme.palette.titleColor.main,
+	color: 'info.main',
 }
 
 const certificateCaruselImgs = [
@@ -49,10 +49,10 @@ const CertificateCarusel = () => {
 	const navigationNextRef = React.useRef(null)
 
 	return (
-		<div className='certif_carusel'>
+		<Stack className='certif_carusel' direction='column'>
 			<Stack direction='row' justifyContent='space-between' alignItems='center' width='100%'>
 				<Typography sx={titleStyle}>Muvofiq sertifikatlar</Typography>
-				<Stack direction='row' spacing={1} className="arrow">
+				<Stack direction='row' spacing={2}>
 					<ArrowButton ref={navigationPrevRef}><RiArrowLeftSLine /></ArrowButton>
 					<ArrowButton ref={navigationNextRef}><RiArrowRightSLine /></ArrowButton>
 				</Stack>
@@ -98,7 +98,7 @@ const CertificateCarusel = () => {
 					))
 				}
 			</Swiper>
-		</div>
+		</Stack>
 	)
 }
 

@@ -1,9 +1,9 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useRoutes, useLocation } from 'react-router-dom';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import { ThemeProvider } from '@mui/material';
-import { theme } from './static/theme';
+import { Box, Button, ThemeProvider } from '@mui/material';
+// import { theme } from './static/theme';
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import { routes } from './Routes';
 import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
+import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
 
 export const ConsultContext = createContext(null);
@@ -35,6 +36,8 @@ const App = () => {
 		}
 
 	}, []);
+
+	const theme = useTheme();
 
 	const onOpenConsultModal = () => setIsConsultModal(true);
 	const onCloseConsultModal = () => setIsConsultModal(false);

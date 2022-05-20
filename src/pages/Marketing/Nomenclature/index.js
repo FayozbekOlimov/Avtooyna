@@ -22,13 +22,15 @@ const NomenImg = [
 const Nomenclature = () => {
 	return (
 		<>
-			<Grid item xs={9} md={9}>
-				<div className="namen_img">
-					{NomenImg.map(({id,img},ind)=>(
-						<img src={img} alt={`img${ind}`} />
-						))}
-				</div>
-			</Grid>
+			{
+				NomenImg.map(({ id, img, text }) => (
+					<Grid item md={3} xs={12}>
+						<div key={id} className='nomen_img'>
+							<img src={img} alt={`img${id}`} width="100%"/>
+						</div>
+					</Grid>
+				))
+			}
 			<Grid item xs={12} md={9}>
 				<Title>Nomenklatura</Title>
 				<div className="nomen_header">

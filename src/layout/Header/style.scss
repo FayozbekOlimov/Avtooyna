@@ -10,14 +10,14 @@
         &-icon {
             width: 40px;
             height: 40px;
-            background-color: var(--header-icon-bgcolor);
+            // background-color: var(--header-icon-bgcolor);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .MuiSvgIcon-root {
-                color: var(--primary-color);
+                // color: var(--primary-color);
                 font-size: 18px;
             }
         }
@@ -28,10 +28,10 @@
             flex-direction: column;
             margin-left: .5rem;
 
-            a,
-            p {
-                color: var(--title-color);
-            }
+            // a,
+            // p {
+            //     color: var(--title-color);
+            // }
 
             a:first-child,
             p {
@@ -46,13 +46,13 @@
         }
     }
 
-    &__menu {
-        &-icon {
-            color: var(--primary-color);
-            margin-right: 0.5rem;
-            cursor: pointer;
-        }
-    }
+    // &__menu {
+    //     &-icon {
+    //         // color: var(--primary-color);
+    //         // margin-right: 0.5rem;
+    //         // cursor: pointer;
+    //     }
+    // }
 
     &-logo {
         img {
@@ -63,16 +63,11 @@
     }
 
     &__mode {
-        background-color: var(--primary-light-color) !important;
+        // background-color: var(--primary-light-color) !important;
         padding: 8px !important;
     }
 }
 
-
-.MuiInputBase-root .MuiSvgIcon-root {
-    left: 7px !important;
-    color: var(--title-color);
-}
 
 .MuiSelect-select {
     padding-right: 16px !important;

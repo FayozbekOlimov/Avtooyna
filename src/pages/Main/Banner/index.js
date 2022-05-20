@@ -27,22 +27,21 @@ const Banner = () => {
 
 
 
-    const { imgs, title, text } = banner.homeBanner;
+    // const { imgs = "", title = "", text = "" } = banner?.homeBanner;
 
     return (
         <div className='banner'>
             <div className="banner__bg">
-                <img src={imgs} alt="banner" width="100%" />
+                {/* <img src={imgs} alt="banner" /> */}
             </div>
             <div className="container">
                 <div className="banner__content">
                     <Title>
-                        <div dangerouslySetInnerHTML={{ __html: title }}></div>
+                        {/* <div dangerouslySetInnerHTML={{ __html: title }}></div> */}
                     </Title>
                     <Text>
-                        <div dangerouslySetInnerHTML={{ __html: text }}></div>
+                        {/* <div dangerouslySetInnerHTML={{ __html: text }}></div> */}
                     </Text>
-
                     <Button>Batafsil</Button>
                 </div>
             </div>

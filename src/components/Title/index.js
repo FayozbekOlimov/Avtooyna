@@ -3,7 +3,7 @@ import { theme } from '../../static/theme'
 
 const Title = styled(Typography)(({ theme }) => ({
     fontWeight: 700,
-    color: theme.palette.titleColor.main,
+    color: theme.palette.info.main,
     fontSize: '26px',
     [theme.breakpoints.up('sm')]: {
         fontSize: '30px',

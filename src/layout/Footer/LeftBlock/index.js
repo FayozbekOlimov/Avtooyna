@@ -1,10 +1,16 @@
 import React from "react";
 import { Stack, Button, Grid } from "@mui/material";
+import {useT} from '../../../custom/hooks/useT'; 
+
 import "./_style.scss";
+
 export default function FooterLeftBlock() {
+
+  const {t, lang} = useT();
+
   return (
     <div className="footer_contact_block">
-      <h1 className="footer_contact_title">Biz bilan aloqa</h1>
+      <h1 className="footer_contact_title">{t(`contact.${lang}`)}</h1>
       <div className="footer_main_contacts">
         <div className="footer_contact_item">
           <img src="/assets/icon/call.png" alt="" />

@@ -13,9 +13,9 @@ import "./style.scss";
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText(blue[500]),
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#00468D',
     '&:hover': {
-        backgroundColor: '#00468D',
+        backgroundColor: blue[800],
     },
     width: '32px',
     height: '32px',
@@ -27,7 +27,7 @@ const News = () => {
     const newCaruselNextRef = useRef(null);
 
     return (
-        <Stack py={{ xs: 2, md: 4 }} className="news">
+        <Stack py={{ xs: 2, md: 4 }} className="news" bgcolor='background.paper'>
             <div className="container">
                 <Title>Yangiliklar</Title>
                 <Stack
@@ -37,14 +37,14 @@ const News = () => {
                     flexWrap="wrap" className="news_carusel_top"
                 >
                     <Text>Korporativ mijozlar va jismoniy shaxslar uchun turli xildagi tovarlarni etkazib berish</Text>
-                    <div className="new_carusel_arrows">
+                    <Stack className="new_carusel_arrows" direction='row' spacing={2}>
                         <ArrowButton ref={newCaruselPrevRef}>
                             <RiArrowLeftSLine />
                         </ArrowButton>
                         <ArrowButton ref={newCaruselNextRef}>
                             <RiArrowRightSLine />
                         </ArrowButton>
-                    </div>
+                    </Stack>
                 </Stack>
 
                 <div className='news__swipper__wrapper'>
@@ -54,18 +54,13 @@ const News = () => {
                         slidesPerView={1}
                         modules={[Navigation]}
                         navigation={{
-                            // Both prevEl & nextEl are null at render so this does not work
                             prevEl: newCaruselPrevRef.current,
                             nextEl: newCaruselNextRef.current,
                         }}
                         onSwiper={(swiper) => {
-                            // Delay execution for the refs to be defined
                             setTimeout(() => {
-                                // Override prevEl & nextEl now that refs are defined
                                 swiper.params.navigation.prevEl = newCaruselPrevRef.current
                                 swiper.params.navigation.nextEl = newCaruselNextRef.current
-
-                                // Re-init navigation
                                 swiper.navigation.destroy()
                                 swiper.navigation.init()
                                 swiper.navigation.update()

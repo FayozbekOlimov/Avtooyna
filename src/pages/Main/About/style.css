@@ -1,5 +1,5 @@
 .about {
-    background-image: url('../../../../public/assets/img/about-bg.png');
+    /* background-image: url('../../../../public/assets/img/about-bg.png'); */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -21,19 +21,18 @@
 .about__numbers-item {
     margin: .5rem;
     width: 150px;
-    background-color: #E5EEF8;
+    /* background-color: #E5EEF8; */
     padding: 16px;
     border-radius: 8px;
     text-align: center;
 }
 
 .about__numbers-item h2 {
-    color: #052D56;
     font-weight: 700;
+    font-size: 22px;
 }
 
 .about__numbers-item p {
-    color: #052D56;
     font-weight: 400;
 }
 

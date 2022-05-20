@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button, Grid, IconButton, Stack, styled, Typography } from '@mui/material'
+import React, { useCallback, useEffect, useState } from 'react'
+import { Button, Grid, Stack, styled, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import { RiArrowRightSLine } from 'react-icons/ri'
@@ -10,20 +10,42 @@ import './style.scss';
 
 // import required modules
 import { Navigation } from "swiper";
+import { homeCertificateUrl } from '../../../api/apiUrls'
+import baseAPI from '../../../api/baseAPI'
 
 const titleStyle = {
     fontWeight: 500,
     fontSize: '20px',
-    color: theme.palette.titleColor.main,
-    marginBottom: theme.spacing(1.5),
+    color: 'info.main',
+    marginBottom: '12px',
 }
 
 
 const Certificates = () => {
 
+    const [certificate, setCertificate] = useState();
+
+    const getAdvantages = useCallback(() => {
+        baseAPI.fetchAll(homeCertificateUrl)
+            .then((res) => {
+                setCertificate(res.data);
+            })
+            .catch((e) => console.log("e", e));
+    }, [])
+
+    useEffect(() => {
+        getAdvantages();
+    }, [getAdvantages])
+
 
     return (
-        <Stack py={{ xs: 2, md: 4 }} className='home_sertificates' direction='row' width='100%'>
+        <Stack
+            py={{ xs: 2, md: 4 }}
+            className='home_certificates'
+            direction='row'
+            width='100%'
+            bgcolor='background.paper'
+        >
             <div className="container">
                 <Swiper
                     spaceBetween={30}
@@ -71,15 +93,15 @@ const Certificates = () => {
                                     <Text>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </Text>
-                                    <Stack direction='row'>
-                                    </Stack>
+
                                 </Stack>
                             </Grid>
                         </Grid>
-                    </SwiperSlide>      <SwiperSlide>
+                    </SwiperSlide>
+                    <SwiperSlide>
                         <Grid container>
                             <Grid item xs={12} md={6}
-                                bgcolor={theme.palette.primary.navBg}
+                                bgcolor='#F1F2F8'
                                 p={2}
                                 display="flex"
                                 justifyContent="center"
@@ -107,21 +129,31 @@ const Certificates = () => {
                                         mb={2}
                                     >
                                         <Title>Sertifikatlar</Title>
-                                        <Button variant='outlined' sx={{ textTransform: 'none', marginBottom: 2 }} endIcon={<RiArrowRightSLine />}>Barchasini ko'rish</Button>
+                                        <Button
+                                            variant='outlined'
+                                            sx={{
+                                                textTransform: 'none',
+                                                marginBottom: 2,
+                                                color: 'info.main',
+                                                borderColor: 'border.main'
+                                            }}
+                                            endIcon={<RiArrowRightSLine />}
+                                        >
+                                            Barchasini ko'rish
+                                        </Button>
                                     </Stack>
                                     <Typography sx={titleStyle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </Typography>
                                     <Text>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                                     </Text>
-                                    <Stack direction='row'>
-                                    </Stack>
+
                                 </Stack>
-                            </Grid>
-                        </Grid>
-                    </SwiperSlide>
-                </Swiper>
-            </div>
-        </Stack>
+                            </Grid >
+                        </Grid >
+                    </SwiperSlide >
+                </Swiper >
+            </div >
+        </Stack >
     )
 }
 
