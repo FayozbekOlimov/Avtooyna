@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import { advantagesData } from './advantagesData'
 import './style.scss'
+import baseAPI from '../../../api/baseAPI'
+import { homeAdvantageslUrl } from '../../../api/apiUrls'
 
 const Advantages = () => {
+	const [advantages, setAdvantages] = useState();
+
+	const getAdvantages = useCallback(() => {
+		baseAPI.fetchAll(homeAdvantageslUrl)
+			.then((res) => {
+				setAdvantages(res.data);
+			})
+			.catch((e) => console.log("e", e));
+	}, [])
+
+	useEffect(() => {
+		getAdvantages();
+	}, [getAdvantages])
+
+
+
 	const iconBoxStyle = {
 		width: '55px',
 		height: '55px',
@@ -13,6 +31,7 @@ const Advantages = () => {
 		placeItems: 'center',
 		backgroundColor: 'primary.light'
 	}
+
 	return (
 		<Stack py={{ xs: 2, md: 4 }} direction={{ xs: 'column', md: 'row' }} className='advantages' alignItems='center' bgcolor='background.paper'>
 			<div className="container">
