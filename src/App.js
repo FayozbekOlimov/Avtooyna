@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useRoutes, useLocation } from 'react-router-dom';
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import { Box, Button, ThemeProvider } from '@mui/material';
-// import { theme } from './static/theme';
+import { ThemeProvider } from '@mui/material';
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";

@@ -2,8 +2,8 @@ import React from "react";
 import { Button, Stack, Typography } from "@mui/material";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Text from "../../../components/Text";
-import "./style.css";
 import { Link } from "react-router-dom";
+import "./style.scss";
 
 const Card = ({ id, src, date, title, text, toUrl, content = true }) => {
 	return (

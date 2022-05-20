@@ -49,7 +49,7 @@ export const routes = [
     children: [
       {
         index: true,
-        path: "",
+        path: "about-org",
         element: <AboutOrg />,
       },
       {
@@ -91,6 +91,7 @@ export const routes = [
     element: <Contest />,
     children: [
       {
+        index: true,
         path: "contest-rules",
         element: <ContestRules />,
       },
@@ -105,7 +106,8 @@ export const routes = [
     element: <Marketing />,
     children: [
       {
-        path: "",
+        index: true,
+        path: "quality",
         element: <Quality />
       },
       {
@@ -135,7 +137,8 @@ export const routes = [
     element: <PressService />,
     children: [
       {
-        path: "",
+        index: true,
+        path: "news",
         element: <News />
       },
       {

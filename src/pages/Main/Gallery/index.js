@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack, Button, Grid } from '@mui/material'
 import Title from '../../../components/Title'
 import { RiArrowRightSLine } from 'react-icons/ri'
-import './style.css';
+import './style.scss'
 
 const Gallery = () => {
     return (
@@ -10,9 +10,9 @@ const Gallery = () => {
             className='gallery'
             py={{ xs: 2, md: 4 }}
             bgcolor='background.default'
-        // sx={{
-        //     backgroundImage: 'url("/assets/img/about-bg.png")'
-        // }}
+            sx={{
+                backgroundImage: 'url("/assets/img/about-bg.png")'
+            }}
         >
             <div className="container">
                 <Stack direction='row' spacing={0.5} justifyContent='space-between' alignItems='center'>

@@ -4,13 +4,13 @@ import Title from '../../../components/Title'
 import Text from '../../../components/Text';
 import { homeBannerUrl } from "../../../api/apiUrls";
 import baseAPI from "../../../api/baseAPI";
-import './style.css';
+import './style.scss';
 
 
 const Banner = () => {
     const [banner, setBanner] = useState();
 
-    const getBanner = useCallback(async () => {
+    const getBanner = useCallback(() => {
         baseAPI.fetchAll(homeBannerUrl)
             .then(res => {
                 if (res.data.status === 200) {
@@ -27,7 +27,7 @@ const Banner = () => {
 
 
 
-    // const { imgs = "", title = "", text = "" } = banner?.homeBanner;
+    // const { imgs = "", title = "", text = "" } = banner.homeBanner;
 
     return (
         <div className='banner'>

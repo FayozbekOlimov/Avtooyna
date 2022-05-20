@@ -48,7 +48,7 @@ const Certificates = () => {
         >
             <div className="container">
                 <Swiper
-                    spaceBetween={30}
+                    spaceBetween={10}
                     slidesPerView={1}
                     modules={[Navigation]}
                     navigation={true}

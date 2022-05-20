@@ -1,65 +1,70 @@
-import React from "react";
-import { Stack, Button, Grid } from "@mui/material";
-import {useT} from '../../../custom/hooks/useT'; 
+import React, { useContext } from "react"
+import { Stack, Button, Link as TelLink, Typography } from "@mui/material"
+import { AccessTimeFilled, Email, FmdGood, PhoneEnabled } from "@mui/icons-material"
+import Title from '../../../components/Title'
+import { useT } from '../../../custom/hooks/useT'
+import "./style.scss";
+import { ConsultContext } from "../../../App"
 
-import "./_style.scss";
+const FooterLeftBlock = () => {
+	const { t, lang } = useT();
+	const { onOpenConsultModal } = useContext(ConsultContext);
 
-export default function FooterLeftBlock() {
-
-  const {t, lang} = useT();
-
-  return (
-    <div className="footer_contact_block">
-      <h1 className="footer_contact_title">{t(`contact.${lang}`)}</h1>
-      <div className="footer_main_contacts">
-        <div className="footer_contact_item">
-          <img src="/assets/icon/call.png" alt="" />
-          <div className="footer_left_block_flex">
-            <a href="#">
-              <span>+998 73 249-75-75</span>
-            </a>
-            <a href="#">
-              <span>+998 73 243-08-35</span>
-            </a>
-          </div>
-        </div>
-        <div className="footer_contact_item">
-          <img src="/assets/icon/location.png" alt="" />
-          <div className="footer_left_block_flex">
-            <a href="#">
-              <span>Farg’ona sh, Istiqlol 1A uy</span>
-              <span className="footer_contact_subtitle">Bizning manzil</span>
-            </a>
-          </div>
-        </div>
-        <div className="footer_contact_item">
-          <img src="/assets/icon/time.png" alt="" />
-          <div className="footer_left_block_flex">
-            <a href="#">
-              <span>9:00 - 18:00</span>
-              <span className="footer_contact_subtitle">Dushanba - Juma</span>
-            </a>
-          </div>
-        </div>
-        <div className="footer_contact_item">
-          <img src="/assets/icon/message.png" alt="" />
-          <div className="footer_left_block_flex">
-            <a href="#">
-              <span>info@avtooyna.uz</span>
-              <span className="footer_contact_subtitle">
-                Elektron manzilimiz
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <Button
-        variant="outlined"
-        sx={{ textTransform: "none" }}
-        className="footer_consulting_btn"
-      >
-        Konsultatsiya olish
-      </Button>
-    </div>
-  );
+	return (
+		<Stack className="footer_contact_block" direction='column'>
+			<Title className="footer_contact_title">{t(`contact.${lang}`)}</Title>
+			<Stack className="footer_main_contacts" spacing={2} alignItems='flex-start'>
+				<div className='header__tel'>
+					<Stack className='header__tel-icon' sx={{ bgcolor: 'primary.light' }}>
+						<PhoneEnabled sx={{ color: '#fff' }} />
+					</Stack>
+					<Stack className='header__tel-content'>
+						<TelLink href='tel:+998732497575' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 249-75-75</TelLink>
+						<TelLink href='tel:+998732430835' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 243-08-35</TelLink>
+					</Stack>
+				</div>
+				<div className='header__tel'>
+					<Stack className='header__tel-icon' sx={{ bgcolor: 'primary.light' }}>
+						<FmdGood sx={{ color: '#fff' }} />
+					</Stack>
+					<div className='header__tel-content'>
+						<Typography component='p' sx={{ color: 'info.light' }}>Farg’ona sh, Istiqlol 1A uy</Typography>
+						<small>{t(`ourAddress.${lang}`)}</small>
+					</div>
+				</div>
+				<div className='header__tel'>
+					<Stack className='header__tel-icon' sx={{ bgcolor: 'primary.light' }}>
+						<AccessTimeFilled sx={{ color: '#fff' }} />
+					</Stack>
+					<div className='header__tel-content'>
+						<Typography component='p' sx={{ color: 'info.light' }}>9:00 - 18:00</Typography>
+						<small>Dushanba - Juma</small>
+					</div>
+				</div>
+				<div className='header__tel'>
+					<Stack className='header__tel-icon' sx={{ bgcolor: 'primary.light' }}>
+						<Email sx={{ color: '#fff' }} />
+					</Stack>
+					<div className='header__tel-content'>
+						<TelLink href='mailto:info@avtooyna.uz' sx={{ color: 'info.light', textDecoration: 'none' }}>info@avtooyna.uz</TelLink>
+						<small>Elektron manzilimiz</small>
+					</div>
+				</div>
+				<Button
+					variant="outlined"
+					sx={{
+						textTransform: 'none',
+						padding: '8px',
+						color: 'info.main',
+						borderColor: 'border.main'
+					}}
+					onClick={onOpenConsultModal}
+				>
+					Konsultatsiya olish
+				</Button>
+			</Stack>
+		</Stack>
+	);
 }
+
+export default FooterLeftBlock
