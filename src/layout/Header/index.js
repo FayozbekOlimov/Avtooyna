@@ -30,7 +30,14 @@ const Header = () => {
 
     const items = headerMenu.map((menu) => (
         getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
-            getItem(<NavLink to={`${menu.to}${sub.to}`} className='header__link' onClick={() => setVisible(false)}>{sub.text}</NavLink>, sub.key)
+            getItem(<NavLink
+                to={`${menu.to}${sub.to}`}
+                className='header__link'
+                onClick={() => setVisible(false)}
+            >
+                {sub.text}
+            </NavLink>,
+                sub.key)
         )))
     ))
 

@@ -3,6 +3,7 @@ import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
+import { Link } from 'react-router-dom';
 import './style.scss';
 import { API_BASE_URL } from "../../../constants"
 import baseAPI from '../../../api/baseAPI'
@@ -112,10 +113,9 @@ const About = () => {
                         </Grid>
                         <Grid item md={6}>
                             <div className="about__content">
-                                {/* <Title>{glassTitle}</Title>
-                                <Text>{glassText}</Text>
-                                <Button>Batafsil</Button> */}
-                            </div>
+                                <Title>Avtomobil oynalarini ishlab chiqarish</Title>
+                                <Text>Tashkilotimiz avtomobil oynalarini ishlab chiqarish va tayyor mahsulotlarni eksport qilish bilan shug’ullanadi. Barcha turdagi avtomashinalar uchun oynalar ishlab chiqariladi.</Text>
+                                <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>     </div>
                         </Grid>
                     </Grid>
                 </Stack>
@@ -140,9 +140,10 @@ const About = () => {
                                     {equipmentTitle}
                                 </Title>
                                 <Text>
-                                    {equipmentText}
-                                </Text> */}
-                                <Button>Batafsil</Button>
+                                    Ximoyalangan (kapsulali) bir qavatli (oddiy yoki qoraytirilgan) oyna, sovutish ventilyatorlari va motor svechalarini (mis o’zakli nikelli markaziy elektrodlar) ishlab chiqarish.
+                                </Text>
+                                <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>
+
                             </div>
                         </Grid>
                     </Grid>

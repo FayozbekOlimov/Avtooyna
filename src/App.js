@@ -13,6 +13,7 @@ import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
+import InsideAbout from './pages/Main/InsideAbout';
 
 export const ConsultContext = createContext(null);
 
@@ -47,8 +48,8 @@ const App = () => {
 		onOpenConsultModal,
 		onCloseConsultModal
 	}
-
-	return (
+Loading
+	return (>>>>>>> main
 		<div className="avtooyna__wrapper">
 			<ThemeProvider theme={theme}>
 				<ConsultContext.Provider value={consultContextValue}>

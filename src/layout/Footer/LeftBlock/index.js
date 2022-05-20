@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import React from "react";
+import { Stack, Button, Grid } from "@mui/material";
+import { useT } from "../../../custom/hooks/useT";
+=======
 import React, { useContext } from "react"
 import { Stack, Button, Link as TelLink, Typography } from "@mui/material"
 import { AccessTimeFilled, Email, FmdGood, PhoneEnabled } from "@mui/icons-material"
@@ -5,6 +10,7 @@ import Title from '../../../components/Title'
 import { useT } from '../../../custom/hooks/useT'
 import "./style.scss";
 import { ConsultContext } from "../../../App"
+>>>>>>> f3de43e9fc00de1b1f8d78bc488521a55cf3b3f0
 
 const FooterLeftBlock = () => {
 	const { t, lang } = useT();
