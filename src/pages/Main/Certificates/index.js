@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Button, Grid, Stack, styled, Typography } from '@mui/material'
+import { Button, Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import { RiArrowRightSLine } from 'react-icons/ri'
@@ -21,7 +21,6 @@ const titleStyle = {
 
 
 const Certificates = () => {
-
     const [certificate, setCertificate] = useState();
 
     const getAdvantages = useCallback(() => {
@@ -35,7 +34,6 @@ const Certificates = () => {
     useEffect(() => {
         getAdvantages();
     }, [getAdvantages])
-
 
     return (
         <Stack
@@ -57,7 +55,7 @@ const Certificates = () => {
                     <SwiperSlide>
                         <Grid container width="100%">
                             <Grid item xs={12} md={6}
-                                bgcolor='primary.navBg'
+                                bgcolor='#F1F2F8'
                                 p={2}
                                 display="flex"
                                 justifyContent="center"
@@ -86,7 +84,18 @@ const Certificates = () => {
                                         mb={2}
                                     >
                                         <Title>Sertifikatlar</Title>
-                                        <Button variant='outlined' sx={{ textTransform: 'none', marginBottom: 2 }} endIcon={<RiArrowRightSLine />}>Barchasini ko'rish</Button>
+                                        <Button
+                                            variant='outlined'
+                                            sx={{
+                                                textTransform: 'none',
+                                                marginBottom: 2,
+                                                color: 'info.main',
+                                                borderColor: 'border.main'
+                                            }}
+                                            endIcon={<RiArrowRightSLine />}
+                                        >
+                                            Barchasini ko'rish
+                                        </Button>
                                     </Stack>
                                     <Typography sx={titleStyle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </Typography>
                                     <Text>

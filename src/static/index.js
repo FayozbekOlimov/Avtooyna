@@ -61,6 +61,8 @@ const themeObj = {
 
 export const ColorContextProvider = ({ children }) => {
     const [mode, setMode] = useState("light");
+    
+    localStorage.setItem('mode', mode);
 
     const colorMode = useMemo(() => ({
         toggleMode: () => setMode(prevMode => prevMode === 'light' ? 'dark' : 'light'),
@@ -80,7 +82,7 @@ export const ColorContextProvider = ({ children }) => {
         palette: {
             mode: mode,
             ...themeObj[mode],
-        }
+        },
     }), [mode])
 
     return (
