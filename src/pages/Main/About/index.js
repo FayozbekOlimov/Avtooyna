@@ -80,15 +80,15 @@ const About = () => {
                                 <Button>Batafsil</Button>
                             </div>
                             <div className="about__numbers">
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
                                     {/* <Typography component='h2' color='secondary.dark' gutterBottom>{number1}</Typography>
                                     <Typography component='p' color='secondary.dark'>{block_title1}</Typography> */}
                                 </Stack>
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
                                     {/* <Typography component='h2' color='secondary.dark' gutterBottom>{number2}</Typography>
                                     <Typography component='p' color='secondary.dark'>{block_title2}</Typography> */}
                                 </Stack>
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
                                     {/* <Typography component='h2' color='secondary.dark' gutterBottom>{number3}</Typography>
                                     <Typography component='p' color='secondary.dark'>{block_title3}</Typography> */}
                                 </Stack>

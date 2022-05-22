@@ -61,7 +61,7 @@ const Header = () => {
                     </Grid>
                     <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
                         <div className='header__tel'>
-                            <Stack className='header__tel-icon' sx={{ bgcolor: 'secondary.iconBg' }}>
+                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
                                 <PhoneEnabled sx={{ color: 'primary.main' }} />
                             </Stack>
                             <Stack className='header__tel-content'>
@@ -70,7 +70,7 @@ const Header = () => {
                             </Stack>
                         </div>
                         <div className='header__tel'>
-                            <Stack className='header__tel-icon' sx={{ bgcolor: 'secondary.iconBg' }}>
+                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
                                 <FmdGood sx={{ color: 'primary.main' }} />
                             </Stack>
                             <div className='header__tel-content'>

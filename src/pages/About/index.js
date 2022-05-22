@@ -5,7 +5,7 @@ import { Grid, Stack } from "@mui/material";
 
 const About = () => {
 	return (
-		<Stack direction="row" py={2}>
+		<Stack direction="row" py={2} bgcolor="background.paper">
 			<div className="container">
 				<Grid container spacing={2}>
 					<Grid item xs={12} md={3}>

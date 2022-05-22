@@ -6,7 +6,7 @@ import "./style.scss"
 
 const Quality = () => {
     return (
-        <Grid item xs={9} md={9}>
+        <Grid item xs={12} md={9}>
             <div className="quality">
                 <Title>Sifat</Title>
                 <Text>

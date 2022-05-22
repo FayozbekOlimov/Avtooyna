@@ -1,13 +1,20 @@
 import React from 'react';
-import { Grid } from '@mui/material'
+import { Grid, Stack, Typography, Link as TelLink } from '@mui/material'
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 import "./style.scss"
+import { Email, PhoneEnabled } from '@mui/icons-material';
 
 const Sale = () => {
-	return (
-		<Grid item xs={9} md={9}>
+	const titleStyle = {
+		fontWeight: 600,
+		fontSize: '20px',
+		color: 'info.main',
+		marginBottom: '12px',
+	}
 
+	return (
+		<Grid item xs={12} md={9}>
 			<div className='sale'>
 				<Title>Sotish va jo’natish</Title>
 				<Text>
@@ -23,25 +30,27 @@ const Sale = () => {
 
 					Avtooynalarni sotib olmoqchi bo’lganlarga istak va hohishlariga ko’ra maxsus himoya vositasi va saqlash usullaridan foydalangan holda manzilga beshikast yetkazib berish taklifi beriladi.
 				</Text>
-				<h2>Shartnoma tuzish uchun aloqa:</h2>
-				<div className="sale_contact_item">
-					<img src="/assets/icon/call_white.svg" alt="" />
-					<div className="sale_left_block_flex">
-						<a href="#">
-							<span>+998 (73) 243-08-76</span>
-							<p>Telefon raqami</p>
-						</a>
+				<Typography sx={titleStyle}>Shartnoma tuzish uchun aloqa:</Typography>
+				<Stack direction='column' spacing={2} alignItems='flex-start'>
+					<div className='header__tel'>
+						<Stack className='header__tel-icon' sx={{ bgcolor: 'primary.light' }}>
+							<PhoneEnabled sx={{ color: '#fff' }} />
+						</Stack>
+						<div className='header__tel-content'>
+							<TelLink href='tel:+998732430876' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 (73) 243-08-76</TelLink>
+							<small>Dushanba - Juma</small>
+						</div>
 					</div>
-				</div>
-				<div className="sale_contact_item">
-					<img src="/assets/icon/messeage_white.svg" alt="" />
-					<div className="sale_left_block_flex">
-						<a href="#">
-							<span>info@avtooyna.uz</span>
-							<p>Elektron manzilimiz</p>
-						</a>
+					<div className='header__tel'>
+						<Stack className='header__tel-icon' sx={{ bgcolor: 'primary.light' }}>
+							<Email sx={{ color: '#fff' }} />
+						</Stack>
+						<div className='header__tel-content'>
+							<TelLink href='mailto:info@avtooyna.uz' sx={{ color: 'info.light', textDecoration: 'none' }}>info@avtooyna.uz</TelLink>
+							<small>Elektron manzilimiz</small>
+						</div>
 					</div>
-				</div>
+				</Stack>
 			</div>
 		</Grid>
 	);
