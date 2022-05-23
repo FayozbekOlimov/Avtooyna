@@ -25,7 +25,7 @@ const Card = ({ id, src, date, title, text, toUrl, content = true }) => {
 					}}
 					className="card__title"
 				>{title}</Typography>
-				{content && <Text>{text}</Text>}
+				{content && <Text className="card__text">{text}</Text>}
 				<Link to={toUrl}>
 					<Button
 						variant="text"

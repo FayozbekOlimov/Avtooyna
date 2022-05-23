@@ -1,0 +1,43 @@
+.partners {
+    .swiper__wrapper {
+        position: relative;
+        padding: 1rem 0;
+    }
+
+    &__swiper {
+        position: unset;
+
+        &-img {
+            width: 100%;
+            border-radius: 12px;
+        }
+    }
+
+    .swiper-button-prev {
+        left: -10px;
+    }
+
+    .swiper-button-next {
+        right: -10px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        &::after {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            background-color: #00468D;
+            font-size: 16px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #fff;
+            transition: background-color .3s ease;
+        }
+
+        &:hover::after {
+            background-color: #1565c0;
+        }
+    }
+}

@@ -1,8 +1,8 @@
+import { useT } from "../../../custom/hooks/useT";
 import React, { useContext } from "react"
 import { Stack, Button, Link as TelLink, Typography } from "@mui/material"
 import { AccessTimeFilled, Email, FmdGood, PhoneEnabled } from "@mui/icons-material"
 import Title from '../../../components/Title'
-import { useT } from '../../../custom/hooks/useT'
 import "./style.scss";
 import { ConsultContext } from "../../../App"
 

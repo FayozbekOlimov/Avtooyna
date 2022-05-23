@@ -8,7 +8,7 @@ const jobsTitle = `
 `
 const Vacancies = () => {
 	return (
-		<Grid item xs={9}>
+		<Grid item xs={12} md={9}>
 			<div className="jobs_wrapper">
 				<div dangerouslySetInnerHTML={{__html:jobsTitle}}></div>
 
@@ -19,13 +19,12 @@ const Vacancies = () => {
 					<div className="jobs_img">
 						<div className="resume_image">
 							<Grid  item xs={5}md={6} >
-								<img className='resume_img' src="/assets/img/resume_img.png" alt="resume_img" />
+								<img className='resume_img' src="/assets/img/resume_img.png" alt="resume_img"  />
 							</Grid>
 						</div>
 					</div>
 				</div>
 			</div>
-		
 		</Grid>
 	);
 }

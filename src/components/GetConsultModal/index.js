@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Modal, Form, Input, Button, Checkbox } from 'antd';
 import Title from "../Title";
 import InputMask from 'react-input-mask';
@@ -18,7 +18,6 @@ const InputTel = (props) => (
 );
 
 const GetConsultModal = (props) => {
-  const [formData, setFormData] = useState();
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -37,18 +36,19 @@ const GetConsultModal = (props) => {
   const [form] = Form.useForm();
   const { isOpenConsultModal, onOpenConsultModal, onCloseConsultModal } = props;
 
-  const createConsult = (data) => {
-    baseAPI.create(createConsultUrl, data)
+  const createConsult = (formData) => {
+    baseAPI.create(createConsultUrl, formData)
       .then((res) => {
-        if (res.status === 200) {
-          handleClick();
-        }
+        console.log("res", res.data)
       })
-      .catch((e) => console.log("error", e))
+      .catch((e) => console.log("e", e))
+      .finally(() => {
+
+      })
   }
 
   const onHandleConsultForm = (values) => {
-    setFormData(JSON.stringify(values));
+    createConsult(JSON.stringify(values))
     form.resetFields();
     onCloseConsultModal();
   };

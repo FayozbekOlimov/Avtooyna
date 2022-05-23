@@ -6,6 +6,6 @@ const Text = styled(Typography)(({ theme }) => ({
     fontSize: '16px',
 }))
 
-export default function StyledCustomization({ children }) {
-    return <Text variant="body1" mb={2}>{children}</Text>
+export default function StyledCustomization(props) {
+    return <Text className={props.className} variant="body1" mb={2}>{props.children}</Text>
 }

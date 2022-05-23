@@ -30,7 +30,12 @@ const News = () => {
         <Stack py={{ xs: 2, md: 4 }} className="news" bgcolor='background.paper'>
             <div className="container">
                 <Title>Yangiliklar</Title>
-                <Stack direction='row' justifyContent={"space-between"} alignItems={"center"} className="news_carusel_top" >
+                <Stack
+                    direction='row'
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                    flexWrap="wrap" className="news_carusel_top"
+                >
                     <Text>Korporativ mijozlar va jismoniy shaxslar uchun turli xildagi tovarlarni etkazib berish</Text>
                     <Stack className="new_carusel_arrows" direction='row' spacing={2}>
                         <ArrowButton ref={newCaruselPrevRef}>

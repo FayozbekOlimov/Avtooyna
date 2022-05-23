@@ -1,4 +1,10 @@
 .news {
+    h5 {
+        &:first-child {
+            margin-bottom: 6px;
+        }
+    }
+
     .news__swipper__wrapper {
         margin-top: 30px;
 
@@ -6,4 +12,26 @@
             padding-bottom: 30px;
         }
     }
+
+    .news_carusel_top {
+        p {
+            margin-bottom: 0;
+            width        : 30%;
+            margin-top   : 10px;
+        }
+
+        .new_carusel_arrows {
+            margin-top: 10px;
+
+            button {
+                margin-right: 16px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+    }
+
 }

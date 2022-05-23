@@ -15,7 +15,7 @@ const Gallery = () => {
             }}
         >
             <div className="container">
-                <Stack direction='row' spacing={0.5} justifyContent='space-between' alignItems='center'>
+                <Stack direction='row' mb={1} justifyContent='space-between' alignItems='flex-start'>
                     <Title>Fotosuratlar</Title>
                     <Button
                         variant='outlined'
@@ -28,7 +28,7 @@ const Gallery = () => {
                         Barchasini ko'rish
                     </Button>
                 </Stack>
-                <Grid container spacing={2} my={2} >
+                <Grid container spacing={2} >
                     <Grid item sm={5}>
                         <img className='gallery__img' src="/assets/img/gallery1.png" alt="gallery1" />
                     </Grid>

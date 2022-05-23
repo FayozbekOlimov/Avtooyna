@@ -12,7 +12,8 @@ import Text from "../../../components/Text";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { Button } from "@mui/material";
 import "./_style.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ArrowBack } from "@mui/icons-material";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#ECF2F9",
@@ -48,20 +49,26 @@ const rows = [
 
 export default function InsideContest() {
   let { contest_id } = useParams();
+  const navigate = useNavigate();
 
   return (
     <>
       <div className="container">
-        <Link to="/contest-announcement/contests">
-          <Button
-            variant="text"
-            sx={{ textTransform: "capitalize" }}
-            startIcon={<KeyboardArrowLeftIcon />}
-            className="inside_contest_back_btn"
-          >
-            Orqaga qaytish
-          </Button>
-        </Link>
+        <Button
+          variant="outlined"
+          sx={{
+            textTransform: "none",
+            alignSelf: 'flex-start',
+            my: 1.5,
+            color: 'secondary.main',
+            borderColor: 'border.main'
+          }}
+          startIcon={<ArrowBack />}
+          className="inside_contest_back_btn"
+          onClick={() => navigate(-1)}
+        >
+          Orqaga qaytish
+        </Button>
         <Title>
           Объявляется конкурс на поставку сантехнические материалы для нужд ООО
           "Автоойна"

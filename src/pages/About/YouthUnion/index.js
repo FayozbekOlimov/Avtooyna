@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const YouthUnion = () => {
     return (
         <Stack>
-			<Grid item xs={10}>
+			<Grid item xs={12} md={9}>
 				<div className='union_pages'>
 					<Title>Yoshlar ittifoqi</Title>
 					<Text>O‘zbekiston yoshlar ittifoqining ustavini yuklab oling:</Text>
