@@ -1,25 +1,46 @@
-import * as React from "react";
-// import { experimentalStyled as styled } from "@mui/material/styles";
-// import Box from "@mui/material/Box";
-// import Paper from "@mui/material/Paper";
-// // import {  } from "@mui/material";
+import React, { useEffect, useState, useCallback } from "react";
 import { Grid, Stack } from "@mui/material";
-import Text from "../../../components/Text";
 import Title from "../../../components/Title";
+import Loading from "../../../components/Loading";
 import Card from "../../Main/Card";
-import { contestData } from "./contestsData";
+import { contestsUrl } from "../../../api/apiUrls"
+import baseAPI from "../../../api/baseAPI";
 
 export default function Contests() {
+
+  const [contests, setContests] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getContests = useCallback(() => {
+    setLoading(true);
+    baseAPI.fetchAll(contestsUrl)
+      .then((res) => {
+        // if (res.data.success) {
+        setContests(res.data.choise);
+        setLoading(false);
+        // }
+      })
+      .catch((e) => console.log("e", e))
+  }, [])
+
+  useEffect(() => {
+    getContests()
+  }, [getContests])
+
   return (
     <Stack direction="column">
       <Title>Tanlovlar</Title>
-      <Grid container spacing={2}>
-        {contestData.map((data, id) => (
-          <Grid item key={data + id} xs={12} sm={6} lg={4}>
-            <Card {...data} />
+      {
+        loading ? (<Loading />) : (
+          <Grid container spacing={2}>
+            {contests.map((contest) => (
+              <Grid item key={contest.id} xs={12} sm={6} lg={4}>
+                <Card content={false} toUrl="contests" {...contest} />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+        )
+      }
     </Stack>
   );
 }

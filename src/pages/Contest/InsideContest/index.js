@@ -5,7 +5,7 @@ import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 import { Button, Stack, Table, TableBody, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import "./_style.scss";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {

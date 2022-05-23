@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss'
 import baseAPI from '../../../api/baseAPI';
 import { homePartnerUrl } from '../../../api/apiUrls';
+import { API_IMG_URL } from '../../../constants';
 
 const Partners = () => {
 
@@ -54,7 +55,7 @@ const Partners = () => {
                             {
                                 partners.map(partner => (
                                     <SwiperSlide key={partner.id}>
-                                        <img className='partners__swiper-img' src={partner.imgs} alt={`partners${partner.id}`} />
+                                        <img className='partners__swiper-img' src={API_IMG_URL + partner.imgs} alt={`partners${partner.id}`} />
                                     </SwiperSlide>
                                 ))
                             }

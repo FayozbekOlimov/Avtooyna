@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Stack, Button } from '@mui/material';
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
+import Loading from "../../../components/Loading";
 
 import "./style.scss";
 import { complianceUrl } from '../../../api/apiUrls';
@@ -33,30 +34,31 @@ const Compliance = () => {
 	const { title, text, items = [] } = compliance;
 
 	return (
-		<Stack>
-			<div className="compilance_main">
-				<Title>{title}</Title>
-				<Text>
-					<div dangerouslySetInnerHTML={{ __html: text }}></div>
-				</Text>
-				<div className='compliance_btn'>
-					<h4>Скачать:</h4>
-					{
-						items.map((item) => (
-							<a href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
-								<Button
-									className='btn-compliance'
-									variant='outlined'
-									sx={{ textTransform: 'none' }}
-								>
-									{item.title}
-								</Button>
-
-							</a>
-						))
-					}
-				</div>
-			</div>
+		<Stack className="compilance_main">
+			{loading ? (<Loading />) : (
+				<>
+					<Title>{title}</Title>
+					<Text>
+						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+					</Text>
+					<div className='compliance_btn'>
+						<h4>Скачать:</h4>
+						{
+							items.map((item) => (
+								<a href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
+									<Button
+										className='btn-compliance'
+										variant='outlined'
+										sx={{ textTransform: 'none' }}
+									>
+										{item.title}
+									</Button>
+								</a>
+							))
+						}
+					</div>
+				</>
+			)}
 		</Stack>
 	);
 }
