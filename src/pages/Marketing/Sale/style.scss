@@ -1,48 +1,48 @@
-.sale {
-  h2{ 
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 140%;
+// .sale {
+//   h2{ 
+//     font-style: normal;
+//     font-weight: 600;
+//     font-size: 24px;
+//     line-height: 140%;
   
-    color: #031E39;
-  }
-}
-.sale_contact_item {
-    display: flex;
-    margin-bottom: 30px;
-    span {
-      margin-left: 24px;
-    }
-    p {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 130%;
-      margin-left: 24px;
-      // text-align:center;
+//     color: #031E39;
+//   }
+// }
+// .sale_contact_item {
+//     display: flex;
+//     margin-bottom: 30px;
+//     span {
+//       margin-left: 24px;
+//     }
+//     p {
+//       font-style: normal;
+//       font-weight: 400;
+//       font-size: 14px;
+//       line-height: 130%;
+//       margin-left: 24px;
+//       // text-align:center;
 
-      display: flex;
-      align-items: center;
+//       display: flex;
+//       align-items: center;
 
-      color: #9FA8B3;
-    }
-    .sale_left_block_flex {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      a {
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
-        .sale_contact_subtitle {
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 130%;
-          align-items: center;
-          color: #9fa8b3;
-        }
-      }
-    }
-  }
+//       color: #9FA8B3;
+//     }
+//     .sale_left_block_flex {
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       flex-direction: column;
+//       a {
+//         display: flex;
+//         justify-content: space-between;
+//         flex-direction: column;
+//         .sale_contact_subtitle {
+//           font-weight: 400;
+//           font-size: 14px;
+//           line-height: 130%;
+//           align-items: center;
+//           color: #9fa8b3;
+//         }
+//       }
+//     }
+//   }

@@ -16,12 +16,11 @@ const Sidebar = (props) => {
 		padding: '8px',
 		fontWeight: 400,
 		fontSize: "16px",
-		color: "#6E7E8B",
+		color: 'inherit'
 	};
 
 	const ulStyle = {
 		width: "100%",
-		backgroundColor: "#F2F9FF",
 		borderRadius: "8px",
 		padding: '16px',
 	};
@@ -29,9 +28,9 @@ const Sidebar = (props) => {
 	const items = headerMenu[sidebarMenuIndex];
 
 	return (
-		<Stack direction="column" component="ul" style={ulStyle}>
+		<Stack direction="column" component="ul" style={ulStyle} bgcolor="background.navBg">
 			{items.submenu.map((item, ind) => (
-				<Stack key={ind} component="li">
+				<Stack key={ind} component="li" sx={{color: 'secondary.light'}}>
 					<NavLink
 						to={`${items.to}${item.to}`}
 						style={({ isActive }) => ({

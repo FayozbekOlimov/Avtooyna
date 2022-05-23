@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Button, Grid, Stack, styled, Typography } from '@mui/material'
+import { Button, Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import { RiArrowRightSLine } from 'react-icons/ri'
@@ -22,12 +22,12 @@ const titleStyle = {
 
 const Certificates = () => {
 
-    const [certificate, setCertificate] = useState();
+    const [certificates, setCertificates] = useState([]);
 
     const getAdvantages = useCallback(() => {
         baseAPI.fetchAll(homeCertificateUrl)
             .then((res) => {
-                setCertificate(res.data);
+                setCertificates(res.data.sertifikat);
             })
             .catch((e) => console.log("e", e));
     }, [])
@@ -35,7 +35,6 @@ const Certificates = () => {
     useEffect(() => {
         getAdvantages();
     }, [getAdvantages])
-
 
     return (
         <Stack
@@ -57,7 +56,7 @@ const Certificates = () => {
                     <SwiperSlide>
                         <Grid container width="100%">
                             <Grid item xs={12} md={6}
-                                bgcolor='primary.navBg'
+                                bgcolor='#F1F2F8'
                                 p={2}
                                 display="flex"
                                 justifyContent="center"
@@ -86,48 +85,6 @@ const Certificates = () => {
                                         mb={2}
                                     >
                                         <Title>Sertifikatlar</Title>
-                                        <Button variant='outlined' sx={{ textTransform: 'none', marginBottom: 2 }} endIcon={<RiArrowRightSLine />}>Barchasini ko'rish</Button>
-                                    </Stack>
-                                    <Typography sx={titleStyle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </Typography>
-                                    <Text>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </Text>
-
-                                </Stack>
-                            </Grid>
-                        </Grid>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <Grid container>
-                            <Grid item xs={12} md={6}
-                                bgcolor='#F1F2F8'
-                                p={2}
-                                display="flex"
-                                justifyContent="center"
-                                borderRadius='12px'
-                            >
-                                <div className='sertificates__imgBx'>
-                                    <img
-                                        className='sertificates__img'
-                                        src="/assets/img/sertifikat1.png"
-                                        alt="sertifikat1"
-                                        width='100%'
-                                    />
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} md={6}
-                                p={1} pr={0}
-                                pl={{ xs: 0, md: 6 }}
-                                order={{ xs: '-1', md: 0 }}
-                            >
-                                <Stack className="sertificates__content" direction='column'>
-                                    <Stack
-                                        direction='row'
-                                        alignItems='center'
-                                        justifyContent='space-between'
-                                        mb={2}
-                                    >
-                                        <Title>Sertifikatlar</Title>
                                         <Button
                                             variant='outlined'
                                             sx={{
@@ -147,9 +104,9 @@ const Certificates = () => {
                                     </Text>
 
                                 </Stack>
-                            </Grid >
-                        </Grid >
-                    </SwiperSlide >
+                            </Grid>
+                        </Grid>
+                    </SwiperSlide>
                 </Swiper >
             </div >
         </Stack >

@@ -1,9 +1,9 @@
 import React from 'react';
 import Title from "../../../components/Title";
-import {Grid} from '@mui/material'
-import "./style.scss"	
+import { Grid } from '@mui/material'
+import "./style.scss"
 
-const BrandsImgs = [
+const brandsImgs = [
 	{
 		id: "1",
 		img: "/assets/img/brands1.png",
@@ -26,15 +26,17 @@ const BrandsImgs = [
 
 const Brands = () => {
 	return (
-			<Grid item xs={9} md={9}>
+		<Grid item xs={12} md={9}>
 			<Title>
 				Avtomobil markalari
 			</Title>
-			<div className="brands_img">
-				{BrandsImgs.map(({id,img },ind)=>(
-					<img src={img} alt={`img${ind}`} />
+			<Grid container spacing={2}>
+				{brandsImgs.map(({ id, img }, ind) => (
+					<Grid item xs={12} md={6} key={ind} className='brands_img'>
+						<img src={img} alt={`img${id}`} />
+					</Grid>
 				))}
-			</div>
+			</Grid>
 		</Grid>
 	);
 }

@@ -11,17 +11,15 @@ import { contestData } from "./contestsData";
 
 export default function Contests() {
   return (
-    <>
-      <Stack direction="column">
-        <Title>Tanlovlar</Title>
-        <Grid container spacing={2}>
-          {contestData.map((data, id) => (
-            <Grid item key={data + id} xs={12} sm={6} lg={4}>
-              <Card {...data} />
-            </Grid>
-          ))}
-        </Grid>
-      </Stack>
-    </>
+    <Stack direction="column">
+      <Title>Tanlovlar</Title>
+      <Grid container spacing={2}>
+        {contestData.map((data, id) => (
+          <Grid item key={data + id} xs={12} sm={6} lg={4}>
+            <Card {...data} />
+          </Grid>
+        ))}
+      </Grid>
+    </Stack>
   );
 }

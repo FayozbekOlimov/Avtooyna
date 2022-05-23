@@ -1,25 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Stack, Button } from '@mui/material';
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 
 import "./style.scss";
-
-
+import { complianceUrl } from '../../../api/apiUrls';
+import baseAPI from '../../../api/baseAPI';
+import { API_IMG_URL } from '../../../constants';
 
 const Compliance = () => {
+
+	const [compliance, setCompliance] = useState({});
+	const [loading, setLoading] = useState(false);
+
+	const getCompliance = useCallback(() => {
+		setLoading(true);
+		baseAPI.fetchAll(complianceUrl)
+			.then((res) => {
+				// if (res.data.success) {
+				setCompliance(res.data.muvofiq);
+				setLoading(false);
+				// }
+			})
+			.catch((e) => console.log("e", e))
+
+	}, [])
+
+	useEffect(() => {
+		getCompliance()
+	}, [getCompliance])
+
+	const { title, text, items = [] } = compliance;
+
 	return (
 		<Stack>
 			<div className="compilance_main">
-				<Title>Muvofiqlik(Compliance)</Title>
+				<Title>{title}</Title>
 				<Text>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id deserunt accusamus numquam.
+					<div dangerouslySetInnerHTML={{ __html: text }}></div>
 				</Text>
-				<div></div>
 				<div className='compliance_btn'>
 					<h4>Скачать:</h4>
-					<a herf="#"><Button className='btn-compliance' variant='outlined' sx={{ textTransform: 'none' }} >Кодекс о соблюдении политики Комплаенс</Button></a>
+					{
+						items.map((item) => (
+							<a href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
+								<Button
+									className='btn-compliance'
+									variant='outlined'
+									sx={{ textTransform: 'none' }}
+								>
+									{item.title}
+								</Button>
 
+							</a>
+						))
+					}
 				</div>
 			</div>
 		</Stack>

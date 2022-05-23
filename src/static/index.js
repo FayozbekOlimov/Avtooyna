@@ -13,15 +13,16 @@ const themeObj = {
             paper: '#fff',
             footerBg1: '#f1f2f8',
             footerBg2: '#3179C2',
+            navBg: '#F2F9FF',
+            iconBg: '#ECF2F9',
         },
         primary: {
-            navBg: '#102538',
             light: '#3179C2',
             main: '#00468D',
         },
         secondary: {
+            light: '#6E7E8B',
             main: '#00468D',
-            iconBg: '#ECF2F9',
             dark: '#052D56',
         },
         info: {
@@ -38,15 +39,16 @@ const themeObj = {
             paper: '#02111F',
             footerBg1: '#0B1D2E',
             footerBg2: '#02111F',
+            navBg: '#102538',
+            iconBg: '#12283D',
         },
         primary: {
-            navBg: '#F2F9FF',
             light: '#3179C2',
             main: '#00468D',
         },
         secondary: {
+            light: '#fff',
             main: '#fff',
-            iconBg: '#12283D',
             dark: '#fff',
         },
         info: {
@@ -61,6 +63,8 @@ const themeObj = {
 
 export const ColorContextProvider = ({ children }) => {
     const [mode, setMode] = useState("light");
+    
+    localStorage.setItem('mode', mode);
 
     const colorMode = useMemo(() => ({
         toggleMode: () => setMode(prevMode => prevMode === 'light' ? 'dark' : 'light'),
@@ -80,7 +84,7 @@ export const ColorContextProvider = ({ children }) => {
         palette: {
             mode: mode,
             ...themeObj[mode],
-        }
+        },
     }), [mode])
 
     return (

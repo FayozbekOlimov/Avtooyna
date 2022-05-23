@@ -5,9 +5,9 @@ import { Grid, Stack } from "@mui/material";
 
 const About = () => {
 	return (
-		<Stack direction="row" py={2}>
+		<Stack direction="row" py={2} bgcolor="background.paper">
 			<div className="container">
-				<Grid container spacing={2}>
+				<Grid container spacing={{ md: "30px", sm: "20px", xs: "10px" }}>
 					<Grid item xs={12} md={3}>
 						<Sidebar sidebarMenuIndex={0} />
 					</Grid>
