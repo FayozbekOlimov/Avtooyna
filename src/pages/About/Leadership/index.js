@@ -6,6 +6,11 @@ const Leadership = () => {
     return (
         <Stack direction='column'>
             <Title>Rahbariyat</Title>
+            <div className='box'>
+                {
+
+                }
+            </div>
         </Stack>
     )
 }
