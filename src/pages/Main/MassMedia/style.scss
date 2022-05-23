@@ -1,13 +1,20 @@
 .massmedia {
     &__left {
-        background-color: aqua;
+        border-radius: 12px;
     }
 
     &__img {
+        // border: 1px solid red;
+        // width: 100%;
+        // height: 100%;
+        // display: flex;
+        // align-items: center;
+        // justify-content: center;
+
         img {
+            // border: 1px solid green;
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
     }
 }

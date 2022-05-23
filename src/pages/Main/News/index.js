@@ -53,7 +53,7 @@ const News = () => {
                     flexWrap="wrap" className="news_carusel_top"
                 >
                     <Text>Korporativ mijozlar va jismoniy shaxslar uchun turli xildagi tovarlarni etkazib berish</Text>
-                    <Stack className="new_carusel_arrows" direction='row' spacing={2}>
+                    <Stack className="new_carusel_arrows" direction='row'>
                         <ArrowButton ref={newCaruselPrevRef}>
                             <RiArrowLeftSLine />
                         </ArrowButton>
