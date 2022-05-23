@@ -13,12 +13,16 @@ import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
-import InsideAbout from './pages/Main/InsideAbout';
 
 export const ConsultContext = createContext(null);
+export const ModeContext = createContext(null);
 
 const App = () => {
 	const [isOpenConsultModal, setIsConsultModal] = useState(false);
+	const [mode, setMode] = useState({
+		color: "normal",
+		isImage: true
+	});
 
 	let element = useRoutes(routes);
 	let { pathname } = useLocation();
@@ -48,15 +52,23 @@ const App = () => {
 		onOpenConsultModal,
 		onCloseConsultModal
 	}
+
+	const modeContextValue = {
+		mode,
+		setMode
+	}
+
 	return (
 		<div className="avtooyna__wrapper">
 			<ThemeProvider theme={theme}>
-				<ConsultContext.Provider value={consultContextValue}>
-					<Header />
-					{element}
-					<Footer />
-					<GetConsultModal {...consultContextValue} />
-				</ConsultContext.Provider>
+				<ModeContext.Provider value={modeContextValue}>
+					<ConsultContext.Provider value={consultContextValue}>
+						<Header />
+						{element}
+						<Footer />
+						<GetConsultModal {...consultContextValue} />
+					</ConsultContext.Provider>
+				</ModeContext.Provider>
 			</ThemeProvider>
 		</div>
 	);

@@ -1,77 +1,50 @@
-.compilance_main{ 
-	padding: 40px 0 44px 30px;
-	p {
-		font-style: normal;
-		font-weight: 400;
-		font-size: 22px;
-		line-height: 145%;
+.compilance_main {
 
-	}
-	h1{ 
-		margin-bottom: 30px;
-		font-style: normal;
-		font-weight: 700;
-		font-size: 32px;
-		line-height: 130%;
-
-		color: #011223;
-
-	}
-	span {
-		font-style: normal;
-		font-weight: 600;
-		font-size: 22px;
-		line-height: 130%;
-
-		color: #000000;
-
-	}
-	i{ 
-		font-style: italic;
-		font-weight: 600;
-		font-size: 22px;
-		line-height: 145%;
-	}
 	.compliance_btn {
 		Button {
-			display: block;
-			margin-top: 20px;
-			font-style: normal;
+			display    : block;
+			margin-top : 20px;
+			font-style : normal;
 			font-weight: 600;
-			font-size: 18px;
+			font-size  : 18px;
 			line-height: 130%;
 
-			display: flex;
+			display    : flex;
 			align-items: center;
 
 			color: #031E39;
 		}
+
 		.btn-compliance {
-			width: 452px;
+			width : 452px;
 			height: 48px;
+
 			@media(max-width: 510px) {
-				width: 410px;
+				width : 410px;
 				height: 100%;
 			}
+
 			@media(max-width: 468px) {
-				width: 340px;
+				width : 340px;
 				height: 100%;
 			}
+
 			@media(max-width: 400px) {
-				width: 280px;
+				width : 280px;
 				height: 100%;
 			}
+
 			@media(max-width: 330px) {
-				width: 220px;
+				width : 220px;
 				height: 100%;
 			}
 		}
 
 		h4 {
-			margin-top: 40px;
-			font-style: normal;
+			margin-top : 40px;
+			font-style : normal;
 			font-weight: 600;
-			font-size: 18px;
+			font-size  : 18px;
 			line-height: 130%;
 
 			color: #000000;

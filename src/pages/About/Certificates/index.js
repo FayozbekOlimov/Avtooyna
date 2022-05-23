@@ -5,6 +5,7 @@ import Title from '../../../components/Title'
 import "./style.scss"
 import { certificatesUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
+import Loading from '../../../components/Loading';
 
 const Certificates = () => {
 
@@ -33,11 +34,12 @@ const Certificates = () => {
 		<Stack>
 			<Title>Sertifikatlar</Title>
 			{
-				certificates.map(certificate => (
-					<CertificateCarusel key={certificate.id} {...certificate} />
-				))
+				loading ? (<Loading />) : (
+					certificates.map(certificate => (
+						<CertificateCarusel key={certificate.id} {...certificate} />
+					))
+				)
 			}
-
 		</Stack>
 	)
 }
