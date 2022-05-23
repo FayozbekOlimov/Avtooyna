@@ -5,20 +5,19 @@ import Text from '../../../components/Text'
 import Button from '../../../components/Button'
 import { Link } from 'react-router-dom';
 import './style.scss';
-import { API_BASE_URL } from "../../../constants"
-import baseAPI from '../../../api/baseAPI'
+import { API_IMG_URL } from "../../../constants";
+import baseAPI from '../../../api/baseAPI';
 import { homeCompanyUrl, homeEquipmentUrl, homeGlassUrl } from '../../../api/apiUrls'
 
 const About = () => {
-
-    const [company, setCompany] = useState();
-    const [homeGlasses, setHomeGlasses] = useState();
-    const [homeEquipment, setHomeEquipment] = useState();
+    const [company, setCompany] = useState({});
+    const [homeGlasses, setHomeGlasses] = useState({});
+    const [homeEquipment, setHomeEquipment] = useState({});
 
     const getCompany = useCallback(() => {
         baseAPI.fetchAll(homeCompanyUrl)
             .then((res) => {
-                setCompany(res?.data?.company);
+                setCompany(res.data.company);
             })
             .catch((e) => console.log("e", e));
 
@@ -48,10 +47,9 @@ const About = () => {
         getEquipment();
     }, [getCompany, getGlasses, getEquipment])
 
-    // const { block_title1 = "", block_title2, block_title3, img: companyImg, number1, number2, number3, text: companyText, title: companyTitle } = company;
-    // const { imgs: glassImgs, text: glassText, title: glassTitle } = homeGlasses;
-    // const { imgs: equipmentImgs, text: equipmentText, title: equipmentTitle } = homeEquipment;
-
+    const { block_title1 = "", block_title2, block_title3, img: companyImg, number1, number2, number3, text: companyText, title: companyTitle } = company;
+    const { imgs: glassImgs = [], text: glassText, title: glassTitle } = homeGlasses;
+    const { imgs: equipmentImgs = [], text: equipmentText, title: equipmentTitle } = homeEquipment;
 
     return (
         <Stack
@@ -67,30 +65,30 @@ const About = () => {
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
                         <Grid item md={6}>
                             <div className="about__picture">
-                                {/* <img src={companyImg} alt="about-company" /> */}
+                                <img src={API_IMG_URL + companyImg} alt="about-company" />
                             </div>
                         </Grid>
                         <Grid item md={6}>
                             <div className="about__content">
-                                {/* <Title>{companyTitle}</Title> */}
+                                <Title>{companyTitle}</Title>
                                 <Text>
-                                    {/* <div dangerouslySetInnerHTML={{ __html: companyText }}>
-                                    </div> */}
+                                    <div dangerouslySetInnerHTML={{ __html: companyText }}>
+                                    </div>
                                 </Text>
                                 <Button>Batafsil</Button>
                             </div>
                             <div className="about__numbers">
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
-                                    {/* <Typography component='h2' color='secondary.dark' gutterBottom>{number1}</Typography>
-                                    <Typography component='p' color='secondary.dark'>{block_title1}</Typography> */}
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                    <Typography component='h2' color='secondary.dark' gutterBottom>{number1}</Typography>
+                                    <Typography component='p' color='secondary.dark'>{block_title1}</Typography>
                                 </Stack>
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
-                                    {/* <Typography component='h2' color='secondary.dark' gutterBottom>{number2}</Typography>
-                                    <Typography component='p' color='secondary.dark'>{block_title2}</Typography> */}
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                    <Typography component='h2' color='secondary.dark' gutterBottom>{number2}</Typography>
+                                    <Typography component='p' color='secondary.dark'>{block_title2}</Typography>
                                 </Stack>
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
-                                    {/* <Typography component='h2' color='secondary.dark' gutterBottom>{number3}</Typography>
-                                    <Typography component='p' color='secondary.dark'>{block_title3}</Typography> */}
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                    <Typography component='h2' color='secondary.dark' gutterBottom>{number3}</Typography>
+                                    <Typography component='p' color='secondary.dark'>{block_title3}</Typography>
                                 </Stack>
                             </div>
                         </Grid>
@@ -100,21 +98,22 @@ const About = () => {
                     <Grid container spacing={4} direction='row-reverse' alignItems='center' justifyContent='center'>
                         <Grid item md={6}>
                             <Grid container spacing={2}>
-                                <Grid item sm={6}>
-                                    {/* <img className='about__img' src={API_BASE_URL + glassImgs[0]} alt="oyna1" /> */}
+                                <Grid item sm={6} xs={12}>
+                                    <img className='about__img' src={API_IMG_URL + (glassImgs[0])} alt="oyna1" />
                                 </Grid>
-                                <Grid item sm={6}>
-                                    {/* <img className='about__img' src={API_BASE_URL + glassImgs[1]} alt="oyna2" /> */}
+                                <Grid item sm={6} xs={12}>
+                                    <img className='about__img' src={API_IMG_URL + glassImgs[1]} alt="oyna2" />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    {/* <img className='about__img' src={API_BASE_URL + glassImgs[2]} alt="oyna3" /> */}
+                                    <img className='about__img' src={API_IMG_URL + glassImgs[2]} alt="oyna3" />
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item md={6}>
                             <div className="about__content">
-                                <Title>Avtomobil oynalarini ishlab chiqarish</Title>
-                                <Text>Tashkilotimiz avtomobil oynalarini ishlab chiqarish va tayyor mahsulotlarni eksport qilish bilan shug’ullanadi. Barcha turdagi avtomashinalar uchun oynalar ishlab chiqariladi.</Text>
+                                <Title>{glassTitle}</Title>
+                                <Text className="glass_text">   <div dangerouslySetInnerHTML={{ __html: glassText }}>
+                                </div></Text>
                                 <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>     </div>
                         </Grid>
                     </Grid>
@@ -123,24 +122,24 @@ const About = () => {
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
                         <Grid item md={6}>
                             <Grid container spacing={2}>
-                                {/* <Grid item sm={6}>
-                                    <img className='about__img' src={API_BASE_URL + equipmentImgs[0]} alt="ehtqism1" />
+                                <Grid item sm={6} xs={12}>
+                                    <img className='about__img' src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" />
                                 </Grid>
-                                <Grid item sm={6}>
-                                    <img className='about__img' src={API_BASE_URL + equipmentImgs[1]} alt="ehtqism2" />
+                                <Grid item sm={6} xs={12}>
+                                    <img className='about__img' src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism2" />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <img className='about__img' src={API_BASE_URL + equipmentImgs[2]} alt="ehtqism3" />
-                                </Grid> */}
+                                    <img className='about__img' src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism3" />
+                                </Grid>
                             </Grid>
                         </Grid>
                         <Grid item md={6}>
                             <div className="about__content">
-                                 <Title>
-                                    {/* {equipmentTitle} */}
+                                <Title>
+                                    {equipmentTitle}
                                 </Title>
                                 <Text>
-                                    Ximoyalangan (kapsulali) bir qavatli (oddiy yoki qoraytirilgan) oyna, sovutish ventilyatorlari va motor svechalarini (mis o’zakli nikelli markaziy elektrodlar) ishlab chiqarish.
+                                    <div dangerouslySetInnerHTML={{ __html: equipmentText }}></div>
                                 </Text>
                                 <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>
 
