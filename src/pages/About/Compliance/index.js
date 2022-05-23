@@ -38,23 +38,25 @@ const Compliance = () => {
 				<Text>
 					<div dangerouslySetInnerHTML={{ __html: text }}></div>
 				</Text>
-				<div className='compliance_btn'>
+				<Stack className='compliance_btn' direction='column' spacing={2}>
 					<h4>Скачать:</h4>
-					{
-						items.map((item) => (
-							<a href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
-								<Button
-									className='btn-compliance'
-									variant='outlined'
-									sx={{ textTransform: 'none' }}
-								>
-									{item.title}
-								</Button>
+					{items.map((item) => (
+						<a href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
+							<Button
+								className='btn-compliance'
+								variant='outlined'
+								sx={{
+									textTransform: "none",
+									color: 'secondary.main',
+									borderColor: 'border.main'
+								}}
+							>
+								{item.title}
+							</Button>
 
-							</a>
-						))
-					}
-				</div>
+						</a>
+					))}
+				</Stack>
 			</div>
 		</Stack>
 	);

@@ -21,7 +21,7 @@ const News = () => {
 				<Title>Yangiliklar</Title>
 				<Grid container>
 					{newsData.map(({ id, src, date, title, text, content = true, toUrl }, ind) => (
-						<Grid item xs={12} mb={"30px"}>
+						<Grid item xs={12} mb={"30px"} key={ind}>
 							<Grid container className='news_card' p={2} bgcolor='background.default'>
 								<Grid item xs={12} md={6} className='news_img'>
 									<img src={src} alt={`img${ind}`} />
