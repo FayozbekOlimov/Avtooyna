@@ -6,11 +6,12 @@ import "./i18next/config";
 import 'antd/dist/antd.css';
 import "./static/base.scss";
 import { ColorContextProvider } from './static';
+import Loading from './components/Loading';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<Suspense fallback={<div>Loading...</div>}>
+		<Suspense fallback={<Loading height='100vh' />}>
 			<Router>
 				<ColorContextProvider>
 					<App />

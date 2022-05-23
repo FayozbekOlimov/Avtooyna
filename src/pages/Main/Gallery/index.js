@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Stack, Button, Grid } from '@mui/material'
 import Title from '../../../components/Title'
-import { RiArrowRightSLine } from 'react-icons/ri'
+import { RiArrowRightSLine } from 'react-icons/ri';
+import baseAPI from "../../../api/baseAPI";
+import { homeGalleryUrl } from "../../../api/apiUrls";
 import './style.scss'
+import { API_IMG_URL } from '../../../constants';
+
+const galleryGridData = [
+    5, 7, 7, 5, 6, 6
+]
 
 const Gallery = () => {
+
+    const [gallery, setGallery] = useState([]);
+
+    const getHomeGallery = useCallback(() => {
+        baseAPI.fetchAll(homeGalleryUrl)
+            .then((res) => {
+                setGallery(res.data.fotogalareya);
+            })
+            .catch((e) => console.log("e", e))
+    }, [])
+
+    useEffect(() => {
+        getHomeGallery();
+    }, [getHomeGallery])
+
+
     return (
         <Stack
             className='gallery'
@@ -28,25 +51,17 @@ const Gallery = () => {
                         Barchasini ko'rish
                     </Button>
                 </Stack>
-                <Grid container spacing={2} >
-                    <Grid item sm={5}>
-                        <img className='gallery__img' src="/assets/img/gallery1.png" alt="gallery1" />
-                    </Grid>
-                    <Grid item sm={7}>
-                        <img className='gallery__img' src="/assets/img/gallery2.png" alt="gallery2" />
-                    </Grid>
-                    <Grid item sm={7}>
-                        <img className='gallery__img' src="/assets/img/gallery3.png" alt="gallery3" />
-                    </Grid>
-                    <Grid item sm={5}>
-                        <img className='gallery__img' src="/assets/img/gallery4.png" alt="gallery4" />
-                    </Grid>
-                    <Grid item sm={6}>
-                        <img className='gallery__img' src="/assets/img/gallery5.png" alt="gallery5" />
-                    </Grid>
-                    <Grid item sm={6}>
-                        <img className='gallery__img' src="/assets/img/gallery6.png" alt="gallery6" />
-                    </Grid>
+                <Grid container spacing={{ md: "30px", sm: "20px", xs: "10px" }} >
+                    {
+                        gallery.map((photo, idx) => (
+                            <Grid item sm={galleryGridData[idx]} xs={12} key={photo.id}>
+                                <div className="gallery__img_wrapper">
+                                    <img className='gallery__img' src={API_IMG_URL + photo.img} alt={`gallery${idx + 1}`} />
+                                </div>
+                            </Grid>
+                        ))
+                    }
+
                 </Grid>
             </div>
         </Stack>

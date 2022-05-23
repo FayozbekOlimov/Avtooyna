@@ -134,7 +134,7 @@ export const routes = [
     ]
   },
   {
-    path: "contest-announcement-detail/:contest_id",
+    path: "contests/:contest_id",
     element: <InsideContest />
   },
   {
@@ -162,7 +162,7 @@ export const routes = [
     ]
   },
   {
-    path: "news-announcement-detail/:news_id",
+    path: "news/:news_id",
     element: <InsideNews />
   },
 ];
