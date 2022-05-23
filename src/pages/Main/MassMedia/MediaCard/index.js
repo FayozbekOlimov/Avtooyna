@@ -7,10 +7,10 @@ import './style.scss'
 const MediaCard = ({ id, src, date, title, toUrl }) => {
     return (
         <Grid container className='media__card' bgcolor='background.default'>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
                 <img className='media__card-img' src={src} alt='oav-img' />
             </Grid>
-            <Grid item xs={8} p={1} display='flex' flexDirection='column' justifyContent='center'>
+            <Grid item xs={12} sm={8} p={1} display='flex' flexDirection='column' justifyContent='center' alignItems='flex-start'>
                 <p className="card__date">
                     <img src="/assets/icon/calendar.png" alt="calendar-icon" />
                     {date}
