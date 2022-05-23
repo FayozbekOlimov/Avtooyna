@@ -31,3 +31,15 @@
 
   }
 }
+
+@media screen and (max-width:320px) {
+  .avtooyna__wrapper {
+
+    .leadership {
+      &_card {
+        justify-content: center;
+      }
+    }
+  }
+
+}
