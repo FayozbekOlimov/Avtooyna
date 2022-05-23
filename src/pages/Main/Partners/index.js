@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 import Title from '../../../components/Title'
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss'
+import baseAPI from '../../../api/baseAPI';
+import { homePartnerUrl } from '../../../api/apiUrls';
 
 const Partners = () => {
+
+    const [partners, setPartners] = useState([]);
+
+    const getPartners = useCallback(() => {
+        baseAPI.fetchAll(homePartnerUrl)
+            .then((res) => {
+                setPartners(res.data.hamkorlar);
+            })
+            .catch((e) => console.log("e", e));
+    }, [])
+
+    useEffect(() => {
+        getPartners();
+    }, [getPartners])
+
     return (
         <Stack className='partners' py={{ xs: 2, md: 4 }} bgcolor='background.paper'>
             <div className='container'>
@@ -34,18 +51,14 @@ const Partners = () => {
                                 }
                             }}
                         >
-                            <SwiperSlide>
-                                <img className='partners__swiper-img' src='/assets/img/partners1.jpg' alt='partners1' />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img className='partners__swiper-img' src='/assets/img/partners2.jpg' alt='partners2' />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img className='partners__swiper-img' src='/assets/img/partners3.jpg' alt='partners3' />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <img className='partners__swiper-img' src='/assets/img/partners4.jpg' alt='partners4' />
-                            </SwiperSlide>
+                            {
+                                partners.map(partner => (
+                                    <SwiperSlide key={partner.id}>
+                                        <img className='partners__swiper-img' src={partner.imgs} alt={`partners${partner.id}`} />
+                                    </SwiperSlide>
+                                ))
+                            }
+
                         </Swiper>
                     </div>
                 </Stack>

@@ -8,39 +8,36 @@ import './style.scss';
 
 
 const Banner = () => {
-    const [banner, setBanner] = useState();
+    const [banner, setBanner] = useState({});
 
     const getBanner = useCallback(() => {
         baseAPI.fetchAll(homeBannerUrl)
             .then(res => {
-                if (res.data.status === 200) {
-                    setBanner(res.data)
-                    console.log("ban", banner);
-                }
+                // if (res.data.status === 200) {
+                setBanner(res.data.homeBanner)
+                // }
             })
             .catch((e) => console.log("error", e))
-    }, [banner])
+    }, [])
 
     useEffect(() => {
         getBanner();
     }, [getBanner])
 
-
-
-    // const { imgs = "", title = "", text = "" } = banner.homeBanner;
+    const { title, text, imgs } = banner;
 
     return (
         <div className='banner'>
             <div className="banner__bg">
-                {/* <img src={imgs} alt="banner" /> */}
+                <img src={imgs} alt="banner" />
             </div>
             <div className="container">
                 <div className="banner__content">
                     <Title>
-                        {/* <div dangerouslySetInnerHTML={{ __html: title }}></div> */}
+                        <div dangerouslySetInnerHTML={{ __html: title }}></div>
                     </Title>
                     <Text>
-                        {/* <div dangerouslySetInnerHTML={{ __html: text }}></div> */}
+                        <div dangerouslySetInnerHTML={{ __html: text }}></div>
                     </Text>
                     <Button>Batafsil</Button>
                 </div>

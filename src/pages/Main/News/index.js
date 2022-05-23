@@ -1,15 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { IconButton, Stack, styled } from '@mui/material'
 import { blue } from '@mui/material/colors'
 import Card from '../Card'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
-import { cardData } from './cardData';
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 // swiper
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./style.scss";
+import { homeNewsUrl } from '../../../api/apiUrls';
+import baseAPI from '../../../api/baseAPI';
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText(blue[500]),
@@ -23,6 +24,21 @@ const ArrowButton = styled(IconButton)(({ theme }) => ({
 
 
 const News = () => {
+
+    const [news, setNews] = useState([]);
+
+    const getNews = useCallback(() => {
+        baseAPI.fetchAll(homeNewsUrl)
+            .then((res) => {
+                setNews(res.data.news)
+            })
+            .catch((e) => console.log("e", e))
+    }, [])
+
+    useEffect(() => {
+        getNews()
+    }, [getNews])
+
     const newCaruselPrevRef = useRef(null);
     const newCaruselNextRef = useRef(null);
 
@@ -78,9 +94,9 @@ const News = () => {
                             }
                         }}
                     >
-                        {cardData.map((data, ind) => (
-                            <SwiperSlide key={ind}>
-                                <Card {...data} />
+                        {news.map((data) => (
+                            <SwiperSlide key={data.id}>
+                                <Card {...data} content={true} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

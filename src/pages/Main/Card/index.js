@@ -4,12 +4,13 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import Text from "../../../components/Text";
 import { Link } from "react-router-dom";
 import "./style.scss";
+import { API_IMG_URL } from "../../../constants";
 
-const Card = ({ id, src, date, title, text, toUrl, content = true }) => {
+const Card = ({ id, img, date, title, text, content, toUrl }) => {
 	return (
 		<Stack className="card" bgcolor='background.default'>
 			<Stack className="card__img">
-				<img src={src} alt={`card-${id}`} />
+				<img src={API_IMG_URL + img} alt={`card-${id}`} />
 			</Stack>
 			<Stack className="card__content" direction='column'>
 				<p className="card__date">
@@ -24,9 +25,11 @@ const Card = ({ id, src, date, title, text, toUrl, content = true }) => {
 						marginBottom: '16px'
 					}}
 					className="card__title"
-				>{title}</Typography>
-				{content && <Text className="card__text">{text}</Text>}
-				<Link to={toUrl}>
+				><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
+				{
+					content && (<Text className="card__text"><div dangerouslySetInnerHTML={{ __html: text }}></div></Text>)
+				}
+				<Link to={`/${toUrl}/:${id}`}>
 					<Button
 						variant="text"
 						sx={{ textTransform: "capitalize", color: "primary.light" }}

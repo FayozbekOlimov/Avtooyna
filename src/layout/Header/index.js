@@ -92,7 +92,7 @@ const Header = () => {
                         >
                             Konsultatsiya olish
                         </Button>
-                        <FormControl >
+                        <FormControl className="language_wrapper" >
                             <Select
                                 IconComponent={ExpandMore}
                                 value={lang}

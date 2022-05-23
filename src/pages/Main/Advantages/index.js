@@ -1,18 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
-import { advantagesData } from './advantagesData'
 import './style.scss'
 import baseAPI from '../../../api/baseAPI'
 import { homeAdvantageslUrl } from '../../../api/apiUrls'
 
+const advantageIcons = ["/assets/icon/icon1.png", "/assets/icon/icon2.png", "/assets/icon/icon3.png", "/assets/icon/icon4.png", "/assets/icon/icon5.png", "/assets/icon/icon6.png",]
+
 const Advantages = () => {
-	const [advantages, setAdvantages] = useState();
+	const [advantages, setAdvantages] = useState([]);
 
 	const getAdvantages = useCallback(() => {
 		baseAPI.fetchAll(homeAdvantageslUrl)
 			.then((res) => {
-				setAdvantages(res.data);
+				setAdvantages(res.data.afzal);
 			})
 			.catch((e) => console.log("e", e));
 	}, [])
@@ -37,13 +38,13 @@ const Advantages = () => {
 			<div className="container">
 				<Title>Bizning afzalliklarimiz</Title>
 				<Grid container spacing={2}>
-					{advantagesData.map(({ icon, title }, ind) => (
-						<Grid item xs={12} sm={6} key={ind}>
+					{advantages.map((advantage, idx) => (
+						<Grid item xs={12} sm={6} key={advantage.id}>
 							<Stack direction='row' spacing={2} alignItems='center'>
 								<Stack className="advantages__icon" sx={iconBoxStyle}>
-									<img src={icon} alt={`icon${ind + 1}`} />
+									<img src={advantageIcons[idx]} alt={`icon${idx + 1}`} />
 								</Stack>
-								<Typography className="advantages__title" sx={{ color: 'info.light' }}>{title}</Typography>
+								<Typography className="advantages__title" sx={{ color: 'info.light' }}><div dangerouslySetInnerHTML={{ __html: advantage.title }}></div></Typography>
 							</Stack>
 						</Grid>
 					))}
