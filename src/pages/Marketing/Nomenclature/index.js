@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid} from '@mui/material'
+import { Grid } from '@mui/material'
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 import "./style.scss"
@@ -26,7 +26,7 @@ const Nomenclature = () => {
 				NomenImg.map(({ id, img, text }) => (
 					<Grid item md={3} xs={12}>
 						<div key={id} className='nomen_img'>
-							<img src={img} alt={`img${id}`} width="100%"/>
+							<img src={img} alt={`img${id}`} width="100%" />
 						</div>
 					</Grid>
 				))
@@ -41,7 +41,7 @@ const Nomenclature = () => {
 					<h4>Ko’rinishi</h4>
 				</div>
 				<div className="nomen_main">
-					{NomenData.map(({id,number, name, model,DetalNumber,img },ind)=>(
+					{NomenData.map(({ id, number, name, model, DetalNumber, img }, ind) => (
 						<div className='nomen_data'>
 							<span>{number}</span>
 							<p>{name}</p>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Stack, Button } from '@mui/material';
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
+
 import "./style.scss";
 import { complianceUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
