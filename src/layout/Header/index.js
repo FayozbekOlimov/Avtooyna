@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
-import { ExpandMore, FmdGood, Menu as MenuIcon, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
-import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme } from '@mui/material';
+import { ExpandMore, FmdGood, HideImage, Menu as MenuIcon, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
+import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Slider, styled, Box, FormGroup, Checkbox } from '@mui/material';
 import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom';
@@ -27,7 +27,6 @@ const Header = () => {
         return { key, children, label };
     }
 
-
     const items = headerMenu.map((menu) => (
         getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
             getItem(<NavLink
@@ -43,6 +42,73 @@ const Header = () => {
 
     const { mode, toggleMode } = useContext(ColorModeContext);
     const { onOpenConsultModal } = useContext(ConsultContext);
+
+    const AirbnbSlider = styled(Slider)(({ theme }) => ({
+        color: '#3a8589',
+        height: 3,
+        padding: '13px 0',
+        '& .MuiSlider-thumb': {
+            height: 27,
+            width: 27,
+            backgroundColor: '#fff',
+            border: '1px solid currentColor',
+            '&:hover': {
+                boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
+            },
+            '& .airbnb-bar': {
+                height: 9,
+                width: 1,
+                backgroundColor: 'currentColor',
+                marginLeft: 1,
+                marginRight: 1,
+            },
+        },
+        '& .MuiSlider-track': {
+            height: 3,
+        },
+        '& .MuiSlider-rail': {
+            color: theme.palette.mode === 'dark' ? '#bfbfbf' : '#d8d8d8',
+            opacity: theme.palette.mode === 'dark' ? undefined : 1,
+            height: 3,
+        },
+    }));
+
+    const [value, setValue] = useState(0);
+    const handleChangeSlider = (e) => {
+        setValue(e.target.value)
+    }
+
+    const boxStyle = {
+        width: '50px',
+        height: '50px',
+        borderRadius: '8px',
+        display: 'grid',
+        placeItems: 'center',
+        margin: 'auto'
+    };
+
+    const modeLabelStyle = {
+        margin: '4px 0',
+        textAlign: 'center',
+        fontSize: '12px',
+        color: 'info.light',
+        fontWeight: 500
+    }
+
+    const titleStyle = {
+        fontSize: '18px',
+        color: 'info.main',
+        fontWeight: 500
+    }
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <Stack className='header' bgcolor='background.default'>
@@ -120,17 +186,144 @@ const Header = () => {
                             variant='contained'
                             className='header__mode'
                             size='medium'
-                            onClick={toggleMode}
+                            onClick={handleClick}
+                            // onMouseOver={handleClick}
                             sx={{
                                 bgcolor: 'primary.light',
                                 '&:hover': {
                                     bgcolor: blue[800]
                                 }
                             }}
+                            aria-controls={open ? 'mode-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
                         >
                             <RemoveRedEye />
                         </Button>
                     </Grid>
+                    <MuiMenu
+                        anchorEl={anchorEl}
+                        id="mode-menu"
+                        open={open}
+                        // onClose={handleClose}
+                        MenuListProps={{ onMouseLeave: handleClose }}
+                        PaperProps={{
+                            elevation: 0,
+                            sx: {
+                                overflow: 'visible',
+                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                mt: 1.5,
+                                '& .MuiAvatar-root': {
+                                    width: 32,
+                                    height: 32,
+                                    ml: -0.5,
+                                    mr: 1,
+                                },
+                                '&:before': {
+                                    content: '""',
+                                    display: 'block',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: '33%',
+                                    width: 10,
+                                    height: 10,
+                                    bgcolor: 'background.paper',
+                                    transform: 'translateY(-50%) rotate(45deg)',
+                                    zIndex: 0,
+                                },
+                            },
+                        }}
+                        transformOrigin={{ horizontal: 'center', vertical: 'top' }}
+                        anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
+                    >
+                        <Box px={2} py={1}>
+                            <Typography sx={titleStyle} mb={1}>Ko'rinishi</Typography>
+                            <Divider />
+                            <RadioGroup
+                                row
+                                aria-labelledby="demo-form-control-label-placement"
+                                name="position"
+                                defaultValue="top"
+                                sx={{ my: 1 }}
+                            >
+                                <FormControlLabel
+                                    value="top"
+                                    control={<Radio size='small' sx={{ p: 0.5 }} defaultChecked />}
+                                    label={
+                                        <>
+                                            <Box bgcolor='#00468D' sx={boxStyle} />
+                                            <Typography sx={modeLabelStyle}>Normal</Typography>
+                                        </>
+                                    }
+                                    labelPlacement="top"
+                                />
+                                <FormControlLabel
+                                    value="start"
+                                    control={<Radio size='small' sx={{ p: 0.5 }} />}
+                                    label={
+                                        <>
+                                            <Box bgcolor='#C4C4C4' sx={boxStyle} />
+                                            <Typography sx={modeLabelStyle}>Gray</Typography>
+                                        </>
+                                    }
+                                    labelPlacement="top"
+                                />
+                                <FormControlLabel
+                                    value="bottom"
+                                    control={<Radio size='small' sx={{ p: 0.5 }} />}
+                                    label={
+                                        <>
+                                            <Box bgcolor='#021B34' sx={boxStyle} />
+                                            <Typography sx={modeLabelStyle}>Dark</Typography>
+                                        </>
+                                    }
+                                    labelPlacement="top"
+                                />
+                                <FormControlLabel
+                                    value="end"
+                                    control={<Radio size='small' sx={{ p: 0.5 }} />}
+                                    label={
+                                        <>
+                                            <Box bgcolor='#C4C4C4' sx={boxStyle}>
+                                                <img src='/assets/icon/no-image.png' alt='no-image' />
+                                            </Box>
+                                            <Typography sx={modeLabelStyle}>No image</Typography>
+                                        </>
+                                    }
+                                    labelPlacement="top"
+                                />
+                            </RadioGroup>
+                            <Divider />
+                            <Typography sx={titleStyle} mt={1}>Shrift o'lchami</Typography>
+                            <Typography
+                                sx={{
+                                    color: '#6E7E8B',
+                                    my: '5px',
+                                    fontSize: '14px'
+                                }}
+                            >{value}% ga kattaroq</Typography>
+                            <Slider
+                                onChange={handleChangeSlider}
+                                aria-label="custom thumb label"
+                                defaultValue={0}
+                            // sx={{
+                            //     mx: '10px',
+                            //     width: 'calc(100% - 20px)'
+                            // }}
+                            />
+                            <Divider />
+                            <Typography sx={titleStyle} mt={1}>Ekran suxandoni</Typography>
+                            <FormGroup>
+                                <FormControlLabel
+                                    control={<Checkbox />}
+                                    label={<Typography sx={{
+                                        color: '#6E7E8B',
+                                        my: '5px',
+                                    }}>O’chirish / yoqish</Typography>}
+                                />
+                            </FormGroup>
+                        </Box>
+                    </MuiMenu>
                 </Grid>
                 <Drawer
                     title="MENU"
