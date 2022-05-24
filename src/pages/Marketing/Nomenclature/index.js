@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { Grid } from '@mui/material'
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 import "./style.scss"
 import { NomenData } from './nomeData';
+import baseAPI from '../../../api/baseAPI';
+import { nomenclatureUrl } from '../../../api/apiUrls';
 
 const NomenImg = [
 	{
@@ -20,6 +22,30 @@ const NomenImg = [
 	},
 ]
 const Nomenclature = () => {
+
+	const [nomenclature, setNomenclature] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	const getNomenclature = useCallback(() => {
+		setLoading(true);
+		baseAPI.fetchAll(nomenclatureUrl)
+			.then((res) => {
+				// if (res.data.success) {
+				setNomenclature(res.data.sifat);
+				setLoading(false);
+				// }
+			})
+			.catch((e) => console.log("e", e))
+
+	}, [])
+
+	useEffect(() => {
+		getNomenclature()
+	}, [getNomenclature])
+
+	// const { title, text } = quality;	
+
+
 	return (
 		<>
 			{

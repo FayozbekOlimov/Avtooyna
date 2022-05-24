@@ -10,12 +10,36 @@ import headerMenu from './headerMenu.json';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
+import { telsUrl } from "../../api/apiUrls";
+import baseAPI from "../../api/baseAPI";
 import './style.scss';
 
 const Header = () => {
     const [visible, setVisible] = useState(false);
     const { t, lang } = useT();
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
+
+    const [tels, setTels] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const getTels = useCallback(() => {
+        setLoading(true);
+        baseAPI.fetchAll(telsUrl)
+            .then((res) => {
+                // if (res.data.success) {
+                setTels(res.data.navbar);
+                setLoading(false);
+                // }
+            })
+            .catch((e) => console.log("e", e))
+
+    }, [])
+
+    useEffect(() => {
+        getTels()
+    }, [getTels])
+
+
 
     const handleChange = (event) => {
         setLang(event.target.value);
@@ -65,8 +89,15 @@ const Header = () => {
                                 <PhoneEnabled sx={{ color: 'primary.main' }} />
                             </Stack>
                             <Stack className='header__tel-content'>
-                                <TelLink href='tel:+998732497575' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 249-75-75</TelLink>
-                                <TelLink href='tel:+998732430835' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 243-08-35</TelLink>
+                                {
+                                    tels.map(tel => (
+                                        <>
+                                            <TelLink href={`tel:${tel.tel_namber}`} sx={{ color: 'info.light', textDecoration: 'none' }}
+                                                key={tel.id}
+                                            >{tel.tel_namber}</TelLink>
+                                        </>
+                                    ))
+                                }
                             </Stack>
                         </div>
                         <div className='header__tel'>
