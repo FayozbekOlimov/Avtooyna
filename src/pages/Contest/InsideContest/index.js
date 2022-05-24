@@ -5,12 +5,13 @@ import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 import { Button, Stack, Table, TableBody, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import "./_style.scss";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
-		backgroundColor: "#ECF2F9",
+		backgroundColor: theme.palette.background.iconBg,
 		color: "#728193",
+		fontSize: '16px'
 	},
 	[`&.${tableCellClasses.body}`]: {
 		fontSize: 14,
@@ -19,25 +20,23 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	"&:nth-of-type(odd)": {
-		// backgroundColor: theme.palette.action.hover,
 		color: "#011223",
 	},
-	// hide last border
 	"&:last-child td, &:last-child th": {
 		border: 0,
 	},
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-	return { name, calories, fat, carbs, protein };
+function createData(tr, name, calories, fat) {
+	return { tr, name, calories, fat };
 }
 
 const rows = [
-	createData("Труба пластиковая  Д=40", "Метр", 50),
-	createData("Труба пластиковая  Д=40", "Метр", 50),
-	createData("Труба пластиковая  Д=40", "Метр", 500),
-	createData("Труба пластиковая  Д=40", "Метр", 50),
-	createData("Труба пластиковая  Д=40", "Метр", 500),
+	createData(1, "Труба пластиковая  Д=40", "Метр", 50),
+	createData(2, "Труба пластиковая  Д=40", "Метр", 50),
+	createData(3, "Труба пластиковая  Д=40", "Метр", 500),
+	createData(4, "Труба пластиковая  Д=40", "Метр", 50),
+	createData(5, "Труба пластиковая  Д=40", "Метр", 500),
 ];
 
 export default function InsideContest() {
@@ -77,6 +76,7 @@ export default function InsideContest() {
 					<Table sx={{ minWidth: 700 }} aria-label="customized table">
 						<TableHead>
 							<TableRow>
+								<StyledTableCell>№</StyledTableCell>
 								<StyledTableCell>Наименование</StyledTableCell>
 								<StyledTableCell align="right">Ед.изм.</StyledTableCell>
 								<StyledTableCell align="right">Кол.</StyledTableCell>
@@ -85,13 +85,18 @@ export default function InsideContest() {
 						<TableBody>
 							{rows.map((row, ind) => (
 								<StyledTableRow key={ind}>
-									<StyledTableCell component="th" scope="row">
+									<StyledTableCell>
+										{row.tr}
+									</StyledTableCell>
+									<StyledTableCell>
 										{row.name}
 									</StyledTableCell>
 									<StyledTableCell align="right">
 										{row.calories}
 									</StyledTableCell>
-									<StyledTableCell align="right">{row.fat}</StyledTableCell>
+									<StyledTableCell align="right">
+										{row.fat}
+									</StyledTableCell>
 								</StyledTableRow>
 							))}
 						</TableBody>
@@ -99,9 +104,8 @@ export default function InsideContest() {
 				</TableContainer>
 				<Text>
 					<b className="inside_contest_footer_text">
-						{" "}
 						Дата окончания подачи коммерческих предложений 21.04.2021 г 18:00
-					</b>{" "}
+					</b>
 					<br />
 					Все Коммерческие предложения отправлять строго по электронному адресу
 					offers@avtooyna.uz Отправленные коммерческие предложение по другим

@@ -2,8 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Stack, Grid } from '@mui/material';
 import Resume from './Resume';
 import Title from "../../../components/Title"
-import Text from "../../../components/Text"
-import "./styled.scss"
 import { vacanciesUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 

@@ -14,10 +14,10 @@ const Subsidiary = () => {
         setLoading(true)
         baseAPI.fetchAll(subsidiaryUrl)
             .then((res) => {
-                if (res.data.success) {
-                    setSubsidiary(res.data.company);
-                    setLoading(false);
-                }
+                // if (res.data.success) {
+                setSubsidiary(res.data.company);
+                setLoading(false);
+                // }
             })
             .catch((e) => console.log("e", e))
 

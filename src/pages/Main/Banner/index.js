@@ -6,6 +6,7 @@ import { homeBannerUrl } from "../../../api/apiUrls";
 import { API_IMG_URL } from '../../../constants/index'
 import baseAPI from "../../../api/baseAPI";
 import './style.scss';
+import { toUnitless } from '@mui/material/styles/cssUtils';
 
 
 const Banner = () => {
@@ -31,15 +32,15 @@ const Banner = () => {
     return (
         <div className='banner'>
             <div className="banner__bg">
-                <img src={API_IMG_URL + imgs} alt="banner" />
+                <img src='/assets/img/banner.png' alt="banner" />
             </div>
             <div className="container">
                 <div className="banner__content">
                     <Title>
-                        {title}
+                        <div dangerouslySetInnerHTML={{ __html: title }} />
                     </Title>
                     <Text>
-                        {text}
+                        <div dangerouslySetInnerHTML={{ __html: text }} />
                     </Text>
                     <Button>Batafsil</Button>
                 </div>

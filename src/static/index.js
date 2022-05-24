@@ -74,7 +74,7 @@ export const ColorContextProvider = ({ children }) => {
     const theme = useMemo(() => createTheme({
         breakpoints: {
             values: {
-                xs: 320,
+                xs: 0,
                 sm: 576,
                 md: 768,
                 lg: 992,

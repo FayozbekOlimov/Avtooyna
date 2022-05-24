@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Stack, Typography } from '@mui/material';
 import Text from '../../../../components/Text'
-import Title from '../../../../components/Title'
-import "./style.scss";
 
 const Resume = (props) => {
 	const titleStyle = {

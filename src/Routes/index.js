@@ -12,7 +12,7 @@ import YouthUnion from "../pages/About/YouthUnion";
 import Certificates from "../pages/About/Certificates";
 
 // Contest sections
-import ContestRules from "../pages/Contest/ContestRules";
+import ContestRule from "../pages/Contest/ContestRule";
 import Contests from "../pages/Contest/Contests";
 
 // Marketing sections
@@ -98,7 +98,7 @@ export const routes = [
       {
         index: true,
         path: "contest-rules",
-        element: <ContestRules />,
+        element: <ContestRule />,
       },
       {
         path: "contests",

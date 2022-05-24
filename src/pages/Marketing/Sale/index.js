@@ -2,7 +2,6 @@ import React from 'react';
 import { Grid, Stack, Typography, Link as TelLink } from '@mui/material'
 import Title from "../../../components/Title";
 import Text from "../../../components/Text";
-import "./style.scss"
 import { Email, PhoneEnabled } from '@mui/icons-material';
 
 const Sale = () => {

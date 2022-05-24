@@ -12,7 +12,7 @@ const Card = ({ id, img, date, title, text, content, toUrl }) => {
 			<Stack className="card__img">
 				<img src={API_IMG_URL + img} alt={`card-${id}`} />
 			</Stack>
-			<Stack className="card__content" direction='column'>
+			<Stack className="card__content" direction='column' alignItems='flex-start'>
 				<p className="card__date">
 					<img src="/assets/icon/calendar.png" alt="calendar-icon" />
 					{date}

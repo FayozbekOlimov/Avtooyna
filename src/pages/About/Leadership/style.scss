@@ -1,0 +1,23 @@
+.leader {
+  &_card {
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  &_img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &_job {
+    color: #6E7E8B !important;
+  }
+
+  &_email img {
+    margin-right: 8px;
+  }
+}

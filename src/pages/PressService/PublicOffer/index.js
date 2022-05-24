@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Typography } from '@mui/material'
 import Text from "../../../components/Text"
 import Title from '../../../components/Title'
-import "./style.scss"
 
 const PublicOffer = () => {
 	const titleStyle = {

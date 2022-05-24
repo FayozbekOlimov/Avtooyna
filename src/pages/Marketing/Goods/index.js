@@ -3,7 +3,6 @@ import Title from "../../../components/Title";
 import Text from "../../../components/Text";
 import { Grid } from '@mui/material';
 import GoodsDetail from './GoodsCard/GoodsDetail';
-import "./style.scss"
 import { goodsUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 

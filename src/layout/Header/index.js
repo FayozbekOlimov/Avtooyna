@@ -56,7 +56,7 @@ const Header = () => {
                             onClick={() => setVisible(true)}
                         />
                         <Link to='/' className='header__logo'>
-                            <img src='/assets/img/logo.svg' alt='logo' />
+                            <img src={mode === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
                         </Link>
                     </Grid>
                     <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>

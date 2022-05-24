@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from "../../../components/Text"
-import "./style.scss"
 
 const Quality = () => {
     return (

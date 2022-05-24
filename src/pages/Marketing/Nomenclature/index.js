@@ -1,60 +1,94 @@
 import React from 'react';
-import { Grid} from '@mui/material'
+import { Grid, Table, TableBody, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
 import Title from "../../../components/Title";
-import Text from "../../../components/Text";
-import "./style.scss"
-import { NomenData } from './nomeData';
+import { nomenData } from './nomeData';
+import { styled } from "@mui/material/styles";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
-const NomenImg = [
+const nomenImg = [
 	{
 		id: 1,
 		img: "/assets/img/namenImg1.png"
 	},
 	{
-		id: 1,
+		id: 2,
 		img: "/assets/img/namenImg1.png"
 	},
 	{
-		id: 1,
+		id: 3,
 		img: "/assets/img/namenImg1.png"
 	},
 ]
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+	[`&.${tableCellClasses.head}`]: {
+		backgroundColor: theme.palette.background.iconBg,
+		color: "#728193",
+		fontSize: '16px'
+	},
+	[`&.${tableCellClasses.body}`]: {
+		fontSize: 14,
+	},
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+	"&:nth-of-type(odd)": {
+		color: "#011223",
+	},
+	"&:last-child td, &:last-child th": {
+		border: 0,
+	},
+}));
+
+function createData(tr, name, model, number, img) {
+	return { tr, name, model, number, img };
+}
+
+const rows = [];
+
+nomenData.map(({ tr, name, model, number, img }) => {
+	rows.push(createData(tr, name, model, number, <img src={img} />))
+})
+
 const Nomenclature = () => {
 	return (
 		<>
-			{
-				NomenImg.map(({ id, img, text }) => (
-					<Grid item md={3} xs={12}>
-						<div key={id} className='nomen_img'>
-							<img src={img} alt={`img${id}`} width="100%"/>
-						</div>
-					</Grid>
-				))
-			}
-			<Grid item xs={12} md={9}>
+			{nomenImg.map(({ id, img }, ind) => (
+				<Grid item md={3} xs={12} key={ind}>
+					<div className='nomen_img'>
+						<img src={img} alt={`img${id}`} width="100%" />
+					</div>
+				</Grid>
+			))}
+			<Grid item xs={12}>
 				<Title>Nomenklatura</Title>
-				<div className="nomen_header">
-					<span>№</span>
-					<p>Detal nomi</p>
-					<h6>Model</h6>
-					<h5>Detal raqami</h5>
-					<h4>Ko’rinishi</h4>
-				</div>
-				<div className="nomen_main">
-					{NomenData.map(({id,number, name, model,DetalNumber,img },ind)=>(
-						<div className='nomen_data'>
-							<span>{number}</span>
-							<p>{name}</p>
-							<h6>{model}</h6>
-							<h5>{DetalNumber}</h5>
-							<img src={img} alt={`img${ind}`} />
-							{/* <h2>asdfgfxzwr</h2> */}
-						</div>
-					))}
-				</div>
+				<TableContainer component={Paper}>
+					<Table sx={{ minWidth: 700 }} aria-label="customized table">
+						<TableHead>
+							<TableRow>
+								<StyledTableCell>№</StyledTableCell>
+								<StyledTableCell>Detal nomi</StyledTableCell>
+								<StyledTableCell>Model</StyledTableCell>
+								<StyledTableCell>Detal raqami</StyledTableCell>
+								<StyledTableCell>Ko'rinishi</StyledTableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{rows.map((row, ind) => (
+								<StyledTableRow key={ind}>
+									<StyledTableCell>{row.tr}</StyledTableCell>
+									<StyledTableCell>{row.name}</StyledTableCell>
+									<StyledTableCell>{row.model}</StyledTableCell>
+									<StyledTableCell>{row.number}</StyledTableCell>
+									<StyledTableCell>{row.img}</StyledTableCell>
+								</StyledTableRow>
+							))}
+						</TableBody>
+					</Table>
+				</TableContainer>
 			</Grid>
 		</>
-	);
+		);
 }
 
-export default Nomenclature;
+		export default Nomenclature;
