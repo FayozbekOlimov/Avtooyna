@@ -42,7 +42,7 @@ const Header = () => {
     const handleChange = (event) => {
         setLang(event.target.value);
         changeLang(event.target.value);
-        // window.location.reload();
+        window.location.reload();
     };
 
     function getItem(label, key, children) {
