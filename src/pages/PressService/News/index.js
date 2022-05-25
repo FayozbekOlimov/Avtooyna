@@ -44,7 +44,7 @@ const News = () => {
 
 	return (
 		<>
-			<Grid item xs={12} sm={6} md={9}>
+			<Grid item xs={12} md={9}>
 				{
 					loading ? (<Loading />) : (
 						<>
@@ -52,14 +52,14 @@ const News = () => {
 							<Grid container spacing={2}>
 								{
 									news.map(({ id, img, date, title, text }) => (
-										<Grid item xs={12} mb={"30px"} key={id}>
+										<Grid item xs={12} key={id}>
 											<Grid container className='news_card' p={2} bgcolor='background.default'>
 												<Grid item xs={12} md={6} className='news_img'>
 													<img src={API_IMG_URL + img} alt={`img${id}`} />
 												</Grid>
 												<Grid item xs={12} md={6} pl={{ xs: 0, md: 2 }} pt={{ xs: 2, md: 0 }}>
 													<Typography sx={titleStyle} className="card__title"><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
-													<p className="cardtoUrl__date">
+													<p className="card__date">
 														<img src="/assets/icon/calendar.png" alt="calendar-icon" />
 														{date}
 													</p>
