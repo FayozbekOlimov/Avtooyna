@@ -17,7 +17,7 @@ const Certificates = () => {
 		baseAPI.fetchAll(certificatesUrl)
 			.then((res) => {
 				if (res.data.success) {
-					setCertificates(res.data);
+					setCertificates(res.data.data);
 					setLoading(false);
 				}
 			})

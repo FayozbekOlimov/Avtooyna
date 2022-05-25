@@ -19,10 +19,10 @@ export const ModeContext = createContext(null);
 
 const App = () => {
 	const [isOpenConsultModal, setIsConsultModal] = useState(false);
-	const [mode, setMode] = useState({
-		color: "normal",
-		isImage: true
-	});
+	// const [mode, setMode] = useState({
+	// 	color: "light",
+	// 	isImage: true
+	// });
 
 	let element = useRoutes(routes);
 	let { pathname } = useLocation();
@@ -39,7 +39,6 @@ const App = () => {
 		} else if (languages.includes(currentLang)) {
 			i18next.changeLanguage(currentLang);
 		}
-
 	}, []);
 
 	const theme = useTheme();
@@ -53,22 +52,22 @@ const App = () => {
 		onCloseConsultModal
 	}
 
-	const modeContextValue = {
-		mode,
-		setMode
-	}
+	// const modeContextValue = {
+	// 	mode,
+	// 	setMode
+	// }
 
 	return (
 		<div className="avtooyna__wrapper">
 			<ThemeProvider theme={theme}>
-				<ModeContext.Provider value={modeContextValue}>
-					<ConsultContext.Provider value={consultContextValue}>
-						<Header />
-						{element}
-						<Footer />
-						<GetConsultModal {...consultContextValue} />
-					</ConsultContext.Provider>
-				</ModeContext.Provider>
+				{/* <ModeContext.Provider value={modeContextValue}> */}
+				<ConsultContext.Provider value={consultContextValue}>
+					<Header />
+					{element}
+					<Footer />
+					<GetConsultModal {...consultContextValue} />
+				</ConsultContext.Provider>
+				{/* </ModeContext.Provider> */}
 			</ThemeProvider>
 		</div>
 	);

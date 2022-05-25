@@ -29,7 +29,11 @@ const Goods = () => {
 
 	return (
 
-		loading ? (<Loading />) : (
+		loading ? (
+			<Grid item xs={12} md={9}>
+				<Loading />
+			</Grid>
+		) : (
 			<>
 				<Grid item xs={12} md={9}>
 
@@ -47,8 +51,6 @@ const Goods = () => {
 								</Grid>
 							))
 						}
-
-
 					</Grid>
 				</Grid>
 			</>

@@ -1,9 +1,12 @@
 import { createTheme, ThemeProvider } from "@mui/material";
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import { setModeLocalstr } from "../helpers";
 
 export const ColorModeContext = createContext({
-    toggleMode: () => { },
-    mode: "light"
+    mode: {
+        color: "light",
+        isImage: true
+    }
 })
 
 const themeObj = {
@@ -62,12 +65,15 @@ const themeObj = {
 }
 
 export const ColorContextProvider = ({ children }) => {
-    const [mode, setMode] = useState("dark");
+    const [mode, setMode] = useState({
+        color: "light",
+        isImage: true
+    });
 
-    localStorage.setItem('mode', mode);
+    // setModeLocalstr(mode['color']);
 
     const colorMode = useMemo(() => ({
-        toggleMode: () => setMode(prevMode => prevMode === 'light' ? 'dark' : 'light'),
+        setMode,
         mode,
     }), [mode])
 
@@ -82,8 +88,8 @@ export const ColorContextProvider = ({ children }) => {
             },
         },
         palette: {
-            mode: mode,
-            ...themeObj[mode],
+            mode: mode["color"],
+            ...themeObj[mode['color']],
         },
     }), [mode])
 

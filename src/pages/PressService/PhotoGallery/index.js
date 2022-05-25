@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Grid } from '@mui/material'
-// import Text from "../../../components/Text"
-import Title from '../../../components/Title'
 import Loading from '../../../components/Loading'
-import "./style.scss"
 import { homeGalleryUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { API_IMG_URL } from '../../../constants';
+import "./style.scss"
 
 const PhotoGallery = () => {
 

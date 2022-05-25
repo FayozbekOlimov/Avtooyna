@@ -3,9 +3,9 @@ import { ExpandMore, FmdGood, HideImage, Menu as MenuIcon, PhoneEnabled, RemoveR
 import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Slider, styled, Box, FormGroup, Checkbox } from '@mui/material';
 import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, setLang } from '../../helpers';
+import { changeLang, setLang, setModeLocalstr } from '../../helpers';
 import headerMenu from './headerMenu.json';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
@@ -39,7 +39,6 @@ const Header = () => {
         getTels()
     }, [getTels])
 
-
     const handleChange = (event) => {
         setLang(event.target.value);
         changeLang(event.target.value);
@@ -63,8 +62,9 @@ const Header = () => {
         )))
     ))
 
-    const { mode, toggleMode } = useContext(ColorModeContext);
+    const { mode, setMode } = useContext(ColorModeContext);
     const { onOpenConsultModal } = useContext(ConsultContext);
+
 
     const AirbnbSlider = styled(Slider)(({ theme }) => ({
         color: '#3a8589',
@@ -90,8 +90,8 @@ const Header = () => {
             height: 3,
         },
         '& .MuiSlider-rail': {
-            color: theme.palette.mode === 'dark' ? '#bfbfbf' : '#d8d8d8',
-            opacity: theme.palette.mode === 'dark' ? undefined : 1,
+            color: mode['color'] === 'dark' ? '#bfbfbf' : '#d8d8d8',
+            opacity: mode['color'] === 'dark' ? undefined : 1,
             height: 3,
         },
     }));
@@ -133,6 +133,36 @@ const Header = () => {
         setAnchorEl(null);
     };
 
+    const changeMode = (e) => {
+        if (e.target.value === 'gray' || e.target.value === 'noImage') {
+            setMode(prev => ({ ...prev, color: 'light' }))
+        } else {
+            setMode(prev => ({ ...prev, color: e.target.value }))
+        }
+
+        if (e.target.value === 'gray') {
+            document.body.style.filter = 'grayscale(1)';
+        } else {
+            document.body.style.filter = 'grayscale(0)';
+        }
+
+        if (e.target.value === 'noImage') {
+            Array.from(document.images).forEach(img => {
+                img.style.display = 'none';
+            })
+        } else {
+            Array.from(document.images).forEach(img => {
+                img.style.display = 'block';
+            })
+        }
+    }
+
+    // const { pathname } = useLocation();
+
+    // useEffect(() => {
+    //     changeMode()
+    // }, [pathname])
+
     return (
         <Stack className='header' bgcolor='background.default'>
             <div className="container">
@@ -145,7 +175,7 @@ const Header = () => {
                             onClick={() => setVisible(true)}
                         />
                         <Link to='/' className='header__logo'>
-                            <img src={mode === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
+                            <img src={mode['color'] === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
                         </Link>
                     </Grid>
                     <Box component={Grid} item xs={12} md={9} lg={6} display={{
@@ -157,12 +187,14 @@ const Header = () => {
                             </Stack>
                             <Stack className='header__tel-content'>
                                 {
-                                    tels.map(tel => (
-                                        <>
-                                            <TelLink href={`tel:${tel.tel_namber}`} sx={{ color: 'info.light', textDecoration: 'none' }}
-                                                key={tel.id}
-                                            >{tel.tel_namber}</TelLink>
-                                        </>
+                                    tels.map((tel, ind) => (
+                                        <TelLink
+                                            key={ind}
+                                            href={`tel:${tel.tel_namber}`}
+                                            sx={{ color: 'info.light', textDecoration: 'none' }}
+                                        >
+                                            {tel.tel_namber}
+                                        </TelLink>
                                     ))
                                 }
                             </Stack>
@@ -279,16 +311,16 @@ const Header = () => {
                                 row
                                 aria-labelledby="demo-form-control-label-placement"
                                 name="position"
-                                defaultValue="top"
+                                defaultValue="light"
                                 sx={{ my: 1 }}
+                                onChange={changeMode}
+
                             >
                                 <FormControlLabel
-                                    value="light"
+                                    value={"light"}
                                     control={<Radio
                                         size='small'
                                         sx={{ p: 0.5 }}
-                                        defaultChecked
-                                        onChange={(e) => console.log(e.target.value)}
                                     />}
                                     label={
                                         <>
@@ -299,12 +331,12 @@ const Header = () => {
                                     labelPlacement="top"
                                 />
                                 <FormControlLabel
-                                    value="gray"
+                                    value={"gray"}
                                     control={<Radio
-                                        size='small' 
-                                        sx={{ p: 0.5 }} 
-                                        onChange={(e) => console.log(e.target.value)}
+                                        size='small'
+                                        sx={{ p: 0.5 }}
                                     />}
+                                    // onChange={() => document.body.style.filter = 'grayscale(1)'}
                                     label={
                                         <>
                                             <Box bgcolor='#C4C4C4' sx={boxStyle} />
@@ -314,12 +346,12 @@ const Header = () => {
                                     labelPlacement="top"
                                 />
                                 <FormControlLabel
-                                    value="dark"
-                                    control={<Radio 
-                                        size='small' 
-                                        sx={{ p: 0.5 }} 
-                                        onChange={(e) => console.log(e.target.value)}
+                                    value={"dark"}
+                                    control={<Radio
+                                        size='small'
+                                        sx={{ p: 0.5 }}
                                     />}
+                                    // onChange={(e) => setMode(prev => ({ ...prev, color: e.target.value }))}
                                     label={
                                         <>
                                             <Box bgcolor='#021B34' sx={boxStyle} />
@@ -330,11 +362,11 @@ const Header = () => {
                                 />
                                 <FormControlLabel
                                     value="noImage"
-                                    control={<Radio 
-                                        size='small' 
-                                        sx={{ p: 0.5 }} 
-                                        onChange={(e) => console.log(e.target.value)}
+                                    control={<Radio
+                                        size='small'
+                                        sx={{ p: 0.5 }}
                                     />}
+                                    // onChange={(e) => console.log(e.target.value)}
                                     label={
                                         <>
                                             <Box bgcolor='#C4C4C4' sx={boxStyle}>
