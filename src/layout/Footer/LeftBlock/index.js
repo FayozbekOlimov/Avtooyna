@@ -1,14 +1,36 @@
-import { useT } from "../../../custom/hooks/useT";
-import React, { useContext } from "react"
+import React, { useContext, useState, useEffect, useCallback } from "react"
 import { Stack, Button, Link as TelLink, Typography } from "@mui/material"
 import { AccessTimeFilled, Email, FmdGood, PhoneEnabled } from "@mui/icons-material"
 import Title from '../../../components/Title'
-import "./style.scss";
 import { ConsultContext } from "../../../App"
+import { useT } from "../../../custom/hooks/useT";
+import "./style.scss";
+import baseAPI from "../../../api/baseAPI"
+import { telsUrl } from "../../../api/apiUrls"
 
 const FooterLeftBlock = () => {
 	const { t, lang } = useT();
 	const { onOpenConsultModal } = useContext(ConsultContext);
+
+	const [tels, setTels] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	const getTels = useCallback(() => {
+		setLoading(true);
+		baseAPI.fetchAll(telsUrl)
+			.then((res) => {
+				if (res.data.success) {
+					setTels(res.data.data);
+					setLoading(false);
+				}
+			})
+			.catch((e) => console.log("e", e))
+
+	}, [])
+
+	useEffect(() => {
+		getTels()
+	}, [getTels])
 
 	return (
 		<Stack className="footer_contact_block" direction='column'>
@@ -19,8 +41,15 @@ const FooterLeftBlock = () => {
 						<PhoneEnabled sx={{ color: '#fff' }} />
 					</Stack>
 					<Stack className='header__tel-content'>
-						<TelLink href='tel:+998732497575' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 249-75-75</TelLink>
-						<TelLink href='tel:+998732430835' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 243-08-35</TelLink>
+						{
+							tels.map(tel => (
+								<TelLink
+									href={`tel:${tel.tel_namber}`}
+									sx={{ color: 'info.light', textDecoration: 'none' }}
+									key={tel.id}
+								>{tel.tel_namber}</TelLink>
+							))
+						}
 					</Stack>
 				</div>
 				<div className='header__tel'>
@@ -28,7 +57,7 @@ const FooterLeftBlock = () => {
 						<FmdGood sx={{ color: '#fff' }} />
 					</Stack>
 					<div className='header__tel-content'>
-						<Typography component='p' sx={{ color: 'info.light' }}>Farg’ona sh, Istiqlol 1A uy</Typography>
+						<Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
 						<small>{t(`ourAddress.${lang}`)}</small>
 					</div>
 				</div>
@@ -38,7 +67,7 @@ const FooterLeftBlock = () => {
 					</Stack>
 					<div className='header__tel-content'>
 						<Typography component='p' sx={{ color: 'info.light' }}>9:00 - 18:00</Typography>
-						<small>Dushanba - Juma</small>
+						<small>{t(`workDays.${lang}`)}</small>
 					</div>
 				</div>
 				<div className='header__tel'>
@@ -47,7 +76,7 @@ const FooterLeftBlock = () => {
 					</Stack>
 					<div className='header__tel-content'>
 						<TelLink href='mailto:info@avtooyna.uz' sx={{ color: 'info.light', textDecoration: 'none' }}>info@avtooyna.uz</TelLink>
-						<small>Elektron manzilimiz</small>
+						<small>{t(`emailAddress.${lang}`)}</small>
 					</div>
 				</div>
 				<Button
@@ -60,7 +89,7 @@ const FooterLeftBlock = () => {
 					}}
 					onClick={onOpenConsultModal}
 				>
-					Konsultatsiya olish
+					{t(`getConsult.${lang}`)}
 				</Button>
 			</Stack>
 		</Stack>

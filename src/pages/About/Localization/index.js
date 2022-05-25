@@ -14,10 +14,10 @@ const Localization = () => {
         setLoading(true);
         baseAPI.fetchAll(localizationUrl)
             .then((res) => {
-                // if (res.data.success) {
-                setLocalization(res.data.Localization);
-                setLoading(false);
-                // }
+                if (res.data.success) {
+                    setLocalization(res.data.data);
+                    setLoading(false);
+                }
             })
             .catch((e) => console.log("e", e))
 

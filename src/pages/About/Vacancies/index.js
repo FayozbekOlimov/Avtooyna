@@ -1,23 +1,26 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Stack, Grid } from '@mui/material';
-import Resume from './Resume';
+import VacanciesCard from './VacanciesCard';
 import Title from "../../../components/Title"
 import { vacanciesUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
+import { useT } from "../../../custom/hooks/useT";
+import { API_IMG_URL } from '../../../constants';
 
 
 const Vacancies = () => {
-	const [vacancies, setVacancies] = useState([]);
+	const { t, lang } = useT();
+	const [vacancies, setVacancies] = useState({});
 	const [loading, setLoading] = useState(false);
 
 	const getVacancies = useCallback(() => {
 		setLoading(true);
 		baseAPI.fetchAll(vacanciesUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setVacancies(res.data);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setVacancies(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 
@@ -30,23 +33,32 @@ const Vacancies = () => {
 	return (
 		<Stack className="jobs_wrapper">
 			<Title>
-				{/* {title} */}
-				Bosh ish o’rinlari
+				{t(`vacancies.${lang}`)}
 			</Title>
 			<Grid container spacing={2}>
 				<Grid item xs={12} md={6}>
-					<Resume
-						title={"Rezyume blankasini yuklab oling "}
-						number={"1"}
-						text={"Rezyume blankasi (40 kb)"}
-						doc={"Yuklab olish"}
+					<VacanciesCard
+						{...vacancies}
+						title={`downloadResume`}
+						text={`resumeBlank`}
+						number={1}
+					/>
+					<VacanciesCard
+						title={`fillResume`}
+						text={`downloadedResumeFill`}
+						number={2}
+					/>
+					<VacanciesCard
+						title={`sendToUs`}
+						text={`filledResumeSend`}
+						number={3}
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>
-					<img 
-						className='resume_img' 
-						src="/assets/img/resume_img.png" 
-						alt="resume_img" 
+					<img
+						className='resume_img'
+						src={API_IMG_URL + vacancies.img}
+						alt="resume_img"
 						width='100%'
 					/>
 				</Grid>

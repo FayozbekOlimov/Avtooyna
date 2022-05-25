@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "./style.scss";
 import { homeNewsUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
+import { useT } from '../../../custom/hooks/useT'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText(blue[500]),
@@ -24,13 +25,15 @@ const ArrowButton = styled(IconButton)(({ theme }) => ({
 
 
 const News = () => {
-
+    const { t, lang } = useT();
     const [news, setNews] = useState([]);
 
     const getNews = useCallback(() => {
         baseAPI.fetchAll(homeNewsUrl)
             .then((res) => {
-                setNews(res.data.news)
+                if (res.data.success) {
+                    setNews(res.data.data)
+                }
             })
             .catch((e) => console.log("e", e))
     }, [])
@@ -45,14 +48,14 @@ const News = () => {
     return (
         <Stack py={{ xs: 2, md: 4 }} className="news" bgcolor='background.paper'>
             <div className="container">
-                <Title>Yangiliklar</Title>
+                <Title>{t(`news.${lang}`)}</Title>
                 <Stack
                     direction='row'
                     justifyContent={"space-between"}
                     alignItems={"center"}
                     flexWrap="wrap" className="news_carusel_top"
                 >
-                    <Text>Korporativ mijozlar va jismoniy shaxslar uchun turli xildagi tovarlarni etkazib berish</Text>
+                    <Text>{t(`newsDesc.${lang}`)}</Text>
                     <Stack className="new_carusel_arrows" direction='row'>
                         <ArrowButton ref={newCaruselPrevRef}>
                             <RiArrowLeftSLine />
@@ -94,9 +97,9 @@ const News = () => {
                             }
                         }}
                     >
-                        {news.map((data) => (
-                            <SwiperSlide key={data.id}>
-                                <Card {...data} content={true} />
+                        {news.map((item) => (
+                            <SwiperSlide key={item.id}>
+                                <Card {...item} content={true} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

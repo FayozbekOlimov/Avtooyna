@@ -6,19 +6,23 @@ import baseAPI from "../../../api/baseAPI";
 import { homeGalleryUrl } from "../../../api/apiUrls";
 import './style.scss'
 import { API_IMG_URL } from '../../../constants';
+import { useT } from '../../../custom/hooks/useT';
+import { Link } from "react-router-dom";
 
 const galleryGridData = [
     5, 7, 7, 5, 6, 6
 ]
 
 const Gallery = () => {
-
+    const { t, lang } = useT();
     const [gallery, setGallery] = useState([]);
 
     const getHomeGallery = useCallback(() => {
         baseAPI.fetchAll(homeGalleryUrl)
             .then((res) => {
-                setGallery(res.data.fotogalareya);
+                if (res.data.success) {
+                    setGallery(res.data.data);
+                }
             })
             .catch((e) => console.log("e", e))
     }, [])
@@ -39,17 +43,19 @@ const Gallery = () => {
         >
             <div className="container">
                 <Stack direction='row' mb={1} justifyContent='space-between' alignItems='flex-start'>
-                    <Title>Fotosuratlar</Title>
-                    <Button
-                        variant='outlined'
-                        sx={{
-                            textTransform: 'none',
-                            color: 'info.main',
-                            borderColor: 'border.main'
-                        }}
-                        endIcon={<RiArrowRightSLine />}>
-                        Barchasini ko'rish
-                    </Button>
+                    <Title>{t(`photos.${lang}`)}</Title>
+                    <Link to={"/press-service/photogallery"}>
+                        <Button
+                            variant='outlined'
+                            sx={{
+                                textTransform: 'none',
+                                color: 'info.main',
+                                borderColor: 'border.main'
+                            }}
+                            endIcon={<RiArrowRightSLine />}>
+                            {t(`viewAll.${lang}`)}
+                        </Button>
+                    </Link>
                 </Stack>
                 <Grid container spacing={{ md: "30px", sm: "20px", xs: "10px" }} >
                     {
