@@ -6,8 +6,10 @@ import Loading from '../../../components/Loading'
 import { youthUnionUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { API_IMG_URL } from '../../../constants';
+import { useT } from '../../../custom/hooks/useT';
 
 const YouthUnion = () => {
+	const { t, lang } = useT();
 	const [youth, setYouth] = useState({});
 	const [loading, setLoading] = useState(false);
 
@@ -15,10 +17,10 @@ const YouthUnion = () => {
 		setLoading(true);
 		baseAPI.fetchAll(youthUnionUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setYouth(res.data.yoshIttif);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setYouth(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 
@@ -38,7 +40,18 @@ const YouthUnion = () => {
 						<Title>{title}</Title>
 						<Text><div dangerouslySetInnerHTML={{ __html: content }}></div></Text>
 						<a href={API_IMG_URL + file} target="_blank" rel="noopener noreferrer">
-							<Button variant='outlined' sx={{ textTransform: 'none' }} >Yuklab olish</Button></a>
+							<Button
+								variant='outlined'
+								sx={{
+									textTransform: "none",
+									alignSelf: 'flex-start',
+									color: 'secondary.main',
+									borderColor: 'border.main'
+								}}
+							>
+								{t(`download.${lang}`)}
+							</Button>
+						</a>
 					</>
 				)
 			}

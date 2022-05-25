@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Grid, Stack } from '@mui/material'
 import Title from '../../../components/Title'
 import Loading from '../../../components/Loading'
-import "./style.scss"
 import { videogalleryUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 
@@ -15,10 +14,10 @@ const VideoGallery = () => {
 		setLoading(true);
 		baseAPI.fetchAll(videogalleryUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setVideos(res.data.videogalareya);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setVideos(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 

@@ -9,6 +9,7 @@ import "./style.scss"
 import baseAPI from '../../../api/baseAPI';
 import { newsDetailUrl } from '../../../api/apiUrls';
 import { API_IMG_URL } from '../../../constants';
+import { useT } from '../../../custom/hooks/useT';
 
 const titleStyle = {
 	fontWeight: 700,
@@ -18,6 +19,7 @@ const titleStyle = {
 }
 
 const InsideNews = () => {
+	const { t, lang } = useT();
 	const navigate = useNavigate();
 	let { news_id } = useParams();
 	const [oneNews, setOneNews] = useState({});
@@ -29,10 +31,10 @@ const InsideNews = () => {
 		setLoading(true);
 		baseAPI.find(news_id, newsDetailUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setOneNews(res.data.newsOne);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setOneNews(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 
@@ -63,7 +65,7 @@ const InsideNews = () => {
 								className="inside_news_back_btn"
 								onClick={() => navigate(-1)}
 							>
-								Orqaga qaytish
+								{t(`back.${lang}`)}
 							</Button>
 							<Grid container spacing={2}>
 								<Grid item xs={12} sm={6} my={1}>

@@ -3,7 +3,6 @@ import { Grid, Typography } from '@mui/material'
 import Text from "../../../components/Text"
 import Title from '../../../components/Title'
 import Loading from '../../../components/Loading'
-import "./style.scss";
 import baseAPI from '../../../api/baseAPI'
 import { publicOfertaUrl } from '../../../api/apiUrls';
 import { API_IMG_URL } from "../../../constants";
@@ -24,10 +23,10 @@ const PublicOffer = () => {
 		setLoading(true);
 		baseAPI.fetchAll(publicOfertaUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setOferta(res.data.bizHaq);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setOferta(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 

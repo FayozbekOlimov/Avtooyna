@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { ExpandMore, FmdGood, Menu as MenuIcon, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
-import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme } from '@mui/material';
+import { Button, FormControl, Grid, Box, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme } from '@mui/material';
 import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom';
@@ -26,10 +26,10 @@ const Header = () => {
         setLoading(true);
         baseAPI.fetchAll(telsUrl)
             .then((res) => {
-                // if (res.data.success) {
-                setTels(res.data.navbar);
-                setLoading(false);
-                // }
+                if (res.data.success) {
+                    setTels(res.data.data);
+                    setLoading(false);
+                }
             })
             .catch((e) => console.log("e", e))
 
@@ -38,7 +38,6 @@ const Header = () => {
     useEffect(() => {
         getTels()
     }, [getTels])
-
 
 
     const handleChange = (event) => {
@@ -80,10 +79,12 @@ const Header = () => {
                             onClick={() => setVisible(true)}
                         />
                         <Link to='/' className='header__logo'>
-                            <img src='/assets/img/logo.svg' alt='logo' />
+                            <img src={mode === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
                         </Link>
                     </Grid>
-                    <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
+                    <Box component={Grid} item xs={12} md={9} lg={6} display={{
+                        md: "none", lg: "flex"
+                    }} justifyContent='space-evenly'>
                         <div className='header__tel'>
                             <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
                                 <PhoneEnabled sx={{ color: 'primary.main' }} />
@@ -105,24 +106,26 @@ const Header = () => {
                                 <FmdGood sx={{ color: 'primary.main' }} />
                             </Stack>
                             <div className='header__tel-content'>
-                                <Typography component='p' sx={{ color: 'info.light' }}>Farg’ona sh, Istiqlol 1A uy</Typography>
+                                <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
                                 <small>{t(`ourAddress.${lang}`)}</small>
                             </div>
                         </div>
-                    </Grid>
+                    </Box>
                     <Grid item xs={12} md={12} lg={4} display='flex' alignItems='center' justifyContent='space-between'>
-                        <Button
-                            variant='outlined'
-                            sx={{
-                                textTransform: 'none',
-                                padding: '8px',
-                                color: 'info.main',
-                                borderColor: 'border.main'
-                            }}
-                            onClick={onOpenConsultModal}
-                        >
-                            Konsultatsiya olish
-                        </Button>
+                        <Box display={{ md: "none", lg: "block" }}>
+                            <Button
+                                variant='outlined'
+                                sx={{
+                                    textTransform: 'none',
+                                    padding: '8px',
+                                    color: 'info.main',
+                                    borderColor: 'border.main'
+                                }}
+                                onClick={onOpenConsultModal}
+                            >
+                                {t(`getConsult.${lang}`)}
+                            </Button>
+                        </Box>
                         <FormControl className="language_wrapper" >
                             <Select
                                 IconComponent={ExpandMore}

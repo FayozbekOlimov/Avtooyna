@@ -5,19 +5,20 @@ import Text from '../../../components/Text';
 import { homeBannerUrl } from "../../../api/apiUrls";
 import { API_IMG_URL } from '../../../constants/index'
 import baseAPI from "../../../api/baseAPI";
+import { useT } from "../../../custom/hooks/useT";
 import './style.scss';
 
 
 const Banner = () => {
+    const { t, lang } = useT()
     const [banner, setBanner] = useState({});
 
     const getBanner = useCallback(() => {
         baseAPI.fetchAll(homeBannerUrl)
             .then(res => {
-                // if (res.data.status === 200) {
-                setBanner(res.data.homeBanner)
-                console.log("ban", banner);
-                // }
+                if (res.data.success) {
+                    setBanner(res.data.data)
+                }
             })
             .catch((e) => console.log("error", e))
     }, [])
@@ -36,12 +37,12 @@ const Banner = () => {
             <div className="container">
                 <div className="banner__content">
                     <Title>
-                        {title}
+                        <div dangerouslySetInnerHTML={{ __html: title }} />
                     </Title>
                     <Text>
-                        {text}
+                        <div dangerouslySetInnerHTML={{ __html: text }} />
                     </Text>
-                    <Button>Batafsil</Button>
+                    <Button>{t(`detail.${lang}`)}</Button>
                 </div>
             </div>
         </div>

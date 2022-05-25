@@ -5,7 +5,6 @@ import Text from "../../../components/Text";
 import Loading from "../../../components/Loading";
 import { qualityUrl } from "../../../api/apiUrls";
 import baseAPI from "../../../api/baseAPI";
-import "./style.scss"
 
 const Quality = () => {
     const [quality, setQuality] = useState([]);
@@ -15,10 +14,10 @@ const Quality = () => {
         setLoading(true);
         baseAPI.fetchAll(qualityUrl)
             .then((res) => {
-                // if (res.data.success) {
-                setQuality(res.data.sifat);
+                if (res.data.success) {
+                setQuality(res.data.data);
                 setLoading(false);
-                // }
+                }
             })
             .catch((e) => console.log("e", e))
 

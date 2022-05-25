@@ -5,14 +5,16 @@ import Text from "../../../components/Text";
 import { Link } from "react-router-dom";
 import "./style.scss";
 import { API_IMG_URL } from "../../../constants";
+import { useT } from "../../../custom/hooks/useT";
 
 const Card = ({ id, img, date, title, text, content, toUrl }) => {
+	const { t, lang } = useT();
 	return (
 		<Stack className="card" bgcolor='background.default'>
 			<Stack className="card__img">
 				<img src={API_IMG_URL + img} alt={`card-${id}`} />
 			</Stack>
-			<Stack className="card__content" direction='column'>
+			<Stack className="card__content" direction='column' alignItems='flex-start'>
 				<p className="card__date">
 					<img src="/assets/icon/calendar.png" alt="calendar-icon" />
 					{date}
@@ -35,7 +37,7 @@ const Card = ({ id, img, date, title, text, content, toUrl }) => {
 						sx={{ textTransform: "capitalize", color: "primary.light" }}
 						endIcon={<RiArrowRightSLine />}
 					>
-						Batafsil
+						{t(`detail.${lang}`)}
 					</Button>
 				</Link>
 			</Stack>

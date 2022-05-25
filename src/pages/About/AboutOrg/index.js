@@ -7,7 +7,6 @@ import baseAPI from "../../../api/baseAPI";
 import { aboutOrgUrl } from "../../../api/apiUrls";
 import useWindowSize from "../../../custom/hooks/useWindowSize";
 import { API_IMG_URL } from '../../../constants';
-import './style.scss';
 
 const AboutOrg = () => {
     const [aboutOrg, setAboutOrg] = useState({});

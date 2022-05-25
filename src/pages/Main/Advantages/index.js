@@ -1,19 +1,31 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
-import './style.scss'
 import baseAPI from '../../../api/baseAPI'
-import { homeAdvantageslUrl } from '../../../api/apiUrls'
+import { homeAdvantageslUrl } from '../../../api/apiUrls';
+import { useT } from "../../../custom/hooks/useT";
+import './style.scss';
 
 const advantageIcons = ["/assets/icon/icon1.png", "/assets/icon/icon2.png", "/assets/icon/icon3.png", "/assets/icon/icon4.png", "/assets/icon/icon5.png", "/assets/icon/icon6.png",]
 
+const iconBoxStyle = {
+	width: '55px',
+	height: '55px',
+	borderRadius: '50%',
+	display: 'grid',
+	placeItems: 'center',
+	backgroundColor: 'primary.light'
+}
+
+
 const Advantages = () => {
+	const { t, lang } = useT();
 	const [advantages, setAdvantages] = useState([]);
 
 	const getAdvantages = useCallback(() => {
 		baseAPI.fetchAll(homeAdvantageslUrl)
 			.then((res) => {
-				setAdvantages(res.data.afzal);
+				setAdvantages(res.data.data);
 			})
 			.catch((e) => console.log("e", e));
 	}, [])
@@ -22,21 +34,10 @@ const Advantages = () => {
 		getAdvantages();
 	}, [getAdvantages])
 
-
-
-	const iconBoxStyle = {
-		width: '55px',
-		height: '55px',
-		borderRadius: '50%',
-		display: 'grid',
-		placeItems: 'center',
-		backgroundColor: 'primary.light'
-	}
-
 	return (
 		<Stack py={{ xs: 2, md: 4 }} direction={{ xs: 'column', md: 'row' }} className='advantages' alignItems='center' bgcolor='background.paper'>
 			<div className="container">
-				<Title>Bizning afzalliklarimiz</Title>
+				<Title>{t(`ourAdvantages.${lang}`)}</Title>
 				<Grid container spacing={2}>
 					{advantages.map((advantage, idx) => (
 						<Grid item xs={12} sm={6} key={advantage.id}>

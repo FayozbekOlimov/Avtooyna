@@ -1,55 +1,23 @@
-.leadership_card {
-  display      : flex;
-  width        : 100%;
-  // width: 871px;
-  background   : #FFFFFF;
-  box-shadow   : 0px 10px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  margin-bottom: 20px;
-  flex-wrap    : wrap;
-  padding      : 5px 20px 20px 30px;
-
-  .leader_img {
-    margin-top   : 20px;
-    width        : 126px;
-    height       : 126px;
-    border-radius: 50%;
-    object-fit   : cover;
-    margin-right : 20px;
-
+.leader {
+  &_card {
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    margin-bottom: 20px;
   }
 
-  .leader_title {
-    margin-top: 20px;
+  &_img {
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
+  &_job {
+    color: #6E7E8B !important;
+  }
 
-    h4 {
-      font-style : normal;
-      font-weight: 600;
-      font-size  : 20px;
-      line-height: 145%;
-    }
-
-    p {
-      font-style : normal;
-      font-weight: 400;
-      font-size  : 16px;
-      line-height: 145%;
-      margin     : 12px 0;
-      color      : #6E7E8B;
-
-    }
-
-    .leader_email {
-      a {
-        text-decoration: none;
-        font-style     : normal;
-        font-weight    : 500;
-        font-size      : 16px;
-        line-height    : 145%;
-
-        color: #00468D;
-      }
-    }
+  &_email img {
+    margin-right: 8px;
   }
 }

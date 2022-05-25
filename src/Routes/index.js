@@ -45,7 +45,7 @@ export const routes = [
     element: <Main />,
   },
   {
-    path: "insideAbout-announcement-detail",
+    path: "about-us/:page_url",
     element: <InsideAbout />
   },
   {

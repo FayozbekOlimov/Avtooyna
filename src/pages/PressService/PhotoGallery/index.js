@@ -17,10 +17,10 @@ const PhotoGallery = () => {
 		setLoading(true);
 		baseAPI.fetchAll(homeGalleryUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setPhotos(res.data.fotogalareya);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setPhotos(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 

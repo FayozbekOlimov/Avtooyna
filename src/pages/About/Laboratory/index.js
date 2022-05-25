@@ -18,10 +18,10 @@ const Laboratory = () => {
         setLoading(true);
         baseAPI.fetchAll(laboratoryUrl)
             .then((res) => {
-                // if (res.data.success) {
-                setLaboratory(res.data.libariry);
-                setLoading(false);
-                // }
+                if (res.data.success) {
+                    setLaboratory(res.data.data);
+                    setLoading(false);
+                }
             })
             .catch((e) => console.log("e", e))
 

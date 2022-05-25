@@ -11,6 +11,8 @@ import './style.scss';
 import { Navigation } from "swiper";
 import { homeCertificateUrl } from '../../../api/apiUrls'
 import baseAPI from '../../../api/baseAPI'
+import { useT } from '../../../custom/hooks/useT'
+import { API_IMG_URL } from '../../../constants'
 
 const titleStyle = {
     fontWeight: 500,
@@ -21,13 +23,15 @@ const titleStyle = {
 
 
 const Certificates = () => {
-
-    const [certificates, setCertificates] = useState([]);
+    const { t, lang } = useT();
+    const [certificates, setCertificates] = useState({});
 
     const getAdvantages = useCallback(() => {
         baseAPI.fetchAll(homeCertificateUrl)
             .then((res) => {
-                setCertificates(res.data.sertifikat);
+                if (res.data.success) {
+                    setCertificates(res.data.data[0]);
+                }
             })
             .catch((e) => console.log("e", e));
     }, [])
@@ -35,6 +39,8 @@ const Certificates = () => {
     useEffect(() => {
         getAdvantages();
     }, [getAdvantages])
+
+    const { items = [] } = certificates;
 
     return (
         <Stack
@@ -53,60 +59,65 @@ const Certificates = () => {
                     loop={true}
                     className="home_certificate_swiper"
                 >
-                    <SwiperSlide>
-                        <Grid container width="100%">
-                            <Grid item xs={12} md={6}
-                                bgcolor='#F1F2F8'
-                                p={2}
-                                display="flex"
-                                justifyContent="center"
-                                borderRadius='12px'
-                            >
-                                <div className='sertificates__imgBx'>
-                                    <img
-                                        className='sertificates__img'
-                                        src="/assets/img/sertifikat1.png"
-                                        alt="sertifikat1"
-                                        width='100%'
-                                    />
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} md={6}
-                                p={1} pr={0}
-                                pl={{ xs: 0, md: 6 }}
-                                order={{ xs: '-1', md: 0 }}
-                            >
-                                <Stack className="sertificates__content" direction='column'>
-                                    <Stack
-                                        direction='row'
-                                        alignItems='center'
-                                        justifyContent='space-between'
-                                        flexWrap="wrap"
-                                        mb={2}
+                    {
+                        items.map(({ id, title, text, img }) => (
+                            <SwiperSlide key={id}>
+                                <Grid container width="100%">
+                                    <Grid item xs={12} md={6}
+                                        bgcolor='#F1F2F8'
+                                        p={2}
+                                        display="flex"
+                                        justifyContent="center"
+                                        borderRadius='12px'
                                     >
-                                        <Title>Sertifikatlar</Title>
-                                        <Button
-                                            variant='outlined'
-                                            sx={{
-                                                textTransform: 'none',
-                                                marginBottom: 2,
-                                                color: 'info.main',
-                                                borderColor: 'border.main'
-                                            }}
-                                            endIcon={<RiArrowRightSLine />}
-                                        >
-                                            Barchasini ko'rish
-                                        </Button>
-                                    </Stack>
-                                    <Typography sx={titleStyle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </Typography>
-                                    <Text>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                    </Text>
+                                        <div className='sertificates__imgBx'>
+                                            <img
+                                                className='sertificates__img'
+                                                src={API_IMG_URL + img}
+                                                alt="sertifikat1"
+                                                width='100%'
+                                            />
+                                        </div>
+                                    </Grid>
+                                    <Grid item xs={12} md={6}
+                                        p={1} pr={0}
+                                        pl={{ xs: 0, md: 6 }}
+                                        order={{ xs: '-1', md: 0 }}
+                                    >
+                                        <Stack className="sertificates__content" direction='column'>
+                                            <Stack
+                                                direction='row'
+                                                alignItems='center'
+                                                justifyContent='space-between'
+                                                flexWrap="wrap"
+                                                mb={2}
+                                            >
+                                                <Title>{t(`certificates.${lang}`)}</Title>
+                                                <Button
+                                                    variant='outlined'
+                                                    sx={{
+                                                        textTransform: 'none',
+                                                        marginBottom: 2,
+                                                        color: 'info.main',
+                                                        borderColor: 'border.main'
+                                                    }}
+                                                    endIcon={<RiArrowRightSLine />}
+                                                >
+                                                    {t(`viewAll.${lang}`)}
+                                                </Button>
+                                            </Stack>
+                                            <Typography sx={titleStyle}>{title} </Typography>
+                                            <Text>
+                                                <div dangerouslySetInnerHTML={{ __html: text }}></div>
+                                            </Text>
 
-                                </Stack>
-                            </Grid>
-                        </Grid>
-                    </SwiperSlide>
+                                        </Stack>
+                                    </Grid>
+                                </Grid>
+                            </SwiperSlide>
+                        ))
+                    }
+
                 </Swiper >
             </div >
         </Stack >

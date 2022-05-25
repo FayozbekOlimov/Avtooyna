@@ -1,14 +1,17 @@
 import { Button, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { RiArrowRightSLine } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+import { API_IMG_URL } from '../../../../constants'
+import { useT } from '../../../../custom/hooks/useT'
 import './style.scss'
 
-const MediaCard = ({ id, src, date, title, toUrl }) => {
+const MediaCard = ({ id, img, date, title, url }) => {
+    const { t, lang } = useT();
+
     return (
         <Grid container className='media__card' bgcolor='background.default'>
             <Grid item xs={12} sm={4}>
-                <img className='media__card-img' src={src} alt='oav-img' />
+                <img className='media__card-img' src={API_IMG_URL + img} alt='oav-img' />
             </Grid>
             <Grid item xs={12} sm={8} p={1} display='flex' flexDirection='column' justifyContent='center' alignItems='flex-start'>
                 <p className="card__date">
@@ -24,15 +27,15 @@ const MediaCard = ({ id, src, date, title, toUrl }) => {
                     }}
                     className="card__title"
                 >{title}</Typography>
-                <Link to={toUrl}>
+                <a href={url} target="_blank" rel="noopener noreferrer">
                     <Button
                         variant="text"
                         sx={{ textTransform: "capitalize", color: "primary.light" }}
                         endIcon={<RiArrowRightSLine />}
                     >
-                        Batafsil
+                        {t(`detail.${lang}`)}
                     </Button>
-                </Link>
+                </a>
             </Grid>
         </Grid>
     )

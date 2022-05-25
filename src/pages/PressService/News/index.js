@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import baseAPI from '../../../api/baseAPI';
 import { homeNewsUrl } from '../../../api/apiUrls';
 import { API_IMG_URL } from "../../../constants"
+import { useT } from "../../../custom/hooks/useT";
 import "./style.scss";
 
 const titleStyle = {
@@ -19,7 +20,7 @@ const titleStyle = {
 }
 
 const News = () => {
-
+	const { t, lang } = useT();
 	const [news, setNews] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -27,10 +28,10 @@ const News = () => {
 		setLoading(true);
 		baseAPI.fetchAll(homeNewsUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setNews(res.data.news);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setNews(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 
@@ -69,7 +70,7 @@ const News = () => {
 															sx={{ textTransform: "capitalize" }}
 															endIcon={<RiArrowRightSLine />}
 														>
-															Batafsil
+															{t(`detail.${lang}`)}
 														</Button>
 													</Link>
 												</Grid>

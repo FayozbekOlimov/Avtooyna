@@ -8,8 +8,10 @@ import './style.scss';
 import { API_IMG_URL } from "../../../constants";
 import baseAPI from '../../../api/baseAPI';
 import { homeCompanyUrl, homeEquipmentUrl, homeGlassUrl } from '../../../api/apiUrls'
+import { useT } from '../../../custom/hooks/useT'
 
 const About = () => {
+    const { t, lang } = useT()
     const [company, setCompany] = useState({});
     const [homeGlasses, setHomeGlasses] = useState({});
     const [homeEquipment, setHomeEquipment] = useState({});
@@ -17,7 +19,7 @@ const About = () => {
     const getCompany = useCallback(() => {
         baseAPI.fetchAll(homeCompanyUrl)
             .then((res) => {
-                setCompany(res.data.company);
+                setCompany(res.data.data);
             })
             .catch((e) => console.log("e", e));
 
@@ -26,7 +28,7 @@ const About = () => {
     const getGlasses = useCallback(() => {
         baseAPI.fetchAll(homeGlassUrl)
             .then((res) => {
-                setHomeGlasses(res.data.glasses);
+                setHomeGlasses(res.data.data);
             })
             .catch((e) => console.log("e", e));
 
@@ -35,7 +37,7 @@ const About = () => {
     const getEquipment = useCallback(() => {
         baseAPI.fetchAll(homeEquipmentUrl)
             .then((res) => {
-                setHomeEquipment(res.data.equipment);
+                setHomeEquipment(res.data.data);
             })
             .catch((e) => console.log("e", e));
 
@@ -75,18 +77,20 @@ const About = () => {
                                     <div dangerouslySetInnerHTML={{ __html: companyText }}>
                                     </div>
                                 </Text>
-                                <Button>Batafsil</Button>
+                                <Link to={"/about-us/about-org"}>
+                                    <Button>{t(`detail.${lang}`)}</Button>
+                                </Link>
                             </div>
                             <div className="about__numbers">
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
                                     <Typography component='h2' color='secondary.dark' gutterBottom>{number1}</Typography>
                                     <Typography component='p' color='secondary.dark'>{block_title1}</Typography>
                                 </Stack>
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
                                     <Typography component='h2' color='secondary.dark' gutterBottom>{number2}</Typography>
                                     <Typography component='p' color='secondary.dark'>{block_title2}</Typography>
                                 </Stack>
-                                <Stack className="about__numbers-item" sx={{ bgcolor: 'secondary.iconBg' }}>
+                                <Stack className="about__numbers-item" sx={{ bgcolor: 'background.iconBg' }}>
                                     <Typography component='h2' color='secondary.dark' gutterBottom>{number3}</Typography>
                                     <Typography component='p' color='secondary.dark'>{block_title3}</Typography>
                                 </Stack>
@@ -114,7 +118,7 @@ const About = () => {
                                 <Title>{glassTitle}</Title>
                                 <Text className="glass_text">   <div dangerouslySetInnerHTML={{ __html: glassText }}>
                                 </div></Text>
-                                <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>     </div>
+                                <Link to="/about-us/:oynalar"><Button>{t(`detail.${lang}`)}</Button></Link>     </div>
                         </Grid>
                     </Grid>
                 </Stack>
@@ -141,7 +145,7 @@ const About = () => {
                                 <Text>
                                     <div dangerouslySetInnerHTML={{ __html: equipmentText }}></div>
                                 </Text>
-                                <Link to="/insideAbout-announcement-detail"><Button>Batafsil</Button></Link>
+                                <Link to="/about-us/:equipment"><Button>{t(`detail.${lang}`)}</Button></Link>
 
                             </div>
                         </Grid>

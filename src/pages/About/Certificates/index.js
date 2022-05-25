@@ -2,13 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Stack } from '@mui/material'
 import CertificateCarusel from './CertificateCarusel';
 import Title from '../../../components/Title'
-import "./style.scss"
 import { certificatesUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import Loading from '../../../components/Loading';
+import { useT } from '../../../custom/hooks/useT';
 
 const Certificates = () => {
-
+	const { t, lang } = useT();
 	const [certificates, setCertificates] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -16,10 +16,10 @@ const Certificates = () => {
 		setLoading(true);
 		baseAPI.fetchAll(certificatesUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setCertificates(res.data.sertifikat);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setCertificates(res.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 
@@ -32,12 +32,16 @@ const Certificates = () => {
 
 	return (
 		<Stack>
-			<Title>Sertifikatlar</Title>
 			{
 				loading ? (<Loading />) : (
-					certificates.map(certificate => (
-						<CertificateCarusel key={certificate.id} {...certificate} />
-					))
+					<>
+						<Title>{t(`certificates.${lang}`)}</Title>
+						{
+							certificates.map(certificate => (
+								<CertificateCarusel key={certificate.id} {...certificate} />
+							))
+						}
+					</>
 				)
 			}
 		</Stack>
