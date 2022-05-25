@@ -51,7 +51,7 @@ const Nomenclature = () => {
 		baseAPI.fetchAll(nomenclatureUrl)
 			.then((res) => {
 				if (res.data.success) {
-					setNomenclature(res.data.data);
+					setNomenclature(res.data);
 					setLoading(false);
 				}
 			})
@@ -63,7 +63,7 @@ const Nomenclature = () => {
 		getNomenclature()
 	}, [getNomenclature])
 
-	const { imgs = [], nomenklatura = [] } = nomenclature;
+	const { dataImgs = [], data:nomeklatura = [] } = nomenclature;
 
 	return (
 		loading ? (
@@ -73,7 +73,7 @@ const Nomenclature = () => {
 		) : (
 			<>
 				{
-					imgs.map(({ id, img }) => (
+					dataImgs.map(({ id, img }) => (
 						<Grid item md={3} xs={12} key={id}>
 							<div className='nomen_img'>
 								<img src={API_IMG_URL + img} alt={`img${id}`} width="100%" />
@@ -95,7 +95,7 @@ const Nomenclature = () => {
 								</TableRow>
 							</TableHead>
 							<TableBody>
-								{nomenklatura.map((row, ind) => (
+								{nomeklatura.map((row, ind) => (
 									<StyledTableRow key={row.id}>
 										<StyledTableCell>{ind + 1}</StyledTableCell>
 										<StyledTableCell>{row.title}</StyledTableCell>
