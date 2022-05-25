@@ -7,15 +7,18 @@ import './style.scss'
 import baseAPI from '../../../api/baseAPI';
 import { homePartnerUrl } from '../../../api/apiUrls';
 import { API_IMG_URL } from '../../../constants';
+import { useT } from '../../../custom/hooks/useT';
 
 const Partners = () => {
-
+    const { t, lang } = useT();
     const [partners, setPartners] = useState([]);
 
     const getPartners = useCallback(() => {
         baseAPI.fetchAll(homePartnerUrl)
             .then((res) => {
-                setPartners(res.data.hamkorlar);
+                if (res.data.success) {
+                    setPartners(res.data.data);
+                }
             })
             .catch((e) => console.log("e", e));
     }, [])
@@ -28,7 +31,7 @@ const Partners = () => {
         <Stack className='partners' py={{ xs: 2, md: 4 }} bgcolor='background.paper'>
             <div className='container'>
                 <Stack direction='column'>
-                    <Title>Bizning hamkorlar</Title>
+                    <Title>{t(`ourPartners.${lang}`)}</Title>
                     <div className='swiper__wrapper'>
                         <Swiper
                             className='partners__swiper'
@@ -55,7 +58,9 @@ const Partners = () => {
                             {
                                 partners.map(partner => (
                                     <SwiperSlide key={partner.id}>
-                                        <img className='partners__swiper-img' src={API_IMG_URL + partner.imgs} alt={`partners${partner.id}`} />
+                                        <Stack className="partners__swiper__img__wrapper">
+                                            <img className='partners__swiper-img' src={API_IMG_URL + partner.imgs} alt={`partners${partner.id}`} />
+                                        </Stack>
                                     </SwiperSlide>
                                 ))
                             }

@@ -4,9 +4,10 @@ import Title from "../Title";
 import InputMask from 'react-input-mask';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import baseAPI from "../../api/baseAPI";
-import "./_style.scss";
 import { createConsultUrl } from '../../api/apiUrls';
+import { useT } from "../../custom/hooks/useT";
 import { Alert, Snackbar } from '@mui/material';
+import "./_style.scss";
 
 const InputTel = (props) => (
 	<InputMask mask="+\9\98 (99) 999-99-99" placeholder='+998' value={props.value} onChange={props.onChange}>
@@ -17,6 +18,7 @@ const InputTel = (props) => (
 );
 
 const GetConsultModal = (props) => {
+	const { t, lang } = useT()
 	const [open, setOpen] = useState(false);
 
 	const handleClick = () => {
@@ -63,7 +65,7 @@ const GetConsultModal = (props) => {
 					<img className='modal_left-img' src="/assets/img/form_img.png" alt="form" />
 				</div>
 				<div className="consult_form">
-					<Title>Konsultatsiya olish</Title>
+					<Title>{t(`getConsult.${lang}`)}</Title>
 					<Form
 						form={form}
 						layout="vertical"

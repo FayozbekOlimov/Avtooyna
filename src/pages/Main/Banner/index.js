@@ -5,20 +5,20 @@ import Text from '../../../components/Text';
 import { homeBannerUrl } from "../../../api/apiUrls";
 import { API_IMG_URL } from '../../../constants/index'
 import baseAPI from "../../../api/baseAPI";
+import { useT } from "../../../custom/hooks/useT";
 import './style.scss';
-import { toUnitless } from '@mui/material/styles/cssUtils';
 
 
 const Banner = () => {
+    const { t, lang } = useT()
     const [banner, setBanner] = useState({});
 
     const getBanner = useCallback(() => {
         baseAPI.fetchAll(homeBannerUrl)
             .then(res => {
-                // if (res.data.status === 200) {
-                setBanner(res.data.homeBanner)
-                console.log("ban", banner);
-                // }
+                if (res.data.success) {
+                    setBanner(res.data.data)
+                }
             })
             .catch((e) => console.log("error", e))
     }, [])
@@ -32,7 +32,7 @@ const Banner = () => {
     return (
         <div className='banner'>
             <div className="banner__bg">
-                <img src='/assets/img/banner.png' alt="banner" />
+                <img src={API_IMG_URL + imgs} alt="banner" />
             </div>
             <div className="container">
                 <div className="banner__content">
@@ -42,7 +42,7 @@ const Banner = () => {
                     <Text>
                         <div dangerouslySetInnerHTML={{ __html: text }} />
                     </Text>
-                    <Button>Batafsil</Button>
+                    <Button>{t(`detail.${lang}`)}</Button>
                 </div>
             </div>
         </div>

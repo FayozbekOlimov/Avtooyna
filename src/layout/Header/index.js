@@ -10,12 +10,35 @@ import headerMenu from './headerMenu.json';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
+import { telsUrl } from "../../api/apiUrls";
+import baseAPI from "../../api/baseAPI";
 import './style.scss';
 
 const Header = () => {
     const [visible, setVisible] = useState(false);
     const { t, lang } = useT();
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
+
+    const [tels, setTels] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const getTels = useCallback(() => {
+        setLoading(true);
+        baseAPI.fetchAll(telsUrl)
+            .then((res) => {
+                if (res.data.success) {
+                    setTels(res.data.data);
+                    setLoading(false);
+                }
+            })
+            .catch((e) => console.log("e", e))
+
+    }, [])
+
+    useEffect(() => {
+        getTels()
+    }, [getTels])
+
 
     const handleChange = (event) => {
         setLang(event.target.value);
@@ -125,14 +148,23 @@ const Header = () => {
                             <img src={mode === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
                         </Link>
                     </Grid>
-                    <Grid item xs={12} md={9} lg={6} display='flex' justifyContent='space-evenly'>
+                    <Box component={Grid} item xs={12} md={9} lg={6} display={{
+                        md: "none", lg: "flex"
+                    }} justifyContent='space-evenly'>
                         <div className='header__tel'>
                             <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
                                 <PhoneEnabled sx={{ color: 'primary.main' }} />
                             </Stack>
                             <Stack className='header__tel-content'>
-                                <TelLink href='tel:+998732497575' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 249-75-75</TelLink>
-                                <TelLink href='tel:+998732430835' sx={{ color: 'info.light', textDecoration: 'none' }}>+998 73 243-08-35</TelLink>
+                                {
+                                    tels.map(tel => (
+                                        <>
+                                            <TelLink href={`tel:${tel.tel_namber}`} sx={{ color: 'info.light', textDecoration: 'none' }}
+                                                key={tel.id}
+                                            >{tel.tel_namber}</TelLink>
+                                        </>
+                                    ))
+                                }
                             </Stack>
                         </div>
                         <div className='header__tel'>
@@ -140,24 +172,26 @@ const Header = () => {
                                 <FmdGood sx={{ color: 'primary.main' }} />
                             </Stack>
                             <div className='header__tel-content'>
-                                <Typography component='p' sx={{ color: 'info.light' }}>Farg’ona sh, Istiqlol 1A uy</Typography>
+                                <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
                                 <small>{t(`ourAddress.${lang}`)}</small>
                             </div>
                         </div>
-                    </Grid>
+                    </Box>
                     <Grid item xs={12} md={12} lg={4} display='flex' alignItems='center' justifyContent='space-between'>
-                        <Button
-                            variant='outlined'
-                            sx={{
-                                textTransform: 'none',
-                                padding: '8px',
-                                color: 'info.main',
-                                borderColor: 'border.main'
-                            }}
-                            onClick={onOpenConsultModal}
-                        >
-                            Konsultatsiya olish
-                        </Button>
+                        <Box display={{ md: "none", lg: "block" }}>
+                            <Button
+                                variant='outlined'
+                                sx={{
+                                    textTransform: 'none',
+                                    padding: '8px',
+                                    color: 'info.main',
+                                    borderColor: 'border.main'
+                                }}
+                                onClick={onOpenConsultModal}
+                            >
+                                {t(`getConsult.${lang}`)}
+                            </Button>
+                        </Box>
                         <FormControl className="language_wrapper" >
                             <Select
                                 IconComponent={ExpandMore}
@@ -304,7 +338,7 @@ const Header = () => {
                                     label={
                                         <>
                                             <Box bgcolor='#C4C4C4' sx={boxStyle}>
-                                                <img src='/assets/icon/no-image.png' alt='no-image' />
+                                                <img src='/assets/icon/no-image.png' alt="no_image" />
                                             </Box>
                                             <Typography sx={modeLabelStyle}>No image</Typography>
                                         </>

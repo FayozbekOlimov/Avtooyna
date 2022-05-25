@@ -1,12 +1,162 @@
 {
   "ourAddress": {
     "uz": "Bizning manzil",
-    "ru": "lorem",
+    "ru": "Наш адресс",
     "en": "Our address"
   },
   "contact": {
-    "uz":"Biz bilan aloqa",
-    "ru":"ru",
-    "en":"eng"
+    "uz": "Biz bilan aloqa",
+    "ru": "Связаться с нами",
+    "en": "Contact us"
+  },
+  "getConsult": {
+    "uz": "Konsultatsiya olish",
+    "ru": "Получить консультацию",
+    "en": "Get a consultation"
+  },
+  "ourAddressName": {
+    "uz": "Farg’ona sh, Istiqlol 1A uy",
+    "ru": "г. Фергана, дом Истиклол 1А",
+    "en": "Fergana city, Istiqlol 1A house"
+  },
+  "detail": {
+    "uz": "Batafsil",
+    "ru": "Подробнее",
+    "en": "Read more"
+  },
+  "workDays": {
+    "uz": "Dushanba - Juma",
+    "ru": "Понедельник - Пятница",
+    "en": "Monday - Friday"
+  },
+  "emailAddress": {
+    "uz": "Elektron manzilimiz",
+    "ru": "Наш электронной почты",
+    "en": "Our email address"
+  },
+  "dealContact": {
+    "uz": "Shartnoma tuzish uchun aloqa:",
+    "ru": "Контакт для заключения договора:",
+    "en": "Contact for contract:"
+  },
+  "ourAdvantages": {
+    "uz": "Bizning afzalliklarimiz",
+    "ru": "Наши преимущества",
+    "en": "Our advantages"
+  },
+  "certificates": {
+    "uz": "Sertifikatlar",
+    "ru": "Сертификаты",
+    "en": "Certificates"
+  },
+  "viewAll": {
+    "uz": "Barchasini ko'rish",
+    "ru": "Увидеть их всех",
+    "en": "See them all"
+  },
+  "photos": {
+    "uz": "Fotosuratlar",
+    "ru": "Фотографии",
+    "en": "Photos"
+  },
+  "news": {
+    "uz": "Yangiliklar",
+    "ru": "Новости",
+    "en": "News"
+  },
+  "newsDesc": {
+    "uz": "Korporativ mijozlar va jismoniy shaxslar uchun turli xildagi tovarlarni etkazib berish",
+    "ru": "Поставка различных товаров для корпоративных клиентов и частных лиц",
+    "en": "Supply of various goods for corporate clients and individuals"
+  },
+  "ourPartners": {
+    "uz": "Bizning hamkorlar",
+    "ru": "Наши партнеры",
+    "en": "Our partners"
+  },
+  "contests": {
+    "uz": "Tanlovlar",
+    "ru": "Конкурсы",
+    "en": "Contests"
+  },
+  "aboutOav": {
+    "uz": "OAV Biz haqimizda",
+    "ru": "СМИ о нас",
+    "en": "The media is about us"
+  },
+  "leadership": {
+    "uz": "Rahbariyat",
+    "ru": "Руководство",
+    "en": "Management"
+  },
+  "vacancies": {
+    "uz": "Bosh ish o’rinlari",
+    "ru": "Вакансии",
+    "en": "Jobs"
+  },
+  "download": {
+    "uz": "Yuklab olish",
+    "ru": "Скачать",
+    "en": "Download"
+  },
+  "back": {
+    "uz": "Orqaga qaytish",
+    "ru": "Назад",
+    "en": "Back"
+  },
+  "downloadResume": {
+    "uz": "Rezyume blankasini yuklab oling",
+    "ru": "",
+    "en": ""
+  },
+  "resumeBlank": {
+    "uz": "Rezyume blankasi",
+    "ru": "",
+    "en": ""
+  },
+  "fillResume": {
+    "uz": "Rezyumeni to'ldiring",
+    "ru": "",
+    "en": ""
+  },
+  "downloadedResumeFill": {
+    "uz": "Yuklangan rezyume shaklini to'ldiring",
+    "ru": "",
+    "en": ""
+  },
+  "sendToUs": {
+    "uz": "Bizga yuboring",
+    "ru": "",
+    "en": ""
+  },
+  "filledResumeSend": {
+    "uz": "To'ldirilgan rezyumeni bizga, yani info@avtooyna.uz elektron manziliga yuboring",
+    "ru": "",
+    "en": ""
+  },
+  "nomenclature": {
+    "uz": "Nomenklatura",
+    "ru": "",
+    "en": ""
+  },
+  "detailNumber": {
+    "uz": "Detal raqami",
+    "ru": "",
+    "en": ""
+  },
+  "model": {
+    "uz": "Model",
+    "ru": "",
+    "en": ""
+  },
+  "view": {
+    "uz": "Ko'rinishi",
+    "ru": "",
+    "en": ""
+  },
+  "detailName": {
+    "uz": "Detal raqami",
+    "ru": "",
+    "en": ""
   }
 }

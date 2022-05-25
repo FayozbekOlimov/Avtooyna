@@ -17,10 +17,10 @@ export default function ContestRule() {
 		setLoading(true);
 		baseAPI.fetchAll(constestRulesUrl)
 			.then((res) => {
-				// if (res.data.success) {
-				setContestRule(res.data.tanlovNizomi);
-				setLoading(false);
-				// }
+				if (res.data.success) {
+					setContestRule(res.data.data);
+					setLoading(false);
+				}
 			})
 			.catch((e) => console.log("e", e))
 	}, [])

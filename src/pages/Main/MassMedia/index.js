@@ -1,11 +1,32 @@
+import React, { useEffect, useState, useCallback } from 'react';
 import { Grid, Stack } from '@mui/material'
-import React from 'react'
 import MediaCard from './MediaCard'
 import Title from '../../../components/Title'
-import { mediaCardData } from './mediaCardData'
-import './style.scss'
+import { useT } from '../../../custom/hooks/useT'
+import { homeOavUrl } from '../../../api/apiUrls';
+import baseAPI from '../../../api/baseAPI';
+import './style.scss';
 
 const MassMedia = () => {
+
+    const { t, lang } = useT();
+    const [oav, setOav] = useState([]);
+
+    const getOav = useCallback(() => {
+        baseAPI.fetchAll(homeOavUrl)
+            .then((res) => {
+                if (res.data.success) {
+                    setOav(res.data.data);
+                }
+            })
+            .catch((e) => console.log("e", e));
+    }, [])
+
+    useEffect(() => {
+        getOav();
+    }, [getOav])
+
+
     return (
         <Stack py={{ xs: 2, md: 4 }} direction='row' className='massmedia' bgcolor='background.paper'>
             <div className='container'>
@@ -16,10 +37,10 @@ const MassMedia = () => {
                         </div>
                     </Grid>
                     <Grid item xs={12} lg={6} pl={{ xs: 0, lg: 2 }} pt={{ xs: 2, lg: 0 }}>
-                        <Title>OAV Biz haqimizda</Title>
+                        <Title>{t(`aboutOav.${lang}`)}</Title>
                         <Stack direction='column' spacing={2}>
-                            {mediaCardData.map((data, ind) => (
-                                <MediaCard {...data} key={ind} />
+                            {oav.map((data) => (
+                                <MediaCard {...data} key={data.id} />
                             ))}
                         </Stack>
                     </Grid>
