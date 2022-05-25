@@ -106,57 +106,57 @@
   },
   "downloadResume": {
     "uz": "Rezyume blankasini yuklab oling",
-    "ru": "",
-    "en": ""
+    "ru": "Скачать бланк резюме",
+    "en": "Download resume form"
   },
   "resumeBlank": {
     "uz": "Rezyume blankasi",
-    "ru": "",
-    "en": ""
+    "ru": "Бланк резюме",
+    "en": "Resume form"
   },
   "fillResume": {
     "uz": "Rezyumeni to'ldiring",
-    "ru": "",
-    "en": ""
+    "ru": "Заполнить резюме",
+    "en": "Fill out a resume"
   },
   "downloadedResumeFill": {
     "uz": "Yuklangan rezyume shaklini to'ldiring",
-    "ru": "",
-    "en": ""
+    "ru": "Заполните скачанный бланк резюме",
+    "en": "Fill out the downloaded resume form"
   },
   "sendToUs": {
     "uz": "Bizga yuboring",
-    "ru": "",
-    "en": ""
+    "ru": "Отправьте его нам",
+    "en": "Send it to us"
   },
   "filledResumeSend": {
     "uz": "To'ldirilgan rezyumeni bizga, yani info@avtooyna.uz elektron manziliga yuboring",
-    "ru": "",
-    "en": ""
+    "ru": "Отправьте заполненное резюме к нам на почту info@avtooyna.uz",
+    "en": "Send your completed CV to us at info@avtooyna.uz"
   },
   "nomenclature": {
     "uz": "Nomenklatura",
-    "ru": "",
-    "en": ""
+    "ru": "Номенклатура",
+    "en": "Nomenclature"
   },
   "detailNumber": {
     "uz": "Detal raqami",
-    "ru": "",
-    "en": ""
+    "ru": "Номер детали",
+    "en": "Detail number"
   },
   "model": {
     "uz": "Model",
-    "ru": "",
-    "en": ""
+    "ru": "Модель",
+    "en": "Model"
   },
   "view": {
     "uz": "Ko'rinishi",
-    "ru": "",
-    "en": ""
+    "ru": "Вид",
+    "en": "View"
   },
   "detailName": {
-    "uz": "Detal raqami",
-    "ru": "",
-    "en": ""
+    "uz": "Detal nomi",
+    "ru": "Наименование детали",
+    "en": "The name of detail"
   }
 }
