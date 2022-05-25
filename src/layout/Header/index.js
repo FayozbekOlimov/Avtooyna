@@ -187,6 +187,7 @@ const Header = () => {
                             className='header__mode'
                             size='medium'
                             onClick={handleClick}
+                            // onClose={handleClose}
                             // onMouseOver={handleClick}
                             sx={{
                                 bgcolor: 'primary.light',
@@ -205,8 +206,8 @@ const Header = () => {
                         anchorEl={anchorEl}
                         id="mode-menu"
                         open={open}
-                        // onClose={handleClose}
-                        MenuListProps={{ onMouseLeave: handleClose }}
+                        onClose={handleClose}
+                        // MenuListProps={{ onMouseLeave: handleClose }}
                         PaperProps={{
                             elevation: 0,
                             sx: {
@@ -233,6 +234,7 @@ const Header = () => {
                                 },
                             },
                         }}
+                        sx={{ py: 0 }}
                         transformOrigin={{ horizontal: 'center', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
                     >
@@ -247,8 +249,13 @@ const Header = () => {
                                 sx={{ my: 1 }}
                             >
                                 <FormControlLabel
-                                    value="top"
-                                    control={<Radio size='small' sx={{ p: 0.5 }} defaultChecked />}
+                                    value="light"
+                                    control={<Radio
+                                        size='small'
+                                        sx={{ p: 0.5 }}
+                                        defaultChecked
+                                        onChange={(e) => console.log(e.target.value)}
+                                    />}
                                     label={
                                         <>
                                             <Box bgcolor='#00468D' sx={boxStyle} />
@@ -258,8 +265,12 @@ const Header = () => {
                                     labelPlacement="top"
                                 />
                                 <FormControlLabel
-                                    value="start"
-                                    control={<Radio size='small' sx={{ p: 0.5 }} />}
+                                    value="gray"
+                                    control={<Radio
+                                        size='small' 
+                                        sx={{ p: 0.5 }} 
+                                        onChange={(e) => console.log(e.target.value)}
+                                    />}
                                     label={
                                         <>
                                             <Box bgcolor='#C4C4C4' sx={boxStyle} />
@@ -269,8 +280,12 @@ const Header = () => {
                                     labelPlacement="top"
                                 />
                                 <FormControlLabel
-                                    value="bottom"
-                                    control={<Radio size='small' sx={{ p: 0.5 }} />}
+                                    value="dark"
+                                    control={<Radio 
+                                        size='small' 
+                                        sx={{ p: 0.5 }} 
+                                        onChange={(e) => console.log(e.target.value)}
+                                    />}
                                     label={
                                         <>
                                             <Box bgcolor='#021B34' sx={boxStyle} />
@@ -280,8 +295,12 @@ const Header = () => {
                                     labelPlacement="top"
                                 />
                                 <FormControlLabel
-                                    value="end"
-                                    control={<Radio size='small' sx={{ p: 0.5 }} />}
+                                    value="noImage"
+                                    control={<Radio 
+                                        size='small' 
+                                        sx={{ p: 0.5 }} 
+                                        onChange={(e) => console.log(e.target.value)}
+                                    />}
                                     label={
                                         <>
                                             <Box bgcolor='#C4C4C4' sx={boxStyle}>
@@ -306,6 +325,7 @@ const Header = () => {
                                 onChange={handleChangeSlider}
                                 aria-label="custom thumb label"
                                 defaultValue={0}
+                                value={value}
                             // sx={{
                             //     mx: '10px',
                             //     width: 'calc(100% - 20px)'
