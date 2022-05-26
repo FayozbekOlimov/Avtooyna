@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
-import Text from '../../../components/Text'
+import Text from '../../../components/Text';
 import { RiArrowRightSLine } from 'react-icons/ri'
+import { Link } from "react-router-dom";
 // swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss';
@@ -93,18 +94,20 @@ const Certificates = () => {
                                                 mb={2}
                                             >
                                                 <Title>{t(`certificates.${lang}`)}</Title>
-                                                <Button
-                                                    variant='outlined'
-                                                    sx={{
-                                                        textTransform: 'none',
-                                                        marginBottom: 2,
-                                                        color: 'info.main',
-                                                        borderColor: 'border.main'
-                                                    }}
-                                                    endIcon={<RiArrowRightSLine />}
-                                                >
-                                                    {t(`viewAll.${lang}`)}
-                                                </Button>
+                                                <Link to={"/contest-announcement/contests"}>
+                                                    <Button
+                                                        variant='outlined'
+                                                        sx={{
+                                                            textTransform: 'none',
+                                                            marginBottom: 2,
+                                                            color: 'info.main',
+                                                            borderColor: 'border.main'
+                                                        }}
+                                                        endIcon={<RiArrowRightSLine />}
+                                                    >
+                                                        {t(`viewAll.${lang}`)}
+                                                    </Button>
+                                                </Link>
                                             </Stack>
                                             <Typography sx={titleStyle}>{title} </Typography>
                                             <Text>
