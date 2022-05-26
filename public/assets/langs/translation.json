@@ -193,5 +193,10 @@
     "uz": "Yuborish",
     "ru": "Отправить",
     "en": "Send"
+  },
+  "youMustAcceptTerms": {
+    "uz": "Shartlarga rozilik bildirish shart",
+    "ru": "Вы должны согласиться с условиями",
+    "en": "You must agree to the terms"
   }
 }

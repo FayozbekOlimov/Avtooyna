@@ -142,10 +142,10 @@ const GetConsultModal = (props) => {
 						</Form.Item>
 						{getErrorMessages(email)}
 						<Form.Item
-							label={t(``)}
+							label={t(`telNumber.${lang}`)}
 							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
 							required
-							name={t(`telNumber.${lang}`)}
+							name={"tel_number"}
 						// rules={[
 						// 	{
 						// 		required: true,
@@ -159,7 +159,7 @@ const GetConsultModal = (props) => {
 						<Form.Item required name="agreement" valuePropName="checked" rules={[
 							{
 								validator: (_, value) =>
-									value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+									value ? Promise.resolve() : Promise.reject(new Error(t(`youMustAcceptTerms.${lang}`))),
 							},
 						]}
 						>
