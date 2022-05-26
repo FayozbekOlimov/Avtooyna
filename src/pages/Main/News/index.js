@@ -26,7 +26,7 @@ const ArrowButton = styled(IconButton)(({ theme }) => ({
 
 const News = () => {
     const { t, lang } = useT();
-    const [news, setNews] = useState([]);
+    const [news, setNews] = useState({});
 
     const getNews = useCallback(() => {
         baseAPI.fetchAll(homeNewsUrl)
@@ -44,6 +44,8 @@ const News = () => {
 
     const newCaruselPrevRef = useRef(null);
     const newCaruselNextRef = useRef(null);
+
+    const { items = [] } = news;
 
     return (
         <Stack py={{ xs: 2, md: 4 }} className="news" bgcolor='background.paper'>
@@ -97,9 +99,9 @@ const News = () => {
                             }
                         }}
                     >
-                        {news.map((item) => (
+                        {items.map((item) => (
                             <SwiperSlide key={item.id}>
-                                <Card {...item} content={true} />
+                                <Card {...item} content={true} toUrl={"news"} />
                             </SwiperSlide>
                         ))}
                     </Swiper>

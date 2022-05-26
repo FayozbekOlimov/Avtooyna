@@ -4,14 +4,14 @@ import i18n from "i18next";
 export const fallbackMode = "light";
 
 export const getLang = () => {
-  let lang = localStorage.getItem("lang");
+  let lang = localStorage.getItem("language");
   if (lang === "uz" || lang === "ru" || lang === "en") return lang;
   return fallbackLng;
 }
 
 
 export const setLang = (lang) => {
-  localStorage.setItem("lang", lang)
+  localStorage.setItem("language", lang)
 }
 
 export const changeLang = (lang) => {

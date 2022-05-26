@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
-import Text from '../../../components/Text'
+import Text from '../../../components/Text';
 import { RiArrowRightSLine } from 'react-icons/ri'
+import { Link } from "react-router-dom";
 // swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss';
@@ -70,14 +71,14 @@ const Certificates = () => {
                                         justifyContent="center"
                                         borderRadius='12px'
                                     >
-                                        <div className='sertificates__imgBx'>
+                                        <Stack className='sertificates__imgBx' p={{xs: 2, sm: 4}}>
                                             <img
                                                 className='sertificates__img'
                                                 src={API_IMG_URL + img}
                                                 alt="sertifikat1"
                                                 width='100%'
                                             />
-                                        </div>
+                                        </Stack>
                                     </Grid>
                                     <Grid item xs={12} md={6}
                                         p={1} pr={0}
@@ -93,18 +94,20 @@ const Certificates = () => {
                                                 mb={2}
                                             >
                                                 <Title>{t(`certificates.${lang}`)}</Title>
-                                                <Button
-                                                    variant='outlined'
-                                                    sx={{
-                                                        textTransform: 'none',
-                                                        marginBottom: 2,
-                                                        color: 'info.main',
-                                                        borderColor: 'border.main'
-                                                    }}
-                                                    endIcon={<RiArrowRightSLine />}
-                                                >
-                                                    {t(`viewAll.${lang}`)}
-                                                </Button>
+                                                <Link to={"/contest-announcement/contests"}>
+                                                    <Button
+                                                        variant='outlined'
+                                                        sx={{
+                                                            textTransform: 'none',
+                                                            marginBottom: 2,
+                                                            color: 'info.main',
+                                                            borderColor: 'border.main'
+                                                        }}
+                                                        endIcon={<RiArrowRightSLine />}
+                                                    >
+                                                        {t(`viewAll.${lang}`)}
+                                                    </Button>
+                                                </Link>
                                             </Stack>
                                             <Typography sx={titleStyle}>{title} </Typography>
                                             <Text>

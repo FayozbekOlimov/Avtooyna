@@ -4,9 +4,10 @@ import Title from '../../../components/Title'
 import Loading from '../../../components/Loading'
 import { videogalleryUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
+import { useT } from "../../../custom/hooks/useT";
 
 const VideoGallery = () => {
-
+	const { t, lang } = useT();
 	const [videos, setVideos] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -35,7 +36,7 @@ const VideoGallery = () => {
 			</Grid>
 		) : (
 			<Grid item xs={12} md={9}>
-				<Title>Videogalereya</Title>
+				<Title>{t(`videogallery.${lang}`)}</Title>
 				<Stack>
 					<video controls
 						src={url}

@@ -1,10 +1,13 @@
 import React from "react";
 import { Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import headerMenu from "../../layout/Header/headerMenu.json";
+// import headerMenu from "../../layout/Header/headerMenu.json";
+import trheaderMenu from "../../layout/Header/trheaderMenu.json";
+import { useT } from "../../custom/hooks/useT";
 import "./style.scss";
 
 const Sidebar = (props) => {
+	const { t, lang } = useT();
 	const { sidebarMenuIndex } = props;
 
 	const activeStyle = {
@@ -25,12 +28,12 @@ const Sidebar = (props) => {
 		padding: '16px',
 	};
 
-	const items = headerMenu[sidebarMenuIndex];
+	const items = trheaderMenu[sidebarMenuIndex];
 
 	return (
 		<Stack direction="column" component="ul" style={ulStyle} bgcolor="background.navBg">
 			{items.submenu.map((item, ind) => (
-				<Stack key={ind} component="li" sx={{color: 'secondary.light'}}>
+				<Stack key={ind} component="li" sx={{ color: 'secondary.light' }}>
 					<NavLink
 						to={`${items.to}${item.to}`}
 						style={({ isActive }) => ({
@@ -38,7 +41,7 @@ const Sidebar = (props) => {
 							...(isActive ? activeStyle : null),
 						})}
 					>
-						{item.text}
+						{item.text[lang]}
 					</NavLink>
 				</Stack>
 			))}

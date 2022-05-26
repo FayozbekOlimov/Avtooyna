@@ -1,0 +1,20 @@
+.pagination_wrapper {
+  margin-bottom  : 16px;
+  width          : 100%;
+  display        : flex;
+  justify-content: center;
+
+  ul>li {
+    margin-top: 16px;
+  }
+
+  .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root {
+    background-color: #fff;
+  }
+
+  .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color : #1890FF;
+    border: 1px solid #1890FF;
+
+  }
+}

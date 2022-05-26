@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from "../../../components/Text"
+import PaginationRounded from "../../../components/PaginationRounded"
 import Loading from "../../../components/Loading"
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
@@ -21,12 +22,13 @@ const titleStyle = {
 
 const News = () => {
 	const { t, lang } = useT();
-	const [news, setNews] = useState([]);
+	const [news, setNews] = useState({});
 	const [loading, setLoading] = useState(false);
+	const [page, setPage] = useState(1);
 
 	const getNews = useCallback(() => {
 		setLoading(true);
-		baseAPI.fetchAll(homeNewsUrl)
+		baseAPI.fetchWithPagination({ url: homeNewsUrl, page })
 			.then((res) => {
 				if (res.data.success) {
 					setNews(res.data.data);
@@ -35,12 +37,21 @@ const News = () => {
 			})
 			.catch((e) => console.log("e", e))
 
-	}, [])
+	}, [page])
 
 	useEffect(() => {
 		getNews()
 	}, [getNews])
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [page])
+
+	const handleChange = (event, value) => {
+		setPage(value);
+	};
+
+	const { items = [], _meta = {} } = news;
 
 	return (
 		<>
@@ -48,10 +59,10 @@ const News = () => {
 				{
 					loading ? (<Loading />) : (
 						<>
-							<Title>Yangiliklar</Title>
+							<Title>{t(`news.${lang}`)}</Title>
 							<Grid container spacing={2}>
 								{
-									news.map(({ id, img, date, title, text }) => (
+									items.map(({ id, img, date, title, text }) => (
 										<Grid item xs={12} key={id}>
 											<Grid container className='news_card' p={2} bgcolor='background.default'>
 												<Grid item xs={12} md={6} className='news_img'>
@@ -77,6 +88,11 @@ const News = () => {
 											</Grid>
 										</Grid>
 									))
+								}
+								{
+									_meta.pageCount > 1 && (
+										<PaginationRounded handleChange={handleChange} count={_meta.pageCount} page={page} />
+									)
 								}
 							</Grid>
 						</>

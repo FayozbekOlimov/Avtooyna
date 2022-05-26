@@ -1,16 +1,17 @@
 .gallery {
     background-repeat: no-repeat;
-    background-size  : cover;
-
-    &__img {
-        width        : 100%;
-        height       : 100%;
-        object-fit   : cover;
-        border-radius: 8px;
-    }
+    background-size: cover;
 
     &__img_wrapper {
-        width : 100%;
+        width: 100%;
         height: 330px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }

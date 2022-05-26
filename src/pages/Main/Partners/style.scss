@@ -1,27 +1,25 @@
 .partners {
     .swiper__wrapper {
         position: relative;
-        padding : 1rem 0;
+        padding: 1rem 0;
     }
 
     &__swiper {
         position: unset;
 
         &__img__wrapper {
-            height       : 170px;
-            width        : 100%;
-            border       : 1px solid #D7D7D7;
+            height: 170px;
+            width: 100%;
+            border: 1px solid #D7D7D7;
             border-radius: 12px;
+            overflow: hidden;
         }
 
         &-img {
-            border-radius: 12px;
-            width        : 100%;
-            height       : 100%;
-            object-fit   : cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-
-
     }
 
     .swiper-button-prev {
@@ -35,16 +33,16 @@
     .swiper-button-next,
     .swiper-button-prev {
         &::after {
-            position        : absolute;
-            width           : 32px;
-            height          : 32px;
+            position: absolute;
+            width: 32px;
+            height: 32px;
             background-color: #00468D;
-            font-size       : 12px;
-            display         : grid;
-            place-items     : center;
-            border-radius   : 50%;
-            color           : #fff;
-            transition      : background-color .3s ease;
+            font-size: 12px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #fff;
+            transition: background-color .3s ease;
         }
 
         &:hover::after {

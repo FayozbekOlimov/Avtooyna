@@ -10,7 +10,7 @@ import { useT } from '../../../custom/hooks/useT'
 
 const Contests = () => {
     const { t, lang } = useT();
-    const [contests, setContests] = useState([]);
+    const [contests, setContests] = useState({});
 
     const getContests = useCallback(() => {
         baseAPI.fetchAll(homeContestsUrl)
@@ -26,10 +26,12 @@ const Contests = () => {
         getContests();
     }, [getContests])
 
+    const { items = [] } = contests;
+
     return (
         <Stack py={{ xs: 2, md: 4 }} className="Contests" bgcolor='background.paper'>
             <div className="container">
-                <Stack direction='row' mb={1} justifyContent='space-between' alignItems='flex-start'>
+                <Stack direction='row' mb={1} justifyContent='space-between' alignItems='flex-start' flexWrap="wrap">
                     <Title>{t(`contests.${lang}`)}</Title>
                     <Link to="/contest-announcement/contests">
                         <Button
@@ -45,9 +47,9 @@ const Contests = () => {
                     </Link>
                 </Stack>
                 <Grid container spacing={2}>
-                    {contests.map((contest) => (
-                        <Grid item key={contest.id} xs={12} md={4}>
-                            <Card content={false} toUrl={"contests"} {...contest} />
+                    {items.slice(0, 3).map((item) => (
+                        <Grid item key={item.id} xs={12} md={4}>
+                            <Card content={false} toUrl={"contests"} {...item} />
                         </Grid>
                     ))}
                 </Grid>
