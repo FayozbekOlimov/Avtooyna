@@ -6,7 +6,8 @@ import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
 import { changeLang, setLang, setModeLocalstr } from '../../helpers';
-import headerMenu from './headerMenu.json';
+// import headerMenu from './headerMenu.json';
+import trheaderMenu from './trheaderMenu.json';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
@@ -49,14 +50,14 @@ const Header = () => {
         return { key, children, label };
     }
 
-    const items = headerMenu.map((menu) => (
-        getItem(menu.menuName, menu.key, menu.submenu.map((sub) => (
+    const items = trheaderMenu.map((menu) => (
+        getItem(menu.menuName[lang], menu.key, menu.submenu.map((sub) => (
             getItem(<NavLink
                 to={`${menu.to}${sub.to}`}
                 className='header__link'
                 onClick={() => setVisible(false)}
             >
-                {sub.text}
+                {sub.text[lang]}
             </NavLink>,
                 sub.key)
         )))
@@ -167,20 +168,53 @@ const Header = () => {
         <Stack className='header' bgcolor='background.default'>
             <div className="container">
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={3} lg={2} display='flex' alignItems='center'>
-                        <MenuIcon
-                            sx={{ color: 'secondary.main', mr: 1, cursor: 'pointer' }}
-                            className='header__menu-icon'
-                            fontSize='large'
-                            onClick={() => setVisible(true)}
-                        />
-                        <Link to='/' className='header__logo'>
-                            <img src={mode['color'] === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
-                        </Link>
+                    <Grid item xs={12} md={12} lg={2} display='flex' alignItems='center' justifyContent={"space-between"}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                            <MenuIcon
+                                sx={{ color: 'secondary.main', mr: 1, cursor: 'pointer' }}
+                                className='header__menu-icon'
+                                fontSize='large'
+                                onClick={() => setVisible(true)}
+                            />
+                            <Link to='/' className='header__logo'>
+                                <img src={mode['color'] === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
+                            </Link>
+                        </Box>
+                        <Box sx={{ display: { md: "block", lg: "none", xl: "none" } }}>
+                            <FormControl className="language_wrapper" >
+                                <Select
+                                    IconComponent={ExpandMore}
+                                    value={lang}
+                                    onChange={handleChange}
+                                    size='small'
+                                    displayEmpty
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                    sx={{
+                                        padding: 0,
+                                        width: '80px',
+                                        '& .MuiSvgIcon-root': {
+                                            color: 'info.main',
+                                            left: '7px'
+                                        }
+                                    }}
+                                >
+                                    {
+                                        langs.map((language, idx) => (
+                                            <MenuItem key={idx} value={language[2]}>{language[1]}</MenuItem>
+                                        ))
+                                    }
+                                </Select>
+                            </FormControl>
+                        </Box>
                     </Grid>
-                    <Box component={Grid} item xs={12} md={9} lg={6} display={{
-                        md: "none", lg: "flex"
-                    }} justifyContent='space-evenly'>
+
+                    <Box component={Grid} item xs={12} lg={6} sx={{
+                        display: {
+                            xs: "none", lg: "flex", xl: "flex"
+                        }
+                    }}
+                        justifyContent='space-evenly'
+                    >
                         <div className='header__tel'>
                             <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
                                 <PhoneEnabled sx={{ color: 'primary.main' }} />
@@ -209,45 +243,45 @@ const Header = () => {
                             </div>
                         </div>
                     </Box>
-                    <Grid item xs={12} md={12} lg={4} display='flex' alignItems='center' justifyContent='space-between'>
-                        <Box display={{ md: "none", lg: "block" }}>
-                            <Button
-                                variant='outlined'
-                                sx={{
-                                    textTransform: 'none',
-                                    padding: '8px',
-                                    color: 'info.main',
-                                    borderColor: 'border.main'
-                                }}
-                                onClick={onOpenConsultModal}
-                            >
-                                {t(`getConsult.${lang}`)}
-                            </Button>
-                        </Box>
-                        <FormControl className="language_wrapper" >
-                            <Select
-                                IconComponent={ExpandMore}
-                                value={lang}
-                                onChange={handleChange}
-                                size='small'
-                                displayEmpty
-                                inputProps={{ 'aria-label': 'Without label' }}
-                                sx={{
-                                    padding: 0,
-                                    width: '80px',
-                                    '& .MuiSvgIcon-root': {
-                                        color: 'info.main',
-                                        left: '7px'
+                    <Grid item xs={12} md={12} lg={4} display="flex" alignItems='center' justifyContent='space-between'>
+                        <Button
+                            variant='outlined'
+                            sx={{
+                                textTransform: 'none',
+                                padding: '8px',
+                                color: 'info.main',
+                                borderColor: 'border.main'
+                            }}
+                            onClick={onOpenConsultModal}
+                        >
+                            {t(`getConsult.${lang}`)}
+                        </Button>
+                        <Box sx={{ display: { xs: "none", lg: "block", xl: "block" } }}>
+                            <FormControl className="language_wrapper" >
+                                <Select
+                                    IconComponent={ExpandMore}
+                                    value={lang}
+                                    onChange={handleChange}
+                                    size='small'
+                                    displayEmpty
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                    sx={{
+                                        padding: 0,
+                                        width: '80px',
+                                        '& .MuiSvgIcon-root': {
+                                            color: 'info.main',
+                                            left: '7px'
+                                        }
+                                    }}
+                                >
+                                    {
+                                        langs.map((language, idx) => (
+                                            <MenuItem key={idx} value={language[2]}>{language[1]}</MenuItem>
+                                        ))
                                     }
-                                }}
-                            >
-                                {
-                                    langs.map((language, idx) => (
-                                        <MenuItem key={idx} value={language[2]}>{language[1]}</MenuItem>
-                                    ))
-                                }
-                            </Select>
-                        </FormControl>
+                                </Select>
+                            </FormControl>
+                        </Box>
                         <Button
                             variant='contained'
                             className='header__mode'
@@ -412,7 +446,7 @@ const Header = () => {
                     </MuiMenu>
                 </Grid>
                 <Drawer
-                    title="MENU"
+                    title={t(`menu.${lang}`)}
                     placement='left'
                     width={256}
                     onClose={() => setVisible(false)}

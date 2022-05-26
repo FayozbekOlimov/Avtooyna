@@ -158,5 +158,40 @@
     "uz": "Detal nomi",
     "ru": "Наименование детали",
     "en": "The name of detail"
+  },
+  "name": {
+    "uz": "Ism",
+    "ru": "",
+    "en": "Name"
+  },
+  "email": {
+    "uz": "Elektron pochta",
+    "ru": "",
+    "en": ""
+  },
+  "requiredFile": {
+    "uz": "",
+    "ru": "",
+    "en": "This is a required field"
+  },
+  "telNumber": {
+    "uz": "Tel raqami",
+    "ru": "",
+    "en": ""
+  },
+  "videogallery": {
+    "uz": "Videogalereya",
+    "ru": "Видео галерея",
+    "en": "Video gallery"
+  },
+  "menu": {
+    "uz": "MENU",
+    "ru": "МЕНЮ",
+    "en": "MENU"
+  },
+  "send": {
+    "uz": "Yuborish",
+    "ru": "Отправить",
+    "en": "Send"
   }
 }

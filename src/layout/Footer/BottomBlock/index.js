@@ -4,7 +4,7 @@ import { Grid, Stack, Typography, Link as SocialLink } from '@mui/material'
 
 const FooterBottomBlock = () => {
     return (
-        <Grid container py={2} spacing={1} alignItems='center' justifyContent='space-between' width='100%'>
+        <Grid container py={2} spacing={2} alignItems='center' justifyContent='space-between' width='100%'>
             <Grid item xs={12} sm={4} display='flex' justifyContent={{ xs: 'center', sm: 'flex-start' }}>
                 <Link to='/'>
                     <img src="/assets/img/logo.png" alt="logo" />

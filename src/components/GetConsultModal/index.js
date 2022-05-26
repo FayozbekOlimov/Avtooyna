@@ -4,9 +4,10 @@ import Title from "../Title";
 import InputMask from 'react-input-mask';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import baseAPI from "../../api/baseAPI";
-import { createConsultUrl } from '../../api/apiUrls';
+import { acceptTermsUrl, createConsultUrl } from '../../api/apiUrls';
 import { useT } from "../../custom/hooks/useT";
 import { Alert, Snackbar } from '@mui/material';
+import { API_IMG_URL } from '../../constants';
 import "./_style.scss";
 
 const InputTel = (props) => (
@@ -20,6 +21,8 @@ const InputTel = (props) => (
 const GetConsultModal = (props) => {
 	const { t, lang } = useT()
 	const [open, setOpen] = useState(false);
+	const [messages, setMessages] = useState({})
+	const [acceptTerms, setAcceptTerms] = useState({})
 
 	const handleClick = () => {
 		setOpen(true);
@@ -36,20 +39,56 @@ const GetConsultModal = (props) => {
 	const [form] = Form.useForm();
 	const { isOpenConsultModal, onOpenConsultModal, onCloseConsultModal } = props;
 
+
+	const getAcceptTerms = useCallback(() => {
+		baseAPI.fetchAll(acceptTermsUrl)
+			.then((res) => {
+				if (res.data.success) {
+					setAcceptTerms(res.data.data)
+				}
+			})
+			.catch((e) => console.log(e));
+	}, [])
+
+
+	useEffect(() => {
+		getAcceptTerms()
+	}, [getAcceptTerms])
+
 	const createConsult = (formData) => {
 		baseAPI.create(createConsultUrl, formData)
 			.then((res) => {
-				console.log("res", res.data)
+				if (res.data.status === 200) {
+					form.resetFields();
+					onCloseConsultModal();
+					handleClick();
+					setMessages({})
+				}
+				else if (res.data.status === 403) {
+					setMessages(res.data["message"])
+				}
 			})
 			.catch((e) => console.log("e", e))
-			.finally(() => { })
+			.finally(() => {
+			})
 	}
 
 	const onHandleConsultForm = (values) => {
 		createConsult(JSON.stringify(values))
-		form.resetFields();
-		onCloseConsultModal();
 	};
+
+	const { name = [], email = [], tel = [] } = messages;
+	const { file, img } = acceptTerms;
+	const getErrorMessages = (error = []) => {
+		if (!error[0]) {
+			return null;
+		} else {
+			return (<span style={{ color: "#ff4d4f", display: "block", marginTop: "-20px" }}>{error[0]}</span>);
+		}
+	}
+
+	const acceptTermsText = lang === "uz" ? `Men <a href=${API_IMG_URL + file} target="_blank" rel="noopener noreferrer">shartlarga
+</a> roziman` : lang === "ru" ? `Я согласен с <a href=${API_IMG_URL + file} target="_blank" rel="noopener noreferrer">условиями</a>` : `I agree to <a href=${API_IMG_URL + file} target="_blank" rel="noopener noreferrer">the terms</a>`
 
 	return (
 		<>
@@ -62,7 +101,7 @@ const GetConsultModal = (props) => {
 				centered
 			>
 				<div className="modal_left">
-					<img className='modal_left-img' src="/assets/img/form_img.png" alt="form" />
+					<img className='modal_left-img' src={API_IMG_URL + img} alt="form" />
 				</div>
 				<div className="consult_form">
 					<Title>{t(`getConsult.${lang}`)}</Title>
@@ -72,46 +111,51 @@ const GetConsultModal = (props) => {
 						onFinish={onHandleConsultForm}
 					>
 						<Form.Item
-							label="Ism" required name="name" tooltip={{ title: 'This is a required field', icon: <InfoCircleOutlined /> }}
-							rules={[
-								{
-									required: true,
-									message: 'Iltimos ismingizni kiriting!',
-								},
-							]}
+							label={t(`name.${lang}`)} required name="name" tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
+						// rules={[
+						// 	{
+						// 		required: true,
+						// 		message: 'Iltimos ismingizni kiriting!',
+						// 	},
+						// ]}
 						>
-							<Input placeholder="Ism" type="tel" />
+							<Input placeholder={t(`name.${lang}`)} />
 						</Form.Item>
+						{getErrorMessages(name)}
 						<Form.Item
-							label="Elektron pochta"
-							tooltip={{ title: 'This is a required field', icon: <InfoCircleOutlined /> }}
+							label={t(`email.${lang}`)}
+							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
+							required
 							name="email"
-							rules={[
-								{
-									type: 'email',
-									message: 'The input is not valid E-mail!',
-								},
-								{
-									required: true,
-									message: 'Iltimos elektron pochtangizni kiriting!',
-								},
-							]}
+						// rules={[
+						// 	{
+						// 		type: 'email',
+						// 		message: 'The input is not valid E-mail!',
+						// 	},
+						// 	{
+						// 		required: true,
+						// 		message: 'Iltimos elektron pochtangizni kiriting!',
+						// 	},
+						// ]}
 						>
 							<Input placeholder="E-mail" />
 						</Form.Item>
+						{getErrorMessages(email)}
 						<Form.Item
-							label="Tel raqami"
-							tooltip={{ title: 'This is a required field', icon: <InfoCircleOutlined /> }}
-							name="tel_number"
-							rules={[
-								{
-									required: true,
-									message: 'Iltimos telefon raqamingizni kiriting!',
-								},
-							]}
+							label={t(``)}
+							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
+							required
+							name={t(`telNumber.${lang}`)}
+						// rules={[
+						// 	{
+						// 		required: true,
+						// 		message: 'Iltimos telefon raqamingizni kiriting!',
+						// 	},
+						// ]}
 						>
 							<InputTel />
 						</Form.Item>
+						{getErrorMessages(tel)}
 						<Form.Item required name="agreement" valuePropName="checked" rules={[
 							{
 								validator: (_, value) =>
@@ -120,12 +164,11 @@ const GetConsultModal = (props) => {
 						]}
 						>
 							<Checkbox>
-								Men <a href="http://" target="_blank" rel="noopener noreferrer">shartlarga
-								</a> roziman
+								<div dangerouslySetInnerHTML={{ __html: acceptTermsText }}></div>
 							</Checkbox>
 						</Form.Item>
 						<Form.Item>
-							<Button type="primary" htmlType='submit'>Yuborish</Button>
+							<Button type="primary" htmlType='submit'>{t(`send.${lang}`)}</Button>
 						</Form.Item>
 					</Form>
 				</div>

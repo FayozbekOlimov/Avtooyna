@@ -39,7 +39,7 @@ const MassMedia = () => {
                     <Grid item xs={12} lg={6} pl={{ xs: 0, lg: 2 }} pt={{ xs: 2, lg: 0 }}>
                         <Title>{t(`aboutOav.${lang}`)}</Title>
                         <Stack direction='column' spacing={2}>
-                            {oav.map((data) => (
+                            {oav.slice(0, 3).map((data) => (
                                 <MediaCard {...data} key={data.id} />
                             ))}
                         </Stack>

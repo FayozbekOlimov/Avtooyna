@@ -42,7 +42,7 @@ const Gallery = () => {
             }}
         >
             <div className="container">
-                <Stack direction='row' mb={1} justifyContent='space-between' alignItems='flex-start'>
+                <Stack direction='row' mb={2} justifyContent='space-between' alignItems='flex-start' flexWrap="wrap">
                     <Title>{t(`photos.${lang}`)}</Title>
                     <Link to={"/press-service/photogallery"}>
                         <Button
@@ -59,7 +59,7 @@ const Gallery = () => {
                 </Stack>
                 <Grid container spacing={{ md: "30px", sm: "20px", xs: "10px" }} >
                     {
-                        gallery.map((photo, idx) => (
+                        gallery.slice(0, 6).map((photo, idx) => (
                             <Grid item sm={galleryGridData[idx]} xs={12} key={photo.id}>
                                 <div className="gallery__img_wrapper">
                                     <img className='gallery__img' src={API_IMG_URL + photo.img} alt={`gallery${idx + 1}`} />
