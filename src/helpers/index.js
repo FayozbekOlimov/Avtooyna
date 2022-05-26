@@ -19,11 +19,26 @@ export const changeLang = (lang) => {
 }
 
 export const setModeLocalstr = (color) => {
-localStorage.setItem("mode", color)
+  localStorage.setItem("mode", color)
 }
 
 export const getModeFromLocalstr = () => {
   let mode = localStorage.getItem("mode");
   if (!mode) return fallbackMode;
   return mode;
+}
+
+export const setIsImage = () => {
+  localStorage.setItem('isImage', true);
+}
+
+export const getIsImage = () => {
+  let isImage = localStorage.getItem('isImage');
+  if (!isImage) return true;
+  return isImage;
+}
+
+export const toggleIsImage = () => {
+  let isImage = getIsImage();
+  setIsImage(!isImage);
 }
