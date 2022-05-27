@@ -78,7 +78,12 @@ const GetConsultModal = (props) => {
 	}
 
 	const onHandleConsultForm = (values) => {
-		createConsult(JSON.stringify(values))
+		let { tel_number } = values;
+		tel_number = tel_number.replace(/\s/g, '');
+		tel_number = tel_number.replaceAll("-", "");
+		tel_number = tel_number.replaceAll("(", "");
+		tel_number = tel_number.replaceAll(")", "")
+		createConsult(JSON.stringify({ ...values, tel_number }))
 	};
 
 	const { name = [], email = [], tel = [] } = messages;
