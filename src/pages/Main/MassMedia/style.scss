@@ -1,12 +1,15 @@
 .massmedia {
-    &__left {
-        border-radius: 12px;
-    }
-
     &__img {
+        border-radius: 12px;
+        overflow: hidden;
+        width: 100%;
+        height: 600px;
+
         img {
+            border-radius: inherit;
             width: 100%;
             height: 100%;
+            object-fit: cover;
         }
     }
 }

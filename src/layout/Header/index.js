@@ -5,7 +5,7 @@ import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, setLang, setModeLocalstr } from '../../helpers';
+import { changeLang, setLang, setModeLocalstr, toggleIsImage } from '../../helpers';
 // import headerMenu from './headerMenu.json';
 import trheaderMenu from './trheaderMenu.json';
 import { ConsultContext } from "../../App";
@@ -14,6 +14,7 @@ import { blue } from '@mui/material/colors';
 import { telsUrl } from "../../api/apiUrls";
 import baseAPI from "../../api/baseAPI";
 import './style.scss';
+
 
 const Header = () => {
     const [visible, setVisible] = useState(false);
@@ -157,12 +158,6 @@ const Header = () => {
             })
         }
     }
-
-    // const { pathname } = useLocation();
-
-    // useEffect(() => {
-    //     changeMode()
-    // }, [pathname])
 
     return (
         <Stack className='header' bgcolor='background.default'>
@@ -394,24 +389,24 @@ const Header = () => {
                                     }
                                     labelPlacement="top"
                                 />
-                                <FormControlLabel
-                                    value="noImage"
-                                    control={<Radio
-                                        size='small'
-                                        sx={{ p: 0.5 }}
-                                    />}
-                                    // onChange={(e) => console.log(e.target.value)}
-                                    label={
-                                        <>
-                                            <Box bgcolor='#C4C4C4' sx={boxStyle}>
-                                                <img src='/assets/icon/no-image.png' alt="no_image" />
-                                            </Box>
-                                            <Typography sx={modeLabelStyle}>No image</Typography>
-                                        </>
-                                    }
-                                    labelPlacement="top"
-                                />
                             </RadioGroup>
+                            <FormControlLabel
+                                value="noImage"
+                                control={<Radio
+                                    size='small'
+                                    sx={{ p: 0.5 }}
+                                />}
+                                onClick={toggleIsImage}
+                                label={
+                                    <>
+                                        <Box bgcolor='#C4C4C4' sx={boxStyle}>
+                                            <img src='/assets/icon/no-image.png' alt="no_image" />
+                                        </Box>
+                                        <Typography sx={modeLabelStyle}>No image</Typography>
+                                    </>
+                                }
+                                labelPlacement="top"
+                            />
                             <Divider />
                             <Typography sx={titleStyle} mt={1}>Shrift o'lchami</Typography>
                             <Typography

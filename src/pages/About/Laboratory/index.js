@@ -48,7 +48,7 @@ const Laboratory = () => {
                                 variant="quilted"
                                 cols={imgCols}
                                 rowHeight={121}
-                                gap={"16px"}
+                                gap={16}
                             >
                                 {imgs.map((image, idx) => (
                                     <ImageListItem key={idx} cols={aboutOrgImgGrid[idx].cols} rows={aboutOrgImgGrid[idx].rows}>

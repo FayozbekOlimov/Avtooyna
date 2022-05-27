@@ -11,7 +11,9 @@ const MediaCard = ({ id, img, date, title, url }) => {
     return (
         <Grid container className='media__card' bgcolor='background.default'>
             <Grid item xs={12} sm={4}>
-                <img className='media__card-img' src={API_IMG_URL + img} alt='oav-img' />
+                <div className="media__card-img">
+                    <img src={API_IMG_URL + img} alt='oav-img' />
+                </div>
             </Grid>
             <Grid item xs={12} sm={8} p={1} display='flex' flexDirection='column' justifyContent='center' alignItems='flex-start'>
                 <p className="card__date">

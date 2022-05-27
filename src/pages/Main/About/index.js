@@ -103,13 +103,19 @@ const About = () => {
                         <Grid item md={6}>
                             <Grid container spacing={2}>
                                 <Grid item sm={6} xs={12}>
-                                    <img className='about__img' src={API_IMG_URL + (glassImgs[0])} alt="oyna1" />
+                                    <div className="about__img">
+                                        <img src={API_IMG_URL + (glassImgs[0])} alt="oyna1" />
+                                    </div>
                                 </Grid>
                                 <Grid item sm={6} xs={12}>
-                                    <img className='about__img' src={API_IMG_URL + glassImgs[1]} alt="oyna2" />
+                                    <div className="about__img">
+                                        <img src={API_IMG_URL + glassImgs[1]} alt="oyna2" />
+                                    </div>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <img className='about__img' src={API_IMG_URL + glassImgs[2]} alt="oyna3" />
+                                    <div className="about__img">
+                                        <img src={API_IMG_URL + glassImgs[2]} alt="oyna3" />
+                                    </div>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -127,13 +133,19 @@ const About = () => {
                         <Grid item md={6}>
                             <Grid container spacing={2}>
                                 <Grid item sm={6} xs={12}>
-                                    <img className='about__img' src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" />
+                                    <div className="about__img">
+                                        <img src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" />
+                                    </div>
                                 </Grid>
                                 <Grid item sm={6} xs={12}>
-                                    <img className='about__img' src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism2" />
+                                    <div className="about__img">
+                                        <img src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism2" />
+                                    </div>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <img className='about__img' src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism3" />
+                                    <div className="about__img">
+                                        <img src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism3" />
+                                    </div>
                                 </Grid>
                             </Grid>
                         </Grid>

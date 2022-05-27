@@ -34,9 +34,9 @@ const MassMedia = () => {
             <div className='container'>
                 <Grid container width="100%" ml={0} mt={0}>
                     <Grid item xs={12} lg={6} className='massmedia__left' bgcolor='background.default'>
-                        <div className='massmedia__img'>
+                        <Stack className='massmedia__img' p={{xs: 2, sm: 4}} bgcolor='background.navBg'>
                             <img src={API_IMG_URL + dataImg.img} alt="oav" />
-                        </div>
+                        </Stack>
                     </Grid>
                     <Grid item xs={12} lg={6} pl={{ xs: 0, lg: 2 }} pt={{ xs: 2, lg: 0 }}>
                         <Title>{t(`aboutOav.${lang}`)}</Title>

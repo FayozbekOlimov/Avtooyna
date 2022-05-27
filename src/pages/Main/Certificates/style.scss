@@ -1,6 +1,5 @@
 .home_certificates {
 	.home_certificate_swiper {
-
 		.swiper-button-prev,
 		.swiper-button-next {
 			top: unset;
@@ -30,6 +29,19 @@
 
 		.swiper-button-next {
 			right: 0px;
+		}
+	}
+
+	.sertificates__imgBx {
+		height: 500px;
+		width: 100%;
+		border-radius: 12px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
 		}
 	}
 }

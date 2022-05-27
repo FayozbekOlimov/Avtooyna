@@ -71,14 +71,14 @@ const Certificates = () => {
                                         justifyContent="center"
                                         borderRadius='12px'
                                     >
-                                        <div className='sertificates__imgBx'>
+                                        <Stack className='sertificates__imgBx' p={{xs: 2, sm: 4}}>
                                             <img
                                                 className='sertificates__img'
                                                 src={API_IMG_URL + img}
                                                 alt="sertifikat1"
                                                 width='100%'
                                             />
-                                        </div>
+                                        </Stack>
                                     </Grid>
                                     <Grid item xs={12} md={6}
                                         p={1} pr={0}
