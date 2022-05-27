@@ -25,7 +25,7 @@ const Goods = () => {
 		getXim();
 	}, [getXim])
 
-	const { consumers = {}, products = [] } = xim;
+	const { data: consumers = {}, datProducts: products = [] } = xim;
 
 	return (
 

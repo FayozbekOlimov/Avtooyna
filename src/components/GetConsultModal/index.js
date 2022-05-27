@@ -23,6 +23,7 @@ const GetConsultModal = (props) => {
 	const [open, setOpen] = useState(false);
 	const [messages, setMessages] = useState({})
 	const [acceptTerms, setAcceptTerms] = useState({})
+	const [loading, setLoading] = useState(false);
 
 	const handleClick = () => {
 		setOpen(true);
@@ -56,6 +57,7 @@ const GetConsultModal = (props) => {
 	}, [getAcceptTerms])
 
 	const createConsult = (formData) => {
+		setLoading(true);
 		baseAPI.create(createConsultUrl, formData)
 			.then((res) => {
 				if (res.data.status === 200) {
@@ -67,9 +69,11 @@ const GetConsultModal = (props) => {
 				else if (res.data.status === 403) {
 					setMessages(res.data["message"])
 				}
+
 			})
 			.catch((e) => console.log("e", e))
 			.finally(() => {
+				setLoading(false);
 			})
 	}
 
@@ -168,7 +172,7 @@ const GetConsultModal = (props) => {
 							</Checkbox>
 						</Form.Item>
 						<Form.Item>
-							<Button type="primary" htmlType='submit'>{t(`send.${lang}`)}</Button>
+							<Button loading={loading} type="primary" htmlType='submit'>{t(`send.${lang}`)}</Button>
 						</Form.Item>
 					</Form>
 				</div>

@@ -6,6 +6,7 @@ import { homeBannerUrl } from "../../../api/apiUrls";
 import { API_IMG_URL } from '../../../constants/index'
 import baseAPI from "../../../api/baseAPI";
 import { useT } from "../../../custom/hooks/useT";
+import { Link } from "react-router-dom";
 import './style.scss';
 
 
@@ -42,7 +43,9 @@ const Banner = () => {
                     <Text>
                         <div dangerouslySetInnerHTML={{ __html: text }} />
                     </Text>
-                    <Button>{t(`detail.${lang}`)}</Button>
+                    <Link to={"/about-us/about-org"}>
+                        <Button>{t(`detail.${lang}`)}</Button>
+                    </Link>
                 </div>
             </div>
         </div>

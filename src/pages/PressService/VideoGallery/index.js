@@ -5,6 +5,7 @@ import Loading from '../../../components/Loading'
 import { videogalleryUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { useT } from "../../../custom/hooks/useT";
+import { API_IMG_URL } from '../../../constants';
 
 const VideoGallery = () => {
 	const { t, lang } = useT();
@@ -29,6 +30,9 @@ const VideoGallery = () => {
 	}, [getPhotos])
 
 	const { img, url } = videos;
+
+
+
 	return (
 		loading ? (
 			<Grid item xs={12} md={9} sm={6}>
@@ -40,16 +44,12 @@ const VideoGallery = () => {
 				<Stack>
 					<video controls
 						src={url}
-						poster={img}
-						width="100%">
-
-						Sorry, your browser doesn't support embedded videos,
-						but don't worry, you can <a href="https://archive.org/details/BigBuckBunny_124">download it</a>
-						and watch it with your favorite video player!
-
+						poster={API_IMG_URL + img}
+						width="100%"
+					>
 					</video>
 				</Stack>
-			</Grid>
+			</Grid >
 		)
 	);
 }
