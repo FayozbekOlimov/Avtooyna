@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from "../../../components/Text"
-import PaginationRounded from "../../../components/PaginationRounded"
 import Loading from "../../../components/Loading"
+import PaginationRounded from "../../../components/PaginationRounded"
 import { RiArrowRightSLine } from "react-icons/ri";
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
