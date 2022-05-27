@@ -161,23 +161,23 @@
   },
   "name": {
     "uz": "Ism",
-    "ru": "",
+    "ru": "Имя",
     "en": "Name"
   },
   "email": {
     "uz": "Elektron pochta",
-    "ru": "",
-    "en": ""
+    "ru": "Эл. адрес",
+    "en": "Email"
   },
   "requiredFile": {
-    "uz": "",
-    "ru": "",
+    "uz": "Bu maydonni to'ldirish majburiy",
+    "ru": "Данное поле является обязательным к заполнению",
     "en": "This is a required field"
   },
   "telNumber": {
     "uz": "Tel raqami",
-    "ru": "",
-    "en": ""
+    "ru": "Номер телефона",
+    "en": "Phone number"
   },
   "videogallery": {
     "uz": "Videogalereya",
