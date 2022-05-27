@@ -83,7 +83,7 @@ const GetConsultModal = (props) => {
 		tel_number = tel_number.replaceAll("-", "");
 		tel_number = tel_number.replaceAll("(", "");
 		tel_number = tel_number.replaceAll(")", "")
-		createConsult(JSON.stringify({ ...values, tel_number }))
+		createConsult(JSON.stringify({ ...values, tel_number }));
 	};
 
 	const { name = [], email = [], tel = [] } = messages;
