@@ -198,5 +198,10 @@
     "uz": "Shartlarga rozi bo'lishingiz kerak",
     "ru": "Вы должны согласиться с условиями",
     "en": "You should agree to the terms"
+  },
+  "avtoBrands": {
+    "uz": "Avtomobil markalari",
+    "ru": "Марки автомобилей",
+    "en": "Car brands"
   }
 }

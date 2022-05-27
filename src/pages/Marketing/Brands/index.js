@@ -1,42 +1,68 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Title from "../../../components/Title";
+import Loading from "../../../components/Loading";
 import { Grid } from '@mui/material'
-import "./style.scss"
+import baseAPI from '../../../api/baseAPI';
+import { brandsUrl } from '../../../api/apiUrls';
+import { useT } from '../../../custom/hooks/useT';
+import "./style.scss";
+import { API_IMG_URL } from '../../../constants';
 
-const brandsImgs = [
-	{
-		id: "1",
-		img: "/assets/img/brands1.png",
-	},
-
-	{
-		id: "2",
-		img: "/assets/img/brands2.png"
-	},
-	// {
-	// 	id: "3",
-	// 	img: "/assets/img/brands3.png"
-	// },
-	// {
-	// 	id: "4",
-	// 	img: "/assets/img/brands4.png"
-	// },
-
-]
 
 const Brands = () => {
+	const { t, lang } = useT();
+	const [brands, setBrands] = useState([]);
+	const [loading, setLoading] = useState(false);
+
+	const getBrands = useCallback(() => {
+		setLoading(true)
+		baseAPI.fetchAll(brandsUrl)
+			.then(res => {
+				if (res.data.success) {
+					setBrands(res.data.data)
+					setLoading(false);
+				}
+			})
+			.catch((e) => console.log("error", e))
+	}, [])
+
+	useEffect(() => {
+		getBrands();
+	}, [getBrands])
+
 	return (
 		<Grid item xs={12} md={9}>
-			<Title>
-				Avtomobil markalari
-			</Title>
-			<Grid container spacing={2}>
-				{brandsImgs.map(({ id, img }, ind) => (
-					<Grid item xs={12} md={6} key={ind} className='brands_img'>
-						<img src={img} alt={`img${id}`} />
-					</Grid>
-				))}
-			</Grid>
+			{
+				loading ? (<Loading />) : (
+					<>
+						<Title>
+							{t(`avtoBrands.${lang}`)}
+						</Title>
+						<Grid container spacing={2}>
+							{
+								brands.map((brand) => (
+									<React.Fragment key={brand.id}>
+										<Grid item md={12}>
+											<Title>{brand.title}</Title>
+										</Grid>
+										{
+											brand.imgs.map(({ id, img }) => (
+												<Grid item xs={12} md={6} key={id} className='brands_img'>
+													<img src={API_IMG_URL + img} alt={`img${id}`} />
+												</Grid>
+											))
+										}
+
+									</React.Fragment>
+								)
+								)
+							}
+
+						</Grid>
+					</>
+				)
+			}
+
 		</Grid>
 	);
 }

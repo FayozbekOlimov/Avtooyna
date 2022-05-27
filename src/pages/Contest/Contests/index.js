@@ -2,11 +2,11 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Grid, Stack } from "@mui/material";
 import Title from "../../../components/Title";
 import Loading from "../../../components/Loading";
-import PaginationRounded from "../../../components/PaginationRounded";
 import Card from "../../Main/Card";
 import { homeContestsUrl } from "../../../api/apiUrls"
 import baseAPI from "../../../api/baseAPI";
 import { useT } from "../../../custom/hooks/useT";
+import PaginationRounded from "../../../components/PaginationRounded";
 
 export default function Contests() {
   const { t, lang } = useT();
