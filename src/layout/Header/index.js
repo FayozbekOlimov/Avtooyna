@@ -5,7 +5,7 @@ import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, setLang, setModeLocalstr, toggleIsImage } from '../../helpers';
+import { changeLang, setLang, setModeLocalstr } from '../../helpers';
 // import headerMenu from './headerMenu.json';
 import trheaderMenu from './trheaderMenu.json';
 import { ConsultContext } from "../../App";
@@ -135,10 +135,7 @@ const Header = () => {
     };
 
     const changeMode = (e) => {
-        let newMode = JSON.parse(localStorage.getItem('mode'));
-        newMode = { ...newMode, color: e.target.value };
-        localStorage.setItem("mode", JSON.stringify(newMode));
-
+        
         if (e.target.value === 'gray') {
             setMode(prev => ({ ...prev, color: 'light' }));
             document.body.style.filter = 'grayscale(1)';
@@ -146,6 +143,11 @@ const Header = () => {
             document.body.style.filter = 'grayscale(0)';
             setMode(prev => ({ ...prev, color: e.target.value }));
         }
+        // let newMode = JSON.parse(localStorage.getItem('mode'));
+        // newMode = { ...newMode, color: e.target.value };
+        // localStorage.setItem("mode", JSON.stringify(newMode));
+
+        // console.log(JSON.parse(localStorage.getItem('mode')))
         // let mode = JSON.parse(localStorage.getItem('mode'));
         // console.log(mode)
         // mode = {...mode, color: e.target.value};
@@ -399,7 +401,7 @@ const Header = () => {
                                     size='small'
                                     sx={{ p: 0.5 }}
                                 />}
-                                onClick={toggleIsImage}
+                                // onClick={toggleIsImage}
                                 label={
                                     <>
                                         <Box bgcolor='#C4C4C4' sx={boxStyle}>

@@ -27,7 +27,7 @@ const brandsImgs = [
 const Brands = () => {
 	return (
 		<Grid item xs={12} md={9}>
-			<Title>
+			<Title className='brands__title'>
 				Avtomobil markalari
 			</Title>
 			<Grid container spacing={2}>
