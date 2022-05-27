@@ -2,12 +2,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { createContext, useEffect, useMemo, useState } from "react";
 import { setModeLocalstr } from "../helpers";
 
-export const ColorModeContext = createContext({
-    mode: {
-        color: "light",
-        isImage: true
-    }
-})
+export const ColorModeContext = createContext(null);
 
 const themeObj = {
     light: {
@@ -70,7 +65,11 @@ export const ColorContextProvider = ({ children }) => {
         isImage: true
     });
 
-    // setModeLocalstr(mode['color']);
+    const newMode = JSON.parse(localStorage.getItem('mode'));
+
+    // if (newMode) {
+    //     setMode(newMode);
+    // }
 
     const colorMode = useMemo(() => ({
         setMode,

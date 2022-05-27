@@ -41,6 +41,17 @@ const App = () => {
 		}
 	}, []);
 
+	useEffect(() => {
+		let currentMode = localStorage.getItem("mode");
+		let mode = {
+			color: 'light',
+			isImage: true
+		}
+		if (!currentMode) {
+			localStorage.setItem("mode", JSON.stringify(mode));
+		}
+	}, [])
+
 	const theme = useTheme();
 
 	const onOpenConsultModal = () => setIsConsultModal(true);

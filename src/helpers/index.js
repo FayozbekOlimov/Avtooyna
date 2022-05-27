@@ -18,15 +18,15 @@ export const changeLang = (lang) => {
   i18n.changeLanguage(lang);
 }
 
-export const setModeLocalstr = (color) => {
-  localStorage.setItem("mode", color)
-}
+// export const setModeLocalstr = (color) => {
+//   localStorage.setItem("mode", color)
+// }
 
-export const getModeFromLocalstr = () => {
-  let mode = localStorage.getItem("mode");
-  if (!mode) return fallbackMode;
-  return mode;
-}
+// export const getModeFromLocalstr = () => {
+//   let mode = localStorage.getItem("mode");
+//   if (!mode) return fallbackMode;
+//   return mode;
+// }
 
 export const setIsImage = () => {
   localStorage.setItem('isImage', true);

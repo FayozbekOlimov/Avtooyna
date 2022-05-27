@@ -21,6 +21,7 @@ const ArrowButton = styled(IconButton)(({ theme }) => ({
     },
     width: '32px',
     height: '32px',
+    fontSize: '12px'
 }));
 
 

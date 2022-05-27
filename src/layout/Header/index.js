@@ -67,36 +67,35 @@ const Header = () => {
     const { mode, setMode } = useContext(ColorModeContext);
     const { onOpenConsultModal } = useContext(ConsultContext);
 
-
-    const AirbnbSlider = styled(Slider)(({ theme }) => ({
-        color: '#3a8589',
-        height: 3,
-        padding: '13px 0',
-        '& .MuiSlider-thumb': {
-            height: 27,
-            width: 27,
-            backgroundColor: '#fff',
-            border: '1px solid currentColor',
-            '&:hover': {
-                boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
-            },
-            '& .airbnb-bar': {
-                height: 9,
-                width: 1,
-                backgroundColor: 'currentColor',
-                marginLeft: 1,
-                marginRight: 1,
-            },
-        },
-        '& .MuiSlider-track': {
-            height: 3,
-        },
-        '& .MuiSlider-rail': {
-            color: mode['color'] === 'dark' ? '#bfbfbf' : '#d8d8d8',
-            opacity: mode['color'] === 'dark' ? undefined : 1,
-            height: 3,
-        },
-    }));
+    // const AirbnbSlider = styled(Slider)(({ theme }) => ({
+    //     color: '#3a8589',
+    //     height: 3,
+    //     padding: '13px 0',
+    //     '& .MuiSlider-thumb': {
+    //         height: 27,
+    //         width: 27,
+    //         backgroundColor: '#fff',
+    //         border: '1px solid currentColor',
+    //         '&:hover': {
+    //             boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
+    //         },
+    //         '& .airbnb-bar': {
+    //             height: 9,
+    //             width: 1,
+    //             backgroundColor: 'currentColor',
+    //             marginLeft: 1,
+    //             marginRight: 1,
+    //         },
+    //     },
+    //     '& .MuiSlider-track': {
+    //         height: 3,
+    //     },
+    //     '& .MuiSlider-rail': {
+    //         color: mode['color'] === 'dark' ? '#bfbfbf' : '#d8d8d8',
+    //         opacity: mode['color'] === 'dark' ? undefined : 1,
+    //         height: 3,
+    //     },
+    // }));
 
     const [value, setValue] = useState(0);
     const handleChangeSlider = (e) => {
@@ -136,27 +135,31 @@ const Header = () => {
     };
 
     const changeMode = (e) => {
-        if (e.target.value === 'gray' || e.target.value === 'noImage') {
-            setMode(prev => ({ ...prev, color: 'light' }))
-        } else {
-            setMode(prev => ({ ...prev, color: e.target.value }))
-        }
+        let newMode = JSON.parse(localStorage.getItem('mode'));
+        newMode = { ...newMode, color: e.target.value };
+        localStorage.setItem("mode", JSON.stringify(newMode));
 
         if (e.target.value === 'gray') {
+            setMode(prev => ({ ...prev, color: 'light' }));
             document.body.style.filter = 'grayscale(1)';
         } else {
             document.body.style.filter = 'grayscale(0)';
+            setMode(prev => ({ ...prev, color: e.target.value }));
         }
+        // let mode = JSON.parse(localStorage.getItem('mode'));
+        // console.log(mode)
+        // mode = {...mode, color: e.target.value};
+        // localStorage.setItem(JSON.stringify(mode));
 
-        if (e.target.value === 'noImage') {
-            Array.from(document.images).forEach(img => {
-                img.style.display = 'none';
-            })
-        } else {
-            Array.from(document.images).forEach(img => {
-                img.style.display = 'block';
-            })
-        }
+        // if (e.target.value === 'noImage') {
+        //     Array.from(document.images).forEach(img => {
+        //         img.style.display = 'none';
+        //     })
+        // } else {
+        //     Array.from(document.images).forEach(img => {
+        //         img.style.display = 'block';
+        //     })
+        // }
     }
 
     return (
