@@ -8,9 +8,16 @@
   }
 
   &_img {
-    width: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      border-radius: 50%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   &_job {

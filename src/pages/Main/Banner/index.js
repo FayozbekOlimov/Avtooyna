@@ -13,12 +13,15 @@ import './style.scss';
 const Banner = () => {
     const { t, lang } = useT()
     const [banner, setBanner] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
 
     const getBanner = useCallback(() => {
+        setIsLoading(true)
         baseAPI.fetchAll(homeBannerUrl)
             .then(res => {
                 if (res.data.success) {
                     setBanner(res.data.data)
+                    setIsLoading(false)
                 }
             })
             .catch((e) => console.log("error", e))
@@ -33,7 +36,7 @@ const Banner = () => {
     return (
         <div className='banner'>
             <div className="banner__bg">
-                <img src={API_IMG_URL + imgs} alt="banner" />
+                {!isLoading ? <img src={API_IMG_URL + imgs} alt="banner" /> : null}
             </div>
             <div className="container">
                 <div className="banner__content">

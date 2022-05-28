@@ -57,7 +57,7 @@ const Gallery = () => {
                         </Button>
                     </Link>
                 </Stack>
-                <Grid container spacing={{ md: "30px", sm: "20px", xs: "10px" }} >
+                <Grid container spacing={2} >
                     {
                         gallery.slice(0, 6).map((photo, idx) => (
                             <Grid item sm={galleryGridData[idx]} xs={12} key={photo.id}>

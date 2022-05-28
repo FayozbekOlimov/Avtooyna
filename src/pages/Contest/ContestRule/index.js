@@ -41,11 +41,12 @@ export default function ContestRule() {
 					</Text>
 				</Grid>
 				<Grid item xs={12} md={6}>
-					<img
-						className="contest_banner_img"
-						src={API_IMG_URL + img}
-						alt="resume_img"
-					/>
+					<div className="contest_banner_img">
+						<img
+							src={API_IMG_URL + img}
+							alt="resume_img"
+						/>
+					</div>
 				</Grid>
 			</Grid>
 		)

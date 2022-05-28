@@ -47,8 +47,10 @@ const Brands = () => {
 										</Grid>
 										{
 											brand.imgs.map(({ id, img }) => (
-												<Grid item xs={12} md={6} key={id} className='brands_img'>
-													<img src={API_IMG_URL + img} alt={`img${id}`} />
+												<Grid item xs={12} md={6} key={id} width='100%'>
+													<div className="brands__img">
+														<img src={API_IMG_URL + img} alt={`img${id}`} />
+													</div>
 												</Grid>
 											))
 										}

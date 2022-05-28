@@ -51,7 +51,7 @@ const InsideNews = () => {
 	// let year = date.slice(0, 4);
 
 	return (
-		<Stack direction='row' bgcolor='background.paper'>
+		<Stack direction='row' bgcolor='background.paper' py={2}>
 			<div className='container'>
 				{
 					loading ? (<Loading />) : (
