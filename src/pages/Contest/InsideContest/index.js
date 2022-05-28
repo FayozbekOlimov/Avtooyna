@@ -102,7 +102,7 @@ export default function InsideContest() {
 								<img src="/assets/icon/calendar.png" alt="calendar-icon" />{date}
 							</p>
 							<Text>
-								<div dangerouslySetInnerHTML={{ __html: text }}></div>
+								<span dangerouslySetInnerHTML={{ __html: text }}></span>
 							</Text>
 							<TableContainer component={Paper}>
 								<Table sx={{ minWidth: 700 }} aria-label="customized table">

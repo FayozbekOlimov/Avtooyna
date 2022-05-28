@@ -29,7 +29,7 @@ const Card = ({ id, img, date, title, text, content, toUrl }) => {
 					className="card__title"
 				><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
 				{
-					content && (<Text className="card__text"><div dangerouslySetInnerHTML={{ __html: text }}></div></Text>)
+					content && (<Text className="card__text"><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>)
 				}
 				<Link to={`/${toUrl}/:${id}`}>
 					<Button

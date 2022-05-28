@@ -41,7 +41,7 @@ const PhotoGallery = () => {
 					photos.slice(0, 3).map(({ id, img }) => (
 						<Grid item md={3} sm={6} xs={12} key={id}>
 							<div key={id} className='gallery_img'>
-								<img src={API_IMG_URL + img} alt={`img${id}`} width="100%" />
+								<img src={API_IMG_URL + img} alt={`img${id}`} />
 							</div>
 						</Grid>
 					))
@@ -49,9 +49,9 @@ const PhotoGallery = () => {
 				{
 					photos.slice(3).map(({ id, img }) => (
 						<Grid item xs={12} sm={6} md={3} key={id}>
-							<Grid item md={12} xs={12}>
+							<Grid item xs={12}>
 								<div key={id} className='gallery_img'>
-									<img src={API_IMG_URL + img} alt={`img${id}`} width="100%" />
+									<img src={API_IMG_URL + img} alt={`img${id}`} />
 								</div>
 							</Grid>
 						</Grid>

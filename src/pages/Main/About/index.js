@@ -74,8 +74,8 @@ const About = () => {
                             <div className="about__content">
                                 <Title>{companyTitle}</Title>
                                 <Text>
-                                    <div dangerouslySetInnerHTML={{ __html: companyText }}>
-                                    </div>
+                                    <span dangerouslySetInnerHTML={{ __html: companyText }}>
+                                    </span>
                                 </Text>
                                 <Link to={"/about-us/about-org"}>
                                     <Button>{t(`detail.${lang}`)}</Button>
@@ -122,8 +122,9 @@ const About = () => {
                         <Grid item md={6}>
                             <div className="about__content">
                                 <Title>{glassTitle}</Title>
-                                <Text className="glass_text">   <div dangerouslySetInnerHTML={{ __html: glassText }}>
-                                </div></Text>
+                                <Text className="glass_text">   
+                                <span dangerouslySetInnerHTML={{ __html: glassText }}></span>
+                                </Text>
                                 <Link to="/about-us/:oynalar"><Button>{t(`detail.${lang}`)}</Button></Link>     </div>
                         </Grid>
                     </Grid>
@@ -155,7 +156,7 @@ const About = () => {
                                     {equipmentTitle}
                                 </Title>
                                 <Text>
-                                    <div dangerouslySetInnerHTML={{ __html: equipmentText }}></div>
+                                    <span dangerouslySetInnerHTML={{ __html: equipmentText }}></span>
                                 </Text>
                                 <Link to="/about-us/:equipment"><Button>{t(`detail.${lang}`)}</Button></Link>
 

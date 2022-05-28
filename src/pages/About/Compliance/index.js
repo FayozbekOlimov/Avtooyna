@@ -38,7 +38,7 @@ const Compliance = () => {
 				<>
 					<Title>{title}</Title>
 					<Text>
-						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+						<span dangerouslySetInnerHTML={{ __html: text }}></span>
 					</Text>
 					<Stack className='compliance_btn' direction='column' spacing={2}>
 						<Typography color='secondary.dark' fontWeight='600'>{t(`download.${lang}`)}:</Typography>

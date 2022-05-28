@@ -142,9 +142,9 @@ const Header = () => {
             document.body.style.filter = 'grayscale(0)';
             setMode(prev => ({ ...prev, color: e.target.value }));
         }
-        let newMode = JSON.parse(localStorage.getItem('mode'));
-        newMode = { ...newMode, color: e.target.value };
-        localStorage.setItem("mode", JSON.stringify(newMode));
+        // let newMode = JSON.parse(localStorage.getItem('mode'));
+        // newMode = { ...newMode, color: e.target.value };
+        // localStorage.setItem("mode", JSON.stringify(newMode));
 
         // console.log(JSON.parse(localStorage.getItem('mode')))
         // let mode = JSON.parse(localStorage.getItem('mode'));

@@ -51,7 +51,7 @@ const PublicOffer = () => {
 									<div dangerouslySetInnerHTML={{ __html: title }}></div>
 								</Typography>
 								<Text>
-									<div dangerouslySetInnerHTML={{ __html: text }}></div>
+									<span dangerouslySetInnerHTML={{ __html: text }}></span>
 								</Text>
 								<a href="https://www.spot.uz" target="_blank" rel="noopener noreferrer"><i>www.spot.uz</i></a>
 							</Grid>

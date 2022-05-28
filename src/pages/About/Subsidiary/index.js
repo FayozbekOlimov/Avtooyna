@@ -35,7 +35,7 @@ const Subsidiary = () => {
                     <>
                         <Title>{title}</Title>
                         <Text>
-                            <div dangerouslySetInnerHTML={{ __html: text }}></div>
+                            <span dangerouslySetInnerHTML={{ __html: text }}></span>
                         </Text>
                     </>
                 )

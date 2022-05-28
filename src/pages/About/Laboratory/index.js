@@ -63,7 +63,7 @@ const Laboratory = () => {
                             </ImageList>
                         </div>
                         <Title>{title}</Title>
-                        <Text><div dangerouslySetInnerHTML={{ __html: text }}></div></Text>
+                        <Text><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>
                     </>
                 )}
         </Stack>

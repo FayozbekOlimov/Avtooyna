@@ -74,7 +74,7 @@ const News = () => {
 														<img src="/assets/icon/calendar.png" alt="calendar-icon" />
 														{date}
 													</p>
-													<Text><div dangerouslySetInnerHTML={{ __html: text }}></div></Text>
+													<Text><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>
 													<Link to={`/news/:${id}`}>
 														<Button
 															variant="text"

@@ -38,7 +38,7 @@ const YouthUnion = () => {
 				loading ? (<Loading />) : (
 					<>
 						<Title>{title}</Title>
-						<Text><div dangerouslySetInnerHTML={{ __html: content }}></div></Text>
+						<Text><span dangerouslySetInnerHTML={{ __html: content }}></span></Text>
 						<a href={API_IMG_URL + file} target="_blank" rel="noopener noreferrer">
 							<Button
 								variant='outlined'

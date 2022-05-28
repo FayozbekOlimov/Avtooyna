@@ -37,7 +37,7 @@ export default function ContestRule() {
 				<Grid item xs={12} md={6}>
 					<Title>{title}</Title>
 					<Text>
-						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+						<span dangerouslySetInnerHTML={{ __html: text }}></span>
 					</Text>
 				</Grid>
 				<Grid item xs={12} md={6}>
