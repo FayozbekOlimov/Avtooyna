@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
-import { ExpandMore, FmdGood, HideImage, Menu as MenuIcon, PhoneEnabled, RemoveRedEye } from '@mui/icons-material';
+import { CheckCircleOutline, Circle, ExpandMore, FmdGood, HideImage, Menu as MenuIcon, PhoneEnabled, RadioButtonChecked, RadioButtonUnchecked, RemoveRedEye } from '@mui/icons-material';
 import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Slider, styled, Box, FormGroup, Checkbox } from '@mui/material';
 import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
@@ -81,36 +81,6 @@ const Header = () => {
     const { mode, setMode } = useContext(ColorModeContext);
     const { onOpenConsultModal } = useContext(ConsultContext);
 
-    // const AirbnbSlider = styled(Slider)(({ theme }) => ({
-    //     color: '#3a8589',
-    //     height: 3,
-    //     padding: '13px 0',
-    //     '& .MuiSlider-thumb': {
-    //         height: 27,
-    //         width: 27,
-    //         backgroundColor: '#fff',
-    //         border: '1px solid currentColor',
-    //         '&:hover': {
-    //             boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
-    //         },
-    //         '& .airbnb-bar': {
-    //             height: 9,
-    //             width: 1,
-    //             backgroundColor: 'currentColor',
-    //             marginLeft: 1,
-    //             marginRight: 1,
-    //         },
-    //     },
-    //     '& .MuiSlider-track': {
-    //         height: 3,
-    //     },
-    //     '& .MuiSlider-rail': {
-    //         color: mode['color'] === 'dark' ? '#bfbfbf' : '#d8d8d8',
-    //         opacity: mode['color'] === 'dark' ? undefined : 1,
-    //         height: 3,
-    //     },
-    // }));
-
     const [value, setValue] = useState(0);
     const handleChangeSlider = (e) => {
         setValue(e.target.value)
@@ -149,16 +119,17 @@ const Header = () => {
     };
 
     const changeMode = (e) => {
+        let newMode = JSON.parse(localStorage.getItem('mode'));
         if (e.target.value === 'gray') {
             setMode(prev => ({ ...prev, color: 'light' }));
             document.body.style.filter = 'grayscale(1)';
+            newMode = { ...newMode, color: 'light' };
         } else {
             document.body.style.filter = 'grayscale(0)';
             setMode(prev => ({ ...prev, color: e.target.value }));
+            newMode = { ...newMode, color: e.target.value };
         }
-        // let newMode = JSON.parse(localStorage.getItem('mode'));
-        // newMode = { ...newMode, color: e.target.value };
-        // localStorage.setItem("mode", JSON.stringify(newMode));
+        localStorage.setItem("mode", JSON.stringify(newMode));
 
         // console.log(JSON.parse(localStorage.getItem('mode')))
         // let mode = JSON.parse(localStorage.getItem('mode'));
@@ -166,15 +137,22 @@ const Header = () => {
         // mode = {...mode, color: e.target.value};
         // localStorage.setItem(JSON.stringify(mode));
 
-        // if (e.target.value === 'noImage') {
-        //     Array.from(document.images).forEach(img => {
-        //         img.style.display = 'none';
-        //     })
-        // } else {
-        //     Array.from(document.images).forEach(img => {
-        //         img.style.display = 'block';
-        //     })
-        // }
+    }
+
+    const toggleIsImage = (e) => {
+        let newMode = JSON.parse(localStorage.getItem('mode'));
+        setMode(prev => ({ ...prev, isImage: e.target.checked }));
+        newMode = { ...newMode, isImage: e.target.checked };
+        localStorage.setItem("mode", JSON.stringify(newMode));
+        if (e.target.checked) {
+            Array.from(document.images).forEach(img => {
+                img.style.display = 'none';
+            })
+        } else {
+            Array.from(document.images).forEach(img => {
+                img.style.display = 'block';
+            })
+        }
     }
 
     return (
@@ -361,7 +339,6 @@ const Header = () => {
                                 defaultValue={JSON.parse(localStorage.getItem('mode')) ? JSON.parse(localStorage.getItem('mode'))['color'] : 'light'}
                                 sx={{ my: 1 }}
                                 onChange={changeMode}
-
                             >
                                 <FormControlLabel
                                     value={"light"}
@@ -407,25 +384,27 @@ const Header = () => {
                                     }
                                     labelPlacement="top"
                                 />
+                                <FormControlLabel
+                                    checked={JSON.parse(localStorage.getItem('mode')) ? JSON.parse(localStorage.getItem('mode'))['isImage'] : false}
+                                    control={<Checkbox
+                                        size='small'
+                                        sx={{ p: 0.5 }}
+                                        icon={<RadioButtonUnchecked />}
+                                        checkedIcon={<RadioButtonChecked />}
+                                    />}
+                                    onChange={toggleIsImage}
+                                    label={
+                                        <>
+                                            <Box bgcolor='#C4C4C4' sx={boxStyle}>
+                                                <img src='/assets/icon/no-image.png' alt="no_image" />
+                                            </Box>
+                                            <Typography sx={modeLabelStyle}>No image</Typography>
+                                        </>
+                                    }
+                                    labelPlacement="top"
+                                />
                             </RadioGroup>
-                            <FormControlLabel
-                                value="noImage"
-                                control={<Radio
-                                    size='small'
-                                    sx={{ p: 0.5 }}
-                                />}
-                                // onClick={toggleIsImage}
-                                label={
-                                    <>
-                                        <Box bgcolor='#C4C4C4' sx={boxStyle}>
-                                            <img src='/assets/icon/no-image.png' alt="no_image" />
-                                        </Box>
-                                        <Typography sx={modeLabelStyle}>No image</Typography>
-                                    </>
-                                }
-                                labelPlacement="top"
-                            />
-                            <Divider />
+                            {/* <Divider />
                             <Typography sx={titleStyle} mt={1}>Shrift o'lchami</Typography>
                             <Typography
                                 sx={{
@@ -439,10 +418,6 @@ const Header = () => {
                                 aria-label="custom thumb label"
                                 defaultValue={0}
                                 value={value}
-                            // sx={{
-                            //     mx: '10px',
-                            //     width: 'calc(100% - 20px)'
-                            // }}
                             />
                             <Divider />
                             <Typography sx={titleStyle} mt={1}>Ekran suxandoni</Typography>
@@ -454,7 +429,7 @@ const Header = () => {
                                         my: '5px',
                                     }}>O’chirish / yoqish</Typography>}
                                 />
-                            </FormGroup>
+                            </FormGroup> */}
                         </Box>
                     </MuiMenu>
                 </Grid>

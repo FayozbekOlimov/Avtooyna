@@ -62,7 +62,7 @@ const themeObj = {
 export const ColorContextProvider = ({ children }) => {
     const [mode, setMode] = useState({
         color: "light",
-        isImage: true
+        isImage: false
     });
 
     const colorMode = useMemo(() => ({

@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 // import headerMenu from "../../layout/Header/headerMenu.json";
 // import trheaderMenu from "../../layout/Header/trheaderMenu.json";
 import { useT } from "../../custom/hooks/useT";
-import "./style.scss";
 import baseAPI from "../../api/baseAPI";
 import { menusUrl } from "../../api/apiUrls";
 

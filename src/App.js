@@ -46,14 +46,27 @@ const App = () => {
 
 	useEffect(() => {
 		let currentMode = JSON.parse(localStorage.getItem("mode"));
+		console.log(currentMode, currentMode['isImage'])
+
 		if (!currentMode) {
 			localStorage.setItem("mode", JSON.stringify(mode));
-		} else if (currentMode['color'] === 'gray') {
+			return;
+		}
+
+		if (currentMode['isImage']) {
+			console.log('yes')
+			Array.from(document.images).forEach(img => {
+				img.style.display = 'none';
+			})
+		}
+
+		if (currentMode['color'] === 'gray') {
 			// setMode({ ...currentMode, color: 'light' })
 			document.body.style.filter = 'grayscale(1)';
+			setMode(currentMode);
+			return;
 		}
 		setMode(currentMode);
-		// }
 	}, []);
 
 	const theme = useTheme();
