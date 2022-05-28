@@ -54,39 +54,39 @@ export const routes = [
     children: [
       {
         index: true,
-        path: "babout",
+        path: "about-org",
         element: <AboutOrg />,
       },
       {
-        path: "bkorxona",
+        path: "subsidiary",
         element: <Subsidiary />,
       },
       {
-        path: "brahbar",
+        path: "leadership",
         element: <Leadership />,
       },
       {
-        path: "blabaratoriya",
+        path: "laboratory",
         element: <Laboratory />,
       },
       {
-        path: "bmahalliy",
+        path: "localization",
         element: <Localization />,
       },
       {
-        path: "bsertifikat",
+        path: "certificates",
         element: <Certificates />,
       },
       {
-        path: "bish",
+        path: "vacancies",
         element: <Vacancies />,
       },
       {
-        path: "bmuvofiq",
+        path: "compliance",
         element: <Compliance />,
       },
       {
-        path: "byoshlar",
+        path: "youth-union",
         element: <YouthUnion />,
       },
     ],
@@ -97,11 +97,11 @@ export const routes = [
     children: [
       {
         index: true,
-        path: "tnizom",
+        path: "contest-rules",
         element: <ContestRule />,
       },
       {
-        path: "ttanlov",
+        path: "contests",
         element: <Contests />,
       },
     ],
@@ -112,23 +112,23 @@ export const routes = [
     children: [
       {
         index: true,
-        path: "msifat",
+        path: "quality",
         element: <Quality />
       },
       {
-        path: "mnomenklatura",
+        path: "nomenclature",
         element: <Nomenclature />
       },
       {
-        path: "mmarka",
+        path: "brands",
         element: <Brands />
       },
       {
-        path: "msotish",
+        path: "sale",
         element: <Sale />
       },
       {
-        path: "mxalq",
+        path: "goods",
         element: <Goods />
       },
     ]
@@ -143,19 +143,19 @@ export const routes = [
     children: [
       {
         index: true,
-        path: "yanilik",
+        path: "news",
         element: <News />
       },
       {
-        path: "oferta",
+        path: "public-offer",
         element: <PublicOffer />
       },
       {
-        path: "foto",
+        path: "photogallery",
         element: <PhotoGallery />
       },
       {
-        path: "video",
+        path: "videogallery",
         element: <VideoGallery />
       },
 

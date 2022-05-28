@@ -9,6 +9,7 @@ import baseAPI from '../../../api/baseAPI';
 import { nomenclatureUrl } from '../../../api/apiUrls';
 import { useT } from '../../../custom/hooks/useT';
 import { API_IMG_URL } from '../../../constants';
+import "./style.scss";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

@@ -56,7 +56,9 @@ const PublicOffer = () => {
 								<a href="https://www.spot.uz" target="_blank" rel="noopener noreferrer"><i>www.spot.uz</i></a>
 							</Grid>
 							<Grid item xs={12} md={6}>
-								<img src={API_IMG_URL + img} alt="offerImg" className='offer__img' />
+								<div className="offer__img">
+									<img src={API_IMG_URL + img} alt="offerImg" />
+								</div>
 							</Grid>
 						</Grid>
 					</div>

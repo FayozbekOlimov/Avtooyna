@@ -14,11 +14,11 @@ const GoodsDetail = ({ title, items = [] }) => {
 	return (
 		<Stack direction='column' mb={4}>
 			<Title>{title}</Title>
-			<Grid container spacing={{ md: "30px", sm: "20px", xs: "10px" }}>
+			<Grid container spacing={2}>
 				{items.map(({ id, img, title }) => (
 					<Grid item xs={12} sm={6} md={4} key={id} >
 						<Stack className='card_box' p={2} bgcolor="background.default">
-							<div className="good__card__img">
+							<div className="card_box-img">
 								<img src={API_IMG_URL + img} alt={`img${id}`} />
 							</div>
 							<Typography sx={titleStyle}>{title}</Typography>

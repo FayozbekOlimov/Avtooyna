@@ -65,8 +65,10 @@ const News = () => {
 									items.map(({ id, img, date, title, text }) => (
 										<Grid item xs={12} key={id}>
 											<Grid container className='news_card' p={2} bgcolor='background.default'>
-												<Grid item xs={12} md={6} className='news_img'>
-													<img src={API_IMG_URL + img} alt={`img${id}`} />
+												<Grid item xs={12} md={6}>
+													<div className="news_img">
+														<img src={API_IMG_URL + img} alt={`img${id}`} />
+													</div>
 												</Grid>
 												<Grid item xs={12} md={6} pl={{ xs: 0, md: 2 }} pt={{ xs: 2, md: 0 }}>
 													<Typography sx={titleStyle} className="card__title"><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>

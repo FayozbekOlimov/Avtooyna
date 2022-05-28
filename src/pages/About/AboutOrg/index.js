@@ -53,7 +53,7 @@ const AboutOrg = () => {
                                             {...srcset(API_IMG_URL + "/" + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
                                             alt={`about org img${idx + 1}`}
                                             loading="lazy"
-                                            style={{ borderRadius: "12px" }}
+                                            style={{ borderRadius: "12px", height: "inherit" }}
                                         />
                                     </ImageListItem>
                                 ))}

@@ -6,7 +6,7 @@ import { vacanciesUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { useT } from "../../../custom/hooks/useT";
 import { API_IMG_URL } from '../../../constants';
-
+import './style.scss';
 
 const Vacancies = () => {
 	const { t, lang } = useT();
@@ -55,12 +55,13 @@ const Vacancies = () => {
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>
-					<img
-						className='resume_img'
-						src={API_IMG_URL + vacancies.img}
-						alt="resume_img"
-						width='100%'
-					/>
+					<div className='resume_img'>
+						<img
+							src={API_IMG_URL + vacancies.img}
+							alt="resume_img"
+							width='100%'
+						/>
+					</div>
 				</Grid>
 			</Grid>
 		</Stack>

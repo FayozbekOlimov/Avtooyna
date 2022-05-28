@@ -54,8 +54,8 @@ const Leadership = () => {
                                     alignItems='center'
                                     className='leader_card'
                                 >
-                                    <Stack>
-                                        <img className='leader_img' src={API_IMG_URL + img} alt={`img${id + 1}`} />
+                                    <Stack className='leader_img'>
+                                        <img src={API_IMG_URL + img} alt={`img${id + 1}`} />
                                     </Stack>
                                     <Stack className='leader_title' direction='column' flex={1}>
                                         <Typography sx={titleStyle}>{fullname}</Typography>

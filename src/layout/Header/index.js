@@ -11,7 +11,7 @@ import trheaderMenu from './trheaderMenu.json';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
-import { telsUrl } from "../../api/apiUrls";
+import { menusUrl, telsUrl } from "../../api/apiUrls";
 import baseAPI from "../../api/baseAPI";
 import './style.scss';
 
@@ -22,6 +22,7 @@ const Header = () => {
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
 
     const [tels, setTels] = useState([]);
+    const [menus, setMenus] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const getTels = useCallback(() => {
@@ -37,9 +38,22 @@ const Header = () => {
 
     }, [])
 
+    const getMenus = useCallback(() => {
+        baseAPI.fetchAll(menusUrl)
+            .then((res) => {
+                // if (res.data.success) {
+                setMenus(res.data.menu);
+                // }
+            })
+            .catch((e) => console.log("e", e))
+
+    }, [])
+
+
     useEffect(() => {
-        getTels()
-    }, [getTels])
+        getTels();
+        getMenus();
+    }, [getTels, getMenus])
 
     const handleChange = (event) => {
         setLang(event.target.value);
@@ -51,16 +65,16 @@ const Header = () => {
         return { key, children, label };
     }
 
-    const items = trheaderMenu.map((menu) => (
-        getItem(menu.menuName[lang], menu.key, menu.submenu.map((sub) => (
+    const items = menus.map((menu) => (
+        getItem(menu.menuName, menu.id, menu.subMenus.map((sub) => (
             getItem(<NavLink
                 to={`${menu.to}${sub.to}`}
                 className='header__link'
                 onClick={() => setVisible(false)}
             >
-                {sub.text[lang]}
+                {sub.text}
             </NavLink>,
-                sub.key)
+                sub.id)
         )))
     ))
 

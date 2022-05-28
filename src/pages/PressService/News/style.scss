@@ -1,13 +1,18 @@
 .news_card {
+	box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+	border-radius: 12px;
+
 	.news_img {
+		width: 100%;
+		min-height: 100%;
+		border-radius: 12px;
+		overflow: hidden;
+
 		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-			border-radius: 12px;
+			border-radius: inherit;
 		}
 	}
-
-	box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
-	border-radius: 12px;
 }

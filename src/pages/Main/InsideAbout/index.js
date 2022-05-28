@@ -36,7 +36,7 @@ const InsideAbout = () => {
 	const { title, text, imgs = [] } = about;
 
 	return (
-		<Stack direction='column' bgcolor='background.paper'>
+		<Stack direction='column' bgcolor='background.paper' py={2}>
 			<div className='container'>
 				<Button
 					variant="outlined"

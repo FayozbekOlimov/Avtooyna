@@ -74,7 +74,9 @@ const CertificateCarusel = ({ title, items = [] }) => {
 				{
 					items.map((item) => (
 						<SwiperSlide key={item.id}>
-							<img className='certif__img' src={API_IMG_URL + item.img} alt={`certif1${item.id}`} />
+							<div className="certif__img">
+								<img src={API_IMG_URL + item.img} alt={`certif1${item.id}`} />
+							</div>
 						</SwiperSlide>
 					))
 				}

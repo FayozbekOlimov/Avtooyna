@@ -32,3 +32,4 @@ export const acceptTermsUrl = "shart/";
 export const telsUrl = "tel/"
 export const newsDetailUrl = "news/detail";
 export const contestsDetailUrl = "tanlov/detail";
+export const menusUrl = "menu/";
