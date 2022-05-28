@@ -23,7 +23,6 @@ const Goods = () => {
 
 	useEffect(() => {
 		getXim();
-		console.log(xim)
 	}, [getXim])
 
 	const { data: consumers = {}, datProducts: products = [] } = xim;

@@ -54,7 +54,7 @@ const App = () => {
 		}
 		setMode(currentMode);
 		// }
-	}, [])
+	}, []);
 
 	const theme = useTheme();
 

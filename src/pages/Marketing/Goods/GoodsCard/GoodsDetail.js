@@ -18,7 +18,9 @@ const GoodsDetail = ({ title, items = [] }) => {
 				{items.map(({ id, img, title }) => (
 					<Grid item xs={12} sm={6} md={4} key={id} >
 						<Stack className='card_box' p={2} bgcolor="background.default">
-							<img src={API_IMG_URL + img} alt={`img${id}`} />
+							<div className="good__card__img">
+								<img src={API_IMG_URL + img} alt={`img${id}`} />
+							</div>
 							<Typography sx={titleStyle}>{title}</Typography>
 						</Stack>
 					</Grid>

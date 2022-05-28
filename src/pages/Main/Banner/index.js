@@ -36,7 +36,7 @@ const Banner = () => {
     return (
         <div className='banner'>
             <div className="banner__bg">
-                {isLoading && <img src={API_IMG_URL + imgs} alt="banner" />}
+                {!isLoading ? <img src={API_IMG_URL + imgs} alt="banner" /> : null}
             </div>
             <div className="container">
                 <div className="banner__content">
