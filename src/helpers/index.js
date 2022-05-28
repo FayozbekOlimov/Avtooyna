@@ -28,6 +28,11 @@ export const getModeFromLocalstr = () => {
   return mode;
 }
 
+// export const setModeGray = (mode) => {
+//   // let newMode = {...mode, color: "light"};
+
+//   localStorage.setItem()
+// }
 // export const setIsImage = () => {
 //   localStorage.setItem('isImage', true);
 // }

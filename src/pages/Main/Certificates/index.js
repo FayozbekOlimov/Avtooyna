@@ -94,7 +94,7 @@ const Certificates = () => {
                                                 mb={2}
                                             >
                                                 <Title>{t(`certificates.${lang}`)}</Title>
-                                                <Link to={"/contest-announcement/contests"}>
+                                                <Link to={"/about-us/certificates"}>
                                                     <Button
                                                         variant='outlined'
                                                         sx={{

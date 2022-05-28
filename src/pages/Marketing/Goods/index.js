@@ -23,9 +23,10 @@ const Goods = () => {
 
 	useEffect(() => {
 		getXim();
+		console.log(xim)
 	}, [getXim])
 
-	const { consumers = {}, products = [] } = xim;
+	const { data: consumers = {}, datProducts: products = [] } = xim;
 
 	return (
 

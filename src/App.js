@@ -13,6 +13,7 @@ import i18next from 'i18next';
 import { fallbackLng, languages } from './constants';
 import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
+import { ColorModeContext } from './static';
 
 export const ConsultContext = createContext(null);
 export const ModeContext = createContext(null);
@@ -41,15 +42,18 @@ const App = () => {
 		}
 	}, []);
 
+	const { mode, setMode } = useContext(ColorModeContext);
+
 	useEffect(() => {
-		let currentMode = localStorage.getItem("mode");
-		let mode = {
-			color: 'light',
-			isImage: true
-		}
+		let currentMode = JSON.parse(localStorage.getItem("mode"));
 		if (!currentMode) {
 			localStorage.setItem("mode", JSON.stringify(mode));
+		} else if (currentMode['color'] === 'gray') {
+			// setMode({ ...currentMode, color: 'light' })
+			document.body.style.filter = 'grayscale(1)';
 		}
+		setMode(currentMode);
+		// }
 	}, [])
 
 	const theme = useTheme();

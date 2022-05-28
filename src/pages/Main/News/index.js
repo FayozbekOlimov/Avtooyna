@@ -12,6 +12,7 @@ import "./style.scss";
 import { homeNewsUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { useT } from '../../../custom/hooks/useT'
+import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText(blue[500]),
@@ -61,10 +62,10 @@ const News = () => {
                     <Text>{t(`newsDesc.${lang}`)}</Text>
                     <Stack className="new_carusel_arrows" direction='row'>
                         <ArrowButton ref={newCaruselPrevRef}>
-                            <RiArrowLeftSLine />
+                            <ArrowForwardIos sx={{fontSize: '16px', transform: 'rotate(180deg)'}} />
                         </ArrowButton>
                         <ArrowButton ref={newCaruselNextRef}>
-                            <RiArrowRightSLine />
+                            <ArrowForwardIos sx={{fontSize: '16px'}} />
                         </ArrowButton>
                     </Stack>
                 </Stack>

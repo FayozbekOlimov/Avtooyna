@@ -72,7 +72,7 @@ export default function InsideContest() {
 	const { title, text, date, items = [] } = oneContest;
 
 	return (
-		<Stack direction='column' bgcolor='background.paper'>
+		<Stack direction='column' bgcolor='background.paper' py={2}>
 			<div className="container">
 				<Button
 					variant="outlined"

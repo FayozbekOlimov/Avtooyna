@@ -135,7 +135,6 @@ const Header = () => {
     };
 
     const changeMode = (e) => {
-        
         if (e.target.value === 'gray') {
             setMode(prev => ({ ...prev, color: 'light' }));
             document.body.style.filter = 'grayscale(1)';
@@ -143,9 +142,9 @@ const Header = () => {
             document.body.style.filter = 'grayscale(0)';
             setMode(prev => ({ ...prev, color: e.target.value }));
         }
-        // let newMode = JSON.parse(localStorage.getItem('mode'));
-        // newMode = { ...newMode, color: e.target.value };
-        // localStorage.setItem("mode", JSON.stringify(newMode));
+        let newMode = JSON.parse(localStorage.getItem('mode'));
+        newMode = { ...newMode, color: e.target.value };
+        localStorage.setItem("mode", JSON.stringify(newMode));
 
         // console.log(JSON.parse(localStorage.getItem('mode')))
         // let mode = JSON.parse(localStorage.getItem('mode'));
@@ -345,7 +344,7 @@ const Header = () => {
                                 row
                                 aria-labelledby="demo-form-control-label-placement"
                                 name="position"
-                                defaultValue="light"
+                                defaultValue={JSON.parse(localStorage.getItem('mode')) ? JSON.parse(localStorage.getItem('mode'))['color'] : 'light'}
                                 sx={{ my: 1 }}
                                 onChange={changeMode}
 

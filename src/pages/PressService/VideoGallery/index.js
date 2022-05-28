@@ -28,7 +28,7 @@ const VideoGallery = () => {
 		getPhotos()
 	}, [getPhotos])
 
-	const { img, url } = videos;
+	const { id, img, title, url } = videos;
 	return (
 		loading ? (
 			<Grid item xs={12} md={9} sm={6}>
@@ -41,8 +41,8 @@ const VideoGallery = () => {
 					<video controls
 						src={url}
 						poster={img}
-						width="100%">
-
+						width="100%"
+					>
 						Sorry, your browser doesn't support embedded videos,
 						but don't worry, you can <a href="https://archive.org/details/BigBuckBunny_124">download it</a>
 						and watch it with your favorite video player!
