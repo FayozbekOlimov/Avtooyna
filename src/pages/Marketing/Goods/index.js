@@ -23,6 +23,7 @@ const Goods = () => {
 
 	useEffect(() => {
 		getXim();
+		console.log(xim)
 	}, [getXim])
 
 	const { data: consumers = {}, datProducts: products = [] } = xim;
@@ -39,7 +40,7 @@ const Goods = () => {
 
 					<Title>{consumers.title}</Title>
 					<Text>
-						<div dangerouslySetInnerHTML={{ __html: consumers.text }}></div>
+						<span dangerouslySetInnerHTML={{ __html: consumers.text }}></span>
 					</Text>
 				</Grid>
 				<Grid item xs={12}>

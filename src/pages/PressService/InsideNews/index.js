@@ -78,7 +78,7 @@ const InsideNews = () => {
 										{date}
 									</p>
 									<Typography sx={titleStyle} className="card__title"><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
-									<Text><div dangerouslySetInnerHTML={{ __html: text }}></div></Text>
+									<Text><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>
 								</Grid>
 								<Grid item xs={12} sm={6} md={6}>
 									<div className='news_images'>

@@ -44,7 +44,7 @@ const Banner = () => {
                         <div dangerouslySetInnerHTML={{ __html: title }} />
                     </Title>
                     <Text>
-                        <div dangerouslySetInnerHTML={{ __html: text }} />
+                        <span dangerouslySetInnerHTML={{ __html: text }} />
                     </Text>
                     <Link to={"/about-us/about-org"}>
                         <Button>{t(`detail.${lang}`)}</Button>

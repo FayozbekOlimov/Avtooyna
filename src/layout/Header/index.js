@@ -135,7 +135,6 @@ const Header = () => {
     };
 
     const changeMode = (e) => {
-        
         if (e.target.value === 'gray') {
             setMode(prev => ({ ...prev, color: 'light' }));
             document.body.style.filter = 'grayscale(1)';
@@ -345,7 +344,7 @@ const Header = () => {
                                 row
                                 aria-labelledby="demo-form-control-label-placement"
                                 name="position"
-                                defaultValue="light"
+                                defaultValue={JSON.parse(localStorage.getItem('mode')) ? JSON.parse(localStorage.getItem('mode'))['color'] : 'light'}
                                 sx={{ my: 1 }}
                                 onChange={changeMode}
 

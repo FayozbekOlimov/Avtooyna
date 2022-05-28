@@ -65,13 +65,6 @@ export const ColorContextProvider = ({ children }) => {
         isImage: true
     });
 
-    // setModeLocalstr(mode);
-    // const newMode = JSON.parse(localStorage.getItem('mode'));
-
-    // if (newMode) {
-    //     setMode(newMode);
-    // }
-
     const colorMode = useMemo(() => ({
         setMode,
         mode,

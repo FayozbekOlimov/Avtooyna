@@ -6,6 +6,7 @@ import { blue } from '@mui/material/colors'
 import { Navigation } from 'swiper'
 import "./style.scss"
 import { API_IMG_URL } from '../../../../constants'
+import { ArrowForwardIos } from '@mui/icons-material'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
 	color: theme.palette.getContrastText(blue[500]),
@@ -33,8 +34,8 @@ const CertificateCarusel = ({ title, items = [] }) => {
 			<Stack direction='row' justifyContent='space-between' alignItems='center' width='100%'>
 				<Typography sx={titleStyle}>{title}</Typography>
 				<Stack direction='row' spacing={2}>
-					<ArrowButton ref={navigationPrevRef}><RiArrowLeftSLine /></ArrowButton>
-					<ArrowButton ref={navigationNextRef}><RiArrowRightSLine /></ArrowButton>
+					<ArrowButton ref={navigationPrevRef}><ArrowForwardIos sx={{ fontSize: '16px', transform: 'rotate(180deg)' }} /></ArrowButton>
+					<ArrowButton ref={navigationNextRef}><ArrowForwardIos sx={{ fontSize: '16px' }} /></ArrowButton>
 				</Stack>
 			</Stack>
 			<Swiper
