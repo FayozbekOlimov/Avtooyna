@@ -203,5 +203,10 @@
     "uz": "Avtomobil markalari",
     "ru": "Марки автомобилей",
     "en": "Car brands"
-  }
+  },
+  "thanksFormSent": {
+      "uz": "Rahmat! Forma yuborildi",
+      "ru": "Спасибо! Форма отправлена",
+      "en": "Thank you! Form sent"
+    }
 }

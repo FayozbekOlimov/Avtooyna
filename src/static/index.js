@@ -1,6 +1,5 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import { createContext, useEffect, useMemo, useState } from "react";
-import { setModeLocalstr } from "../helpers";
 
 export const ColorModeContext = createContext(null);
 

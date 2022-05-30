@@ -162,7 +162,7 @@ const GetConsultModal = (props) => {
 			</Modal>
 			<Snackbar open={open} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }}>
 				<Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-					This is a success message!
+						{t(`thanksFormSent.${lang}`)}
 				</Alert>
 			</Snackbar>
 		</>
