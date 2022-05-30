@@ -33,7 +33,7 @@ const Contests = () => {
             <div className="container">
                 <Stack direction='row' mb={1} justifyContent='space-between' alignItems='flex-start' flexWrap="wrap">
                     <Title>{t(`contests.${lang}`)}</Title>
-                    <Link to="/contest-announcement/contests">
+                    <Link to="/contest-announcement/ttanlov">
                         <Button
                             variant='outlined'
                             sx={{

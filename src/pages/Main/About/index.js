@@ -77,7 +77,7 @@ const About = () => {
                                     <span dangerouslySetInnerHTML={{ __html: companyText }}>
                                     </span>
                                 </Text>
-                                <Link to={"/about-us/about-org"}>
+                                <Link to={"/about-us/babout"}>
                                     <Button>{t(`detail.${lang}`)}</Button>
                                 </Link>
                             </div>
@@ -122,8 +122,8 @@ const About = () => {
                         <Grid item md={6}>
                             <div className="about__content">
                                 <Title>{glassTitle}</Title>
-                                <Text className="glass_text">   
-                                <span dangerouslySetInnerHTML={{ __html: glassText }}></span>
+                                <Text className="glass_text">
+                                    <span dangerouslySetInnerHTML={{ __html: glassText }}></span>
                                 </Text>
                                 <Link to="/about-us/:oynalar"><Button>{t(`detail.${lang}`)}</Button></Link>     </div>
                         </Grid>

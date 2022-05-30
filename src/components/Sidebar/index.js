@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 // import headerMenu from "../../layout/Header/headerMenu.json";
 // import trheaderMenu from "../../layout/Header/trheaderMenu.json";
 import { useT } from "../../custom/hooks/useT";
-import "./style.scss";
 import baseAPI from "../../api/baseAPI";
 import { menusUrl } from "../../api/apiUrls";
 
@@ -51,7 +50,7 @@ const Sidebar = (props) => {
 	return (
 		<Stack direction="column" component="ul" style={ulStyle} bgcolor="background.navBg">
 			{subMenus.map((item) => (
-				<Stack key={item.id} component="li" sx={{ color: 'secondary.light' }}>
+				<Stack key={item.key} component="li" sx={{ color: 'secondary.light' }}>
 					<NavLink
 						to={`${menus.to}${item.to}`}
 						style={({ isActive }) => ({

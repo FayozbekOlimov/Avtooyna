@@ -71,7 +71,7 @@ const Certificates = () => {
                                         justifyContent="center"
                                         borderRadius='12px'
                                     >
-                                        <Stack className='sertificates__imgBx' p={{xs: 2, sm: 4}}>
+                                        <Stack className='sertificates__imgBx' p={{ xs: 2, sm: 4 }}>
                                             <img
                                                 className='sertificates__img'
                                                 src={API_IMG_URL + img}
@@ -94,7 +94,7 @@ const Certificates = () => {
                                                 mb={2}
                                             >
                                                 <Title>{t(`certificates.${lang}`)}</Title>
-                                                <Link to={"/about-us/certificates"}>
+                                                <Link to={"/about-us/bsertifikat"}>
                                                     <Button
                                                         variant='outlined'
                                                         sx={{
