@@ -35,7 +35,7 @@ const VideoGallery = () => {
 
 	return (
 		loading ? (
-			<Grid item xs={12} md={9} sm={6}>
+			<Grid item xs={12} md={9}>
 				<Loading />
 			</Grid>
 		) : (
