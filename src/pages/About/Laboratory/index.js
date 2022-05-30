@@ -24,7 +24,6 @@ const Laboratory = () => {
                 }
             })
             .catch((e) => console.log("e", e))
-
     }, [])
 
     useEffect(() => {
@@ -50,7 +49,7 @@ const Laboratory = () => {
                                 gap={16}
                             >
                                 {imgs.slice(-8).map((image, idx) => (
-                                    <ImageListItem key={idx} cols={aboutOrgImgGrid[idx].cols} rows={aboutOrgImgGrid[idx].rows}>
+                                    <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
                                         <img
                                             {...srcset(API_IMG_URL + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
                                             alt={`about org img${idx + 1}`}

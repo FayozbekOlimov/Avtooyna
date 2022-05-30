@@ -46,7 +46,7 @@ const Gallery = () => {
             <div className="container">
                 <Stack direction='row' mb={2} justifyContent='space-between' alignItems='flex-start' flexWrap="wrap">
                     <Title>{t(`photos.${lang}`)}</Title>
-                    <Link to={"/press-service/photogallery"}>
+                    <Link to={"/press-service/foto"}>
                         <Button
                             variant='outlined'
                             sx={{
