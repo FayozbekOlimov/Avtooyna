@@ -46,7 +46,6 @@ const App = () => {
 
 	useEffect(() => {
 		let currentMode = JSON.parse(localStorage.getItem("mode"));
-		console.log(currentMode, currentMode['isImage'])
 
 		if (!currentMode) {
 			localStorage.setItem("mode", JSON.stringify(mode));
@@ -54,7 +53,6 @@ const App = () => {
 		}
 
 		if (currentMode['isImage']) {
-			console.log('yes')
 			Array.from(document.images).forEach(img => {
 				img.style.display = 'none';
 			})

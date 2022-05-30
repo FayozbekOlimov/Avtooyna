@@ -47,7 +47,7 @@ const AboutOrg = () => {
                                 rowHeight={121}
                                 gap={16}
                             >
-                                {images.map((image, idx) => (
+                                {images.slice(-8).map((image, idx) => (
                                     <ImageListItem key={idx} cols={aboutOrgImgGrid[idx].cols} rows={aboutOrgImgGrid[idx].rows}>
                                         <img
                                             {...srcset(API_IMG_URL + "/" + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}

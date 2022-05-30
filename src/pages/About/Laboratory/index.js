@@ -35,7 +35,6 @@ const Laboratory = () => {
 
     let imgCols = width >= 768 ? 4 : width >= 576 ? 2 : width >= 320 ? 1 : 1;
 
-
     return (
         <Stack>
             {
@@ -50,7 +49,7 @@ const Laboratory = () => {
                                 rowHeight={121}
                                 gap={16}
                             >
-                                {imgs.map((image, idx) => (
+                                {imgs.slice(-8).map((image, idx) => (
                                     <ImageListItem key={idx} cols={aboutOrgImgGrid[idx].cols} rows={aboutOrgImgGrid[idx].rows}>
                                         <img
                                             {...srcset(API_IMG_URL + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}

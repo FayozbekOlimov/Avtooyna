@@ -46,7 +46,7 @@ const Banner = () => {
                     <Text>
                         <span dangerouslySetInnerHTML={{ __html: text }} />
                     </Text>
-                    <Link to={"/about-us/about-org"}>
+                    <Link to={"/about-us/babout"}>
                         <Button>{t(`detail.${lang}`)}</Button>
                     </Link>
                 </div>

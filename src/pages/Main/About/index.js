@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
@@ -9,6 +9,7 @@ import { API_IMG_URL } from "../../../constants";
 import baseAPI from '../../../api/baseAPI';
 import { homeCompanyUrl, homeEquipmentUrl, homeGlassUrl } from '../../../api/apiUrls'
 import { useT } from '../../../custom/hooks/useT'
+import { ColorModeContext } from '../../../static'
 
 const About = () => {
     const { t, lang } = useT()
@@ -53,13 +54,15 @@ const About = () => {
     const { imgs: glassImgs = [], text: glassText, title: glassTitle } = homeGlasses;
     const { imgs: equipmentImgs = [], text: equipmentText, title: equipmentTitle } = homeEquipment;
 
+    const { mode, setMode } = useContext(ColorModeContext);
+
     return (
         <Stack
             py={{ xs: 2, md: 4 }}
             className="about"
             bgcolor='background.default'
             sx={{
-                backgroundImage: 'url("/assets/img/about-bg.png")'
+                backgroundImage: mode['color'] === 'light' ? 'url("/assets/img/about-bg.png")' : null
             }}
         >
             <div className="container">

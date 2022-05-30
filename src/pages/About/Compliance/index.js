@@ -42,8 +42,8 @@ const Compliance = () => {
 					</Text>
 					<Stack className='compliance_btn' direction='column' spacing={2}>
 						<Typography color='secondary.dark' fontWeight='600'>{t(`download.${lang}`)}:</Typography>
-						{items.map((item) => (
-							<a href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
+						{items.map((item, ind) => (
+							<a key={ind} href={API_IMG_URL + item.file} target="_blank" rel="noopener noreferrer">
 								<Button
 									className='btn-compliance'
 									variant='outlined'
