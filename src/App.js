@@ -48,19 +48,28 @@ const App = () => {
 			return;
 		}
 
-		if (currentMode['isImage']) {
-			Array.from(document.images).forEach(img => {
-				img.style.display = 'none';
-			})
-		}
+		// if (currentMode['isImage']) {
+		// 	Array.from(document.images).forEach(img => {
+		// 		img.style.display = 'none';
+		// 	})
+		// }
 
-		if (currentMode['color'] === 'gray') {
-			document.body.style.filter = 'grayscale(1)';
-			setMode(currentMode);
-			return;
-		}
+		// if (currentMode['color'] === 'gray') {
+		// 	document.body.style.filter = 'grayscale(1)';
+		// 	setMode(currentMode);
+		// 	return;
+		// }
 		setMode(currentMode);
 	}, []);
+
+	// useEffect(() => {
+	// 	let isImage = localStorage.getItem('isImage');
+	// 	if (isImage == null) {
+	// 		localStorage.setItem('isImage', true)
+	// 	} else {
+	// 		localStorage.setItem('isImage', isImage);
+	// 	}
+	// }, []);
 
 	const theme = useTheme();
 

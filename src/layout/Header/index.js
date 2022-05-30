@@ -5,7 +5,7 @@ import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, setLang } from '../../helpers';
+import { changeLang, getIsImage, setIsImage, setLang } from '../../helpers';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
@@ -15,6 +15,7 @@ import './style.scss';
 
 
 const Header = () => {
+    const [isImg, setIsImg] = useState(Boolean(getIsImage()));
     const [visible, setVisible] = useState(false);
     const { t, lang } = useT();
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
@@ -130,21 +131,22 @@ const Header = () => {
         localStorage.setItem("mode", JSON.stringify(newMode));
     }
 
-    const toggleIsImage = (e) => {
-        let newMode = JSON.parse(localStorage.getItem('mode'));
-        setMode(prev => ({ ...prev, isImage: e.target.checked }));
-        newMode = { ...newMode, isImage: e.target.checked };
-        localStorage.setItem("mode", JSON.stringify(newMode));
-        if (e.target.checked) {
-            Array.from(document.images).forEach(img => {
-                img.style.display = 'none';
-            })
-        } else {
-            Array.from(document.images).forEach(img => {
-                img.style.display = 'block';
-            })
-        }
-    }
+    // useEffect(() => {
+    //     setIsImage(isImg);
+    // }, [isImg])
+
+    // const toggleIsImage = (e) => {
+    //     setIsImg(e.target.checked);
+    //     if (!isImg) {
+    //         Array.from(document.images).forEach(img => {
+    //             img.style.display = 'none';
+    //         })
+    //     } else {
+    //         Array.from(document.images).forEach(img => {
+    //             img.style.display = 'block';
+    //         })
+    //     }
+    // }
 
     return (
         <Stack className='header' bgcolor='background.default'>
@@ -189,7 +191,6 @@ const Header = () => {
                             </FormControl>
                         </Box>
                     </Grid>
-
                     <Box component={Grid} item xs={12} lg={6} sx={{
                         display: {
                             xs: "none", lg: "flex", xl: "flex"
@@ -372,14 +373,15 @@ const Header = () => {
                                     }
                                     labelPlacement="top"
                                 />
-                                <FormControlLabel
-                                    checked={JSON.parse(localStorage.getItem('mode')) ? JSON.parse(localStorage.getItem('mode'))['isImage'] : false}
+                                {/* <FormControlLabel
+                                    // disabled
                                     control={<Checkbox
                                         size='small'
                                         sx={{ p: 0.5 }}
                                         icon={<RadioButtonUnchecked />}
                                         checkedIcon={<RadioButtonChecked />}
                                     />}
+                                    checked={isImg}
                                     onChange={toggleIsImage}
                                     label={
                                         <>
@@ -390,7 +392,7 @@ const Header = () => {
                                         </>
                                     }
                                     labelPlacement="top"
-                                />
+                                /> */}
                             </RadioGroup>
                         </Box>
                     </MuiMenu>
