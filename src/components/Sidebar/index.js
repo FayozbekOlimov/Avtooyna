@@ -48,7 +48,7 @@ const Sidebar = (props) => {
 	// const items = trheaderMenu[sidebarMenuIndex];
 	const { subMenus = [] } = menus;
 	return (
-		<Stack direction="column" component="ul" style={ulStyle} bgcolor="background.navBg">
+		<Stack direction="column" component="ul" style={ulStyle} bgcolor="background.navBg" alignItems="flex-start">
 			{subMenus.map((item) => (
 				<Stack key={item.key} component="li" sx={{ color: 'secondary.light' }}>
 					<NavLink

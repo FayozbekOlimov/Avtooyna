@@ -23,7 +23,6 @@ const AboutOrg = () => {
                 }
             })
             .catch((e) => console.log("e", e))
-
     }, [])
 
     useEffect(() => {
@@ -47,7 +46,7 @@ const AboutOrg = () => {
                                 rowHeight={121}
                                 gap={16}
                             >
-                                {images.map((image, idx) => (
+                                {images.slice(-8).map((image, idx) => (
                                     <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
                                         <img
                                             {...srcset(API_IMG_URL + "/" + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}

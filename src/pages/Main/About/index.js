@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Grid, Stack, Typography } from '@mui/material'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
@@ -9,35 +9,51 @@ import { API_IMG_URL } from "../../../constants";
 import baseAPI from '../../../api/baseAPI';
 import { homeCompanyUrl, homeEquipmentUrl, homeGlassUrl } from '../../../api/apiUrls'
 import { useT } from '../../../custom/hooks/useT'
+import { ColorModeContext } from '../../../static'
 
 const About = () => {
     const { t, lang } = useT()
     const [company, setCompany] = useState({});
     const [homeGlasses, setHomeGlasses] = useState({});
     const [homeEquipment, setHomeEquipment] = useState({});
+    const [isLoadingCompany, setIsLoadingCompany] = useState(false);
+    const [isLoadingGlasses, setIsLoadingGlasses] = useState(false);
+    const [isLoadingEquipment, setIsLoadingEquipment] = useState(false);
 
     const getCompany = useCallback(() => {
+        setIsLoadingCompany(true);
         baseAPI.fetchAll(homeCompanyUrl)
             .then((res) => {
-                setCompany(res.data.data);
+                if (res.data.success) {
+                    setCompany(res.data.data);
+                    setIsLoadingCompany(false);
+                }
             })
             .catch((e) => console.log("e", e));
 
     }, [])
 
     const getGlasses = useCallback(() => {
+        setIsLoadingGlasses(true);
         baseAPI.fetchAll(homeGlassUrl)
             .then((res) => {
-                setHomeGlasses(res.data.data);
+                if (res.data.success) {
+                    setHomeGlasses(res.data.data);
+                    setIsLoadingGlasses(false);
+                }
             })
             .catch((e) => console.log("e", e));
 
     }, [])
 
     const getEquipment = useCallback(() => {
+        setIsLoadingEquipment(true);
         baseAPI.fetchAll(homeEquipmentUrl)
             .then((res) => {
-                setHomeEquipment(res.data.data);
+                if (res.data.success) {
+                    setHomeEquipment(res.data.data);
+                    setIsLoadingEquipment(false);
+                }
             })
             .catch((e) => console.log("e", e));
 
@@ -53,13 +69,15 @@ const About = () => {
     const { imgs: glassImgs = [], text: glassText, title: glassTitle } = homeGlasses;
     const { imgs: equipmentImgs = [], text: equipmentText, title: equipmentTitle } = homeEquipment;
 
+    const { mode, setMode } = useContext(ColorModeContext);
+
     return (
         <Stack
             py={{ xs: 2, md: 4 }}
             className="about"
             bgcolor='background.default'
             sx={{
-                backgroundImage: 'url("/assets/img/about-bg.png")'
+                backgroundImage: mode['color'] === 'light' ? 'url("/assets/img/about-bg.png")' : null
             }}
         >
             <div className="container">
@@ -67,7 +85,7 @@ const About = () => {
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
                         <Grid item md={6}>
                             <div className="about__picture">
-                                <img src={API_IMG_URL + companyImg} alt="about-company" />
+                                {!isLoadingCompany ? <img src={API_IMG_URL + companyImg} alt="about-company" /> : null}
                             </div>
                         </Grid>
                         <Grid item md={6}>
@@ -104,17 +122,17 @@ const About = () => {
                             <Grid container spacing={2}>
                                 <Grid item sm={6} xs={12}>
                                     <div className="about__img">
-                                        <img src={API_IMG_URL + (glassImgs[0])} alt="oyna1" />
+                                        {!isLoadingGlasses ? <img src={API_IMG_URL + (glassImgs[0])} alt="oyna1" /> : null}
                                     </div>
                                 </Grid>
                                 <Grid item sm={6} xs={12}>
                                     <div className="about__img">
-                                        <img src={API_IMG_URL + glassImgs[1]} alt="oyna2" />
+                                        {!isLoadingGlasses ? <img src={API_IMG_URL + glassImgs[1]} alt="oyna2" /> : null}
                                     </div>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <div className="about__img">
-                                        <img src={API_IMG_URL + glassImgs[2]} alt="oyna3" />
+                                        {!isLoadingGlasses ? <img src={API_IMG_URL + glassImgs[2]} alt="oyna3" /> : null}
                                     </div>
                                 </Grid>
                             </Grid>
@@ -135,17 +153,17 @@ const About = () => {
                             <Grid container spacing={2}>
                                 <Grid item sm={6} xs={12}>
                                     <div className="about__img">
-                                        <img src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" />
+                                        {!isLoadingEquipment ? <img src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" /> : null}
                                     </div>
                                 </Grid>
                                 <Grid item sm={6} xs={12}>
                                     <div className="about__img">
-                                        <img src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism2" />
+                                        {!isLoadingEquipment ? <img src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism2" /> : null}
                                     </div>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <div className="about__img">
-                                        <img src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism3" />
+                                        {!isLoadingEquipment ? <img src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism3" /> : null}
                                     </div>
                                 </Grid>
                             </Grid>

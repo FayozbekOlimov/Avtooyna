@@ -40,7 +40,7 @@ const Sale = () => {
 	const { title, text, phone, email } = sale;
 
 	return (
-		<Grid item xs={12} sm={6} md={9}>
+		<Grid item xs={12} md={9}>
 			{
 				loading ? (<Loading />) : (
 					<>

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect, useContext } from 'react'
 import { Stack, Button, Grid } from '@mui/material'
 import Title from '../../../components/Title'
 import { RiArrowRightSLine } from 'react-icons/ri';
@@ -8,6 +8,7 @@ import './style.scss'
 import { API_IMG_URL } from '../../../constants';
 import { useT } from '../../../custom/hooks/useT';
 import { Link } from "react-router-dom";
+import { ColorModeContext } from '../../../static';
 
 const galleryGridData = [
     5, 7, 7, 5, 6, 6
@@ -31,6 +32,7 @@ const Gallery = () => {
         getHomeGallery();
     }, [getHomeGallery])
 
+    const { mode, setMode } = useContext(ColorModeContext);
 
     return (
         <Stack
@@ -38,7 +40,7 @@ const Gallery = () => {
             py={{ xs: 2, md: 4 }}
             bgcolor='background.default'
             sx={{
-                backgroundImage: 'url("/assets/img/about-bg.png")'
+                backgroundImage: mode['color'] === 'light' ? 'url("/assets/img/about-bg.png")' : null
             }}
         >
             <div className="container">
