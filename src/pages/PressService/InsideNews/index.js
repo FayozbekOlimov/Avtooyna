@@ -12,10 +12,13 @@ import { API_IMG_URL } from '../../../constants';
 import { useT } from '../../../custom/hooks/useT';
 
 const titleStyle = {
-	fontWeight: 700,
+	fontWeight: 600,
 	fontSize: '20px',
 	color: 'info.main',
-	marginBottom: '16px'
+	marginBottom: '16px',
+	'& *': {
+		fontWeight: "inherit",
+	}
 }
 
 const InsideNews = () => {

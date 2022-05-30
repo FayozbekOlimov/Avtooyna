@@ -1,13 +1,11 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
-import { CheckCircleOutline, Circle, ExpandMore, FmdGood, HideImage, Menu as MenuIcon, PhoneEnabled, RadioButtonChecked, RadioButtonUnchecked, RemoveRedEye } from '@mui/icons-material';
-import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Tooltip, createTheme, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Slider, styled, Box, FormGroup, Checkbox } from '@mui/material';
+import { ExpandMore, FmdGood, Menu as MenuIcon, PhoneEnabled, RadioButtonChecked, RadioButtonUnchecked, RemoveRedEye } from '@mui/icons-material';
+import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Box, FormGroup, Checkbox } from '@mui/material';
 import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, setLang, setModeLocalstr } from '../../helpers';
-// import headerMenu from './headerMenu.json';
-import trheaderMenu from './trheaderMenu.json';
+import { changeLang, setLang } from '../../helpers';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
@@ -130,13 +128,6 @@ const Header = () => {
             newMode = { ...newMode, color: e.target.value };
         }
         localStorage.setItem("mode", JSON.stringify(newMode));
-
-        // console.log(JSON.parse(localStorage.getItem('mode')))
-        // let mode = JSON.parse(localStorage.getItem('mode'));
-        // console.log(mode)
-        // mode = {...mode, color: e.target.value};
-        // localStorage.setItem(JSON.stringify(mode));
-
     }
 
     const toggleIsImage = (e) => {
@@ -298,7 +289,6 @@ const Header = () => {
                         id="mode-menu"
                         open={open}
                         onClose={handleClose}
-                        // MenuListProps={{ onMouseLeave: handleClose }}
                         PaperProps={{
                             elevation: 0,
                             sx: {
@@ -360,7 +350,6 @@ const Header = () => {
                                         size='small'
                                         sx={{ p: 0.5 }}
                                     />}
-                                    // onChange={() => document.body.style.filter = 'grayscale(1)'}
                                     label={
                                         <>
                                             <Box bgcolor='#C4C4C4' sx={boxStyle} />
@@ -375,7 +364,6 @@ const Header = () => {
                                         size='small'
                                         sx={{ p: 0.5 }}
                                     />}
-                                    // onChange={(e) => setMode(prev => ({ ...prev, color: e.target.value }))}
                                     label={
                                         <>
                                             <Box bgcolor='#021B34' sx={boxStyle} />
@@ -404,32 +392,6 @@ const Header = () => {
                                     labelPlacement="top"
                                 />
                             </RadioGroup>
-                            {/* <Divider />
-                            <Typography sx={titleStyle} mt={1}>Shrift o'lchami</Typography>
-                            <Typography
-                                sx={{
-                                    color: '#6E7E8B',
-                                    my: '5px',
-                                    fontSize: '14px'
-                                }}
-                            >{value}% ga kattaroq</Typography>
-                            <Slider
-                                onChange={handleChangeSlider}
-                                aria-label="custom thumb label"
-                                defaultValue={0}
-                                value={value}
-                            />
-                            <Divider />
-                            <Typography sx={titleStyle} mt={1}>Ekran suxandoni</Typography>
-                            <FormGroup>
-                                <FormControlLabel
-                                    control={<Checkbox />}
-                                    label={<Typography sx={{
-                                        color: '#6E7E8B',
-                                        my: '5px',
-                                    }}>O’chirish / yoqish</Typography>}
-                                />
-                            </FormGroup> */}
                         </Box>
                     </MuiMenu>
                 </Grid>

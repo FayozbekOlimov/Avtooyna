@@ -45,7 +45,7 @@ const Advantages = () => {
 								<Stack className="advantages__icon" sx={iconBoxStyle}>
 									<img src={advantageIcons[idx]} alt={`icon${idx + 1}`} />
 								</Stack>
-								<Typography component={'span'} className="advantages__title" sx={{ color: 'info.light' }}>
+								<Typography className="advantages__title" sx={{ color: 'info.light' }}>
 									<div dangerouslySetInnerHTML={{ __html: advantage.title }}></div>
 								</Typography>
 							</Stack>

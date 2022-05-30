@@ -121,12 +121,6 @@ const GetConsultModal = (props) => {
 					>
 						<Form.Item
 							label={t(`name.${lang}`)} required name="name" tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
-						// rules={[
-						// 	{
-						// 		required: true,
-						// 		message: 'Iltimos ismingizni kiriting!',
-						// 	},
-						// ]}
 						>
 							<Input placeholder={t(`name.${lang}`)} />
 						</Form.Item>
@@ -136,16 +130,6 @@ const GetConsultModal = (props) => {
 							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
 							required
 							name="email"
-						// rules={[
-						// 	{
-						// 		type: 'email',
-						// 		message: 'The input is not valid E-mail!',
-						// 	},
-						// 	{
-						// 		required: true,
-						// 		message: 'Iltimos elektron pochtangizni kiriting!',
-						// 	},
-						// ]}
 						>
 							<Input placeholder="E-mail" />
 						</Form.Item>
@@ -155,12 +139,6 @@ const GetConsultModal = (props) => {
 							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
 							required
 							name={"tel_number"}
-						// rules={[
-						// 	{
-						// 		required: true,
-						// 		message: 'Iltimos telefon raqamingizni kiriting!',
-						// 	},
-						// ]}
 						>
 							<InputTel />
 						</Form.Item>

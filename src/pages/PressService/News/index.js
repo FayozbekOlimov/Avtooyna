@@ -17,7 +17,10 @@ const titleStyle = {
 	fontWeight: 700,
 	fontSize: '20px',
 	color: 'info.main',
-	marginBottom: '8px'
+	marginBottom: '8px',
+	'& *': {
+		fontWeight: "inherit",
+	}
 }
 
 const News = () => {

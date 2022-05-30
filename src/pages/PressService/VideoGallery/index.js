@@ -6,6 +6,7 @@ import { videogalleryUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { useT } from "../../../custom/hooks/useT";
 import { API_IMG_URL } from '../../../constants';
+import ReactPlayer from 'react-player';
 
 const VideoGallery = () => {
 	const { t, lang } = useT();
@@ -22,7 +23,6 @@ const VideoGallery = () => {
 				}
 			})
 			.catch((e) => console.log("e", e))
-
 	}, [])
 
 	useEffect(() => {
@@ -30,8 +30,6 @@ const VideoGallery = () => {
 	}, [getPhotos])
 
 	const { img, url } = videos;
-
-
 
 	return (
 		loading ? (
@@ -41,14 +39,12 @@ const VideoGallery = () => {
 		) : (
 			<Grid item xs={12} md={9}>
 				<Title>{t(`videogallery.${lang}`)}</Title>
-				<Stack>
-					<video controls
-						src={url}
-						poster={API_IMG_URL + img}
-						width="100%"
-					>
-					</video>
-				</Stack>
+				<ReactPlayer
+					controls={true}
+					url={url}
+					style={{ width: "100%" }}
+					light={API_IMG_URL + img}
+				/>
 			</Grid >
 		)
 	);

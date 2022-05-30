@@ -9,6 +9,15 @@ import { useT } from "../../../custom/hooks/useT";
 
 const Card = ({ id, img, date, title, text, content, toUrl }) => {
 	const { t, lang } = useT();
+	const titleStyle = {
+		color: 'info.main',
+		fontSize: '20px',
+		fontWeight: 700,
+		marginBottom: '16px',
+		'& *': {
+			fontWeight: "inherit",
+		}
+	};
 	return (
 		<Stack className="card" bgcolor='background.default'>
 			<Stack className="card__img">
@@ -20,12 +29,7 @@ const Card = ({ id, img, date, title, text, content, toUrl }) => {
 					{date}
 				</p>
 				<Typography
-					sx={{
-						color: 'info.main',
-						fontSize: '20px',
-						fontWeight: 700,
-						marginBottom: '16px'
-					}}
+					sx={titleStyle}
 					className="card__title"
 				><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
 				{

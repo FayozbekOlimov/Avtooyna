@@ -20,10 +20,6 @@ export const ModeContext = createContext(null);
 
 const App = () => {
 	const [isOpenConsultModal, setIsConsultModal] = useState(false);
-	// const [mode, setMode] = useState({
-	// 	color: "light",
-	// 	isImage: true
-	// });
 
 	let element = useRoutes(routes);
 	let { pathname } = useLocation();
@@ -59,7 +55,6 @@ const App = () => {
 		}
 
 		if (currentMode['color'] === 'gray') {
-			// setMode({ ...currentMode, color: 'light' })
 			document.body.style.filter = 'grayscale(1)';
 			setMode(currentMode);
 			return;
@@ -78,22 +73,15 @@ const App = () => {
 		onCloseConsultModal
 	}
 
-	// const modeContextValue = {
-	// 	mode,
-	// 	setMode
-	// }
-
 	return (
 		<div className="avtooyna__wrapper">
 			<ThemeProvider theme={theme}>
-				{/* <ModeContext.Provider value={modeContextValue}> */}
 				<ConsultContext.Provider value={consultContextValue}>
 					<Header />
 					{element}
 					<Footer />
 					<GetConsultModal {...consultContextValue} />
 				</ConsultContext.Provider>
-				{/* </ModeContext.Provider> */}
 			</ThemeProvider>
 		</div>
 	);

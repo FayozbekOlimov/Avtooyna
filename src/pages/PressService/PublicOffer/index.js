@@ -12,11 +12,13 @@ const titleStyle = {
 	fontWeight: 700,
 	fontSize: '20px',
 	color: 'info.main',
-	marginBottom: '16px'
+	marginBottom: '16px',
+	'& *': {
+		fontWeight: "inherit"
+	}
 }
 
 const PublicOffer = () => {
-
 	const [oferta, setOferta] = useState({});
 	const [loading, setLoading] = useState(false);
 
@@ -30,7 +32,6 @@ const PublicOffer = () => {
 				}
 			})
 			.catch((e) => console.log("e", e))
-
 	}, [])
 
 	useEffect(() => {

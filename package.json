@@ -25,6 +25,7 @@
     "react-icons": "^4.3.1",
     "react-input-mask": "^2.0.4",
     "react-medium-image-zoom": "^4.4.3",
+    "react-player": "^2.10.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "swiper": "^8.1.4",
