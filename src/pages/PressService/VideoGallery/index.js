@@ -7,6 +7,7 @@ import baseAPI from '../../../api/baseAPI';
 import { useT } from "../../../custom/hooks/useT";
 import { API_IMG_URL } from '../../../constants';
 import ReactPlayer from 'react-player';
+import './style.scss';
 
 const VideoGallery = () => {
 	const { t, lang } = useT();
@@ -39,12 +40,16 @@ const VideoGallery = () => {
 		) : (
 			<Grid item xs={12} md={9}>
 				<Title>{t(`videogallery.${lang}`)}</Title>
-				<ReactPlayer
-					controls={true}
-					url={url}
-					style={{ width: "100%" }}
-					light={API_IMG_URL + img}
-				/>
+				<div className="player-wrapper">
+					<ReactPlayer
+						className='react-player'
+						controls={true}
+						url={url}
+						width="100%"
+						height="100%"
+						light={API_IMG_URL + img}
+					/>
+				</div >
 			</Grid >
 		)
 	);

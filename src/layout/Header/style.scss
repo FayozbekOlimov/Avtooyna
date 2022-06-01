@@ -68,10 +68,31 @@
 
 .ant-drawer-body {
     padding: 0 !important;
+
+    .ant-menu {
+        .ant-menu-submenu {
+            color: #031E39;
+
+            .header__link {
+                color: #6E7E8B;
+            }
+        }
+    }
 }
 
 .ant-drawer-header {
     padding: 16px !important;
+
+    .ant-drawer-header-title {
+        .ant-drawer-title, .ant-drawer-close {
+            color: #031E39;
+        }
+
+        .ant-drawer-close {
+            margin: 0;
+            
+        }
+    }
 }
 
 .ant-menu.ant-menu-root {
@@ -81,8 +102,4 @@
 .ant-drawer-header-title {
     flex-direction: row-reverse;
     align-items: center;
-}
-
-.ant-drawer-close {
-    margin: 0 !important;
 }

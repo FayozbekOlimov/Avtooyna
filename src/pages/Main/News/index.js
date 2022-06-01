@@ -6,7 +6,7 @@ import Title from '../../../components/Title'
 import Text from '../../../components/Text'
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 // swiper
-import { Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./style.scss";
 import { homeNewsUrl } from '../../../api/apiUrls';
@@ -75,7 +75,11 @@ const News = () => {
                         className='news_swiper'
                         spaceBetween={10}
                         slidesPerView={1}
-                        modules={[Navigation]}
+                        modules={[Navigation, Autoplay]}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
                         navigation={{
                             prevEl: newCaruselPrevRef.current,
                             nextEl: newCaruselNextRef.current,

@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss';
 
 // import required modules
-import { Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import { homeCertificateUrl } from '../../../api/apiUrls'
 import baseAPI from '../../../api/baseAPI'
 import { useT } from '../../../custom/hooks/useT'
@@ -55,7 +55,11 @@ const Certificates = () => {
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
-                    modules={[Navigation]}
+                    modules={[Navigation, Autoplay]}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
                     navigation={true}
                     loop={true}
                     className="home_certificate_swiper"

@@ -1,7 +1,10 @@
 .massmedia {
-    &__img {
+    &__left {
         border-radius: 12px;
         overflow: hidden;
+    }
+
+    &__img {
         width: 100%;
         height: 600px;
 

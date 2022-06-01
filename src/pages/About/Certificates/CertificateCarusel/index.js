@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 import { IconButton, Stack, styled, Typography } from '@mui/material'
 import { blue } from '@mui/material/colors'
-import { Navigation } from 'swiper'
+import { Navigation, Autoplay } from 'swiper'
 import "./style.scss"
 import { API_IMG_URL } from '../../../../constants'
 import { ArrowForwardIos } from '@mui/icons-material'
@@ -41,7 +41,7 @@ const CertificateCarusel = ({ title, items = [] }) => {
 			<Swiper
 				spaceBetween={15}
 				slidesPerView={1}
-				modules={[Navigation]}
+				modules={[Navigation, Autoplay]}
 				navigation={{
 					prevEl: navigationPrevRef.current,
 					nextEl: navigationNextRef.current,
@@ -56,6 +56,10 @@ const CertificateCarusel = ({ title, items = [] }) => {
 					})
 				}}
 				loop={true}
+				autoplay={{
+					delay: 2500,
+					disableOnInteraction: false,
+				}}
 				breakpoints={{
 					320: {
 						slidesPerView: 1,

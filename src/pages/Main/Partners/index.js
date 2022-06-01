@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 import Title from '../../../components/Title'
-import { Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import './style.scss'
 import baseAPI from '../../../api/baseAPI';
@@ -37,7 +37,11 @@ const Partners = () => {
                             className='partners__swiper'
                             spaceBetween={10}
                             slidesPerView={1}
-                            modules={[Navigation]}
+                            modules={[Navigation, Autoplay]}
+                            autoplay={{
+                                delay: 2500,
+                                disableOnInteraction: false,
+                            }}
                             navigation={true}
                             loop={true}
                             breakpoints={{
