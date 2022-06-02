@@ -8,6 +8,8 @@ import { aboutOrgImgGrid, srcset } from '../AboutOrg';
 import { API_IMG_URL } from '../../../constants';
 import useWindowSize from '../../../custom/hooks/useWindowSize';
 import Loading from '../../../components/Loading';
+import Fancybox from '../../../components/Fancybox';
+import './style.scss';
 
 const Laboratory = () => {
     const [laboratory, setLaboratory] = useState({});
@@ -39,25 +41,27 @@ const Laboratory = () => {
             {
                 loading ? (<Loading />) : (
                     <>
-                        <div className="laboratory__galllery">
+                        <div className="laboratory__gallery">
                             <ImageList
-
                                 sx={{ width: "100%", height: "auto" }}
                                 variant="quilted"
                                 cols={imgCols}
-                                rowHeight={121}
+                                rowHeight={140}
                                 gap={16}
                             >
-                                {imgs.slice(-8).map((image, idx) => (
-                                    <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
-                                        <img
-                                            {...srcset(API_IMG_URL + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
-                                            alt={`about org img${idx + 1}`}
-                                            loading="lazy"
-                                            style={{ borderRadius: "12px" }}
-                                        />
-                                    </ImageListItem>
-                                ))}
+                                <Fancybox>
+                                    {imgs.slice(-8).map((image, idx) => (
+                                        <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
+                                            <a data-fancybox="about-lab-gallery" href={API_IMG_URL + "/" + image} className='fancybox-item'>
+                                                <img
+                                                    {...srcset(API_IMG_URL + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
+                                                    alt={`about org img${idx + 1}`}
+                                                    loading="lazy"
+                                                />
+                                            </a>
+                                        </ImageListItem>
+                                    ))}
+                                </Fancybox>
                             </ImageList>
                         </div>
                         <Title>{title}</Title>

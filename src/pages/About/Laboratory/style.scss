@@ -1,0 +1,25 @@
+.laboratory {
+    &__gallery {
+        .MuiImageListItem-root {
+            .fancybox-item {
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+                overflow: hidden;
+                display: block;
+
+                &:hover img {
+                    transform: scale(var(--scale));
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: inherit;
+                    object-fit: cover;
+                    transition: transform var(--duration) var(--timing);
+                }
+            }
+        }
+    }
+}

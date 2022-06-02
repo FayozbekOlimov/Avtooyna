@@ -4,6 +4,7 @@ import Loading from '../../../components/Loading'
 import { homeGalleryUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { API_IMG_URL } from '../../../constants';
+import Fancybox from '../../../components/Fancybox';
 import "./style.scss"
 
 const PhotoGallery = () => {
@@ -40,20 +41,26 @@ const PhotoGallery = () => {
 				{
 					photos.slice(0, 3).map(({ id, img }) => (
 						<Grid item md={3} sm={6} xs={12} key={id}>
-							<div key={id} className='gallery_img'>
-								<img src={API_IMG_URL + img} alt={`img${id}`} />
-							</div>
+							<Fancybox>
+								<div key={id} className='gallery_img'>
+									<a data-fancybox="service-gallery" href={API_IMG_URL + img} className='fancybox-item'>
+										<img src={API_IMG_URL + img} alt={`img${id}`} />
+									</a>
+								</div>
+							</Fancybox>
 						</Grid>
 					))
 				}
 				{
 					photos.slice(3).map(({ id, img }) => (
 						<Grid item xs={12} sm={6} md={3} key={id}>
-							<Grid item xs={12}>
+							<Fancybox>
 								<div key={id} className='gallery_img'>
-									<img src={API_IMG_URL + img} alt={`img${id}`} />
+									<a data-fancybox="service-gallery" href={API_IMG_URL + img} className='fancybox-item'>
+										<img src={API_IMG_URL + img} alt={`img${id}`} />
+									</a>
 								</div>
-							</Grid>
+							</Fancybox>
 						</Grid>
 					))
 				}

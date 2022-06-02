@@ -1,11 +1,14 @@
 :root {
-    --font               : 16px;
-    --primary-color      : #00468D;
+    --font: 16px;
+    --primary-color: #00468D;
     --primary-light-color: #3179C2;
-    --title-color        : #011223;
-    --text-color         : #252C34;
+    --title-color: #011223;
+    --text-color: #252C34;
     --header-icon-bgcolor: #ECF2F9;
-    --b-color            : #D7D7D7;
+    --b-color: #D7D7D7;
+    --scale: 1.1;
+    --duration: 0.3s;
+    --timing: ease-in;
 }
 
 /* 

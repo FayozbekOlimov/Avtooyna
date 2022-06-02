@@ -7,6 +7,8 @@ import baseAPI from "../../../api/baseAPI";
 import { aboutOrgUrl } from "../../../api/apiUrls";
 import useWindowSize from "../../../custom/hooks/useWindowSize";
 import { API_IMG_URL } from '../../../constants';
+import Fancybox from '../../../components/Fancybox';
+import './style.scss';
 
 const AboutOrg = () => {
     const [aboutOrg, setAboutOrg] = useState({});
@@ -43,19 +45,22 @@ const AboutOrg = () => {
                                 sx={{ width: "100%", height: "auto" }}
                                 variant="quilted"
                                 cols={imgCols}
-                                rowHeight={121}
+                                rowHeight={140}
                                 gap={16}
                             >
-                                {images.slice(-8).map((image, idx) => (
-                                    <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
-                                        <img
-                                            {...srcset(API_IMG_URL + "/" + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
-                                            alt={`about org img${idx + 1}`}
-                                            loading="lazy"
-                                            style={{ borderRadius: "12px", height: "inherit" }}
-                                        />
-                                    </ImageListItem>
-                                ))}
+                                <Fancybox>
+                                    {images.slice(-8).map((image, idx) => (
+                                        <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
+                                            <a data-fancybox="about-org-gallery" href={API_IMG_URL + "/" + image} className='fancybox-item'>
+                                                <img
+                                                    {...srcset(API_IMG_URL + "/" + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
+                                                    alt={`about org img${idx + 1}`}
+                                                    loading="lazy"
+                                                />
+                                            </a>
+                                        </ImageListItem>
+                                    ))}
+                                </Fancybox>
                             </ImageList>
                         </div>
                         <Title>{title}</Title>
@@ -116,5 +121,4 @@ export const aboutOrgImgGrid = [
         rows: 1,
         cols: 2
     }
-
 ];

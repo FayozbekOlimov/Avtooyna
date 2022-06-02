@@ -9,6 +9,7 @@ import { API_IMG_URL } from '../../../constants';
 import { useT } from '../../../custom/hooks/useT';
 import { Link } from "react-router-dom";
 import { ColorModeContext } from '../../../static';
+import Fancybox from '../../../components/Fancybox';
 
 const galleryGridData = [
     5, 7, 7, 5, 6, 6
@@ -60,16 +61,19 @@ const Gallery = () => {
                     </Link>
                 </Stack>
                 <Grid container spacing={2} >
-                    {
-                        gallery.slice(0, 6).map((photo, idx) => (
-                            <Grid item sm={galleryGridData[idx]} xs={12} key={photo.id}>
-                                <div className="gallery__img_wrapper">
-                                    <img className='gallery__img' src={API_IMG_URL + photo.img} alt={`gallery${idx + 1}`} />
-                                </div>
-                            </Grid>
-                        ))
-                    }
-
+                    <Fancybox>
+                        {
+                            gallery.slice(0, 6).map((photo, idx) => (
+                                <Grid item sm={galleryGridData[idx]} xs={12} key={photo.id}>
+                                    <div className="gallery__img_wrapper">
+                                        <a data-fancybox="main-gallery" href={API_IMG_URL + photo.img} className='fancybox-item'>
+                                            <img className='gallery__img' src={API_IMG_URL + photo.img} alt={`gallery${idx + 1}`} />
+                                        </a>
+                                    </div>
+                                </Grid>
+                            ))
+                        }
+                    </Fancybox>
                 </Grid>
             </div>
         </Stack>

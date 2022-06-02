@@ -201,7 +201,11 @@ const Header = () => {
                         justifyContent='space-evenly'
                     >
                         <Menu
-                            style={{ width: '100%', backgroundColor: "transparent" }}
+                            style={{ 
+                                width: '100%', 
+                                backgroundColor: "transparent",
+                                color: mode['color'] === 'light' ? '#000' : '#fff',
+                            }}
                             mode="horizontal"
                             items={items}
                         />

@@ -8,7 +8,7 @@
 			width: 32px;
 			height: 32px;
 			border-radius: 50%;
-			transition: background-color .3s ease;
+			transition: background-color .3s ease-in;
 
 			&::after {
 				font-size: 12px;
