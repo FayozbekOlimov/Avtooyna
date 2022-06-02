@@ -73,7 +73,7 @@ const Header = () => {
             >
                 {sub.text}
             </NavLink>,
-                sub.id)
+                sub.key)
         )))
     ))
 
@@ -152,10 +152,15 @@ const Header = () => {
         <Stack className='header' bgcolor='background.default'>
             <div className="container">
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={12} lg={2} display='flex' alignItems='center' justifyContent={"space-between"}>
+                    <Grid item xs={12} sm={4} lg={2} display='flex' alignItems='center' justifyContent="space-between">
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                             <MenuIcon
-                                sx={{ color: 'secondary.main', mr: 1, cursor: 'pointer' }}
+                                sx={{
+                                    color: 'secondary.main',
+                                    mr: 1,
+                                    cursor: 'pointer',
+                                    display: { xs: 'block', lg: 'none' }
+                                }}
                                 className='header__menu-icon'
                                 fontSize='large'
                                 onClick={() => setVisible(true)}
@@ -164,7 +169,7 @@ const Header = () => {
                                 <img src={mode['color'] === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
                             </Link>
                         </Box>
-                        <Box sx={{ display: { md: "block", lg: "none", xl: "none" } }}>
+                        <Box sx={{ display: { xs: "block", sm: "none" } }}>
                             <FormControl className="language_wrapper" >
                                 <Select
                                     IconComponent={ExpandMore}
@@ -191,42 +196,17 @@ const Header = () => {
                             </FormControl>
                         </Box>
                     </Grid>
-                    <Box component={Grid} item xs={12} lg={6} sx={{
-                        display: {
-                            xs: "none", lg: "flex", xl: "flex"
-                        }
-                    }}
+                    <Grid item xs={0} lg={6}
+                        display={{ xs: "none", lg: "flex" }}
                         justifyContent='space-evenly'
                     >
-                        <div className='header__tel'>
-                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
-                                <PhoneEnabled sx={{ color: 'primary.main' }} />
-                            </Stack>
-                            <Stack className='header__tel-content'>
-                                {
-                                    tels.map((tel, ind) => (
-                                        <TelLink
-                                            key={ind}
-                                            href={`tel:${tel.tel_namber}`}
-                                            sx={{ color: 'info.light', textDecoration: 'none' }}
-                                        >
-                                            {tel.tel_namber}
-                                        </TelLink>
-                                    ))
-                                }
-                            </Stack>
-                        </div>
-                        <div className='header__tel'>
-                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
-                                <FmdGood sx={{ color: 'primary.main' }} />
-                            </Stack>
-                            <div className='header__tel-content'>
-                                <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
-                                <small>{t(`ourAddress.${lang}`)}</small>
-                            </div>
-                        </div>
-                    </Box>
-                    <Grid item xs={12} md={12} lg={4} display="flex" alignItems='center' justifyContent='space-between'>
+                        <Menu
+                            style={{ width: '100%', backgroundColor: "transparent" }}
+                            mode="horizontal"
+                            items={items}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={8} lg={4} display="flex" alignItems='center' justifyContent='space-between'>
                         <Button
                             variant='outlined'
                             sx={{
@@ -239,7 +219,7 @@ const Header = () => {
                         >
                             {t(`getConsult.${lang}`)}
                         </Button>
-                        <Box sx={{ display: { xs: "none", lg: "block", xl: "block" } }}>
+                        <Box sx={{ display: { xs: "none", sm: "block" } }}>
                             <FormControl className="language_wrapper" >
                                 <Select
                                     IconComponent={ExpandMore}
@@ -407,7 +387,7 @@ const Header = () => {
                 >
                     <Menu
                         style={{ width: '100%' }}
-                        mode="vertical"
+                        mode="inline"
                         items={items}
                     />
                 </Drawer>
@@ -417,3 +397,31 @@ const Header = () => {
 }
 
 export default Header
+
+{/* <div className='header__tel'>
+                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
+                                <PhoneEnabled sx={{ color: 'primary.main' }} />
+                            </Stack>
+                            <Stack className='header__tel-content'>
+                                {
+                                    tels.map((tel, ind) => (
+                                        <TelLink
+                                            key={ind}
+                                            href={`tel:${tel.tel_namber}`}
+                                            sx={{ color: 'info.light', textDecoration: 'none' }}
+                                        >
+                                            {tel.tel_namber}
+                                        </TelLink>
+                                    ))
+                                }
+                            </Stack>
+                        </div>
+                        <div className='header__tel'>
+                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
+                                <FmdGood sx={{ color: 'primary.main' }} />
+                            </Stack>
+                            <div className='header__tel-content'>
+                                <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
+                                <small>{t(`ourAddress.${lang}`)}</small>
+                            </div>
+                        </div> */}
