@@ -22,7 +22,7 @@ export default function ContestRule() {
 					setLoading(false);
 				}
 			})
-			.catch((e) => console.log("e", e))
+			.catch((e) => alert(e))
 	}, [])
 
 	useEffect(() => {

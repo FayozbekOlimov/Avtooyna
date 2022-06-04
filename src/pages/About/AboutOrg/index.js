@@ -51,9 +51,9 @@ const AboutOrg = () => {
                                 <Fancybox>
                                     {images.slice(-8).map((image, idx) => (
                                         <ImageListItem key={idx} cols={width > 576 ? aboutOrgImgGrid[idx].cols : 2} rows={width > 576 ? aboutOrgImgGrid[idx].rows : 2}>
-                                            <a data-fancybox="about-org-gallery" href={API_IMG_URL + "/" + image} className='fancybox-item'>
+                                            <a data-fancybox="about-org-gallery" href={API_IMG_URL + image} className='fancybox-item'>
                                                 <img
-                                                    {...srcset(API_IMG_URL + "/" + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
+                                                    {...srcset(API_IMG_URL + image, 121, aboutOrgImgGrid[idx].rows, aboutOrgImgGrid[idx].cols)}
                                                     alt={`about org img${idx + 1}`}
                                                     loading="lazy"
                                                 />

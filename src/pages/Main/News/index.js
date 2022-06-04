@@ -4,7 +4,6 @@ import { blue } from '@mui/material/colors'
 import Card from '../Card'
 import Title from '../../../components/Title'
 import Text from '../../../components/Text'
-import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri'
 // swiper
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +11,7 @@ import "./style.scss";
 import { homeNewsUrl } from '../../../api/apiUrls';
 import baseAPI from '../../../api/baseAPI';
 import { useT } from '../../../custom/hooks/useT'
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
+import { ArrowForwardIos } from '@mui/icons-material'
 
 const ArrowButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.getContrastText(blue[500]),

@@ -48,7 +48,7 @@ const PublicOffer = () => {
 						<Title>{top_title}</Title>
 						<Grid container spacing={3}>
 							<Grid item xs={12} md={6}>
-								<Typography sx={titleStyle}>
+								<Typography component={'div'} sx={titleStyle}>
 									<div dangerouslySetInnerHTML={{ __html: title }}></div>
 								</Typography>
 								<Text>

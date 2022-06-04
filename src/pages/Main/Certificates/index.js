@@ -113,7 +113,7 @@ const Certificates = () => {
                                                     </Button>
                                                 </Link>
                                             </Stack>
-                                            <Typography sx={titleStyle}>{title} </Typography>
+                                            <Typography sx={titleStyle}>{title}</Typography>
                                             <Text>
                                                 <span dangerouslySetInnerHTML={{ __html: text }}></span>
                                             </Text>

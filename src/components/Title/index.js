@@ -10,5 +10,5 @@ const Title = styled(Typography)(({ theme }) => ({
 }))
 
 export default function StyledCustomization(props) {
-    return <Title className={props.className} variant="h5" mb={2}>{props.children}</Title>
+    return <Title className={props.className} variant="h5" mb={2} component={'div'}>{props.children}</Title>
 }

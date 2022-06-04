@@ -80,7 +80,7 @@ const InsideNews = () => {
 										<img src="/assets/icon/calendar.png" alt="calendar-icon" />
 										{date}
 									</p>
-									<Typography sx={titleStyle} className="card__title"><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
+									<Typography component={'div'} sx={titleStyle} className="card__title"><div dangerouslySetInnerHTML={{ __html: title }}></div></Typography>
 									<Text><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>
 								</Grid>
 								<Grid item xs={12} sm={6} md={6}>
