@@ -10,6 +10,7 @@ import { nomenclatureUrl } from '../../../api/apiUrls';
 import { useT } from '../../../custom/hooks/useT';
 import { API_IMG_URL } from '../../../constants';
 import "./style.scss";
+import Fancybox from '../../../components/Fancybox';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -64,7 +65,7 @@ const Nomenclature = () => {
 		getNomenclature()
 	}, [getNomenclature])
 
-	const { dataImgs = [], data:nomeklatura = [] } = nomenclature;
+	const { dataImgs = [], data: nomeklatura = [] } = nomenclature;
 
 	return (
 		loading ? (
@@ -73,15 +74,19 @@ const Nomenclature = () => {
 			</Grid>
 		) : (
 			<>
-				{
-					dataImgs.map(({ id, img }) => (
-						<Grid item md={3} xs={12} key={id}>
-							<div className='nomen_img'>
-								<img src={API_IMG_URL + img} alt={`img${id}`} width="100%" />
-							</div>
-						</Grid>
-					))
-				}
+				<Fancybox>
+					{
+						dataImgs.map(({ id, img }) => (
+							<Grid item md={3} xs={12} key={id}>
+								<div className='nomen_img'>
+									<a data-fancybox="nomen-gallery" href={API_IMG_URL + img} className='fancybox-item'>
+										<img src={API_IMG_URL + img} alt={`img${id}`} width="100%" />
+									</a>
+								</div>
+							</Grid>
+						))
+					}
+				</Fancybox>
 				<Grid item xs={12}>
 					<Title>{t(`nomenclature.${lang}`)}</Title>
 					<TableContainer component={Paper}>

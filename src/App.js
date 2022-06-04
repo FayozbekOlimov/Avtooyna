@@ -14,6 +14,7 @@ import { fallbackLng, languages } from './constants';
 import { useTheme } from '@mui/material';
 import GetConsultModal from "./components/GetConsultModal";
 import { ColorModeContext } from './static';
+import PhoneButton from './components/PhoneButton';
 
 export const ConsultContext = createContext(null);
 export const ModeContext = createContext(null);
@@ -54,11 +55,11 @@ const App = () => {
 		// 	})
 		// }
 
-		// if (currentMode['color'] === 'gray') {
-		// 	document.body.style.filter = 'grayscale(1)';
-		// 	setMode(currentMode);
-		// 	return;
-		// }
+		if (currentMode['color'] === 'gray') {
+			document.body.style.filter = 'grayscale(1)';
+			setMode(currentMode);
+			return;
+		}
 		setMode(currentMode);
 	}, []);
 
@@ -90,6 +91,7 @@ const App = () => {
 					{element}
 					<Footer />
 					<GetConsultModal {...consultContextValue} />
+					{/* <PhoneButton /> */}
 				</ConsultContext.Provider>
 			</ThemeProvider>
 		</div>

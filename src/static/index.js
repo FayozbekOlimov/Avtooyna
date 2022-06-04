@@ -80,8 +80,8 @@ export const ColorContextProvider = ({ children }) => {
             },
         },
         palette: {
-            mode: mode["color"],
-            ...themeObj[mode['color']],
+            mode: mode["color"] === "gray" ? "light" : mode["color"],
+            ...themeObj[mode["color"] === "gray" ? "light" : mode["color"]],
         },
     }), [mode])
 

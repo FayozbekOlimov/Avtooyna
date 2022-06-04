@@ -1,41 +1,39 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
-import { ExpandMore, FmdGood, Menu as MenuIcon, PhoneEnabled, RadioButtonChecked, RadioButtonUnchecked, RemoveRedEye } from '@mui/icons-material';
-import { Button, FormControl, Grid, MenuItem, Select, Stack, Link as TelLink, Typography, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Box, FormGroup, Checkbox } from '@mui/material';
+import { ExpandMore, Menu as MenuIcon, RemoveRedEye } from '@mui/icons-material';
+import { Button, FormControl, Grid, MenuItem, Select, Stack, Typography, Menu as MuiMenu, Divider, RadioGroup, FormControlLabel, Radio, Box } from '@mui/material';
 import { Drawer, Menu } from 'antd';
 import { CgCloseO } from 'react-icons/cg'
 import { Link, NavLink } from 'react-router-dom';
 import { useT } from "../../custom/hooks/useT";
-import { changeLang, getIsImage, setIsImage, setLang } from '../../helpers';
+import { changeLang, setLang } from '../../helpers';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
 import { menusUrl, telsUrl } from "../../api/apiUrls";
 import baseAPI from "../../api/baseAPI";
 import './style.scss';
-
+import { boxStyle, modeLabelStyle, titleStyle } from './style';
 
 const Header = () => {
-    const [isImg, setIsImg] = useState(Boolean(getIsImage()));
     const [visible, setVisible] = useState(false);
     const { t, lang } = useT();
     let langs = [{ 1: "UZ", 2: "uz" }, { 1: "РУ", 2: "ru" }, { 1: "EN", 2: "en" }];
 
-    const [tels, setTels] = useState([]);
+    // const [tels, setTels] = useState([]);
     const [menus, setMenus] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const getTels = useCallback(() => {
-        setLoading(true);
-        baseAPI.fetchAll(telsUrl)
-            .then((res) => {
-                if (res.data.success) {
-                    setTels(res.data.data);
-                    setLoading(false);
-                }
-            })
-            .catch((e) => console.log("e", e))
-
-    }, [])
+    // const getTels = useCallback(() => {
+    //     setLoading(true);
+    //     baseAPI.fetchAll(telsUrl)
+    //         .then((res) => {
+    //             if (res.data.success) {
+    //                 setTels(res.data.data);
+    //                 setLoading(false);
+    //             }
+    //         })
+    //         .catch((e) => console.log("e", e))
+    // }, [])
 
     const getMenus = useCallback(() => {
         baseAPI.fetchAll(menusUrl)
@@ -45,14 +43,12 @@ const Header = () => {
                 // }
             })
             .catch((e) => console.log("e", e))
-
     }, [])
 
-
     useEffect(() => {
-        getTels();
+        // getTels();
         getMenus();
-    }, [getTels, getMenus])
+    }, [/*getTels*/, getMenus])
 
     const handleChange = (event) => {
         setLang(event.target.value);
@@ -77,36 +73,25 @@ const Header = () => {
         )))
     ))
 
+    const rootSubmenuKeys = menus.map(menu => menu.id);
+    const [openKeys, setOpenKeys] = useState([]);
+    const onOpenChange = (keys) => {
+        const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+
+        if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+            setOpenKeys(keys);
+        } else {
+            setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+        }
+    };
+
     const { mode, setMode } = useContext(ColorModeContext);
     const { onOpenConsultModal } = useContext(ConsultContext);
 
-    const [value, setValue] = useState(0);
-    const handleChangeSlider = (e) => {
-        setValue(e.target.value)
-    }
-
-    const boxStyle = {
-        width: '50px',
-        height: '50px',
-        borderRadius: '8px',
-        display: 'grid',
-        placeItems: 'center',
-        margin: 'auto'
-    };
-
-    const modeLabelStyle = {
-        margin: '4px 0',
-        textAlign: 'center',
-        fontSize: '12px',
-        color: 'info.light',
-        fontWeight: 500
-    }
-
-    const titleStyle = {
-        fontSize: '18px',
-        color: 'info.main',
-        fontWeight: 500
-    }
+    // const [value, setValue] = useState(0);
+    // const handleChangeSlider = (e) => {
+    //     setValue(e.target.value)
+    // }
 
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -122,7 +107,7 @@ const Header = () => {
         if (e.target.value === 'gray') {
             setMode(prev => ({ ...prev, color: 'light' }));
             document.body.style.filter = 'grayscale(1)';
-            newMode = { ...newMode, color: 'light' };
+            newMode = { ...newMode, color: 'gray' };
         } else {
             document.body.style.filter = 'grayscale(0)';
             setMode(prev => ({ ...prev, color: e.target.value }));
@@ -130,23 +115,6 @@ const Header = () => {
         }
         localStorage.setItem("mode", JSON.stringify(newMode));
     }
-
-    // useEffect(() => {
-    //     setIsImage(isImg);
-    // }, [isImg])
-
-    // const toggleIsImage = (e) => {
-    //     setIsImg(e.target.checked);
-    //     if (!isImg) {
-    //         Array.from(document.images).forEach(img => {
-    //             img.style.display = 'none';
-    //         })
-    //     } else {
-    //         Array.from(document.images).forEach(img => {
-    //             img.style.display = 'block';
-    //         })
-    //     }
-    // }
 
     return (
         <Stack className='header' bgcolor='background.default'>
@@ -166,7 +134,7 @@ const Header = () => {
                                 onClick={() => setVisible(true)}
                             />
                             <Link to='/' className='header__logo'>
-                                <img src={mode['color'] === 'light' ? '/assets/img/logo.svg' : '/assets/img/logo.png'} alt='logo' />
+                                <img src={mode['color'] === 'dark' ? '/assets/img/logo.png' : '/assets/img/logo.svg'} alt='logo' />
                             </Link>
                         </Box>
                         <Box sx={{ display: { xs: "block", sm: "none" } }}>
@@ -201,13 +169,15 @@ const Header = () => {
                         justifyContent='space-evenly'
                     >
                         <Menu
-                            style={{ 
-                                width: '100%', 
+                            style={{
+                                width: '100%',
                                 backgroundColor: "transparent",
-                                color: mode['color'] === 'light' ? '#000' : '#fff',
+                                color: mode['color'] === 'dark' ? '#fff' : '#000',
                             }}
                             mode="horizontal"
                             items={items}
+                            openKeys={openKeys}
+                            onOpenChange={onOpenChange}
                         />
                     </Grid>
                     <Grid item xs={12} sm={8} lg={4} display="flex" alignItems='center' justifyContent='space-between'>
@@ -254,8 +224,6 @@ const Header = () => {
                             className='header__mode'
                             size='medium'
                             onClick={handleClick}
-                            // onClose={handleClose}
-                            // onMouseOver={handleClick}
                             sx={{
                                 bgcolor: 'primary.light',
                                 '&:hover': {
@@ -291,7 +259,7 @@ const Header = () => {
                                     display: 'block',
                                     position: 'absolute',
                                     top: 0,
-                                    right: '33%',
+                                    right: { xs: '10%', xl: '43%' },
                                     width: 10,
                                     height: 10,
                                     bgcolor: 'background.paper',
@@ -357,26 +325,6 @@ const Header = () => {
                                     }
                                     labelPlacement="top"
                                 />
-                                {/* <FormControlLabel
-                                    // disabled
-                                    control={<Checkbox
-                                        size='small'
-                                        sx={{ p: 0.5 }}
-                                        icon={<RadioButtonUnchecked />}
-                                        checkedIcon={<RadioButtonChecked />}
-                                    />}
-                                    checked={isImg}
-                                    onChange={toggleIsImage}
-                                    label={
-                                        <>
-                                            <Box bgcolor='#C4C4C4' sx={boxStyle}>
-                                                <img src='/assets/icon/no-image.png' alt="no_image" />
-                                            </Box>
-                                            <Typography sx={modeLabelStyle}>No image</Typography>
-                                        </>
-                                    }
-                                    labelPlacement="top"
-                                /> */}
                             </RadioGroup>
                         </Box>
                     </MuiMenu>
@@ -402,30 +350,53 @@ const Header = () => {
 
 export default Header
 
-{/* <div className='header__tel'>
-                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
-                                <PhoneEnabled sx={{ color: 'primary.main' }} />
-                            </Stack>
-                            <Stack className='header__tel-content'>
-                                {
-                                    tels.map((tel, ind) => (
-                                        <TelLink
-                                            key={ind}
-                                            href={`tel:${tel.tel_namber}`}
-                                            sx={{ color: 'info.light', textDecoration: 'none' }}
-                                        >
-                                            {tel.tel_namber}
-                                        </TelLink>
-                                    ))
-                                }
-                            </Stack>
-                        </div>
-                        <div className='header__tel'>
-                            <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
-                                <FmdGood sx={{ color: 'primary.main' }} />
-                            </Stack>
-                            <div className='header__tel-content'>
-                                <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
-                                <small>{t(`ourAddress.${lang}`)}</small>
-                            </div>
-                        </div> */}
+{/* 
+<div className='header__tel'>
+        <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
+            <PhoneEnabled sx={{ color: 'primary.main' }} />
+        </Stack>
+        <Stack className='header__tel-content'>
+            {
+                tels.map((tel, ind) => (
+                    <TelLink
+                        key={ind}
+                        href={`tel:${tel.tel_namber}`}
+                        sx={{ color: 'info.light', textDecoration: 'none' }}
+                    >
+                        {tel.tel_namber}
+                    </TelLink>
+                ))
+            }
+        </Stack>
+    </div>
+    <div className='header__tel'>
+        <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
+            <FmdGood sx={{ color: 'primary.main' }} />
+        </Stack>
+        <div className='header__tel-content'>
+            <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
+            <small>{t(`ourAddress.${lang}`)}</small>
+        </div>
+    </div> 
+*/}
+
+{/* <FormControlLabel
+    // disabled
+    control={<Checkbox
+        size='small'
+        sx={{ p: 0.5 }}
+        icon={<RadioButtonUnchecked />}
+        checkedIcon={<RadioButtonChecked />}
+    />}
+    checked={isImg}
+    onChange={toggleIsImage}
+    label={
+        <>
+            <Box bgcolor='#C4C4C4' sx={boxStyle}>
+                <img src='/assets/icon/no-image.png' alt="no_image" />
+            </Box>
+            <Typography sx={modeLabelStyle}>No image</Typography>
+        </>
+    }
+    labelPlacement="top"
+/> */}
