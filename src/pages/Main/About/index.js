@@ -10,6 +10,7 @@ import baseAPI from '../../../api/baseAPI';
 import { homeCompanyUrl, homeEquipmentUrl, homeGlassUrl } from '../../../api/apiUrls'
 import { useT } from '../../../custom/hooks/useT'
 import { ColorModeContext } from '../../../static'
+import Fancybox from '../../../components/Fancybox'
 
 const About = () => {
     const { t, lang } = useT()
@@ -84,9 +85,15 @@ const About = () => {
                 <Stack mt={1} mb={2}>
                     <Grid container spacing={4} direction='row' alignItems='center' justifyContent='center'>
                         <Grid item md={6}>
-                            <div className="about__picture">
-                                {!isLoadingCompany ? <img src={API_IMG_URL + companyImg} alt="about-company" /> : null}
-                            </div>
+                            <Fancybox>
+                                <div className="about__picture">
+                                    {!isLoadingCompany ? (
+                                        <a data-fancybox="main-about1" href={API_IMG_URL + companyImg} className='fancybox-item'>
+                                            <img src={API_IMG_URL + companyImg} alt="about-company" />
+                                        </a>
+                                    ) : null}
+                                </div>
+                            </Fancybox>
                         </Grid>
                         <Grid item md={6}>
                             <div className="about__content">
@@ -121,19 +128,37 @@ const About = () => {
                         <Grid item md={6}>
                             <Grid container spacing={2}>
                                 <Grid item sm={6} xs={12}>
-                                    <div className="about__img">
-                                        {!isLoadingGlasses ? <img src={API_IMG_URL + (glassImgs[0])} alt="oyna1" /> : null}
-                                    </div>
+                                    <Fancybox>
+                                        <div className="about__img">
+                                            {!isLoadingGlasses ? (
+                                                <a data-fancybox="main-about2" href={API_IMG_URL + glassImgs[0]} className='fancybox-item'>
+                                                    <img src={API_IMG_URL + glassImgs[0]} alt="oyna1" />
+                                                </a>
+                                            ) : null}
+                                        </div>
+                                    </Fancybox>
                                 </Grid>
                                 <Grid item sm={6} xs={12}>
-                                    <div className="about__img">
-                                        {!isLoadingGlasses ? <img src={API_IMG_URL + glassImgs[1]} alt="oyna2" /> : null}
-                                    </div>
+                                    <Fancybox>
+                                        <div className="about__img">
+                                            {!isLoadingGlasses ? (
+                                                <a data-fancybox="main-about2" href={API_IMG_URL + glassImgs[1]} className='fancybox-item'>
+                                                    <img src={API_IMG_URL + glassImgs[1]} alt="oyna2" />
+                                                </a>
+                                            ) : null}
+                                        </div>
+                                    </Fancybox>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <div className="about__img">
-                                        {!isLoadingGlasses ? <img src={API_IMG_URL + glassImgs[2]} alt="oyna3" /> : null}
-                                    </div>
+                                    <Fancybox>
+                                        <div className="about__img">
+                                            {!isLoadingGlasses ? (
+                                                <a data-fancybox="main-about2" href={API_IMG_URL + glassImgs[2]} className='fancybox-item'>
+                                                    <img src={API_IMG_URL + glassImgs[2]} alt="oyna3" />
+                                                </a>
+                                            ) : null}
+                                        </div>
+                                    </Fancybox>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -153,17 +178,29 @@ const About = () => {
                             <Grid container spacing={2}>
                                 <Grid item sm={6} xs={12}>
                                     <div className="about__img">
-                                        {!isLoadingEquipment ? <img src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" /> : null}
+                                        {!isLoadingEquipment ? (
+                                            <a data-fancybox="main-about3" href={API_IMG_URL + equipmentImgs[0]} className='fancybox-item'>
+                                                <img src={API_IMG_URL + equipmentImgs[0]} alt="ehtqism1" />
+                                            </a>
+                                        ) : null}
                                     </div>
                                 </Grid>
                                 <Grid item sm={6} xs={12}>
                                     <div className="about__img">
-                                        {!isLoadingEquipment ? <img src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism2" /> : null}
+                                        {!isLoadingEquipment ? (
+                                            <a data-fancybox="main-about3" href={API_IMG_URL + equipmentImgs[1]} className='fancybox-item'>
+                                                <img src={API_IMG_URL + equipmentImgs[1]} alt="ehtqism1" />
+                                            </a>
+                                        ) : null}
                                     </div>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <div className="about__img">
-                                        {!isLoadingEquipment ? <img src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism3" /> : null}
+                                        {!isLoadingEquipment ? (
+                                            <a data-fancybox="main-about3" href={API_IMG_URL + equipmentImgs[2]} className='fancybox-item'>
+                                                <img src={API_IMG_URL + equipmentImgs[2]} alt="ehtqism1" />
+                                            </a>
+                                        ) : null}
                                     </div>
                                 </Grid>
                             </Grid>
@@ -182,8 +219,8 @@ const About = () => {
                         </Grid>
                     </Grid>
                 </Stack>
-            </div>
-        </Stack>
+            </div >
+        </Stack >
     )
 }
 

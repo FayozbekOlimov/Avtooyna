@@ -7,6 +7,7 @@ import baseAPI from '../../../api/baseAPI';
 import { useT } from "../../../custom/hooks/useT";
 import { API_IMG_URL } from '../../../constants';
 import './style.scss';
+import Fancybox from '../../../components/Fancybox';
 
 const Vacancies = () => {
 	const { t, lang } = useT();
@@ -55,13 +56,17 @@ const Vacancies = () => {
 					/>
 				</Grid>
 				<Grid item xs={12} md={6}>
-					<div className='resume_img'>
-						<img
-							src={API_IMG_URL + vacancies.img}
-							alt="resume_img"
-							width='100%'
-						/>
-					</div>
+					<Fancybox>
+						<div className='resume_img'>
+							<a href={API_IMG_URL + vacancies.img} data-fancybox="about-vacancies" className='fancybox-item'>
+								<img
+									src={API_IMG_URL + vacancies.img}
+									alt="resume_img"
+									width='100%'
+								/>
+							</a>
+						</div>
+					</Fancybox>
 				</Grid>
 			</Grid>
 		</Stack>

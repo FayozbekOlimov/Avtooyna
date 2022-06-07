@@ -1,14 +1,15 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { Modal, Form, Input, Button, Checkbox } from 'antd';
 import Title from "../Title";
 import InputMask from 'react-input-mask';
-import { InfoCircleOutlined } from '@ant-design/icons';
 import baseAPI from "../../api/baseAPI";
 import { acceptTermsUrl, createConsultUrl } from '../../api/apiUrls';
 import { useT } from "../../custom/hooks/useT";
-import { Alert, Snackbar } from '@mui/material';
+import { Alert, Snackbar, Stack, Typography } from '@mui/material';
 import { API_IMG_URL } from '../../constants';
 import "./_style.scss";
+import { InfoOutlined } from '@mui/icons-material';
+import { ColorModeContext } from '../../static';
 
 const InputTel = (props) => (
 	<InputMask mask="+\9\98 (99) 999-99-99" placeholder='+998' value={props.value} onChange={props.onChange}>
@@ -24,6 +25,7 @@ const GetConsultModal = (props) => {
 	const [messages, setMessages] = useState({})
 	const [acceptTerms, setAcceptTerms] = useState({})
 	const [loading, setLoading] = useState(false);
+	const { mode, setMode } = useContext(ColorModeContext)
 
 	const handleClick = () => {
 		setOpen(true);
@@ -40,7 +42,6 @@ const GetConsultModal = (props) => {
 	const [form] = Form.useForm();
 	const { isOpenConsultModal, onOpenConsultModal, onCloseConsultModal } = props;
 
-
 	const getAcceptTerms = useCallback(() => {
 		baseAPI.fetchAll(acceptTermsUrl)
 			.then((res) => {
@@ -50,7 +51,6 @@ const GetConsultModal = (props) => {
 			})
 			.catch((e) => console.log(e));
 	}, [])
-
 
 	useEffect(() => {
 		getAcceptTerms()
@@ -105,14 +105,14 @@ const GetConsultModal = (props) => {
 				visible={isOpenConsultModal}
 				className="get_consult_modal"
 				footer={null}
-				width={1157}
+				width={1100}
 				onCancel={() => onCloseConsultModal()}
 				centered
 			>
 				<div className="modal_left">
 					<img className='modal_left-img' src={API_IMG_URL + img} alt="form" />
 				</div>
-				<div className="consult_form">
+				<Stack bgcolor='background.default' className="consult_form">
 					<Title>{t(`getConsult.${lang}`)}</Title>
 					<Form
 						form={form}
@@ -120,14 +120,15 @@ const GetConsultModal = (props) => {
 						onFinish={onHandleConsultForm}
 					>
 						<Form.Item
-							label={t(`name.${lang}`)} required name="name" tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
+							label={<Typography color='info.light'>{t(`name.${lang}`)}</Typography>} required name="name"
+							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoOutlined sx={{ fill: mode['color'] === 'dark' ? '#fff' : '#252C34' }} fontSize='20px' /> }}
 						>
 							<Input placeholder={t(`name.${lang}`)} />
 						</Form.Item>
 						{getErrorMessages(name)}
 						<Form.Item
-							label={t(`email.${lang}`)}
-							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
+							label={<Typography color='info.light'>{t(`email.${lang}`)}</Typography>}
+							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoOutlined sx={{ fill: mode['color'] === 'dark' ? '#fff' : '#252C34' }} fontSize='20px' /> }}
 							required
 							name="email"
 						>
@@ -135,8 +136,8 @@ const GetConsultModal = (props) => {
 						</Form.Item>
 						{getErrorMessages(email)}
 						<Form.Item
-							label={t(`telNumber.${lang}`)}
-							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoCircleOutlined /> }}
+							label={<Typography color='info.light'>{t(`telNumber.${lang}`)}</Typography>}
+							tooltip={{ title: t(`requiredFile.${lang}`), icon: <InfoOutlined sx={{ fill: mode['color'] === 'dark' ? '#fff' : '#252C34' }} fontSize='20px' /> }}
 							required
 							name={"tel_number"}
 						>
@@ -150,7 +151,7 @@ const GetConsultModal = (props) => {
 							},
 						]}
 						>
-							<Checkbox>
+							<Checkbox style={{ color: mode['color'] === 'dark' ? '#fff' : '#000' }}>
 								<div dangerouslySetInnerHTML={{ __html: acceptTermsText }}></div>
 							</Checkbox>
 						</Form.Item>
@@ -158,11 +159,11 @@ const GetConsultModal = (props) => {
 							<Button loading={loading} type="primary" htmlType='submit'>{t(`send.${lang}`)}</Button>
 						</Form.Item>
 					</Form>
-				</div>
+				</Stack>
 			</Modal>
 			<Snackbar open={open} autoHideDuration={2000} onClose={handleClose} anchorOrigin={{ vertical: "top", horizontal: "center" }}>
 				<Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-						{t(`thanksFormSent.${lang}`)}
+					{t(`thanksFormSent.${lang}`)}
 				</Alert>
 			</Snackbar>
 		</>

@@ -30,15 +30,15 @@ const MediaCard = ({ id, img, date, title, url }) => {
                         }}
                         className="card__title"
                     >{title}</Typography>
-                    <a href={url} target="_blank" rel="noopener noreferrer">
-                        <Button
-                            variant="text"
-                            sx={{ textTransform: "capitalize", color: "primary.light" }}
-                            endIcon={<RiArrowRightSLine />}
-                        >
-                            {t(`detail.${lang}`)}
-                        </Button>
-                    </a>
+                    {/* <a href={url} target="_blank" rel="noopener noreferrer"> */}
+                    <Button
+                        variant="text"
+                        sx={{ textTransform: "capitalize", color: "primary.light" }}
+                        endIcon={<RiArrowRightSLine />}
+                    >
+                        {t(`detail.${lang}`)}
+                    </Button>
+                    {/* </a> */}
                 </Grid>
             </Grid>
         </a>

@@ -19,8 +19,8 @@ const NewsCard = ({ id, img, date, title, text, url }) => {
     }
 
     return (
-        <Link to={`/news/:${id}`}>
-            <Grid item xs={12} key={id}>
+        <Grid item xs={12} key={id}>
+            <Link to={`/news/:${id}`}>
                 <Grid container className='news__card' p={2} bgcolor='background.default'>
                     <Grid item xs={12} md={4}>
                         <div className="news_img">
@@ -34,19 +34,19 @@ const NewsCard = ({ id, img, date, title, text, url }) => {
                             {date}
                         </p>
                         <Text className="news__card__text"><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>
-                        <Link to={`/news/:${id}`}>
-                            <Button
-                                variant="text"
-                                sx={{ textTransform: "capitalize" }}
-                                endIcon={<RiArrowRightSLine />}
-                            >
-                                {t(`detail.${lang}`)}
-                            </Button>
-                        </Link>
+                        {/* <Link to={`/news/:${id}`}> */}
+                        <Button
+                            variant="text"
+                            sx={{ textTransform: "capitalize" }}
+                            endIcon={<RiArrowRightSLine />}
+                        >
+                            {t(`detail.${lang}`)}
+                        </Button>
+                        {/* </Link> */}
                     </Grid>
                 </Grid>
-            </Grid>
-        </Link>
+            </Link>
+        </Grid>
     )
 }
 

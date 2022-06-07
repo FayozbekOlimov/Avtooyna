@@ -7,6 +7,7 @@ import { brandsUrl } from '../../../api/apiUrls';
 import { useT } from '../../../custom/hooks/useT';
 import "./style.scss";
 import { API_IMG_URL } from '../../../constants';
+import Fancybox from '../../../components/Fancybox';
 
 
 const Brands = () => {
@@ -42,23 +43,25 @@ const Brands = () => {
 							{
 								brands.map((brand) => (
 									<React.Fragment key={brand.id}>
-										<Grid item md={12}>
-											<Title className='brands__title'>{brand.title}</Title>
-										</Grid>
-										{
-											brand.imgs.map(({ id, img }) => (
-												<Grid item xs={12} md={6} key={id} width='100%'>
-													<div className="brands__img">
-														<img src={API_IMG_URL + img} alt={`img${id}`} />
-													</div>
-												</Grid>
-											))
-										}
+										{/* <Grid item md={12}>
+												<Title className='brands__title'>{brand.title}</Title>
+											</Grid> */}
+										<Fancybox>
+											{
+												brand.imgs.map(({ id, img }) => (
+													<Grid item xs={12} md={6} key={id} width='100%'>
+														<div className="brands__img">
+															<a data-fancybox="brands-gallery" href={API_IMG_URL + img} className='fancybox-item'>
+																<img src={API_IMG_URL + img} alt={`img${id}`} />
+															</a>
+														</div>
+													</Grid>
+												))
+											}
+										</Fancybox>
 									</React.Fragment>
-								)
-								)
+								))
 							}
-
 						</Grid>
 					</>
 				)

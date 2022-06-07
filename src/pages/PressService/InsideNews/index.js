@@ -10,6 +10,7 @@ import baseAPI from '../../../api/baseAPI';
 import { newsDetailUrl } from '../../../api/apiUrls';
 import { API_IMG_URL } from '../../../constants';
 import { useT } from '../../../custom/hooks/useT';
+import Fancybox from '../../../components/Fancybox';
 
 const titleStyle = {
 	fontWeight: 600,
@@ -64,12 +65,11 @@ const InsideNews = () => {
 								sx={{
 									textTransform: "none",
 									alignSelf: 'flex-start',
-									my: 1.5,
+									mb: 1.5,
 									color: 'secondary.main',
 									borderColor: 'border.main'
 								}}
 								startIcon={<ArrowBack />}
-								className="inside_news_back_btn"
 								onClick={() => navigate(-1)}
 							>
 								{t(`back.${lang}`)}
@@ -84,9 +84,13 @@ const InsideNews = () => {
 									<Text><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>
 								</Grid>
 								<Grid item xs={12} sm={6} md={6}>
-									<div className='news_images'>
-										<img src={API_IMG_URL + img} alt="news-img" />
-									</div>
+									<Fancybox>
+										<div className='news_images'>
+											<a data-fancybox='gallery' href={API_IMG_URL + img} className='fancybox-item'>
+												<img src={API_IMG_URL + img} alt="news-img" />
+											</a>
+										</div>
+									</Fancybox>
 								</Grid>
 							</Grid>
 						</Stack>

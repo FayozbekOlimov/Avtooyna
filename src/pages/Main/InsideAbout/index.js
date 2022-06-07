@@ -10,6 +10,7 @@ import { useT } from '../../../custom/hooks/useT';
 import baseAPI from '../../../api/baseAPI';
 import { API_IMG_URL } from '../../../constants';
 import "./style.scss";
+import Fancybox from '../../../components/Fancybox';
 
 const InsideAbout = () => {
 	const { t, lang } = useT();
@@ -43,7 +44,7 @@ const InsideAbout = () => {
 					sx={{
 						textTransform: "none",
 						alignSelf: 'flex-start',
-						my: 1.5,
+						mb: 1.5,
 						color: 'secondary.main',
 						borderColor: 'border.main'
 					}}
@@ -65,9 +66,13 @@ const InsideAbout = () => {
 										</Text>
 									</Grid>
 									<Grid item xs={12} md={6} my={3}>
-										<div className='news_images'>
-											<img src={API_IMG_URL + imgs[0]} alt="insideAbout" width="100%" />
-										</div>
+										<Fancybox>
+											<div className='news_images'>
+												<a data-fancybox='inside-about' href={API_IMG_URL + imgs[0]} className='fancybox-item'>
+													<img src={API_IMG_URL + imgs[0]} alt="insideAbout" width="100%" />
+												</a>
+											</div>
+										</Fancybox>
 									</Grid>
 								</Grid>
 							</>

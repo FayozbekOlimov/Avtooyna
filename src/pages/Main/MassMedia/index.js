@@ -9,15 +9,17 @@ import { API_IMG_URL } from "../../../constants";
 import './style.scss';
 
 const MassMedia = () => {
-
+    const [isLoading, setIsLoading] = useState(true);
     const { t, lang } = useT();
     const [oav, setOav] = useState({});
 
     const getOav = useCallback(() => {
+        setIsLoading(true);
         baseAPI.fetchAll(homeOavUrl)
             .then((res) => {
                 if (res.data.success) {
                     setOav(res.data);
+                    setIsLoading(false);
                 }
             })
             .catch((e) => console.log("e", e));
@@ -34,8 +36,8 @@ const MassMedia = () => {
             <div className='container'>
                 <Grid container width="100%" ml={0} mt={0}>
                     <Grid item xs={12} lg={6} className='massmedia__left' bgcolor='background.default'>
-                        <Stack className='massmedia__img' p={{xs: 2, sm: 4}} bgcolor='background.navBg'>
-                            <img src={API_IMG_URL + dataImg.img} alt="oav" />
+                        <Stack className='massmedia__img' p={{ xs: 2, sm: 4 }} bgcolor='background.navBg'>
+                            {!isLoading ? <img src={API_IMG_URL + dataImg.img} alt="oav" /> : null}
                         </Stack>
                     </Grid>
                     <Grid item xs={12} lg={6} pl={{ xs: 0, lg: 2 }} pt={{ xs: 2, lg: 0 }}>

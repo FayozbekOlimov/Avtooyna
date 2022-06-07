@@ -79,7 +79,7 @@ export default function InsideContest() {
 					sx={{
 						textTransform: "none",
 						alignSelf: 'flex-start',
-						my: 1.5,
+						mb: 1.5,
 						color: 'secondary.main',
 						borderColor: 'border.main'
 					}}

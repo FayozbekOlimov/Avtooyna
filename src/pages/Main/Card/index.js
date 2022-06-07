@@ -37,15 +37,15 @@ const Card = ({ id, img, date, title, text, content, toUrl }) => {
 					{
 						content && (<Text className="card__text"><span dangerouslySetInnerHTML={{ __html: text }}></span></Text>)
 					}
-					<Link to={`/${toUrl}/:${id}`}>
-						<Button
-							variant="text"
-							sx={{ textTransform: "capitalize", color: "primary.light" }}
-							endIcon={<RiArrowRightSLine />}
-						>
-							{t(`detail.${lang}`)}
-						</Button>
-					</Link>
+					{/* <Link to={`/${toUrl}/:${id}`}> */}
+					<Button
+						variant="text"
+						sx={{ textTransform: "capitalize", color: "primary.light" }}
+						endIcon={<RiArrowRightSLine />}
+					>
+						{t(`detail.${lang}`)}
+					</Button>
+					{/* </Link> */}
 				</Stack>
 			</Stack>
 		</Link>

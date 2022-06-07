@@ -7,6 +7,7 @@ import "./_style.scss";
 import { constestRulesUrl } from "../../../api/apiUrls";
 import baseAPI from "../../../api/baseAPI";
 import { API_IMG_URL } from "../../../constants";
+import Fancybox from "../../../components/Fancybox";
 
 export default function ContestRule() {
 
@@ -41,12 +42,16 @@ export default function ContestRule() {
 					</Text>
 				</Grid>
 				<Grid item xs={12} md={6}>
-					<div className="contest_banner_img">
-						<img
-							src={API_IMG_URL + img}
-							alt="resume_img"
-						/>
-					</div>
+					<Fancybox>
+						<div className="contest_banner_img">
+							<a data-fancybox="contest-rule" href={API_IMG_URL + img} className='fancybox-item'>
+								<img
+									src={API_IMG_URL + img}
+									alt="resume_img"
+								/>
+							</a>
+						</div>
+					</Fancybox>
 				</Grid>
 			</Grid>
 		)

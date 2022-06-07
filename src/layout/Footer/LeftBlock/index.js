@@ -66,7 +66,7 @@ const FooterLeftBlock = () => {
 						<AccessTimeFilled sx={{ color: '#fff' }} />
 					</Stack>
 					<div className='header__tel-content'>
-						<Typography component='p' sx={{ color: 'info.light' }}>9:00 - 18:00</Typography>
+						<Typography component='p' sx={{ color: 'info.light' }}>8:00 - 17:00</Typography>
 						<small>{t(`workDays.${lang}`)}</small>
 					</div>
 				</div>

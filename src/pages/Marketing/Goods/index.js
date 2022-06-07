@@ -36,7 +36,6 @@ const Goods = () => {
 		) : (
 			<>
 				<Grid item xs={12} md={9}>
-
 					<Title>{consumers.title}</Title>
 					<Text>
 						<span dangerouslySetInnerHTML={{ __html: consumers.text }}></span>
@@ -45,8 +44,8 @@ const Goods = () => {
 				<Grid item xs={12}>
 					<Grid container spacing={2}>
 						{
-							products.map(product => (
-								<Grid key={product.id} item xs={12} >
+							products.map((product, ind) => (
+								<Grid key={ind} item xs={12} >
 									<GoodsDetail {...product} />
 								</Grid>
 							))

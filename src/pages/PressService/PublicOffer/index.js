@@ -7,6 +7,7 @@ import baseAPI from '../../../api/baseAPI'
 import { publicOfertaUrl } from '../../../api/apiUrls';
 import { API_IMG_URL } from "../../../constants";
 import './style.scss';
+import Fancybox from '../../../components/Fancybox'
 
 const titleStyle = {
 	fontWeight: 700,
@@ -57,9 +58,13 @@ const PublicOffer = () => {
 								<a href="https://www.spot.uz" target="_blank" rel="noopener noreferrer"><i>www.spot.uz</i></a>
 							</Grid>
 							<Grid item xs={12} md={6}>
-								<div className="offer__img">
-									<img src={API_IMG_URL + img} alt="offerImg" />
-								</div>
+								<Fancybox>
+									<div className="offer__img">
+										<a data-fancybox='offer-img' href={API_IMG_URL + img}>
+											<img src={API_IMG_URL + img} alt="offerImg" />
+										</a>
+									</div>
+								</Fancybox>
 							</Grid>
 						</Grid>
 					</div>
