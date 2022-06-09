@@ -105,7 +105,7 @@ const News = () => {
                         }}
                     >
                         {items.map((item) => (
-                            <SwiperSlide key={item.id}>
+                            <SwiperSlide key={item.id} className='news_swiper-item'>
                                 <Card {...item} content={true} toUrl={"news"} />
                             </SwiperSlide>
                         ))}

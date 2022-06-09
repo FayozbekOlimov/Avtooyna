@@ -32,17 +32,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 	},
 }));
 
-function createData(tr, name, calories, fat) {
-	return { tr, name, calories, fat };
-}
+// function createData(tr, name, calories, fat) {
+// 	return { tr, name, calories, fat };
+// }
 
-const rows = [
-	createData(1, "Труба пластиковая  Д=40", "Метр", 50),
-	createData(2, "Труба пластиковая  Д=40", "Метр", 50),
-	createData(3, "Труба пластиковая  Д=40", "Метр", 500),
-	createData(4, "Труба пластиковая  Д=40", "Метр", 50),
-	createData(5, "Труба пластиковая  Д=40", "Метр", 500),
-];
+// const rows = [
+// 	createData(1, "Труба пластиковая  Д=40", "Метр", 50),
+// 	createData(2, "Труба пластиковая  Д=40", "Метр", 50),
+// 	createData(3, "Труба пластиковая  Д=40", "Метр", 500),
+// 	createData(4, "Труба пластиковая  Д=40", "Метр", 50),
+// 	createData(5, "Труба пластиковая  Д=40", "Метр", 500),
+// ];
 
 export default function InsideContest() {
 	const { t, lang } = useT();
@@ -109,9 +109,9 @@ export default function InsideContest() {
 									<TableHead>
 										<TableRow>
 											<StyledTableCell>№</StyledTableCell>
-											<StyledTableCell>Наименование</StyledTableCell>
-											<StyledTableCell align="right">Ед.изм.</StyledTableCell>
-											<StyledTableCell align="right">Кол.</StyledTableCell>
+											<StyledTableCell>{t(`detailName.${lang}`)}</StyledTableCell>
+											<StyledTableCell align="right">{t(`unit.${lang}`)}</StyledTableCell>
+											<StyledTableCell align="right">{t(`amount.${lang}`)}</StyledTableCell>
 										</TableRow>
 									</TableHead>
 									<TableBody>

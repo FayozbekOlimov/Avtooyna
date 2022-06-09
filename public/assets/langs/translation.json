@@ -159,6 +159,16 @@
     "ru": "Наименование детали",
     "en": "The name of detail"
   },
+  "unit": {
+    "uz": "O'lchov birligi",
+    "ru": "Единица измерения",
+    "en": "Unit of measurement"
+  },
+  "amount": {
+    "uz": "Miqdori",
+    "ru": "Количество",
+    "en": "Amount"
+  },
   "name": {
     "uz": "Ism",
     "ru": "Имя",

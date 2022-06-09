@@ -19,7 +19,7 @@ const NewsCard = ({ id, img, date, title, text, url }) => {
     }
 
     return (
-        <Grid item xs={12} key={id}>
+        <Grid item xs={12}>
             <Link to={`/news/:${id}`}>
                 <Grid container className='news__card' p={2} bgcolor='background.default'>
                     <Grid item xs={12} md={4}>

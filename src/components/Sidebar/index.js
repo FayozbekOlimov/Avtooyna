@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 // import headerMenu from "../../layout/Header/headerMenu.json";
 // import trheaderMenu from "../../layout/Header/trheaderMenu.json";
-import { useT } from "../../custom/hooks/useT";
+// import { useT } from "../../custom/hooks/useT";
 import baseAPI from "../../api/baseAPI";
 import { menusUrl } from "../../api/apiUrls";
 
@@ -26,7 +26,7 @@ const ulStyle = {
 };
 
 const Sidebar = (props) => {
-	const { t, lang } = useT();
+	// const { t, lang } = useT();
 	const { sidebarMenuIndex } = props;
 	const [menus, setMenus] = useState({});
 

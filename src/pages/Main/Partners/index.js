@@ -63,12 +63,13 @@ const Partners = () => {
                                 partners.map(partner => (
                                     <SwiperSlide key={partner.id}>
                                         <Stack className="partners__swiper__img__wrapper">
-                                            <img className='partners__swiper-img' src={API_IMG_URL + partner.imgs} alt={`partners${partner.id}`} />
+                                            <a href={partner.url} target='_blank' style={{ height: "100%" }} rel="noreferrer">
+                                                <img className='partners__swiper-img' src={API_IMG_URL + partner.imgs} alt={`partners${partner.id}`} />
+                                            </a>
                                         </Stack>
                                     </SwiperSlide>
                                 ))
                             }
-
                         </Swiper>
                     </div>
                 </Stack>

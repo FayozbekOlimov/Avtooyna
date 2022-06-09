@@ -1,6 +1,13 @@
 .news__card {
 	box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
 	border-radius: 12px;
+	transition: transform var(--duration) var(--timing),
+        box-shadow var(--duration) var(--timing);
+
+    &:hover {
+        transform: scale(1.03);
+        box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.08);
+    }
 
 	.news_img {
 		width: 100%;

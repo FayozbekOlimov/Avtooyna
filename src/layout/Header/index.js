@@ -9,7 +9,7 @@ import { changeLang, setLang } from '../../helpers';
 import { ConsultContext } from "../../App";
 import { ColorModeContext } from '../../static';
 import { blue } from '@mui/material/colors';
-import { menusUrl, telsUrl } from "../../api/apiUrls";
+import { menusUrl } from "../../api/apiUrls";
 import baseAPI from "../../api/baseAPI";
 import './style.scss';
 import { boxStyle, modeLabelStyle, titleStyle } from './style';
@@ -21,7 +21,7 @@ const Header = () => {
 
     // const [tels, setTels] = useState([]);
     const [menus, setMenus] = useState([]);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
     // const getTels = useCallback(() => {
     //     setLoading(true);
@@ -46,9 +46,8 @@ const Header = () => {
     }, [])
 
     useEffect(() => {
-        // getTels();
         getMenus();
-    }, [/*getTels*/, getMenus])
+    }, [getMenus])
 
     const handleChange = (event) => {
         setLang(event.target.value);
@@ -73,17 +72,17 @@ const Header = () => {
         )))
     ))
 
-    const rootSubmenuKeys = menus.map(menu => menu.id);
-    const [openKeys, setOpenKeys] = useState([]);
-    const onOpenChange = (keys) => {
-        const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    // const rootSubmenuKeys = menus.map(menu => menu.id);
+    // const [openKeys, setOpenKeys] = useState([]);
+    // const onOpenChange = (keys) => {
+    //     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
 
-        if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
-            setOpenKeys(keys);
-        } else {
-            setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
-        }
-    };
+    //     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+    //         setOpenKeys(keys);
+    //     } else {
+    //         setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    //     }
+    // };
 
     const { mode, setMode } = useContext(ColorModeContext);
     const { onOpenConsultModal } = useContext(ConsultContext);
@@ -176,8 +175,8 @@ const Header = () => {
                             }}
                             mode="horizontal"
                             items={items}
-                            openKeys={openKeys}
-                            onOpenChange={onOpenChange}
+                        // openKeys={openKeys}
+                        // onOpenChange={onOpenChange}
                         />
                     </Grid>
                     <Grid item xs={12} sm={8} lg={4} display="flex" alignItems='center' justifyContent='space-between'>
@@ -341,6 +340,8 @@ const Header = () => {
                         style={{ width: '100%' }}
                         mode="inline"
                         items={items}
+                    // openKeys={openKeys}
+                    // onOpenChange={onOpenChange}
                     />
                 </Drawer>
             </div>
@@ -349,54 +350,3 @@ const Header = () => {
 }
 
 export default Header
-
-{/* 
-<div className='header__tel'>
-        <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
-            <PhoneEnabled sx={{ color: 'primary.main' }} />
-        </Stack>
-        <Stack className='header__tel-content'>
-            {
-                tels.map((tel, ind) => (
-                    <TelLink
-                        key={ind}
-                        href={`tel:${tel.tel_namber}`}
-                        sx={{ color: 'info.light', textDecoration: 'none' }}
-                    >
-                        {tel.tel_namber}
-                    </TelLink>
-                ))
-            }
-        </Stack>
-    </div>
-    <div className='header__tel'>
-        <Stack className='header__tel-icon' sx={{ bgcolor: 'background.iconBg' }}>
-            <FmdGood sx={{ color: 'primary.main' }} />
-        </Stack>
-        <div className='header__tel-content'>
-            <Typography component='p' sx={{ color: 'info.light' }}>{t(`ourAddressName.${lang}`)}</Typography>
-            <small>{t(`ourAddress.${lang}`)}</small>
-        </div>
-    </div> 
-*/}
-
-{/* <FormControlLabel
-    // disabled
-    control={<Checkbox
-        size='small'
-        sx={{ p: 0.5 }}
-        icon={<RadioButtonUnchecked />}
-        checkedIcon={<RadioButtonChecked />}
-    />}
-    checked={isImg}
-    onChange={toggleIsImage}
-    label={
-        <>
-            <Box bgcolor='#C4C4C4' sx={boxStyle}>
-                <img src='/assets/icon/no-image.png' alt="no_image" />
-            </Box>
-            <Typography sx={modeLabelStyle}>No image</Typography>
-        </>
-    }
-    labelPlacement="top"
-/> */}
