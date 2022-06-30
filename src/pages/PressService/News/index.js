@@ -25,7 +25,6 @@ const News = () => {
 				}
 			})
 			.catch((e) => console.log("e", e))
-
 	}, [page])
 
 	useEffect(() => {
